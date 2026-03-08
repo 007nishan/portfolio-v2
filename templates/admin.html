@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+
+{% block title %}Admin - Update Portfolio{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow-sm p-4">
+                    <h2 class="mb-4 text-center">Update Daily Challenge</h2>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show"
+                        role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <form action="/admin" method="POST" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="date" class="form-label">Date (YYYY-MM-DD)</label>
+                                <input type="date" class="form-control" id="date" name="date" required
+                                    value="{{ today }}">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="title" class="form-label">Challenge Title</label>
+                                <input type="text" class="form-control" id="title" name="title" required
+                                    placeholder="e.g. FizzBuzz">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Challenge Image (Front-page Visual)</label>
+                            <div class="paste-zone mb-2" data-target="image">
+                                Click here & Press <kbd>Ctrl+V</kbd> to Paste Image
+                            </div>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                            <div class="form-text">Main image for the challenge card. Title will be extracted from this.
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="problem_screenshot" class="form-label">Problem Screenshot</label>
+                                <div class="paste-zone mb-2" data-target="problem_screenshot">
+                                    Click & <kbd>Ctrl+V</kbd> here
+                                </div>
+                                <input type="file" class="form-control" id="problem_screenshot"
+                                    name="problem_screenshot" accept="image/*">
+                                <div class="form-text">Will be converted to Markdown Problem Statement.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="qa_screenshot" class="form-label">Q&A Screenshot</label>
+                                <div class="paste-zone mb-2" data-target="qa_screenshot">
+                                    Click & <kbd>Ctrl+V</kbd> here
+                                </div>
+                                <input type="file" class="form-control" id="qa_screenshot" name="qa_screenshot"
+                                    accept="image/*">
+                                <div class="form-text">Will be converted to Markdown Question & Answer.</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="problem" class="form-label">Problem Statement (Markdown)</label>
+                                <textarea class="form-control" id="problem" name="problem" rows="8"
+                                    placeholder="Paste screenshots above for Antigravity to extract..."></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="problem-preview" class="form-label">Live Preview</label>
+                                <div id="problem-preview"
+                                    class="preview-box p-3 border rounded bg-white markdown-content"></div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="concepts" class="form-label">Key Concepts (Comma separated)</label>
+                            <input type="text" class="form-control" id="concepts" name="concepts" required
+                                placeholder="e.g. Loops, Arrays, Logic">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="code" class="form-label">Solution Code (Python/JS)</label>
+                            <textarea class="form-control font-monospace" id="code" name="code" rows="8"
+                                placeholder="Paste your solution here..."></textarea>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="qa" class="form-label">Question & Answer (Markdown)</label>
+                                <textarea class="form-control" id="qa" name="qa" rows="8"
+                                    placeholder="Q&A extracted from screenshot will appear here..."></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="qa-preview" class="form-label">Live Preview</label>
+                                <div id="qa-preview" class="preview-box p-3 border rounded bg-white markdown-content">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="quote" class="form-label">Motivational Quote</label>
+                            <textarea class="form-control" id="quote" name="quote" rows="2"
+                                placeholder="Leave empty for generic motivation..."></textarea>
+                            <div class="form-text">Format: "Quote" - Author</div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-dark btn-lg">Deploy Optimization</button>
+                            <a href="/" class="btn btn-outline-secondary">Go Back to Home</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .section {
+        padding: 50px 0;
+        background-color: #f8f9fa;
+        min-height: calc(100vh - 160px);
+    }
+
+    .card {
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+    }
+
+    .form-control:focus {
+        border-color: #000;
+        box-shadow: none;
+    }
+
+    .btn-dark {
+        background-color: #000;
+        border: none;
+        padding: 12px;
+        font-weight: 600;
+    }
+
+    .btn-dark:hover {
+        background-color: #333;
+    }
+
+    .font-monospace {
+        font-family: 'JetBrains Mono', monospace !important;
+        font-size: 0.9rem;
+    }
+
+    .paste-zone {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        text-align: center;
+        color: #666;
+        cursor: pointer;
+        background: #fafafa;
+        transition: all 0.2s ease;
+        border-radius: 8px;
+    }
+
+    .paste-zone:focus {
+        border-color: #000;
+        background: #f0f0f0;
+        outline: none;
+    }
+
+    .paste-zone.has-image {
+        border-style: solid;
+        border-color: #198754;
+        background: #e9f7ef;
+        color: #198754;
+    }
+
+    kbd {
+        background-color: #eee;
+        border-radius: 3px;
+        border: 1px solid #b4b4b4;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+        color: #333;
+        display: inline-block;
+        font-size: .85em;
+        font-weight: 700;
+        line-height: 1;
+        padding: 2px 4px;
+        white-space: nowrap;
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    // Live Markdown Preview
+    const updatePreview = (textareaId, previewId) => {
+        const textarea = document.getElementById(textareaId);
+        const preview = document.getElementById(previewId);
+        if (textarea && preview) {
+            preview.innerHTML = marked.parse(textarea.value);
+        }
+    };
+
+    document.getElementById('problem').addEventListener('input', () => updatePreview('problem', 'problem-preview'));
+    document.getElementById('qa').addEventListener('input', () => updatePreview('qa', 'qa-preview'));
+
+    document.querySelectorAll('.paste-zone').forEach(zone => {
+        zone.addEventListener('paste', e => {
+            const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+            for (let item of items) {
+                if (item.type.includes('image')) {
+                    const blob = item.getAsFile();
+                    const targetId = zone.dataset.target;
+                    const fileInput = document.getElementById(targetId);
+
+                    const dataTransfer = new DataTransfer();
+                    const file = new File([blob], `pasted_image_${Date.now()}.png`, { type: blob.type });
+                    dataTransfer.items.add(file);
+                    fileInput.files = dataTransfer.files;
+
+                    zone.classList.add('has-image');
+                    zone.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i> Image Pasted! Antigravity Duty Triggered.`;
+                }
+            }
+        });
+
+        // Handle click to focus for easier pasting
+        zone.addEventListener('click', () => zone.focus());
+    });
+</script>
+{% endblock %}
