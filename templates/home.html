@@ -5,20 +5,20 @@
 {% block content %}
 
 
-<!-- Motivational Quote Section -->
-{% if daily_challenge and daily_challenge.quote_text %}
+<!-- Motivational Quote Section (Auto-refreshes daily from FCC) -->
+{% if live_quote %}
 <section class="py-5" style="background-color: #f8f9fa;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 text-center">
                 <div class="mb-0 fs-3 bg-transparent"
                     style="font-family: Georgia, serif; font-style: italic; color: #343a40; line-height: 1.6;">
-                    "{{ daily_challenge.quote_text.split('\n')[0].replace('"', '') }}"
+                    "{{ live_quote }}"
 
-                    {% if daily_challenge.quote_text.split('\n')|length > 1 %}
+                    {% if live_author %}
                     <p class="mt-4 fs-6 fw-bold text-uppercase bg-transparent"
                         style="color: #6c757d; letter-spacing: 1px; font-family: system-ui, -apple-system, sans-serif; font-style: normal;">
-                        &mdash; {{ daily_challenge.quote_text.split('\n')[1].replace('- ', '') }}
+                        &mdash; {{ live_author }}
                     </p>
                     {% endif %}
                 </div>

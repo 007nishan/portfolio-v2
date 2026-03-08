@@ -123,8 +123,12 @@ def home():
         'in_progress': in_progress,
         'progress_percent': round((mastered / total_challenges) * 100, 1) if total_challenges > 0 else 0
     }
+
+    # Fetch a fresh daily quote (auto-cached for 24 hours)
+    live_quote, live_author = get_daily_quote()
     
-    return render_template('home.html', stats=stats, daily_challenge=challenge)
+    return render_template('home.html', stats=stats, daily_challenge=challenge,
+                           live_quote=live_quote, live_author=live_author)
 
 @app.route('/challenges')
 def challenges():
@@ -190,6 +194,8 @@ import requests
 import random
 
 def get_fcc_quote():
+    """Fetch a random motivational quote from FCC's open-source JSON.
+    Returns a formatted string for backward compatibility with admin form."""
     try:
         quote_url = "https://raw.githubusercontent.com/freeCodeCamp/freeCodeCamp/main/client/i18n/locales/english/motivation.json"
         response = requests.get(quote_url, timeout=5)
@@ -204,6 +210,51 @@ def get_fcc_quote():
     except Exception as e:
         print(f"Failed to fetch quote: {e}")
     return '"Whatever you are, be a good one."\n- Abraham Lincoln'
+
+
+def get_daily_quote():
+    """Get the daily FCC quote with a 24-hour file cache.
+    Fetches a fresh quote once per day, caches to disk,
+    and serves the cached version for subsequent visits.
+    Completely autonomous — no manual intervention needed."""
+    cache_file = os.path.join(app.root_path, 'data', 'quote_cache.json')
+    today = datetime.now().strftime('%Y-%m-%d')
+
+    # Check cache first
+    try:
+        if os.path.exists(cache_file):
+            with open(cache_file, 'r', encoding='utf-8') as f:
+                cache = json.load(f)
+            if cache.get('date') == today:
+                return cache.get('quote', ''), cache.get('author', '')
+    except Exception:
+        pass  # Cache corrupt, fetch fresh
+
+    # Cache miss or stale — fetch fresh from FCC
+    quote_text = "Whatever you are, be a good one."
+    author = "Abraham Lincoln"
+    try:
+        quote_url = "https://raw.githubusercontent.com/freeCodeCamp/freeCodeCamp/main/client/i18n/locales/english/motivation.json"
+        response = requests.get(quote_url, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            quotes = data.get("motivationalQuotes", [])
+            if quotes:
+                random_quote = random.choice(quotes)
+                quote_text = random_quote.get("quote", quote_text)
+                author = random_quote.get("author", author)
+    except Exception as e:
+        print(f"Failed to fetch daily quote: {e}")
+
+    # Save to cache
+    try:
+        os.makedirs(os.path.dirname(cache_file), exist_ok=True)
+        with open(cache_file, 'w', encoding='utf-8') as f:
+            json.dump({'date': today, 'quote': quote_text, 'author': author}, f, ensure_ascii=False)
+    except Exception as e:
+        print(f"Failed to write quote cache: {e}")
+
+    return quote_text, author
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
