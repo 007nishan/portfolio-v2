@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Nishan &middot; &middot; &middot; in the making...{% endblock %}
+
+{% block content %}
+
+
+<!-- Motivational Quote Section -->
+{% if daily_challenge and daily_challenge.quote_text %}
+<section class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 text-center">
+                <div class="mb-0 fs-3 bg-transparent"
+                    style="font-family: Georgia, serif; font-style: italic; color: #343a40; line-height: 1.6;">
+                    "{{ daily_challenge.quote_text.split('\n')[0].replace('"', '') }}"
+
+                    {% if daily_challenge.quote_text.split('\n')|length > 1 %}
+                    <p class="mt-4 fs-6 fw-bold text-uppercase bg-transparent"
+                        style="color: #6c757d; letter-spacing: 1px; font-family: system-ui, -apple-system, sans-serif; font-style: normal;">
+                        &mdash; {{ daily_challenge.quote_text.split('\n')[1].replace('- ', '') }}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Daily Challenge Section -->
+{% if daily_challenge %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="mb-3">
+                    <span class="badge bg-dark p-2 text-uppercase letter-spacing-1">
+                        Daily Challenge: {{ daily_challenge.date_id }}
+                    </span>
+                </div>
+                <!-- Make the image clickable to the new detailed view -->
+                <div class="position-relative">
+                    <a href="/challenge/{{ daily_challenge.date_id }}">
+                        <img src="{{ url_for('static', filename='images/' + daily_challenge.image_path) }}"
+                            alt="{{ daily_challenge.title }}" class="img-fluid border border-dark shadow-sm hover-zoom">
+                    </a>
+                </div>
+                <div class="mt-2 text-muted small"><i class="bi bi-info-circle me-1"></i> Click image for breakdown and
+                    code solution</div>
+            </div>
+            <div class="col-lg-6">
+                <!-- Data from DB -->
+                <h2 class="fw-bold mb-3 display-5" style="letter-spacing: -1px;">{{ daily_challenge.title }}</h2>
+
+                <div class="mb-4">
+                    <h5 class="fw-bold text-uppercase small text-muted mb-3 border-bottom pb-2">Challenge Overview</h5>
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.6;">
+                        <!-- Using truncate to show just a snippet of the markdown text on the homepage -->
+                        {{ daily_challenge.problem_text | striptags | truncate(150, True, '...') }}
+                    </p>
+                </div>
+
+                <div class="d-flex gap-3 mt-5">
+                    <a href="/challenge/{{ daily_challenge.date_id }}"
+                        class="btn btn-dark rounded-0 px-4 py-2 text-uppercase fw-bold" style="letter-spacing: 1px;">
+                        <i class="bi bi-braces me-2"></i> View Solution & Breakdown
+                    </a>
+                    <a href="/challenges" class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase fw-bold"
+                        style="letter-spacing: 1px;">
+                        <i class="bi bi-grid-3x3 me-2"></i> More Challenges
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+
+<!-- Strict High-Contrast Call to Action - Petrol Blue -->
+<section class="py-5" style="background-color: #005863;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="mb-2 fw-bold display-6 text-white">Let's Connect</h2>
+                <p class="lead text-white-50 mb-4" style="font-size: 1.1rem;">
+                    Interested in my journey or want to collaborate? Strictly professional inquiries only.
+                </p>
+                <button onclick="alert('A bot coming vesr soon, then we shall chat forever.')"
+                    class="btn btn-light px-4 py-2 border-0" style="color: #005863; font-weight: bold;">GET IN
+                    TOUCH</button>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                <a href="https://www.linkedin.com/in/007cn/" target="_blank"
+                    class="btn btn-outline-light rounded-circle me-2 p-0 shadow-sm"
+                    style="width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; border-width: 2px;"
+                    aria-label="LinkedIn">
+                    <i class="bi bi-linkedin fs-4"></i>
+                </a>
+                <a href="https://github.com/007nishan" target="_blank"
+                    class="btn btn-outline-light rounded-circle me-2 p-0 shadow-sm"
+                    style="width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; border-width: 2px;"
+                    aria-label="GitHub">
+                    <i class="bi bi-github fs-4"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,424 @@
+{% extends "base.html" %}
+
+{% block title %}Daily Challenges - Nishan{% endblock %}
+
+{% block extra_css %}
+<style>
+    .calendar-container {
+        margin-bottom: 4rem;
+    }
+
+    .month-header {
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.5px;
+        border-bottom: 3px solid #343a40;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+        background-color: #343a40;
+        /* acts as borders */
+        border: 2px solid #343a40;
+    }
+
+    .calendar-header {
+        text-align: center;
+        font-weight: 700;
+        background-color: #f8f9fa;
+        color: #343a40;
+        padding: 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+    }
+
+    .calendar-day {
+        background-color: white;
+        min-height: 120px;
+        position: relative;
+        transition: all 0.2s ease;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .calendar-day.empty {
+        background-color: #e9ecef;
+    }
+
+    .calendar-day.has-challenge {
+        cursor: pointer;
+    }
+
+    .calendar-day.has-challenge:hover {
+        background-color: #f1f3f5;
+        transform: scale(0.98);
+    }
+
+    .day-number {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-weight: 700;
+        color: #adb5bd;
+        z-index: 2;
+        font-size: 1rem;
+    }
+
+    .calendar-day.has-challenge .day-number {
+        color: #343a40;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0px 6px;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .challenge-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        /* CRITICAL: Never crop images */
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 28px 4px 4px 4px;
+        /* Space for the day number */
+    }
+
+    .challenge-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .calendar-day {
+            min-height: 80px;
+        }
+
+        .day-number {
+            font-size: 0.8rem;
+        }
+
+        .calendar-header {
+            font-size: 0.7rem;
+            padding: 5px 0;
+        }
+
+        .challenge-thumb {
+            padding: 22px 2px 2px 2px;
+        }
+    }
+
+    /* Modal Styles */
+    #imageModal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.92);
+        overflow-y: auto;
+        /* Enable native scrolling for tall images */
+        overflow-x: hidden;
+    }
+
+    #imageModal.show {
+        display: block;
+        /* Native block layout for proper scrolling bounding */
+    }
+
+    #modalWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100%;
+        padding: 50px 20px 20px 20px;
+        width: 100%;
+    }
+
+    #modalClose {
+        position: fixed;
+        /* Keep it on-screen */
+        top: 20px;
+        right: 40px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+        z-index: 10000;
+        text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #modalClose:hover,
+    #modalClose:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* The wrapper around the image that acts as the router */
+    #modalLink {
+        display: block;
+        max-width: 95vw;
+        /* Remove max height so it's "Actual Size" horizontally */
+        cursor: pointer;
+        position: relative;
+        transition: transform 0.15s ease-out;
+        /* Smooth zoom transition */
+        transform-origin: top center;
+    }
+
+    /* Prevent interaction like dragging or saving on the image itself */
+    #modalImage {
+        width: 100%;
+        height: auto;
+        display: block;
+        pointer-events: none;
+        /* Stops drag and drop */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+    }
+
+    /* Optional instruction text */
+    #modalCaption {
+        margin-top: 20px;
+        color: #ccc;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- Header -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h1 class="display-5 fw-bold mb-3 text-uppercase" style="letter-spacing: -1px;">Daily Coding Calendar</h1>
+    </div>
+</section>
+
+<!-- Removed Top Native Date Picker -->
+
+<!-- Calendar Grid -->
+<section class="py-5">
+    <div class="container" id="calendarContainer">
+        {% if not calendar_data %}
+        <div class="col-12 text-center py-5">
+            <p class="text-muted fst-italic">No challenges synced yet. Run the python sync script.</p>
+        </div>
+        {% endif %}
+
+        {% for month_data in calendar_data[:1] %}
+        <div class="calendar-container month-block"
+            data-month-name="{{ month_data.month_name|lower }} {{ month_data.year }}">
+            <h3 class="month-header">{{ month_data.month_name }} <span class="text-muted">{{ month_data.year }}</span>
+            </h3>
+
+            <div class="calendar-grid shadow-sm">
+                <!-- Days of week -->
+                <div class="calendar-header">Mon</div>
+                <div class="calendar-header">Tue</div>
+                <div class="calendar-header">Wed</div>
+                <div class="calendar-header">Thu</div>
+                <div class="calendar-header">Fri</div>
+                <div class="calendar-header">Sat</div>
+                <div class="calendar-header">Sun</div>
+
+                <!-- Calendar matrix -->
+                {% for week in month_data.matrix %}
+                {% for day in week %}
+                {% if day == 0 %}
+                <div class="calendar-day empty"></div>
+                {% else %}
+                {% set date_str = '%04d-%02d-%02d'|format(month_data.year, month_data.month, day) %}
+                {% set challenge = month_data.challenges.get(day) %}
+                <div class="calendar-day {% if challenge %}has-challenge{% endif %}" data-date="{{ date_str }}" {% if
+                    challenge %} title="{{ challenge.title }}" data-title="{{ challenge.title|lower }}"
+                    data-image="/static/images/{{ challenge.image_path }}" data-url="/challenge/{{ challenge.date_id }}"
+                    {% endif %} onclick="handleDateClick('{{ date_str }}')">
+                    <div class="day-number">{{ day }}</div>
+
+                    {% if challenge %}
+                    <img src="/static/images/{{ challenge.image_path }}" class="challenge-thumb"
+                        alt="{{ challenge.title }}" onerror="this.src='/static/images/placeholder.jpg'">
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Archive Interactive Calendar -->
+        <div class="row mt-5 pt-5 pb-5 border-top border-dark justify-content-center">
+            <div class="col-md-8 text-center">
+                <h3 class="fw-bold text-uppercase mb-3" style="letter-spacing: -1px;">Challenge Archive</h3>
+                <p class="text-muted small mb-4">Navigate the interactive calendar below to view assignments beyond the
+                    past month.</p>
+                <div class="d-flex justify-content-center mx-auto" style="min-height: 380px;">
+                    <div id="inlineDatePicker"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- The Lightbox Modal -->
+<div id="imageModal" onclick="closeModal(event)">
+    <span id="modalClose" onclick="closeModal(event)">&times;</span>
+    <div id="modalWrapper">
+        <a href="#" id="modalLink" title="Click to view breakdown! (Ctrl+Scroll to Zoom)">
+            <img id="modalImage" src="" alt="Challenge Snapshot" oncontextmenu="return false;">
+        </a>
+        <div id="modalCaption">
+            <i class="bi bi-info-circle me-1"></i> Scroll to view • <strong>Ctrl+Scroll</strong> to zoom •
+            <strong>Click</strong> image for solutions
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    // Modal Functionality
+    let zoomLevel = 1;
+    const modalLink = document.getElementById('modalLink');
+
+    // Zoom functionality via Ctrl + MouseWheel
+    document.getElementById('imageModal').addEventListener('wheel', function (e) {
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault(); // Prevent standard page scroll when trying to zoom
+            if (e.deltaY < 0) {
+                zoomLevel += 0.15; // Zoom in
+            } else {
+                zoomLevel -= 0.15; // Zoom out
+            }
+            // Clamp zoom scale between 0.5x and 4x
+            zoomLevel = Math.max(0.5, Math.min(zoomLevel, 4));
+            modalLink.style.transform = `scale(${zoomLevel})`;
+        }
+    }, { passive: false });
+
+    function openModal(imageSrc, challengeUrl) {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+
+        modalImg.src = imageSrc;
+        modalLink.href = challengeUrl;
+
+        // Reset zoom state on open
+        zoomLevel = 1;
+        modalLink.style.transform = `scale(${zoomLevel})`;
+
+        // Prevent body scrolling
+        document.body.style.overflow = "hidden";
+        modal.classList.add('show');
+    }
+
+    function closeModal(event) {
+        // Only close if clicking the background wrapper or the X button
+        if (event.target.id === 'imageModal' || event.target.id === 'modalWrapper' || event.target.id === 'modalClose') {
+            const modal = document.getElementById('imageModal');
+            document.body.style.overflow = "auto";
+            modal.classList.remove('show');
+        }
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (event) {
+        if (event.key === "Escape") {
+            const modal = document.getElementById('imageModal');
+            if (modal.classList.contains('show')) {
+                document.body.style.overflow = "auto";
+                modal.classList.remove('show');
+            }
+        }
+    });
+
+    // Pre-calculate all available challenges from server data for lookup
+    const allChallenges = {
+        {% for month in calendar_data %}
+    {% for week in month.matrix %}
+    {% for day in week %}
+    {% if day != 0 %}
+    {% set challenge = month.challenges.get(day) %}
+    {% if challenge %}
+    "{{ challenge.date_id }}": {
+        "image": "/static/images/{{ challenge.image_path }}",
+            "url": "/challenge/{{ challenge.date_id }}"
+    },
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+    };
+
+    // Global date click handler
+    function handleDateClick(dateStr) {
+        if (!dateStr) return;
+
+        // Calculate today's date in local time, not UTC, to prevent timezone bounding bugs
+        const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+        const today = (new Date(Date.now() - tzoffset)).toISOString().split('T')[0];
+
+        dateStr = dateStr.trim();
+
+        if (dateStr > today) {
+            alert("Ah.. You will need a Time Machine for that. You can collaborate with us to make one! Please feel free to reach out.");
+            return;
+        }
+
+        if (allChallenges[dateStr]) {
+            const data = allChallenges[dateStr];
+            openModal(data.image, data.url);
+        } else {
+            if (dateStr < '2025-08-11') {
+                alert("[Fact: Daily coding challenge started from 11th August 2025]");
+            } else {
+                const report = confirm("Details are missing for this date. Would you like to report this to the admin and GET IN TOUCH?");
+                if (report) {
+                    window.location.href = "mailto:nishanr.pro@gmail.com?subject=Missing Challenge Details for " + dateStr;
+                }
+            }
+        }
+    }
+
+    // Initialize Flatpickr for Inline Archive Calendar
+    const inlinePicker = document.getElementById('inlineDatePicker');
+    if (inlinePicker) {
+        flatpickr("#inlineDatePicker", {
+            inline: true,
+            dateFormat: "Y-m-d",
+            minDate: "2025-08-11", // Natively freeze early dates
+            maxDate: "today",      // Natively freeze future dates
+            onChange: function (selectedDates, dateStr, instance) {
+                handleDateClick(dateStr);
+            }
+        });
+    }
+</script>
+{% endblock %}

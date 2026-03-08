@@ -1,0 +1,250 @@
+/* ============================================
+   BRAND KIT - Scientific American Inspired
+   Generated based on extracted tokens
+   ============================================ */
+
+:root {
+  /* Colors - Primary */
+  --color-primary-blue: #00719a;
+  --color-primary-red: #a70e13;
+  --color-primary-black: #000000;
+  --color-primary-white: #ffffff;
+
+  /* Colors - Secondary/Neutral */
+  --color-secondary-green: #007a3d;
+  --color-secondary-gold: #d58000;
+  --color-bg-tan: #e8d3be;
+
+  --color-neutral-dark: #333333;
+  --color-neutral-medium: #666666;
+  --color-neutral-light: #ebebeb;
+
+  /* Typography */
+  --font-family-serif: "Crimson Text", Georgia, "Times New Roman", serif;
+  --font-family-sans: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 64px;
+
+  /* Border Radius */
+  --radius-sm: 2px;
+  /* Editorial often uses sharper corners */
+  --radius-md: 4px;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-family-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-neutral-dark);
+  background-color: var(--color-primary-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-family-serif);
+  font-weight: 700;
+  color: var(--color-primary-black);
+  margin-bottom: var(--spacing-md);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* UI Elements - Sans Serif */
+.lead {
+  font-family: var(--font-family-serif);
+  font-size: 1.25rem;
+  color: var(--color-neutral-medium);
+  font-style: italic;
+}
+
+/* Navigation */
+.navbar {
+  background-color: var(--color-primary-white);
+  border-bottom: 1px solid var(--color-primary-black);
+  padding: var(--spacing-md) 0;
+}
+
+.navbar-brand {
+  font-family: var(--font-family-serif);
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--color-primary-black) !important;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.nav-link {
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-primary-black) !important;
+  padding: 0 var(--spacing-md) !important;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-primary-red) !important;
+}
+
+/* Buttons */
+.btn {
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 24px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary-blue) !important;
+  border-color: var(--color-primary-blue) !important;
+  color: var(--color-primary-white) !important;
+}
+
+.btn-primary:hover {
+  background-color: #005a7d !important;
+  /* Darker blue */
+  border-color: #005a7d !important;
+}
+
+.btn-danger {
+  /* Using Red for specific CTAs */
+  background-color: var(--color-primary-red) !important;
+  border-color: var(--color-primary-red) !important;
+  color: var(--color-primary-white) !important;
+}
+
+.btn-outline-dark {
+  color: var(--color-primary-black);
+  border-color: var(--color-primary-black);
+}
+
+.btn-outline-dark:hover {
+  background-color: var(--color-primary-black);
+  color: var(--color-primary-white);
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--color-neutral-light);
+  background-color: var(--color-primary-white);
+  border-radius: 0;
+  box-shadow: none;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--color-neutral-medium);
+}
+
+.card-header {
+  background-color: var(--color-primary-white);
+  border-bottom: 1px solid var(--color-primary-black);
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: var(--spacing-md);
+}
+
+.card-title {
+  font-family: var(--font-family-serif);
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-text {
+  color: var(--color-neutral-dark);
+}
+
+/* Footer */
+footer {
+  background-color: var(--color-neutral-dark);
+  color: var(--color-primary-white);
+  padding: var(--spacing-md) 0;
+}
+
+footer h5 {
+  color: var(--color-primary-white);
+  border-bottom: 1px solid var(--color-neutral-medium);
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+footer a {
+  color: #cccccc;
+  text-decoration: none;
+  font-family: var(--font-family-sans);
+  font-size: 0.9rem;
+}
+
+footer a:hover {
+  color: var(--color-primary-white);
+  text-decoration: underline;
+}
+
+/* Utility Classes */
+.bg-tan {
+  background-color: var(--color-bg-tan);
+}
+
+.text-red {
+  color: var(--color-primary-red) !important;
+}
+
+.text-blue {
+  color: var(--color-primary-blue) !important;
+}
+
+.border-black {
+  border-color: var(--color-primary-black) !important;
+}
+
+/* Badges */
+.badge {
+  border-radius: 0;
+  font-family: var(--font-family-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 6px 10px;
+}

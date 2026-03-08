@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}Challenge {{ challenge.date_id }} - {{ challenge.title }}{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <!-- Back Button -->
+        <div class="mb-4">
+            <a href="/" class="text-decoration-none text-dark fw-bold text-uppercase border-bottom border-dark pb-1"
+                style="font-size: 0.8rem; letter-spacing: 1px;">
+                <i class="bi bi-arrow-left me-2"></i> Back to Home
+            </a>
+        </div>
+
+        <!-- Header -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <span class="badge bg-dark p-2 text-uppercase mb-3" style="letter-spacing: 1px;">Challenge: {{
+                    challenge.date_id }}</span>
+                <h1 class="display-4 fw-bold mb-3" style="letter-spacing: -1px;">{{ challenge.title }}</h1>
+            </div>
+        </div>
+
+        <!-- 
+            GRID LAYOUT (As requested):
+            - Top: Text/Problem Statement
+            - Bottom Left: Breakdown Concepts
+            - Bottom Right: Actual Final Code
+        -->
+
+        <!-- TOP: Problem Text -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card border-dark rounded-0 shadow-sm h-100">
+                    <div class="card-header bg-dark text-white rounded-0 py-3">
+                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
+                                class="bi bi-file-text me-2"></i> Problem Statement</h5>
+                    </div>
+                    <div class="card-body p-4 markdown-content" style="font-size: 1.1rem; line-height: 1.8;">
+                        {% if challenge.problem_text %}
+                        {{ problem_html | safe }}
+                        {% else %}
+                        <p class="text-muted fst-italic">No problem details provided for this challenge.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM: Concepts (Left) & Code (Right) -->
+        <div class="row g-4">
+            <!-- BOTTOM LEFT: Concepts -->
+            <div class="col-lg-5">
+                <div class="card border-dark rounded-0 shadow-sm h-100">
+                    <div class="card-header bg-light border-dark border-bottom rounded-0 py-3">
+                        <h5 class="mb-0 text-uppercase fw-bold text-dark" style="letter-spacing: 1px;"><i
+                                class="bi bi-lightbulb me-2"></i> Breakdown & Concepts</h5>
+                    </div>
+                    <div class="card-body p-4 markdown-content">
+                        {% if challenge.concepts_text %}
+                        {{ concepts_html | safe }}
+                        {% else %}
+                        <p class="text-muted fst-italic">No concept breakdown available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOTTOM RIGHT: Code Solutions -->
+            <div class="col-lg-7">
+                <div class="card border-dark rounded-0 shadow-sm h-100">
+                    <div
+                        class="card-header bg-dark text-white rounded-0 py-3 d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
+                                class="bi bi-code-slash me-2"></i> Actual Final Code</h5>
+                        <button class="btn btn-sm btn-outline-light rounded-0" onclick="copyCode()">Copy Code</button>
+                    </div>
+                    <div class="card-body p-0 bg-light" style="max-height: 600px; overflow-y: auto;">
+                        {% if challenge.solution_code %}
+                        <pre
+                            class="m-0 p-4"><code id="solutionCode" class="language-python">{{ challenge.solution_code }}</code></pre>
+                        {% else %}
+                        <div class="p-4 text-center">
+                            <p class="text-muted fst-italic mb-0">Code solution is not synced yet.</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTTOM FULL: Q&A Section (New) -->
+        {% if challenge.qa_text %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card border-dark rounded-0 shadow-sm">
+                    <div class="card-header bg-dark text-white rounded-0 py-3">
+                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
+                                class="bi bi-patch-question me-2"></i> Question & Answer (Underlying Concepts)</h5>
+                    </div>
+                    <div class="card-body p-4 markdown-content" style="font-size: 1.1rem; line-height: 1.8;">
+                        {{ qa_html | safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- BOTTOM FULL: Discussion Board -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card border-dark rounded-0 shadow-sm">
+                    <div class="card-header bg-dark text-white rounded-0 py-3">
+                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
+                                class="bi bi-chat-right-text me-2"></i> Discussion</h5>
+                    </div>
+                    <div class="card-body p-5 text-center bg-light">
+                        <i class="bi bi-lock-fill display-4 text-muted mb-3 d-block"></i>
+                        <h4 class="fw-bold">Join the Conversation</h4>
+                        <p class="text-muted mb-4">Authorized logins can discuss this topic below (Authentication logic
+                            coming soon).</p>
+                        <div class="mx-auto" style="max-width: 600px;">
+                            <textarea class="form-control border-dark rounded-0 mb-3" rows="3"
+                                placeholder="Write a comment..." disabled></textarea>
+                            <button class="btn btn-dark rounded-0 px-4 py-2 text-uppercase fw-bold w-100"
+                                style="letter-spacing: 1px;" disabled>Post Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Custom Styles for Markdown Override -->
+<style>
+    .markdown-content h1,
+    .markdown-content h2,
+    .markdown-content h3 {
+        font-weight: bold;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .markdown-content code {
+        background-color: #f8f9fa;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        color: #d63384;
+    }
+
+    .markdown-content pre {
+        background-color: #212529;
+        color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+    }
+
+    .markdown-content pre code {
+        background-color: transparent;
+        color: inherit;
+        padding: 0;
+    }
+
+    .hover-zoom {
+        transition: transform 0.3s ease;
+    }
+
+    .hover-zoom:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+<!-- Copy Code Script -->
+<script>
+    function copyCode() {
+        const codeObj = document.getElementById("solutionCode");
+        if (codeObj) {
+            navigator.clipboard.writeText(codeObj.innerText).then(() => {
+                alert("Code copied to clipboard!");
+            });
+        }
+    }
+</script>
+
+{% endblock %}
