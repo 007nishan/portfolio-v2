@@ -7,17 +7,17 @@
 
 <!-- Motivational Quote Section (Auto-refreshes daily from FCC) -->
 {% if live_quote %}
-<section class="py-5" style="background-color: #f8f9fa;">
+<section class="py-5" style="background-color: var(--color-bg-tan);">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-10 text-center">
                 <div class="mb-0 fs-3 bg-transparent"
-                    style="font-family: Georgia, serif; font-style: italic; color: #343a40; line-height: 1.6;">
+                    style="font-family: var(--font-family-serif); font-style: italic; color: var(--color-neutral-dark); line-height: 1.6;">
                     "{{ live_quote }}"
 
                     {% if live_author %}
                     <p class="mt-4 fs-6 fw-bold text-uppercase bg-transparent"
-                        style="color: #6c757d; letter-spacing: 1px; font-family: system-ui, -apple-system, sans-serif; font-style: normal;">
+                        style="color: var(--color-neutral-medium); letter-spacing: 1px; font-family: var(--font-family-sans); font-style: normal;">
                         &mdash; {{ live_author }}
                     </p>
                     {% endif %}
@@ -30,44 +30,101 @@
 
 <!-- Daily Challenge Section -->
 {% if daily_challenge %}
-<section class="py-5 bg-light">
+<section class="py-5" style="background-color: var(--color-primary-white);">
     <div class="container">
         <div class="row align-items-center">
+            <!-- Left Column: Image (if available) or FCC Challenge card -->
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="mb-3">
-                    <span class="badge bg-dark p-2 text-uppercase letter-spacing-1">
-                        Daily Challenge: {{ daily_challenge.date_id }}
+                <div class="mb-3 d-flex align-items-center gap-2">
+                    {% if daily_challenge.challenge_number %}
+                    <span class="badge p-2 text-uppercase"
+                        style="background-color: var(--color-primary-red); letter-spacing: 1px; font-family: var(--font-family-sans);">
+                        Challenge #{{ daily_challenge.challenge_number }}
+                    </span>
+                    {% endif %}
+                    <span class="badge bg-dark p-2 text-uppercase"
+                        style="letter-spacing: 1px; font-family: var(--font-family-sans);">
+                        {{ daily_challenge.date_id }}
                     </span>
                 </div>
-                <!-- Make the image clickable to the new detailed view -->
+
+                {% if daily_challenge.image_path %}
+                <!-- Manual upload: show the image thumbnail -->
                 <div class="position-relative">
                     <a href="/challenge/{{ daily_challenge.date_id }}">
                         <img src="{{ url_for('static', filename='images/' + daily_challenge.image_path) }}"
-                            alt="{{ daily_challenge.title }}" class="img-fluid border border-dark shadow-sm hover-zoom">
+                            alt="{{ daily_challenge.title }}" class="img-fluid border shadow-sm hover-zoom"
+                            style="border-color: var(--color-neutral-light) !important;">
                     </a>
                 </div>
-                <div class="mt-2 text-muted small"><i class="bi bi-info-circle me-1"></i> Click image for breakdown and
-                    code solution</div>
+                <div class="mt-2 small" style="color: var(--color-neutral-medium);">
+                    <i class="bi bi-info-circle me-1"></i> Click image for breakdown and code solution
+                </div>
+                {% elif daily_challenge.fcc_description %}
+                <!-- FCC API sync: show a styled description card -->
+                <div class="card border-0 shadow-sm"
+                    style="border-left: 4px solid var(--color-primary-blue) !important; background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-braces-asterisk fs-3 me-2" style="color: var(--color-primary-blue);"></i>
+                            <span class="text-uppercase fw-bold small"
+                                style="letter-spacing: 1px; font-family: var(--font-family-sans); color: var(--color-primary-blue);">FCC
+                                Daily Challenge</span>
+                        </div>
+                        <div class="fcc-description"
+                            style="font-size: 0.95rem; line-height: 1.7; color: var(--color-neutral-dark); max-height: 280px; overflow: hidden; position: relative;">
+                            {{ daily_challenge.fcc_description | safe | truncate(350, True, '...') }}
+                        </div>
+                        <a href="/challenge/{{ daily_challenge.date_id }}"
+                            class="btn btn-sm mt-3 text-uppercase fw-bold"
+                            style="color: var(--color-primary-blue); letter-spacing: 1px; font-family: var(--font-family-sans); border: 1px solid var(--color-primary-blue); border-radius: var(--radius-sm);">
+                            <i class="bi bi-arrow-right me-1"></i> Read Full Challenge
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <!-- Fallback: no image, no FCC data -->
+                <div class="card border-dark rounded-0 shadow-sm">
+                    <div class="card-body p-5 text-center">
+                        <i class="bi bi-code-square display-1 mb-3" style="color: var(--color-primary-blue);"></i>
+                        <p class="lead" style="color: var(--color-neutral-medium);">Challenge details syncing...</p>
+                    </div>
+                </div>
+                {% endif %}
             </div>
+
+            <!-- Right Column: Title + Overview -->
             <div class="col-lg-6">
-                <!-- Data from DB -->
-                <h2 class="fw-bold mb-3 display-5" style="letter-spacing: -1px;">{{ daily_challenge.title }}</h2>
+                <h2 class="fw-bold mb-3 display-5" style="letter-spacing: -1px; font-family: var(--font-family-serif);">
+                    {{ daily_challenge.title }}</h2>
 
                 <div class="mb-4">
-                    <h5 class="fw-bold text-uppercase small text-muted mb-3 border-bottom pb-2">Challenge Overview</h5>
+                    <h5 class="fw-bold text-uppercase small mb-3 pb-2"
+                        style="color: var(--color-neutral-medium); border-bottom: 1px solid var(--color-neutral-light); font-family: var(--font-family-sans);">
+                        Challenge Overview</h5>
+                    {% if daily_challenge.fcc_description %}
                     <p class="lead" style="font-size: 1.1rem; line-height: 1.6;">
-                        <!-- Using truncate to show just a snippet of the markdown text on the homepage -->
+                        {{ daily_challenge.fcc_description | striptags | truncate(200, True, '...') }}
+                    </p>
+                    {% elif daily_challenge.problem_text %}
+                    <p class="lead" style="font-size: 1.1rem; line-height: 1.6;">
                         {{ daily_challenge.problem_text | striptags | truncate(150, True, '...') }}
                     </p>
+                    {% else %}
+                    <p class="lead"
+                        style="font-size: 1.1rem; line-height: 1.6; color: var(--color-neutral-medium); font-style: italic;">
+                        Challenge data is being synced from FCC...</p>
+                    {% endif %}
                 </div>
 
                 <div class="d-flex gap-3 mt-5">
                     <a href="/challenge/{{ daily_challenge.date_id }}"
-                        class="btn btn-dark rounded-0 px-4 py-2 text-uppercase fw-bold" style="letter-spacing: 1px;">
+                        class="btn rounded-0 px-4 py-2 text-uppercase fw-bold"
+                        style="letter-spacing: 1px; background-color: var(--color-primary-blue); color: var(--color-primary-white); font-family: var(--font-family-sans);">
                         <i class="bi bi-braces me-2"></i> View Solution & Breakdown
                     </a>
                     <a href="/challenges" class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase fw-bold"
-                        style="letter-spacing: 1px;">
+                        style="letter-spacing: 1px; font-family: var(--font-family-sans);">
                         <i class="bi bi-grid-3x3 me-2"></i> More Challenges
                     </a>
                 </div>

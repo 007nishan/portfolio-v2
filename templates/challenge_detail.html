@@ -16,9 +16,25 @@
         <!-- Header -->
         <div class="row mb-5">
             <div class="col-12">
-                <span class="badge bg-dark p-2 text-uppercase mb-3" style="letter-spacing: 1px;">Challenge: {{
-                    challenge.date_id }}</span>
-                <h1 class="display-4 fw-bold mb-3" style="letter-spacing: -1px;">{{ challenge.title }}</h1>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    {% if challenge.challenge_number %}
+                    <span class="badge p-2 text-uppercase"
+                        style="background-color: var(--color-primary-red); letter-spacing: 1px; font-family: var(--font-family-sans);">
+                        Challenge #{{ challenge.challenge_number }}
+                    </span>
+                    {% endif %}
+                    <span class="badge bg-dark p-2 text-uppercase"
+                        style="letter-spacing: 1px; font-family: var(--font-family-sans);">{{ challenge.date_id
+                        }}</span>
+                    {% if challenge.source == 'fcc_api' %}
+                    <span class="badge p-2 text-uppercase"
+                        style="background-color: var(--color-primary-blue); letter-spacing: 1px; font-family: var(--font-family-sans);">
+                        <i class="bi bi-cloud-download me-1"></i> Auto-Synced
+                    </span>
+                    {% endif %}
+                </div>
+                <h1 class="display-4 fw-bold mb-3" style="letter-spacing: -1px; font-family: var(--font-family-serif);">
+                    {{ challenge.title }}</h1>
             </div>
         </div>
 
@@ -29,19 +45,26 @@
             - Bottom Right: Actual Final Code
         -->
 
-        <!-- TOP: Problem Text -->
+        <!-- TOP: Problem Text / FCC Description -->
         <div class="row mb-5">
             <div class="col-12">
-                <div class="card border-dark rounded-0 shadow-sm h-100">
-                    <div class="card-header bg-dark text-white rounded-0 py-3">
-                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
+                <div class="card rounded-0 shadow-sm h-100" style="border: 1px solid var(--color-neutral-light);">
+                    <div class="card-header rounded-0 py-3"
+                        style="background-color: var(--color-primary-black); color: var(--color-primary-white);">
+                        <h5 class="mb-0 text-uppercase fw-bold"
+                            style="letter-spacing: 1px; font-family: var(--font-family-sans);"><i
                                 class="bi bi-file-text me-2"></i> Problem Statement</h5>
                     </div>
                     <div class="card-body p-4 markdown-content" style="font-size: 1.1rem; line-height: 1.8;">
-                        {% if challenge.problem_text %}
+                        {% if challenge.fcc_description %}
+                        <div class="fcc-description">
+                            {{ challenge.fcc_description | safe }}
+                        </div>
+                        {% elif challenge.problem_text %}
                         {{ problem_html | safe }}
                         {% else %}
-                        <p class="text-muted fst-italic">No problem details provided for this challenge.</p>
+                        <p class="fst-italic" style="color: var(--color-neutral-medium);">No problem details provided
+                            for this challenge.</p>
                         {% endif %}
                     </div>
                 </div>
@@ -107,24 +130,92 @@
         </div>
         {% endif %}
 
+        <!-- BOTTOM FULL: Interactive Python Interpreter (Like FCC) -->
+        {% if challenge.fcc_py_tests %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card rounded-0 shadow-sm" style="border: 1px solid var(--color-neutral-light);">
+                    <div class="card-header rounded-0 py-3 d-flex justify-content-between align-items-center"
+                        style="background-color: var(--color-primary-blue); color: var(--color-primary-white);">
+                        <h5 class="mb-0 text-uppercase fw-bold"
+                            style="letter-spacing: 1px; font-family: var(--font-family-sans);">
+                            <i class="bi bi-terminal me-2"></i> Interactive Python Interpreter
+                        </h5>
+                        <button id="runTestsBtn" class="btn btn-sm btn-light fw-bold text-uppercase"
+                            style="letter-spacing: 1px;">
+                            <i class="bi bi-play-fill"></i> Run Tests
+                        </button>
+                    </div>
+                    <div class="card-body p-0 d-flex flex-column flex-lg-row">
+                        <!-- CodeMirror Editor (Left) -->
+                        <div class="w-100 w-lg-50 border-end"
+                            style="border-color: var(--color-neutral-light) !important; min-height: 400px;">
+                            <textarea id="codeEditor">{{ challenge.fcc_starter_py }}</textarea>
+                        </div>
+
+                        <!-- Test Cases & Output (Right) -->
+                        <div class="w-100 w-lg-50 d-flex flex-column bg-light"
+                            style="max-height: 600px; overflow-y: auto;">
+                            <!-- Console Output -->
+                            <div class="p-3 bg-dark text-white font-monospace"
+                                style="min-height: 120px; font-size: 0.9rem;" id="consoleOutput">
+                                <span class="text-secondary"># Console Output...</span><br>
+                                <span class="text-secondary"># Loading Pyodide runtime... Please wait.</span>
+                            </div>
+
+                            <!-- Test Cases List -->
+                            <div class="p-4 flex-grow-1">
+                                <h6 class="text-uppercase fw-bold small mb-3 border-bottom pb-2"
+                                    style="letter-spacing: 1px; font-family: var(--font-family-sans); color: var(--color-neutral-medium);">
+                                    Test Cases</h6>
+                                <ul class="list-group list-group-flush" id="testList">
+                                    {% for test in challenge.fcc_py_tests_parsed %}
+                                    <li class="list-group-item px-0 bg-transparent test-item"
+                                        style="border-color: var(--color-neutral-light);">
+                                        <div class="d-flex align-items-start">
+                                            <i class="bi bi-circle mt-1 me-3 test-icon text-muted"
+                                                style="font-size: 1.1rem;"></i>
+                                            <div style="font-family: var(--font-family-sans); font-size: 0.95rem;">
+                                                <!-- Need safe filter for FCC's rich html tests -->
+                                                {{ test.text | safe }}
+                                            </div>
+                                        </div>
+                                        <div class="d-none raw-test-code">{{ test.testString }}</div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- BOTTOM FULL: Discussion Board -->
         <div class="row mt-5">
             <div class="col-12">
-                <div class="card border-dark rounded-0 shadow-sm">
-                    <div class="card-header bg-dark text-white rounded-0 py-3">
-                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
-                                class="bi bi-chat-right-text me-2"></i> Discussion</h5>
+                <div class="card rounded-0 shadow-sm" style="border: 1px solid var(--color-neutral-light);">
+                    <div class="card-header rounded-0 py-3"
+                        style="background-color: var(--color-primary-black); color: var(--color-primary-white);">
+                        <h5 class="mb-0 text-uppercase fw-bold"
+                            style="letter-spacing: 1px; font-family: var(--font-family-sans);">
+                            <i class="bi bi-chat-right-text me-2"></i> Discussion
+                        </h5>
                     </div>
-                    <div class="card-body p-5 text-center bg-light">
-                        <i class="bi bi-lock-fill display-4 text-muted mb-3 d-block"></i>
-                        <h4 class="fw-bold">Join the Conversation</h4>
-                        <p class="text-muted mb-4">Authorized logins can discuss this topic below (Authentication logic
+                    <div class="card-body p-5 text-center" style="background-color: #f8f9fa;">
+                        <i class="bi bi-lock-fill display-4 mb-3 d-block"
+                            style="color: var(--color-neutral-medium);"></i>
+                        <h4 class="fw-bold" style="font-family: var(--font-family-serif);">Join the Conversation</h4>
+                        <p class="mb-4" style="color: var(--color-neutral-medium);">Authorized logins can discuss this
+                            topic below (Authentication logic
                             coming soon).</p>
                         <div class="mx-auto" style="max-width: 600px;">
-                            <textarea class="form-control border-dark rounded-0 mb-3" rows="3"
-                                placeholder="Write a comment..." disabled></textarea>
-                            <button class="btn btn-dark rounded-0 px-4 py-2 text-uppercase fw-bold w-100"
-                                style="letter-spacing: 1px;" disabled>Post Comment</button>
+                            <textarea class="form-control rounded-0 mb-3" rows="3" placeholder="Write a comment..."
+                                disabled style="border-color: var(--color-neutral-light);"></textarea>
+                            <button class="btn rounded-0 px-4 py-2 text-uppercase fw-bold w-100"
+                                style="letter-spacing: 1px; background-color: var(--color-primary-black); color: var(--color-primary-white); font-family: var(--font-family-sans);"
+                                disabled>Post Comment</button>
                         </div>
                     </div>
                 </div>
@@ -186,4 +277,165 @@
     }
 </script>
 
+{% endblock %}
+
+{% block extra_css %}
+<!-- CodeMirror CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css">
+<style>
+    .CodeMirror {
+        height: 100%;
+        min-height: 400px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 14px;
+    }
+
+    .test-item code {
+        background-color: #f1f3f5;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85em;
+        color: var(--color-primary-red);
+    }
+
+    .w-lg-50 {
+        width: 100%;
+    }
+
+    @media (min-width: 992px) {
+        .w-lg-50 {
+            width: 50% !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+{% if challenge.fcc_py_tests %}
+<!-- CodeMirror JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+
+<!-- Pyodide JS -->
+<script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        // 1. Initialize CodeMirror Editor
+        const editorElement = document.getElementById("codeEditor");
+        const editor = CodeMirror.fromTextArea(editorElement, {
+            mode: "python",
+            theme: "monokai",
+            lineNumbers: true,
+            indentUnit: 4,
+            matchBrackets: true,
+            viewportMargin: Infinity
+        });
+
+        const runBtn = document.getElementById("runTestsBtn");
+        const consoleOutput = document.getElementById("consoleOutput");
+        const testItems = document.querySelectorAll(".test-item");
+
+        let pyodide = null;
+
+        // 2. Load Pyodide
+        try {
+            pyodide = await loadPyodide();
+            consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; Pyodide runtime loaded successfully. Ready!</span>';
+            runBtn.disabled = false;
+        } catch (err) {
+            consoleOutput.innerHTML = `<span class="text-danger">Failed to load Pyodide: ${err.message}</span>`;
+            return;
+        }
+
+        // Capture python stdout/stderr
+        pyodide.setStdout({
+            batched: (str) => {
+                consoleOutput.innerHTML += `<div>${str.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+        });
+        pyodide.setStderr({
+            batched: (str) => {
+                consoleOutput.innerHTML += `<div class="text-danger">${str.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }
+        });
+
+        // 3. Test Runner Logic
+        runBtn.addEventListener("click", async () => {
+            if (!pyodide) return;
+
+            // Reset UI
+            runBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Running...';
+            runBtn.disabled = true;
+            consoleOutput.innerHTML = "";
+
+            testItems.forEach(item => {
+                const icon = item.querySelector('.test-icon');
+                icon.className = 'bi bi-circle mt-1 me-3 test-icon text-muted';
+            });
+
+            // Get user code
+            const userCode = editor.getValue();
+
+            try {
+                // Re-initialize environment by putting user code in global namespace
+                // To isolate run, we execute the user code first
+                await pyodide.runPythonAsync(`
+import sys
+from io import StringIO
+sys.stdout = sys.stderr = StringIO() # Clear any print outputs from eval
+`);
+                await pyodide.runPythonAsync(userCode);
+
+                // Now run each test assertion
+                let allPassed = true;
+                for (let i = 0; i < testItems.length; i++) {
+                    const item = testItems[i];
+                    const rawAssertCode = item.querySelector('.raw-test-code').innerText;
+                    const icon = item.querySelector('.test-icon');
+
+                    try {
+                        // Running the unittest code provided by FCC
+                        await pyodide.runPythonAsync(rawAssertCode);
+                        // If no exception, test passed
+                        icon.className = 'bi bi-check-circle-fill mt-1 me-3 test-icon text-success';
+                    } catch (e) {
+                        allPassed = false;
+                        icon.className = 'bi bi-x-circle-fill mt-1 me-3 test-icon text-danger';
+
+                        // Show error in console, truncate traceback for readability
+                        let errStr = e.toString();
+                        if (errStr.includes("AssertionError")) {
+                            errStr = "AssertionError: Expected outcome did not match.";
+                        }
+                        consoleOutput.innerHTML += `<div class="text-danger border-top border-secondary mt-2 pt-2">Test ${i + 1} Failed: ${errStr}</div>`;
+                    }
+                }
+
+                if (allPassed) {
+                    consoleOutput.innerHTML += `<div class="text-success fw-bold mt-2">All tests passed! \u2728</div>`;
+                }
+
+            } catch (globalErr) {
+                // Syntax error or global runtime error in user code
+                consoleOutput.innerHTML += `<div class="text-danger fw-bold">Error in your code:</div>`;
+                consoleOutput.innerHTML += `<div class="text-danger">${globalErr.message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
+
+                testItems.forEach(item => {
+                    const icon = item.querySelector('.test-icon');
+                    icon.className = 'bi bi-x-circle-fill mt-1 me-3 test-icon text-danger';
+                });
+            }
+
+            runBtn.innerHTML = '<i class="bi bi-play-fill"></i> Run Tests';
+            runBtn.disabled = false;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        });
+    });
+</script>
+{% endif %}
 {% endblock %}
