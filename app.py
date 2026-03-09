@@ -103,7 +103,7 @@ def load_challenges():
 
 import markdown
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
     """Homepage"""
     # Load Latest Daily Challenge from DB
@@ -113,8 +113,8 @@ def home():
     except Exception as e:
         print(f"Error loading daily challenge: {e}")
 
-    total_challenges = 141
-    mastered = Challenge.query.count()
+    total_challenges = Challenge.query.count()
+    mastered = total_challenges
     in_progress = 1
     
     stats = {
@@ -130,7 +130,7 @@ def home():
     return render_template('home.html', stats=stats, daily_challenge=challenge,
                            live_quote=live_quote, live_author=live_author)
 
-@app.route('/challenges')
+@app.route('/challenges', methods=['GET'])
 def challenges():
     """Daily challenges page (Calendar View)"""
     all_challenges = Challenge.query.order_by(Challenge.date_id.desc()).all()
@@ -169,7 +169,7 @@ def challenges():
         
     return render_template('challenges.html', calendar_data=calendar_data, total_challenges=len(all_challenges))
 
-@app.route('/challenge/<date_id>')
+@app.route('/challenge/<date_id>', methods=['GET'])
 def challenge_detail(date_id):
     """Individual challenge detail"""
     challenge = Challenge.query.filter_by(date_id=date_id).first_or_404()
@@ -179,13 +179,36 @@ def challenge_detail(date_id):
     concepts_html = markdown.markdown(challenge.concepts_text or "")
     qa_html = markdown.markdown(challenge.qa_text or "")
     
+    import re
+    
+    # Parse FCC JSON test data for template rendering
+    challenge.fcc_py_tests_parsed = []
+    try:
+        if challenge.fcc_py_tests:
+            raw_py_tests = json.loads(challenge.fcc_py_tests)
+            for test in raw_py_tests:
+                # Extract pure Python assertion from FCC's JS wrapper: runPython(`...`)
+                match = re.search(r'runPython\(`(.*?)`\)', test.get("testString", ""), re.DOTALL)
+                extracted_py = match.group(1).strip() if match else ""
+                
+                # Some tests use triple quotes or backslash escaping. Clean it up for Pyodide.
+                # fcc api uses literal \n inside template literals. 
+                extracted_py = extracted_py.replace('\\n', '\n').replace('\\"', '"')
+                
+                challenge.fcc_py_tests_parsed.append({
+                    "text": test.get("text", ""),
+                    "testString": extracted_py
+                })
+    except (json.JSONDecodeError, TypeError):
+        pass
+    
     return render_template('challenge_detail.html', 
                            challenge=challenge,
                            problem_html=problem_html,
                            concepts_html=concepts_html,
                            qa_html=qa_html)
 
-@app.route('/sql')
+@app.route('/sql', methods=['GET'])
 def sql_challenges():
     """SQL challenges stub page"""
     return render_template('sql.html')
@@ -256,73 +279,73 @@ def get_daily_quote():
 
     return quote_text, author
 
+def _save_uploaded_file(field_name, prefix, date_str, title):
+    """Save an uploaded file from the admin form and return its filename."""
+    if field_name not in request.files:
+        return None
+    file = request.files[field_name]
+    if file.filename == '' or not allowed_file(file.filename):
+        return None
+    ext = file.filename.rsplit('.', 1)[1].lower()
+    safe_title = "".join(
+        c if (title and c.isalnum()) else "_"
+        for c in (title or "challenge")
+    ).lower()
+    filename = f"{date_str.replace('-', '')}_{prefix}_{safe_title}.{ext}"
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+    return filename
+
+
+def _handle_admin_post():
+    """Process the admin POST form: validate, save files, upsert DB record."""
+    date_str = request.form.get('date')
+    title = request.form.get('title')
+    quote = request.form.get('quote')
+
+    if not quote or quote.strip() == "":
+        quote = get_fcc_quote()
+
+    main_image = _save_uploaded_file('image', 'main', date_str, title)
+    prob_screenshot = _save_uploaded_file('problem_screenshot', 'prob', date_str, title)
+    qa_screenshot = _save_uploaded_file('qa_screenshot', 'qa', date_str, title)
+
+    if not main_image:
+        flash('Main challenge thumbnail is required', 'error')
+        return redirect(request.url)
+
+    challenge = Challenge.query.filter_by(date_id=date_str).first()
+    if not challenge:
+        challenge = Challenge(date_id=date_str)
+        db.session.add(challenge)
+
+    challenge.title = title or f"Challenge {date_str}"
+    challenge.image_path = main_image
+    challenge.problem_text = request.form.get('problem')
+    challenge.concepts_text = request.form.get('concepts')
+    challenge.solution_code = request.form.get('code')
+    challenge.quote_text = quote
+    challenge.qa_text = request.form.get('qa')
+    challenge.source = 'manual'
+
+    db.session.commit()
+
+    if prob_screenshot or qa_screenshot:
+        flash('Challenge saved! Screenshots uploaded.', 'success')
+    else:
+        flash('Portfolio optimized and updated successfully!', 'success')
+
+    return redirect(url_for('home'))
+
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
-    """Admin page for updating daily challenges"""
+    """Admin page for updating daily challenges."""
     if request.method == 'POST':
-        # Get data from form
-        date_str = request.form.get('date')
-        title = request.form.get('title')
-        problem = request.form.get('problem')
-        concepts = request.form.get('concepts')
-        code = request.form.get('code')
-        quote = request.form.get('quote')
-        qa = request.form.get('qa')
-        
-        # Automate quote fetching if empty
-        if not quote or quote.strip() == "":
-            quote = get_fcc_quote()
-        
-        # Handle file uploads
-        def save_uploaded_file(field_name, prefix):
-            if field_name not in request.files:
-                return None
-            file = request.files[field_name]
-            if file.filename == '' or not allowed_file(file.filename):
-                return None
-            ext = file.filename.rsplit('.', 1)[1].lower()
-            # If title is missing (extracted later), use 'challenge' as slug
-            safe_title = "".join([c if (title and c.isalnum()) else "_" for c in (title or "challenge")]).lower()
-            filename = f"{date_str.replace('-', '')}_{prefix}_{safe_title}.{ext}"
-            os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return filename
-
-        main_image = save_uploaded_file('image', 'main')
-        prob_screenshot = save_uploaded_file('problem_screenshot', 'prob')
-        qa_screenshot = save_uploaded_file('qa_screenshot', 'qa')
-
-        if not main_image:
-            flash('Main challenge thumbnail is required', 'error')
-            return redirect(request.url)
-        
-        # Upsert into DB
-        challenge = Challenge.query.filter_by(date_id=date_str).first()
-        if not challenge:
-            challenge = Challenge(date_id=date_str)
-            db.session.add(challenge)
-        
-        challenge.title = title or f"Challenge {date_str}"
-        challenge.image_path = main_image
-        challenge.problem_text = problem
-        challenge.concepts_text = concepts
-        challenge.solution_code = code
-        challenge.quote_text = quote
-        challenge.qa_text = qa
-        
-        db.session.commit()
-        
-        # Provide feedback about OCR duty
-        if prob_screenshot or qa_screenshot:
-            flash('Challenge saved! Screenshots uploaded. I (Antigravity) will now extract the text for you.', 'success')
-        else:
-            flash('Portfolio optimized and updated successfully!', 'success')
-            
-        return redirect(url_for('home'))
-            
+        return _handle_admin_post()
     return render_template('admin.html', today=datetime.now().strftime('%Y-%m-%d'))
 
-@app.route('/api/challenges')
+@app.route('/api/challenges', methods=['GET'])
 def api_challenges():
     """API endpoint for challenges data"""
     challenges = Challenge.query.order_by(Challenge.date_id.desc()).all()
@@ -333,5 +356,5 @@ def api_challenges():
     } for c in challenges])
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5001)
+    app.run(debug=True, host='127.0.0.1', port=5001)
 

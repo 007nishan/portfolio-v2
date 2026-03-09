@@ -22,7 +22,7 @@ class Challenge(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date_id = db.Column(db.String(10), unique=True, nullable=False) # Format: YYYY-MM-DD
     title = db.Column(db.String(255), nullable=False)
-    image_path = db.Column(db.String(255), nullable=False)
+    image_path = db.Column(db.String(255), nullable=True)  # Nullable: FCC-synced challenges may not have images
     
     # Store the actual markdown/code text for layout rendering
     problem_text = db.Column(db.Text, nullable=True)
@@ -30,6 +30,15 @@ class Challenge(db.Model):
     solution_code = db.Column(db.Text, nullable=True)
     quote_text = db.Column(db.Text, nullable=True)
     qa_text = db.Column(db.Text, nullable=True) # New field for Question/Answer section
+
+    # FCC Daily Challenge API data (auto-synced)
+    challenge_number = db.Column(db.Integer, nullable=True)       # FCC challenge # (1, 2, ... 211+)
+    fcc_description = db.Column(db.Text, nullable=True)           # Full HTML description from FCC API
+    fcc_js_tests = db.Column(db.Text, nullable=True)              # JSON string of JS test cases
+    fcc_py_tests = db.Column(db.Text, nullable=True)              # JSON string of Python test cases
+    fcc_starter_js = db.Column(db.Text, nullable=True)            # JavaScript starter code template
+    fcc_starter_py = db.Column(db.Text, nullable=True)            # Python starter code template
+    source = db.Column(db.String(20), nullable=True)              # 'manual' or 'fcc_api'
     
     # Metadata
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
