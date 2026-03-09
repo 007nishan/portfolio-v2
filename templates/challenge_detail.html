@@ -153,8 +153,8 @@
                             <!-- Console Output -->
                             <div class="p-3 bg-dark text-white font-monospace"
                                 style="min-height: 120px; font-size: 0.9rem;" id="consoleOutput">
-                                <span class="text-secondary"># Console Output...</span><br>
-                                <span class="text-secondary"># Loading Pyodide runtime... Please wait.</span>
+                                <span class="text-success">&gt;&gt;&gt; </span><span
+                                    class="blinking-cursor fw-bold">_</span>
                             </div>
 
                             <!-- Test Cases List -->
@@ -257,6 +257,22 @@
     .hover-zoom:hover {
         transform: scale(1.02);
     }
+
+    @keyframes blink {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .blinking-cursor {
+        animation: blink 1s step-end infinite;
+    }
 </style>
 
 <!-- Copy Code Script -->
@@ -337,7 +353,7 @@
         // 2. Load Pyodide
         try {
             pyodide = await loadPyodide();
-            consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; Pyodide runtime loaded successfully. Ready!</span>';
+            consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; </span><span class="blinking-cursor fw-bold">_</span>';
             runBtn.disabled = false;
         } catch (err) {
             consoleOutput.innerHTML = `<span class="text-danger">Failed to load Pyodide: ${err.message}</span>`;
