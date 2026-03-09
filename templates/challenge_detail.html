@@ -26,12 +26,6 @@
                     <span class="badge bg-dark p-2 text-uppercase"
                         style="letter-spacing: 1px; font-family: var(--font-family-sans);">{{ challenge.date_id
                         }}</span>
-                    {% if challenge.source == 'fcc_api' %}
-                    <span class="badge p-2 text-uppercase"
-                        style="background-color: var(--color-primary-blue); letter-spacing: 1px; font-family: var(--font-family-sans);">
-                        <i class="bi bi-cloud-download me-1"></i> Auto-Synced
-                    </span>
-                    {% endif %}
                 </div>
                 <h1 class="display-4 fw-bold mb-3" style="letter-spacing: -1px; font-family: var(--font-family-serif);">
                     {{ challenge.title }}</h1>
