@@ -60,3 +60,58 @@ class Challenge(db.Model):
 
     def __repr__(self):
         return f"<Challenge {self.date_id}: {self.title}>"
+
+# ==============================================================================
+# ADDITIVE: USER MANAGEMENT & NOTEBOOK PROGRESS TABLES
+# ==============================================================================
+
+class User(db.Model):
+    """
+    Stores registered users with GAuth/GitHub support credentials mapping.
+    """
+    __tablename__ = "users"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    mobile = db.Column(db.String(20), unique=True, nullable=False) # PRIMARY KEY lookup standard
+    dob = db.Column(db.Date, nullable=False)
+    profile_pic = db.Column(db.String(255), nullable=True)
+    
+    # 3rd Party Integrations
+    github_id = db.Column(db.String(50), nullable=True)
+    github_token = db.Column(db.String(255), nullable=True) # Repo saving
+    claude_token = db.Column(db.String(255), nullable=True) # Personal API usage
+    
+    # Metadata
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    is_verified = db.Column(db.Boolean, default=False) # OTP Verification tracker
+
+    def __repr__(self):
+        return f"<User {self.name} ({self.email})>"
+
+class ConceptStrength(db.Model):
+    """
+    Tracks User Concept understanding score mapping reward/penalties models.
+    """
+    __tablename__ = "concept_strengths"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    concept = db.Column(db.String(100), nullable=False)
+    score = db.Column(db.Integer, default=100) # 100 Base Score, penalty penalizes -10, correct answers reward +10
+    times_encountered = db.Column(db.Integer, default=0)
+    updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+
+class UserNotebook(db.Model):
+    """
+    Saves personal summaries referencing learning journey timelines.
+    """
+    __tablename__ = "user_notebooks"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    challenge_id = db.Column(db.Integer, db.ForeignKey('challenges.id'), nullable=False)
+    summary_notes = db.Column(db.Text, nullable=True) # Auto-generated summary of start to end nodes mapping
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+
