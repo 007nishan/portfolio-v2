@@ -18,10 +18,12 @@ TOKEN = "8571904781:AAEhaViQiEihWOHShd0a0ywJ0BMufSh13p8"
 PORTFOLIO_DIR = "/home/nishan/portfolio"
 ADMIN_FILE = os.path.join(PORTFOLIO_DIR, "admin_id.txt")
 CONFIG_FILE = os.path.join(PORTFOLIO_DIR, "claw_config.json")
+NO_OUTPUT_MSG = "[No Output]"
 
 # Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger("OpenClaw")
+
 
 # Debug log for server startup
 DEBUG_LOG = os.path.join(PORTFOLIO_DIR, "bot_health.log")
@@ -40,8 +42,9 @@ def get_admin():
     if os.path.exists(ADMIN_FILE):
         try:
             with open(ADMIN_FILE, 'r') as f: return int(f.read().strip())
-        except: return None
+        except Exception: return None
     return None
+
 
 def get_grok_client():
     config = load_config()
@@ -55,12 +58,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     admin = get_admin()
     
     if not admin:
-        with open(ADMIN_FILE, 'w') as f: f.write(str(user_id))
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, lambda: open(ADMIN_FILE, 'w').write(str(user_id)))
         admin = user_id
     
     if user_id != admin:
         await update.message.reply_text("⛔ Security Lock Active.")
         return
+
 
     kb = [["📊 Status", "🧼 Clean"], ["🎯 Sync Challenge", "📖 Help"]]
     markup = ReplyKeyboardMarkup(kb, resize_keyboard=True)
@@ -80,10 +85,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     admin = get_admin()
     
     if not admin:
-        with open(ADMIN_FILE, 'w') as f: f.write(str(user_id))
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, lambda: open(ADMIN_FILE, 'w').write(str(user_id)))
         admin = user_id
 
     if user_id != admin: return
+
     
     text = update.message.text
     if not text: return
@@ -94,12 +101,14 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         cmd = text[1:].strip()
         await update.message.reply_text(f"🐚 **Running Shell...**\n`{cmd}`", parse_mode='Markdown')
         try:
-            res = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15)
-            output = (res.stdout + res.stderr).strip() or "[No Output]"
+            loop = asyncio.get_event_loop()
+            res = await loop.run_in_executor(None, lambda: subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15))
+            output = (res.stdout + res.stderr).strip() or NO_OUTPUT_MSG
             await update.message.reply_text(f"🏁 **Output:**\n```\n{output[:3500]}\n```", parse_mode='Markdown')
         except Exception as e:
             await update.message.reply_text(f"❌ Error: {e}")
         return
+
 
     # 2. Python Code Execution
     if "```" in text:
@@ -107,24 +116,28 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("🐍 **Executing Python...**", parse_mode='Markdown')
         try:
             tmp_file = f"/tmp/claw_exec_{datetime.now().strftime('%H%M%S')}.py"
-            with open(tmp_file, 'w') as f: f.write(code)
-            res = subprocess.run([sys.executable, tmp_file], capture_output=True, text=True, timeout=15)
-            output = (res.stdout + res.stderr).strip() or "[No Output]"
+            loop = asyncio.get_event_loop()
+            await loop.run_in_executor(None, lambda: open(tmp_file, 'w').write(code))
+            res = await loop.run_in_executor(None, lambda: subprocess.run([sys.executable, tmp_file], capture_output=True, text=True, timeout=15))
+            output = (res.stdout + res.stderr).strip() or NO_OUTPUT_MSG
             await update.message.reply_text(f"📝 **Result:**\n```\n{output[:3500]}\n```", parse_mode='Markdown')
         except Exception as e:
             await update.message.reply_text(f"❌ Error: {e}")
         return
 
+
     # 3. Quick Actions
     if text.lower() in ["status", "📊 status"]:
-        res = subprocess.check_output("uptime && free -h", shell=True).decode()
+        loop = asyncio.get_event_loop()
+        res = await loop.run_in_executor(None, lambda: subprocess.check_output("uptime && free -h", shell=True).decode())
         await update.message.reply_text(f"🖥️ **Server Vitals:**\n\n```\n{res}\n```", parse_mode='Markdown')
         return
 
     if text.lower() in ["clean", "🧼 clean"]:
         await update.message.reply_text("🧼 **Starting Deep Surgical Cleanup...**")
-        subprocess.Popen([sys.executable, f"{PORTFOLIO_DIR}/image_processor.py"])
+        await asyncio.create_subprocess_exec(sys.executable, f"{PORTFOLIO_DIR}/image_processor.py")
         return
+
 
     # 4. Agentic Intelligence (Grok or Gemini)
     config = load_config()
@@ -154,7 +167,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
         final_reply = ""
         
-        for loop_idx in range(max_loops):
+        for _ in range(max_loops):
+
             ai_reply = None
             
             # --- 4a. Handle Google Gemini (REST) ---
