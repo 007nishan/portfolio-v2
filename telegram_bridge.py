@@ -223,7 +223,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 final_reply = ai_reply
                 break
 
+        if not final_reply or not final_reply.strip():
+            final_reply = "⚠️ **AI Empty Response Error**: The model responded with an empty content stream. This might be a direct safety block trigger on the user query."
+            
         await context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=status_msg.message_id, text=final_reply)
+
     except Exception as e:
         await context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=status_msg.message_id, text=f"❌ AI Error: {e}")
 
