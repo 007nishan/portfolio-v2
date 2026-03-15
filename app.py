@@ -491,7 +491,8 @@ def verify_otp():
 
     return render_template("verify_otp.html")
 
-@app.route("/dashboard")
+@app.route("/dashboard", methods=["GET"])
+
 def dashboard():
     """User Dashboard mapping concept scores."""
     if 'user_id' not in session:
@@ -525,7 +526,8 @@ def post_comment(date_id):
     
     return redirect(url_for("challenge_detail", date_id=date_id))
 
-@app.route("/logout")
+@app.route("/logout", methods=["GET"])
+
 def logout():
     session.pop('user_id', None)
     flash("Logged out successfully.", "info")
