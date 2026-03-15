@@ -378,13 +378,15 @@
         // Capture python stdout/stderr
         pyodide.setStdout({
             batched: (str) => {
-                consoleOutput.innerHTML += `<div>${str.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
+                consoleOutput.innerHTML += `<div>${str.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</div>`;
+
                 consoleOutput.scrollTop = consoleOutput.scrollHeight;
             }
         });
         pyodide.setStderr({
             batched: (str) => {
-                consoleOutput.innerHTML += `<div class="text-danger">${str.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
+                consoleOutput.innerHTML += `<div class="text-danger">${str.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</div>`;
+
                 consoleOutput.scrollTop = consoleOutput.scrollHeight;
             }
         });
@@ -484,7 +486,8 @@ sys.stdout = sys.stderr = StringIO() # Clear any print outputs from eval
             } catch (globalErr) {
                 // Syntax error or global runtime error in user code
                 consoleOutput.innerHTML += `<div class="text-danger fw-bold">Error in your code:</div>`;
-                consoleOutput.innerHTML += `<div class="text-danger">${globalErr.message.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</div>`;
+                consoleOutput.innerHTML += `<div class="text-danger">${globalErr.message.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</div>`;
+
 
                 testItems.forEach(item => {
                     const icon = item.querySelector('.test-icon');
