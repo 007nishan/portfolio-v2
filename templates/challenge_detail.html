@@ -194,21 +194,38 @@
                             <i class="bi bi-chat-right-text me-2"></i> Discussion
                         </h5>
                     </div>
-                    <div class="card-body p-5 text-center" style="background-color: #f8f9fa;">
-                        <i class="bi bi-lock-fill display-4 mb-3 d-block"
-                            style="color: var(--color-neutral-medium);"></i>
-                        <h4 class="fw-bold" style="font-family: var(--font-family-serif);">Join the Conversation</h4>
-                        <p class="mb-4" style="color: var(--color-neutral-medium);">Authorized logins can discuss this
-                            topic below (Authentication logic
-                            coming soon).</p>
-                        <div class="mx-auto" style="max-width: 600px;">
-                            <textarea class="form-control rounded-0 mb-3" rows="3" placeholder="Write a comment..."
-                                disabled style="border-color: var(--color-neutral-light);"></textarea>
-                            <button class="btn rounded-0 px-4 py-2 text-uppercase fw-bold w-100"
-                                style="letter-spacing: 1px; background-color: var(--color-primary-black); color: var(--color-primary-white); font-family: var(--font-family-sans);"
-                                disabled>Post Comment</button>
+                    <div class="card-body p-4">
+                        <!-- Output Comments List -->
+                        <div class="comments-list mb-4" style="max-height: 400px; overflow-y: auto;">
+                            {% if comments %}
+                                {% for comment in comments %}
+                                <div class="p-3 border-bottom mb-2">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <h6 class="fw-bold mb-0 text-dark">{{ comment.user.name }}</h6>
+                                        <small class="text-muted">{{ comment.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+                                    </div>
+                                    <p class="mb-0" style="font-size: 0.95rem;">{{ comment.text }}</p>
+                                </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="text-muted fst-italic text-center py-4">No comments posted yet. Be the first to join the conversation!</p>
+                            {% endif %}
                         </div>
+
+                        <!-- Add Comment form -->
+                        {% if session.get('user_id') %}
+                        <form action="/challenge/{{ challenge.date_id }}/comment" method="POST">
+                            <textarea name="comment" class="form-control rounded-0 mb-3" rows="3" placeholder="Write a comment..." required style="border-color: var(--color-neutral-light);"></textarea>
+                            <button type="submit" class="btn rounded-0 px-4 py-2 text-uppercase fw-bold w-100"
+                                style="letter-spacing: 1px; background-color: var(--color-primary-black); color: var(--color-primary-white); font-family: var(--font-family-sans);">Post Comment</button>
+                        </form>
+                        {% else %}
+                        <div class="text-center py-3 border-top">
+                            <p class="mb-2 text-muted">Please <a href="/register" class="fw-bold text-dark">Register / Login</a> to join the conversation on this topic!</p>
+                        </div>
+                        {% endif %}
                     </div>
+
                 </div>
             </div>
         </div>

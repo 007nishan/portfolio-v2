@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - {{ user.name }}{% endblock %}
+
+{% block content %}
+<section class="py-5" style="background-color: #f8f9fa; min-height: 80vh;">
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar / Profile -->
+            <div class="col-md-3">
+                <div class="card bg-dark text-white rounded-0 shadow-sm border-0 mb-4">
+                    <div class="card-body p-4 text-center">
+                        <div class="mb-3">
+                            <i class="bi bi-person-circle display-1"></i>
+                        </div>
+                        <h4 class="fw-bold mb-1">{{ user.name }}</h4>
+                        <p class="small text-muted mb-0">{{ user.email }}</p>
+                        <p class="small text-muted">{{ user.mobile }}</p>
+                        <a href="/logout" class="btn btn-sm btn-outline-light rounded-0 w-100 mt-3">Logout</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats & Notebooks -->
+            <div class="col-md-9">
+                <!-- Concept Strengths -->
+                <div class="card rounded-0 shadow-sm border-0 mb-4">
+                    <div class="card-header bg-white border-bottom py-3">
+                        <h5 class="mb-0 text-uppercase fw-bold"><i class="bi bi-graph-up me-2"></i> Concept Strength Mapping</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        {% if strengths %}
+                        <div class="row">
+                            {% for strength in strengths %}
+                            <div class="col-md-4 mb-3">
+                                <div class="p-3 border">
+                                    <h6 class="fw-bold mb-1">{{ strength.concept }}</h6>
+                                    <div class="progress rounded-0" style="height: 10px;">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{ strength.score }}%;" aria-valuenow="{{ strength.score }}" aria-valuemin="0" aria-valuemax="200"></div>
+                                    </div>
+                                    <small class="text-muted">{{ strength.score }} Points</small>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <p class="text-muted fst-italic">No concept strength stats mapped yet. Solve questions to trigger scores.</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Personal Notebook -->
+                <div class="card rounded-0 shadow-sm border-0">
+                    <div class="card-header bg-white border-bottom py-3">
+                        <h5 class="mb-0 text-uppercase fw-bold"><i class="bi bi-journal-check me-2"></i> User Notebook</h5>
+                    </div>
+                    <div class="card-body p-4">
+                        {% if notebooks %}
+                        <div class="list-group list-group-flush">
+                            {% for note in notebooks %}
+                            <div class="list-group-item px-0">
+                                <h6 class="fw-bold mb-1">Challenge #{{ note.challenge_id }}</h6>
+                                <p class="text-muted small mb-0">{{ note.summary_notes }}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <p class="text-muted fst-italic">No continuous learning notes stored. Start solving daily challenges to sync summaries.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Register - Nishan{% endblock %}
+
+{% block content %}
+<section class="py-5" style="background-color: #f8f9fa; min-height: 80vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card rounded-0 shadow-sm border-0">
+                    <div class="card-header bg-dark text-white rounded-0 py-3 text-center">
+                        <h4 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;">Join the Network</h4>
+                    </div>
+                    <div class="card-body p-5">
+                        <form action="/register" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Full Name</label>
+                                <input type="text" name="name" class="form-control rounded-0" required placeholder="John Doe">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Email Address</label>
+                                <input type="email" name="email" class="form-control rounded-0" required placeholder="john@example.com">
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Mobile Number</label>
+                                <input type="text" name="mobile" class="form-control rounded-0" required placeholder="+1234567890">
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Date of Birth</label>
+                                <input type="date" name="dob" class="form-control rounded-0" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100 rounded-0 py-2 text-uppercase fw-bold" style="letter-spacing: 1px;">Send Verification OTP</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

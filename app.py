@@ -1,6 +1,6 @@
 import os
 import sys
-from flask import Flask, render_template, jsonify, request, flash, redirect, url_for
+from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, session
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 import json
@@ -20,7 +20,8 @@ if basedir not in sys.path:
 # Load environment variables from .env file
 load_dotenv(os.path.join(basedir, ".env"))
 
-from models import db, Challenge
+from models import db, Challenge, User, Comment, ConceptStrength, UserNotebook
+
 
 app = Flask(__name__)
 # Use an environment variable for the secret key in production
@@ -239,13 +240,17 @@ def challenge_detail(date_id):
     except (json.JSONDecodeError, TypeError):
         pass
 
+    comments = Comment.query.filter_by(challenge_id=challenge.id).order_by(Comment.created_at.desc()).all()
+
     return render_template(
         "challenge_detail.html",
         challenge=challenge,
         problem_html=problem_html,
         concepts_html=concepts_html,
         qa_html=qa_html,
+        comments=comments
     )
+
 
 
 @app.route("/sql", methods=["GET"])
@@ -413,5 +418,120 @@ def read_book(token):
         return "Book link has expired or is invalid.", 404
 
 
+# ==============================================================================
+# ADDITIVE: USER AUTHENTICATION & DISCUSSION BOARD ROUTES
+# ==============================================================================
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """Handle User Registration with Mock OTP Verification."""
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        mobile = request.form.get("mobile")
+        dob_str = request.form.get("dob")
+        
+        # Simple Validation
+        if not name or not email or not mobile or not dob_str:
+            flash("All fields are strictly compulsory.", "error")
+            return redirect(url_for("register"))
+        
+        # Check Duplicates
+        if User.query.filter((User.email == email) | (User.mobile == mobile)).first():
+            flash("Email or Mobile Number already registered.", "error")
+            return redirect(url_for("register"))
+        
+        try:
+            _ = datetime.strptime(dob_str, '%Y-%m-%d').date()
+        except ValueError:
+            flash("Invalid Date of Birth format.", "error")
+            return redirect(url_for("register"))
+
+
+        # Save to Session for Verification Step
+        otp = str(random.randint(100000, 999999))
+        session['pending_user'] = {
+            "name": name, "email": email, "mobile": mobile, "dob": dob_str, "otp": otp
+        }
+        
+        flash(f"OTP Sent to {mobile} (Mock OTP is {otp})", "info")
+        return redirect(url_for("verify_otp"))
+
+    return render_template("register.html")
+
+@app.route("/verify_otp", methods=["GET", "POST"])
+def verify_otp():
+    """Verify 6-digit pin to create User in DB."""
+    if 'pending_user' not in session:
+        return redirect(url_for("register"))
+        
+    if request.method == "POST":
+        entered_otp = request.form.get("otp")
+        pending = session['pending_user']
+        
+        if entered_otp == pending['otp']:
+            # Create User
+            user = User(
+                name=pending['name'],
+                email=pending['email'],
+                mobile=pending['mobile'],
+                dob=datetime.strptime(pending['dob'], '%Y-%m-%d').date(),
+                is_verified=True
+            )
+            db.session.add(user)
+            db.session.commit()
+            
+            # Start User Session
+            session['user_id'] = user.id
+            session.pop('pending_user', None)
+            flash("Registration Successful! Welcome to Notebook mapping.", "success")
+            return redirect(url_for("dashboard"))
+        else:
+            flash("Invalid OTP pin. Try again.", "error")
+
+    return render_template("verify_otp.html")
+
+@app.route("/dashboard")
+def dashboard():
+    """User Dashboard mapping concept scores."""
+    if 'user_id' not in session:
+        flash("Login required to view personal notebook.", "error")
+        return redirect(url_for("register"))
+        
+    user = User.query.get(session['user_id'])
+    strengths = ConceptStrength.query.filter_by(user_id=user.id).all()
+    notebooks = UserNotebook.query.filter_by(user_id=user.id).all()
+    
+    return render_template("dashboard.html", user=user, strengths=strengths, notebooks=notebooks)
+
+@app.route("/challenge/<date_id>/comment", methods=["POST"])
+def post_comment(date_id):
+    """Post comment on specific challenge board."""
+    if 'user_id' not in session:
+        flash("Login required to trigger comments.", "error")
+        return redirect(url_for("home"))
+        
+    text = request.form.get("comment")
+    if text and text.strip():
+        challenge = Challenge.query.filter_by(date_id=date_id).first()
+        if challenge:
+            comment = Comment(
+                user_id=session['user_id'],
+                challenge_id=challenge.id,
+                text=text.strip()
+            )
+            db.session.add(comment)
+            db.session.commit()
+    
+    return redirect(url_for("challenge_detail", date_id=date_id))
+
+@app.route("/logout")
+def logout():
+    session.pop('user_id', None)
+    flash("Logged out successfully.", "info")
+    return redirect(url_for("home"))
+
+
 if __name__ == "__main__":
+
     app.run(debug=True, host="127.0.0.1", port=5001)
