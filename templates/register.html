@@ -8,49 +8,90 @@
             <div class="col-md-6">
                 <div class="card rounded-0 shadow-sm border-0">
                     <div class="card-header bg-dark text-white rounded-0 py-3 text-center">
-                        <h4 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;">Join the Network</h4>
+                        <h4 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px; color: #ffffff !important;">Log In</h4>
                     </div>
                     <div class="card-body p-5">
-                        <div class="mb-4 text-center">
-                            <a href="/login/gauth" class="btn btn-outline-dark rounded-0 w-100 mb-2 py-2 fw-bold">
-                                <i class="bi bi-google me-2"></i> Instant Login with Google
+                        <!-- Social Auth Connect Grid -->
+                        <div class="d-flex justify-content-center gap-4 mb-4">
+                            <a href="/login/gauth" class="btn rounded-circle d-flex align-items-center justify-content-center shadow-sm" 
+                                style="background-color: #ffffff; width: 54px; height: 54px; border: 1px solid #ddd; transition: 0.2s;" 
+                                onmouseover="this.style.backgroundColor='#f8f9fa'" onmouseout="this.style.backgroundColor='#ffffff'">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width: 26px; height: 26px;">
                             </a>
-                            <a href="/login/github" class="btn btn-outline-dark rounded-0 w-100 py-2 fw-bold">
-                                <i class="bi bi-github me-2"></i> Join via Github OAuth
+                            <a href="/login/github" class="btn rounded-circle d-flex align-items-center justify-content-center shadow-sm" 
+                                style="background-color: #24292e; color: #ffffff; width: 54px; height: 54px; transition: 0.2s;"
+                                onmouseover="this.style.backgroundColor='#1a1e22'" onmouseout="this.style.backgroundColor='#24292e'">
+                                <i class="bi bi-github fs-4"></i>
                             </a>
                         </div>
-                        <div class="hr-border d-flex align-items-center mb-4">
-                            <hr class="flex-grow-1"> <span class="mx-3 text-muted small">OR REGISTER MANUALLY</span> <hr class="flex-grow-1">
+
+                        <div class="d-flex align-items-center mb-4">
+                            <hr class="flex-grow-1">
+                            <button type="button" class="btn btn-sm btn-outline-dark rounded-0 mx-3 text-uppercase fw-bold" 
+                                style="letter-spacing: 0.5px; font-size: 0.75rem;" 
+                                onclick="document.getElementById('manualFields').classList.toggle('d-none');">
+                                Register Manually
+                            </button>
+                            <hr class="flex-grow-1">
                         </div>
                         
                         <form action="/register" method="POST">
+                            <div id="manualFields" class="d-none">
+                                <div class="mb-3 position-relative">
+                                    <label for="name" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Full Name</label>
+                                    <input type="text" id="name" name="name" class="form-control rounded-0" placeholder="John Doe">
+                                </div>
 
-                            <div class="mb-3">
-                                <label for="name" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Full Name</label>
-                                <input type="text" id="name" name="name" class="form-control rounded-0" required placeholder="John Doe">
+                                <div class="mb-3 position-relative">
+                                    <label for="email" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Email Address</label>
+                                    <input type="email" id="email" name="email" class="form-control rounded-0" placeholder="john@example.com">
+                                    <small id="emailFeedback" class="form-text text-danger d-none">Invalid Email Structure</small>
+                                </div>
 
+                                <div class="mb-3 position-relative">
+                                    <label for="mobile" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Mobile Number</label>
+                                    <input type="text" id="mobile" name="mobile" class="form-control rounded-0" placeholder="+1234567890">
+                                    <small id="mobileFeedback" class="form-text text-danger d-none">Invalid format (Expected 10 digits or with +Prefix)</small>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="dob" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" class="form-control rounded-0">
+                                </div>
+
+                                <button type="submit" id="submitBtn" class="btn btn-dark w-100 rounded-0 py-2 text-uppercase fw-bold" style="letter-spacing: 1px;">Send Verification OTP</button>
                             </div>
-
-                            <div class="mb-3">
-                                <label for="email" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Email Address</label>
-                                <input type="email" id="email" name="email" class="form-control rounded-0" required placeholder="john@example.com">
-
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="mobile" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Mobile Number</label>
-                                <input type="text" id="mobile" name="mobile" class="form-control rounded-0" required placeholder="+1234567890">
-
-                            </div>
-
-                            <div class="mb-4">
-                                <label for="dob" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Date of Birth</label>
-                                <input type="date" id="dob" name="dob" class="form-control rounded-0" required>
-
-                            </div>
-
-                            <button type="submit" class="btn btn-dark w-100 rounded-0 py-2 text-uppercase fw-bold" style="letter-spacing: 1px;">Send Verification OTP</button>
                         </form>
+
+                        <!-- Live Verification Validation Script -->
+                        <script>
+                            const emailInput = document.getElementById('email');
+                            const mobileInput = document.getElementById('mobile');
+                            const emailFeedback = document.getElementById('emailFeedback');
+                            const mobileFeedback = document.getElementById('mobileFeedback');
+                            const submitBtn = document.getElementById('submitBtn');
+
+                            function validate() {
+                                const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                const mobileRe = /^\+?(\d{1,4})?[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$/; // general generic match
+
+                                const isEmailValid = emailRe.test(emailInput.value);
+                                const isMobileValid = mobileInput.value.length >= 10; // Simple length verification instant
+
+                                if (emailInput.value && !isEmailValid) emailFeedback.classList.remove('d-none');
+                                else emailFeedback.classList.add('d-none');
+
+                                if (mobileInput.value && !isMobileValid) mobileFeedback.classList.remove('d-none');
+                                else mobileFeedback.classList.add('d-none');
+
+                                submitBtn.disabled = !(isEmailValid && isMobileValid && document.getElementById('name').value);
+                            }
+
+                            emailInput.addEventListener('input', validate);
+                            mobileInput.addEventListener('input', validate);
+                            document.getElementById('name').addEventListener('input', validate);
+                        </script>
+
                     </div>
                 </div>
             </div>
