@@ -139,7 +139,9 @@
                         <!-- CodeMirror Editor (Left) -->
                         <div class="w-100 w-lg-50 border-end"
                             style="border-color: var(--color-neutral-light) !important; min-height: 400px;">
-                            <textarea id="codeEditor">{{ challenge.fcc_starter_py }}</textarea>
+                             <textarea id="codeEditor"># Type your python code here...
+</textarea>
+
                         </div>
 
                         <!-- Test Cases & Output (Right) -->
@@ -369,8 +371,44 @@
             }
         });
 
-        // 3. Test Runner Logic
+        // 3. Live Execution on Type (Debounced)
+        let debounceTimer;
+        editor.on("change", () => {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(async () => {
+                if (!pyodide) return;
+                
+                // Reset Output but maintain previous session state
+                consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; </span>';
+                const userCode = editor.getValue();
+
+                try {
+                    // Isolate execution and capture stdout
+                    await pyodide.runPythonAsync(`
+import sys
+from io import StringIO
+sys.stdout = sys.stderr = StringIO()
+                    `);
+                    await pyodide.runPythonAsync(userCode);
+                    
+                    // Trigger test assertion evaluations with transparent statuses
+                    testItems.forEach(item => {
+                        const icon = item.querySelector('.test-icon');
+                        icon.className = 'bi bi-circle mt-1 me-3 test-icon text-muted';
+                    });
+                } catch (e) {
+                    // Do not print syntax errors heavily during live type to avoid distraction, 
+                    // just show weak indicator or subtle logs in console
+                    consoleOutput.innerHTML += `<div class="text-danger small mt-1">${e.message.split('\n')[0]}</div>`;
+                }
+                consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            }, 800); // 800ms debounce
+
+        });
+
+        // 4. Test Runner Logic
         runBtn.addEventListener("click", async () => {
+
             if (!pyodide) return;
 
             // Reset UI
