@@ -12,6 +12,11 @@ with app.app_context():
     for c in chs:
         print(f"| {c.date_id} | {c.title[:30]:<30} | {c.image_path[:20]:<20} | {c.source}")
     
+    print("\n--- FEB 10-20 CHALLENGES ---")
+    chs = Challenge.query.filter(Challenge.date_id.between('2026-02-10', '2026-02-20')).all()
+    for c in chs:
+        print(f"| {c.date_id} | {c.title[:30]:<30} | {c.image_path[:20]:<20} | {c.source}")
+    
     # Check for today's entries
     import datetime
     today = datetime.datetime.now().strftime('%Y-%m-%d')
