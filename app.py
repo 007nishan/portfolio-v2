@@ -136,16 +136,27 @@ def home():
         ),
     }
 
+    import markdown
     # Fetch a fresh daily quote (auto-cached for 24 hours)
     live_quote, live_author = get_daily_quote()
+
+    # Convert descriptions safely for structured rendering
+    problem_html = ""
+    concepts_html = ""
+    if challenge:
+        problem_html = markdown.markdown(challenge.problem_text or "")
+        concepts_html = markdown.markdown(challenge.concepts_text or "")
 
     return render_template(
         "home.html",
         stats=stats,
         daily_challenge=challenge,
+        problem_html=problem_html,
+        concepts_html=concepts_html,
         live_quote=live_quote,
         live_author=live_author,
     )
+
 
 
 @app.route("/challenges", methods=["GET"])

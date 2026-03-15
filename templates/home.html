@@ -94,29 +94,71 @@
                 {% endif %}
             </div>
 
-            <!-- Right Column: Title + Overview -->
+            <!-- Right Column: Title + Structured Overview -->
             <div class="col-lg-6">
                 <h2 class="fw-bold mb-3 display-5" style="letter-spacing: -1px; font-family: var(--font-family-serif);">
                     {{ daily_challenge.title }}</h2>
 
-                <div class="mb-4">
-                    <h5 class="fw-bold text-uppercase small mb-3 pb-2"
-                        style="color: var(--color-neutral-medium); border-bottom: 1px solid var(--color-neutral-light); font-family: var(--font-family-sans);">
-                        Challenge Overview</h5>
-                    {% if daily_challenge.fcc_description %}
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.6;">
-                        {{ daily_challenge.fcc_description | striptags }}
-                    </p>
-                    {% elif daily_challenge.problem_text %}
-                    <p class="lead" style="font-size: 1.1rem; line-height: 1.6;">
-                        {{ daily_challenge.problem_text | striptags }}
-                    </p>
-                    {% else %}
-                    <p class="lead"
-                        style="font-size: 1.1rem; line-height: 1.6; color: var(--color-neutral-medium); font-style: italic;">
-                        Challenge data is being synced...</p>
+                <div class="row g-3">
+                    <!-- 1. Problem Statement (If image on left, or manually added) -->
+                    {% if daily_challenge.image_path or (not daily_challenge.fcc_description and daily_challenge.problem_text) %}
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm rounded-0" style="border-left: 4px solid var(--color-primary-black) !important;">
+                            <div class="card-body p-4">
+                                <h6 class="text-uppercase fw-bold mb-2 small" style="letter-spacing: 1px; color: var(--color-primary-black);"><i class="bi bi-file-text me-1"></i> Problem Statement</h6>
+                                <div class="markdown-content" style="font-size: 0.95rem; line-height: 1.6;">
+                                    {% if daily_challenge.problem_text %}
+                                        {{ problem_html | safe }}
+                                    {% else %}
+                                        <p class="text-muted fst-italic mb-0">No context available.</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- 2. Breakdown & Concepts (If populated) -->
+                    {% if daily_challenge.concepts_text %}
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm rounded-0" style="border-left: 4px solid var(--color-primary-red) !important; background-color: #fdfdfd;">
+                            <div class="card-body p-4">
+                                <h6 class="text-uppercase fw-bold mb-2 small" style="letter-spacing: 1px; color: var(--color-primary-red);"><i class="bi bi-lightbulb me-1"></i> Breakdown & Concepts</h6>
+                                <div class="markdown-content" style="font-size: 0.95rem; line-height: 1.6;">
+                                    {{ concepts_html | safe }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- 3. Solution Preview (If populated) -->
+                    {% if daily_challenge.solution_code %}
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm rounded-0" style="border-left: 4px solid var(--color-primary-blue) !important; background-color: #212529; color: white;">
+                            <div class="card-body p-4">
+                                <h6 class="text-uppercase fw-bold mb-2 small" style="letter-spacing: 1px; color: #0dcaf0;"><i class="bi bi-code-slash me-1"></i> Solution Preview</h6>
+                                <pre class="m-0 p-0" style="max-height: 180px; overflow-y: auto; background-color: transparent;"><code class="language-python" style="font-size: 0.85rem; color: #f8f9fa;">{{ daily_challenge.solution_code }}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <!-- 4. API Description Fallback to title only if other components are empty -->
+                    {% if not daily_challenge.concepts_text and not daily_challenge.solution_code and daily_challenge.fcc_description %}
+                    <div class="col-12">
+                        <div class="card border-0 shadow-sm rounded-0" style="border-left: 4px solid var(--color-neutral-medium) !important;">
+                            <div class="card-body p-4">
+                                <h6 class="text-uppercase fw-bold mb-2 small" style="letter-spacing: 1px; color: var(--color-neutral-medium);"><i class="bi bi-justify me-1"></i> Overview Statement</h6>
+                                <p class="mb-0" style="font-size: 1rem; color: var(--color-neutral-dark); line-height: 1.6;">
+                                    {{ daily_challenge.fcc_description | striptags | truncate(250) }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                     {% endif %}
                 </div>
+
 
                 <div class="d-flex gap-3 mt-5">
                     <a href="/challenge/{{ daily_challenge.date_id }}"
@@ -150,7 +192,34 @@
                     TOUCH</button>
             </div>
             <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+<!-- Custom Styles for Markdown Overview Preview -->
+<style>
+    .markdown-content h1, .markdown-content h2, .markdown-content h3 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .markdown-content p {
+        margin-bottom: 0.5rem;
+    }
+    .markdown-content code {
+        background-color: #f1f3f5;
+        padding: 0.1rem 0.3rem;
+        border-radius: 3px;
+        font-size: 0.85rem;
+        color: var(--color-primary-red);
+    }
+    .markdown-content pre {
+        background-color: #f8f9fa;
+        padding: 0.8rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        overflow-x: auto;
+    }
+</style>
                 <a href="https://www.linkedin.com/in/007cn/" target="_blank"
+
                     class="btn btn-outline-light rounded-circle me-2 p-0 shadow-sm"
                     style="width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; border-width: 2px;"
                     aria-label="LinkedIn">
