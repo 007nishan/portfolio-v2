@@ -263,19 +263,20 @@ def get_fcc_quote():
 
 
 def get_daily_quote():
-    """Get the daily FCC quote with a 24-hour file cache.
-    Fetches a fresh quote once per day, caches to disk,
+    """Get the daily FCC quote with an hourly file cache.
+    Fetches a fresh quote once per hour, caches to disk,
     and serves the cached version for subsequent visits.
     Completely autonomous — no manual intervention needed."""
     cache_file = os.path.join(app.root_path, "data", "quote_cache.json")
-    today = datetime.now().strftime("%Y-%m-%d")
+    # Cache key including hour to update hourly
+    today_hour = datetime.now().strftime("%Y-%m-%d-%H")
 
     # Check cache first
     try:
         if os.path.exists(cache_file):
             with open(cache_file, "r", encoding="utf-8") as f:
                 cache = json.load(f)
-            if cache.get("date") == today:
+            if cache.get("date") == today_hour:
                 return cache.get("quote", ""), cache.get("author", "")
     except Exception:
         pass  # Cache corrupt, fetch fresh
@@ -301,7 +302,7 @@ def get_daily_quote():
         os.makedirs(os.path.dirname(cache_file), exist_ok=True)
         with open(cache_file, "w", encoding="utf-8") as f:
             json.dump(
-                {"date": today, "quote": quote_text, "author": author},
+                {"date": today_hour, "quote": quote_text, "author": author},
                 f,
                 ensure_ascii=False,
             )
@@ -309,6 +310,7 @@ def get_daily_quote():
         print(f"Failed to write quote cache: {e}")
 
     return quote_text, author
+
 
 
 def _save_uploaded_file(field_name, prefix, date_str, title):
