@@ -571,7 +571,30 @@ def github():
     return redirect(url_for("dashboard"))
 
 
+@app.route("/api/rate", methods=["POST"])
+def rate_challenge():
+    """Trigger Telegram Instant Notification of dopamine satisfaction levels."""
+    import requests
+    data = request.get_json()
+    challenge_id = data.get('challenge_id')
+    rating = data.get('rating')
+    
+    flag_status = "Green Flag ✅" if rating in ["🤩", "🙂"] else "Red Flag 🚨"
+    
+    bot_token = "8571904781:AAEhaViQiEihWOHShd0a0ywJ0BMufSh13p8"
+    chat_id = "8687680759"
+    msg = f"🔔 **Dopamine Satisfaction Alert**\nChallenge: #{challenge_id}\nFeedback: {rating}\nStatus: {flag_status}"
+    
+    try:
+        requests.get(f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={msg}", timeout=5)
+    except Exception as e:
+        pass # Fault tolerance
+        
+    return jsonify({"success": True, "message": "Log Pushed!"})
+
+
 if __name__ == "__main__":
+
 
 
     app.run(debug=True, host="127.0.0.1", port=5001)
