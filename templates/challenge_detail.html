@@ -73,7 +73,8 @@
                         {% if challenge.concepts_text %}
                         {{ concepts_html | safe }}
                         {% else %}
-                        <p class="text-muted fst-italic">No concept breakdown available.</p>
+                        <p class="text-muted fst-italic">Coming Soon</p>
+
                         {% endif %}
                     </div>
                 </div>
@@ -84,8 +85,9 @@
                 <div class="card border-dark rounded-0 shadow-sm h-100">
                     <div
                         class="card-header bg-dark text-white rounded-0 py-3 d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
+                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px; color: #ffffff !important;"><i
                                 class="bi bi-code-slash me-2"></i> Actual Final Code</h5>
+
                         <button class="btn btn-sm btn-outline-light rounded-0" onclick="copyCode()">Copy Code</button>
                     </div>
                     <div class="card-body p-0 bg-light" style="max-height: 600px; overflow-y: auto;">
@@ -94,7 +96,8 @@
                             class="m-0 p-4"><code id="solutionCode" class="language-python">{{ challenge.solution_code }}</code></pre>
                         {% else %}
                         <div class="p-4 text-center">
-                            <p class="text-muted fst-italic mb-0">Code solution is not synced yet.</p>
+                            <p class="text-muted fst-italic mb-0">Coming Soon</p>
+
                         </div>
                         {% endif %}
                     </div>
@@ -108,8 +111,9 @@
             <div class="col-12">
                 <div class="card border-dark rounded-0 shadow-sm">
                     <div class="card-header bg-dark text-white rounded-0 py-3">
-                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;"><i
+                        <h5 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px; color: #ffffff !important;"><i
                                 class="bi bi-patch-question me-2"></i> Question & Answer (Underlying Concepts)</h5>
+
                     </div>
                     <div class="card-body p-4 markdown-content" style="font-size: 1.1rem; line-height: 1.8;">
                         {{ qa_html | safe }}
@@ -120,7 +124,8 @@
         {% endif %}
 
         <!-- BOTTOM FULL: Interactive Python Interpreter -->
-        {% if challenge.fcc_py_tests %}
+
+
         <div class="row mt-5">
             <div class="col-12">
                 <div class="card rounded-0 shadow-sm" style="border: 1px solid var(--color-neutral-light);">
@@ -173,7 +178,12 @@
                                         </div>
                                         <div class="d-none raw-test-code">{{ test.testString }}</div>
                                     </li>
+                                    {% else %}
+                                    <li class="list-group-item px-0 bg-transparent text-muted fst-italic" style="border-color: var(--color-neutral-light);">
+                                        <i class="bi bi-info-circle me-2"></i> No automated tests loaded. Use <code>print()</code> statements to test outputs locally!
+                                    </li>
                                     {% endfor %}
+
                                 </ul>
                             </div>
                         </div>
@@ -181,7 +191,8 @@
                 </div>
             </div>
         </div>
-        {% endif %}
+
+
 
         <!-- BOTTOM FULL: Discussion Board -->
         <div class="row mt-5">
@@ -338,7 +349,8 @@
 {% endblock %}
 
 {% block extra_js %}
-{% if challenge.fcc_py_tests %}
+
+
 <!-- CodeMirror JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
@@ -501,5 +513,6 @@ sys.stdout = sys.stderr = StringIO() # Clear any print outputs from eval
         });
     });
 </script>
-{% endif %}
+
+
 {% endblock %}

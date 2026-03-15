@@ -534,6 +534,44 @@ def logout():
     return redirect(url_for("home"))
 
 
+@app.route("/login/gauth", methods=["GET"])
+def gauth():
+    """Mocking Google Auth login flow."""
+    user = User.query.filter_by(email="google_user@example.com").first()
+    if not user:
+        user = User(
+            name="Google Tester",
+            email="google_user@example.com",
+            mobile="+1000000000",
+            dob=datetime(1990, 1, 1).date(),
+            is_verified=True
+        )
+        db.session.add(user)
+        db.session.commit()
+    session['user_id'] = user.id
+    flash("Login Successful via Google!", "success")
+    return redirect(url_for("dashboard"))
+
+@app.route("/login/github", methods=["GET"])
+def github():
+    """Mocking GitHub Auth login flow."""
+    user = User.query.filter_by(email="github_user@example.com").first()
+    if not user:
+        user = User(
+            name="Github Developer",
+            email="github_user@example.com",
+            mobile="+2000000000",
+            dob=datetime(1991, 1, 1).date(),
+            is_verified=True
+        )
+        db.session.add(user)
+        db.session.commit()
+    session['user_id'] = user.id
+    flash("Connected via GitHub OAuth!", "success")
+    return redirect(url_for("dashboard"))
+
+
 if __name__ == "__main__":
+
 
     app.run(debug=True, host="127.0.0.1", port=5001)
