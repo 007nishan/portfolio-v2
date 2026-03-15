@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Verify OTP - Nishan{% endblock %}
+
+{% block content %}
+<section class="py-5" style="background-color: #f8f9fa; min-height: 80vh;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card rounded-0 shadow-sm border-0">
+                    <div class="card-header bg-dark text-white rounded-0 py-3 text-center">
+                        <h4 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;">Verify OTP</h4>
+                    </div>
+                    <div class="card-body p-5">
+                        <form action="/verify_otp" method="POST">
+                            <div class="mb-4">
+                                <label class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Enter 6-Digit PIN</label>
+                                <input type="text" name="otp" class="form-control rounded-0 font-monospace text-center fs-3" required maxlength="6" placeholder="000000">
+                            </div>
+
+                            <button type="submit" class="btn btn-dark w-100 rounded-0 py-2 text-uppercase fw-bold" style="letter-spacing: 1px;">Verify & Continue</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -115,3 +115,19 @@ class UserNotebook(db.Model):
     summary_notes = db.Column(db.Text, nullable=True) # Auto-generated summary of start to end nodes mapping
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
+class Comment(db.Model):
+    """
+    Saves discussion board triggers conversation nodes thread mapped setups.
+    """
+    __tablename__ = "comments"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    challenge_id = db.Column(db.Integer, db.ForeignKey('challenges.id'), nullable=False)
+    text = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    
+    # Relationship to render names
+    user = db.relationship('User', backref=db.backref('comments', lazy=True))
+
+
