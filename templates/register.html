@@ -11,7 +11,20 @@
                         <h4 class="mb-0 text-uppercase fw-bold" style="letter-spacing: 1px;">Join the Network</h4>
                     </div>
                     <div class="card-body p-5">
+                        <div class="mb-4 text-center">
+                            <a href="/login/gauth" class="btn btn-outline-dark rounded-0 w-100 mb-2 py-2 fw-bold">
+                                <i class="bi bi-google me-2"></i> Instant Login with Google
+                            </a>
+                            <a href="/login/github" class="btn btn-outline-dark rounded-0 w-100 py-2 fw-bold">
+                                <i class="bi bi-github me-2"></i> Join via Github OAuth
+                            </a>
+                        </div>
+                        <div class="hr-border d-flex align-items-center mb-4">
+                            <hr class="flex-grow-1"> <span class="mx-3 text-muted small">OR REGISTER MANUALLY</span> <hr class="flex-grow-1">
+                        </div>
+                        
                         <form action="/register" method="POST">
+
                             <div class="mb-3">
                                 <label for="name" class="form-label fw-bold text-uppercase small" style="letter-spacing: 1px;">Full Name</label>
                                 <input type="text" id="name" name="name" class="form-control rounded-0" required placeholder="John Doe">
