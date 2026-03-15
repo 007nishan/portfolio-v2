@@ -364,7 +364,11 @@
 {% block extra_js %}
 
 
+<!-- Confetti & Gamification Libs -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <!-- CodeMirror JS -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
 
@@ -505,8 +509,16 @@ sys.stdout = sys.stderr = StringIO() # Clear any print outputs from eval
                 }
 
                 if (allPassed) {
-                    consoleOutput.innerHTML += `<div class="text-success fw-bold mt-2">All tests passed! \u2728</div>`;
+                    if (window.confetti) {
+                        confetti({
+                            particleCount: 180,
+                            spread: 90,
+                            origin: { y: 0.6 }
+                        });
+                    }
+                    consoleOutput.innerHTML += `<div class="text-success fw-bold fs-5 mt-2"><i class="bi bi-patch-check-fill"></i> ALL TESTS PASSED! 🚀 XP GAINED +100!</div>`;
                 }
+
 
             } catch (globalErr) {
                 // Syntax error or global runtime error in user code
