@@ -135,50 +135,98 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     status_msg = await update.message.reply_text("🤔 **Thinking...**")
     try:
-        # 4a. Handle Google Gemini (REST Fallback for robustness)
-        if key.startswith("AIzaSy"):
-            import requests
-            # Fallback chain to bypass quota or sandbox restrictions
-            models = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-2.5-flash", "gemini-pro"]
-            ai_reply = None
-            error_data = ""
-            
-            for m in models:
-                url = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={key}"
-                try:
-                    resp = requests.post(
-                        url, 
-                        headers={'Content-Type': 'application/json'}, 
-                        json={"contents": [{"parts": [{"text": text}]}]}, 
-                        timeout=15
-                    )
-                    res_json = resp.json()
-                    if "candidates" in res_json:
-                        ai_reply = res_json["candidates"][0]["content"]["parts"][0]["text"]
-                        break
-                    else:
-                        error_data += f"\n- {m}: {res_json.get('error', {}).get('message', 'Unknown Error')}"
-                except Exception as e:
-                    error_data += f"\n- {m}: {e}"
-
-            if not ai_reply:
-                ai_reply = f"❌ Gemini API Error. Checked models:{error_data}"
+        system_prompt = (
+            "You are the OpenClaw AI Hub executing directly on the user's server. "
+            "You have full terminal access to inspect files, databases, apps, and count resources. "
+            "To inspect anything on the server to make your answer accurate, you MUST output exactly: "
+            "[RUN_SHELL: <your bash command here>] "
+            "Wait for the backend framework to execute it and return the answer back in the next turn."
+        )
         
-        # 4b. Handle Standard xAI Grok
-        else:
-            client = get_grok_client()
-            response = client.chat.completions.create(
-                model="grok-2",
-                messages=[
-                    {"role": "system", "content": "You are the OpenClaw AI Hub, a professional and analytical assistant. You assist the user with server management, coding, and general intelligence. Keep responses concise and focused on the technical goal."},
-                    {"role": "user", "content": text}
-                ]
-            )
-            ai_reply = response.choices[0].message.content
+        # Initialize loop variables
+        max_loops = 3
+        current_input = text
+        conversation_history_gemini = [{"parts": [{"text": current_input}]}] if key.startswith("AIzaSy") else []
+        conversation_history_grok = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": current_input}
+        ] if not key.startswith("AIzaSy") else []
+        
+        final_reply = ""
+        
+        for loop_idx in range(max_loops):
+            ai_reply = None
             
-        await context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=status_msg.message_id, text=ai_reply)
+            # --- 4a. Handle Google Gemini (REST) ---
+            if key.startswith("AIzaSy"):
+                import requests
+                models = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-2.5-flash", "gemini-pro"]
+                error_data = ""
+                
+                for m in models:
+                    url = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={key}"
+                    try:
+                        resp = requests.post(
+                            url, 
+                            headers={'Content-Type': 'application/json'}, 
+                            json={
+                                "contents": conversation_history_gemini,
+                                "systemInstruction": {"parts": [{"text": system_prompt}]}
+                            }, 
+                            timeout=15
+                        )
+                        res_json = resp.json()
+                        if "candidates" in res_json:
+                            ai_reply = res_json["candidates"][0]["content"]["parts"][0]["text"]
+                            break
+                        else:
+                            error_data += f"\n- {m}: {res_json.get('error', {}).get('message', 'Unknown Error')}"
+                    except Exception as e:
+                        error_data += f"\n- {m}: {e}"
+                if not ai_reply:
+                     final_reply = f"❌ Gemini API Error. Checked models:{error_data}"
+                     break
+                     
+            # --- 4b. Handle Standard xAI Grok ---
+            else:
+                client = get_grok_client()
+                response = client.chat.completions.create(
+                    model="grok-2",
+                    messages=conversation_history_grok
+                )
+                ai_reply = response.choices[0].message.content
+
+            # --- 4c. Parse for execution tool tags ---
+            # e.g., [RUN_SHELL: ls -la]
+            match = re.search(r'\[RUN_SHELL:\s*(.*?)\]', ai_reply, re.DOTALL)
+            if match:
+                cmd_to_run = match.group(1).strip()
+                logger.info(f"Agent requested shell execution: {cmd_to_run}")
+                await context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=status_msg.message_id, text=f"🐚 **Agent executing Shell...**\n`{cmd_to_run}`", parse_mode='Markdown')
+                
+                try:
+                    res = subprocess.run(cmd_to_run, shell=True, capture_output=True, text=True, timeout=15)
+                    output = (res.stdout + res.stderr).strip() or "[No Output]"
+                except Exception as e:
+                    output = f"Shell Execution Error: {e}"
+                
+                # Append to history
+                if key.startswith("AIzaSy"):
+                    conversation_history_gemini.append({"role": "model", "parts": [{"text": ai_reply}]})
+                    conversation_history_gemini.append({"role": "user", "parts": [{"text": f"Shell Output:\n{output[:3000]}"}]})
+                else:
+                    conversation_history_grok.append({"role": "assistant", "content": ai_reply})
+                    conversation_history_grok.append({"role": "user", "content": f"Shell Output:\n{output[:3000]}"})
+                
+                await context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=status_msg.message_id, text="🤔 **Agent evaluating output...**")
+            else:
+                final_reply = ai_reply
+                break
+
+        await context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=status_msg.message_id, text=final_reply)
     except Exception as e:
         await context.bot.edit_message_text(chat_id=update.effective_chat.id, message_id=status_msg.message_id, text=f"❌ AI Error: {e}")
+
 
 
 async def handle_photo(update: Update, context: ContextTypes.DEFAULT_TYPE):
