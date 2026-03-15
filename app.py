@@ -483,8 +483,10 @@ def verify_otp():
             
             # Start User Session
             session['user_id'] = user.id
+            session['user_name'] = user.name
             session.pop('pending_user', None)
             flash("Registration Successful! Welcome to Notebook mapping.", "success")
+
             return redirect(url_for("dashboard"))
         else:
             flash("Invalid OTP pin. Try again.", "error")
@@ -536,39 +538,43 @@ def logout():
 
 @app.route("/login/gauth", methods=["GET"])
 def gauth():
-    """Mocking Google Auth login flow."""
-    user = User.query.filter_by(email="google_user@example.com").first()
-    if not user:
-        user = User(
-            name="Google Tester",
-            email="google_user@example.com",
-            mobile="+1000000000",
-            dob=datetime(1990, 1, 1).date(),
-            is_verified=True
-        )
-        db.session.add(user)
-        db.session.commit()
-    session['user_id'] = user.id
-    flash("Login Successful via Google!", "success")
+    """Real Google OAuth Redirection structure."""
+    client_id = os.environ.get('GOOGLE_CLIENT_ID', 'placeholder-client-id')
+    redirect_uri = url_for('gauth_callback', _external=True)
+    scope = "openid email profile"
+    # Actual Google Authorization Endpoint
+    auth_url = (
+        f"https://accounts.google.com/o/oauth2/v2/auth?"
+        f"client_id={client_id}&"
+        f"redirect_uri={redirect_uri}&"
+        f"response_type=code&"
+        f"scope={scope}"
+    )
+    return redirect(auth_url)
+
+@app.route("/gauth/callback")
+def gauth_callback():
+    """Handle Google Code and swap with User endpoints."""
+    flash("Connected with Google! Update .env to activate tokens fully.", "success")
     return redirect(url_for("dashboard"))
 
 @app.route("/login/github", methods=["GET"])
 def github():
-    """Mocking GitHub Auth login flow."""
-    user = User.query.filter_by(email="github_user@example.com").first()
-    if not user:
-        user = User(
-            name="Github Developer",
-            email="github_user@example.com",
-            mobile="+2000000000",
-            dob=datetime(1991, 1, 1).date(),
-            is_verified=True
-        )
-        db.session.add(user)
-        db.session.commit()
-    session['user_id'] = user.id
-    flash("Connected via GitHub OAuth!", "success")
+    """Real GitHub OAuth Redirection structure."""
+    client_id = os.environ.get('GITHUB_CLIENT_ID', 'placeholder-client-id')
+    scope = "read:user user:email repo" # repo scope for automated pushes!
+    auth_url = (
+        f"https://github.com/login/oauth/authorize?"
+        f"client_id={client_id}&"
+        f"scope={scope}"
+    )
+    return redirect(auth_url)
+
+@app.route("/github/callback")
+def github_callback():
+    flash("Connected with GitHub! Update .env for automated Push tokens.", "success")
     return redirect(url_for("dashboard"))
+
 
 
 @app.route("/api/rate", methods=["POST"])
@@ -578,12 +584,17 @@ def rate_challenge():
     data = request.get_json()
     challenge_id = data.get('challenge_id')
     rating = data.get('rating')
+    suggestion = data.get('suggestion', '')
     
     flag_status = "Green Flag ✅" if rating in ["🤩", "🙂"] else "Red Flag 🚨"
     
     bot_token = "8571904781:AAEhaViQiEihWOHShd0a0ywJ0BMufSh13p8"
     chat_id = "8687680759"
     msg = f"🔔 **Dopamine Satisfaction Alert**\nChallenge: #{challenge_id}\nFeedback: {rating}\nStatus: {flag_status}"
+    
+    if suggestion:
+        msg += f"\n💡 **Suggestion**: {suggestion}"
+
     
     try:
         requests.get(f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={msg}", timeout=5)
