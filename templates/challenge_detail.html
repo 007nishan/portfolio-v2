@@ -187,8 +187,8 @@
         <div class="row mt-5">
             <div class="col-12">
                 <div class="card rounded-0 shadow-sm" style="border: 1px solid var(--color-neutral-light);">
-                    <div class="card-header rounded-0 py-3"
-                        style="background-color: var(--color-primary-black); color: var(--color-primary-white);">
+                    <div class="card-header bg-dark text-white rounded-0 py-3">
+
                         <h5 class="mb-0 text-uppercase fw-bold"
                             style="letter-spacing: 1px; font-family: var(--font-family-sans);">
                             <i class="bi bi-chat-right-text me-2"></i> Discussion
@@ -216,8 +216,9 @@
                         {% if session.get('user_id') %}
                         <form action="/challenge/{{ challenge.date_id }}/comment" method="POST">
                             <textarea name="comment" class="form-control rounded-0 mb-3" rows="3" placeholder="Write a comment..." required style="border-color: var(--color-neutral-light);"></textarea>
-                            <button type="submit" class="btn rounded-0 px-4 py-2 text-uppercase fw-bold w-100"
-                                style="letter-spacing: 1px; background-color: var(--color-primary-black); color: var(--color-primary-white); font-family: var(--font-family-sans);">Post Comment</button>
+                            <button type="submit" class="btn btn-dark rounded-0 px-4 py-2 text-uppercase fw-bold w-100"
+                                style="letter-spacing: 1px; font-family: var(--font-family-sans);">Post Comment</button>
+
                         </form>
                         {% else %}
                         <div class="text-center py-3 border-top">
