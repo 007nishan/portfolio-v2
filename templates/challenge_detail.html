@@ -39,7 +39,7 @@
             - Bottom Right: Actual Final Code
         -->
 
-        <!-- TOP: Problem Text / FCC Description -->
+        <!-- TOP: Problem Statement -->
         <div class="row mb-5">
             <div class="col-12">
                 <div class="card rounded-0 shadow-sm h-100" style="border: 1px solid var(--color-neutral-light);">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="card-body p-4 markdown-content" style="font-size: 1.1rem; line-height: 1.8;">
                         {% if challenge.fcc_description %}
-                        <div class="fcc-description">
+                        <div class="challenge-description">
                             {{ challenge.fcc_description | safe }}
                         </div>
                         {% elif challenge.problem_text %}
@@ -124,7 +124,7 @@
         </div>
         {% endif %}
 
-        <!-- BOTTOM FULL: Interactive Python Interpreter (Like FCC) -->
+        <!-- BOTTOM FULL: Interactive Python Interpreter -->
         {% if challenge.fcc_py_tests %}
         <div class="row mt-5">
             <div class="col-12">
@@ -170,7 +170,7 @@
                                             <i class="bi bi-circle mt-1 me-3 test-icon text-muted"
                                                 style="font-size: 1.1rem;"></i>
                                             <div style="font-family: var(--font-family-sans); font-size: 0.95rem;">
-                                                <!-- Need safe filter for FCC's rich html tests -->
+                                                <!-- Need safe filter for rich html tests -->
                                                 {{ test.text | safe }}
                                             </div>
                                         </div>
@@ -409,7 +409,7 @@ sys.stdout = sys.stderr = StringIO() # Clear any print outputs from eval
                     const icon = item.querySelector('.test-icon');
 
                     try {
-                        // Running the unittest code provided by FCC
+                        // Running the unittest code provided for each test
                         await pyodide.runPythonAsync(rawAssertCode);
                         // If no exception, test passed
                         icon.className = 'bi bi-check-circle-fill mt-1 me-3 test-icon text-success';

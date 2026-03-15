@@ -23,6 +23,11 @@ CONFIG_FILE = os.path.join(PORTFOLIO_DIR, "claw_config.json")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger("OpenClaw")
 
+# Debug log for server startup
+DEBUG_LOG = os.path.join(PORTFOLIO_DIR, "bot_health.log")
+with open(DEBUG_LOG, 'a') as f: f.write(f"\n[{datetime.now()}] Bot Script Started\n")
+
+
 def load_config():
     if os.path.exists(CONFIG_FILE):
         try:
@@ -217,4 +222,5 @@ if __name__ == '__main__':
     app.add_handler(MessageHandler(filters.PHOTO, handle_photo))
     
     logger.info("OpenClaw Agent Hub Online.")
+    with open(DEBUG_LOG, 'a') as f: f.write(f"[{datetime.now()}] Entering app.run_polling()\n")
     app.run_polling()
