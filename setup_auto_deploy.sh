@@ -34,15 +34,30 @@ if [ -d "$PORTFOLIO_DIR/.git" ]; then
     cd "$PORTFOLIO_DIR"
     git remote set-url origin "$REPO_URL" 2>/dev/null || git remote add origin "$REPO_URL"
 else
-    echo "[1/3] Initializing git in existing $PORTFOLIO_DIR (keeping data/ and venv/)..."
+    echo "[1/3] Initializing git in existing $PORTFOLIO_DIR (keeping data/, venv/, .env)..."
     cd "$PORTFOLIO_DIR"
+    # Safety: back up any file that GitHub also tracks, in case a server-side
+    # edit diverged from the repo (e.g. hand-patched app.py/templates).
+    BACKUP="$PORTFOLIO_DIR/pre_autodeploy_backup_$(date +%s)"
     git init -q
-    git remote add origin "$REPO_URL"
+    git remote add origin "$REPO_URL" 2>/dev/null || git remote set-url origin "$REPO_URL"
     git fetch --quiet origin "$BRANCH"
-    # Adopt the remote branch without deleting untracked server files (data/, venv/, .env)
-    git checkout -f -b "$BRANCH" "origin/$BRANCH"
+    mkdir -p "$BACKUP"
+    # For every path the repo tracks, if it already exists locally, stash a copy.
+    while IFS= read -r f; do
+        if [ -f "$f" ]; then
+            mkdir -p "$BACKUP/$(dirname "$f")"
+            cp -p "$f" "$BACKUP/$f" 2>/dev/null || true
+        fi
+    done < <(git ls-tree -r --name-only "origin/$BRANCH")
+    echo "  ✓ Backed up existing tracked files to: $BACKUP"
+    # Adopt the remote branch. reset (not checkout -f) sets tracked files to the
+    # repo version but NEVER touches untracked files (data/, venv/, .env stay).
+    git checkout -q -b "$BRANCH" "origin/$BRANCH" 2>/dev/null || git checkout -q "$BRANCH"
+    git reset --hard "origin/$BRANCH"
+    git branch --set-upstream-to="origin/$BRANCH" "$BRANCH" 2>/dev/null || true
 fi
-echo "  ✓ Now at $(git rev-parse --short HEAD)"
+echo "  ✓ Now at $(git rev-parse --short HEAD): $(git log -1 --pretty=%s)"
 
 chmod +x "$PORTFOLIO_DIR/auto_deploy.sh" 2>/dev/null || true
 

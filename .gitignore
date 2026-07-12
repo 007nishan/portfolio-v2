@@ -135,6 +135,11 @@ id_rsa.pub
 *.key
 .env
 
+# Server-only runtime state (created on the host, must not block auto-deploy)
+admin_id.txt
+claw_config.json
+pre_autodeploy_backup_*/
+
 # Spyder project settings
 .spyderproject
 .spyproject
