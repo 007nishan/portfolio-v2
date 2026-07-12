@@ -33,6 +33,21 @@ Append-only log of updates to the knowledge graph itself (not the app).
   4. **Flicker fixed:** removed `.has-challenge:hover { transform: scale(0.98) }` (hover/unhover loop) → inset box-shadow highlight; `transition: all` → color/shadow only.
 - **Verified** via test_client: /challenges 200 with loader+text panels; manual→image; FCC→text (description_html present); missing→404. Test rows cleaned.
 
+## 2026-07-12 · Standardization slices 1–11 COMPLETE (pushed to main)
+Method-grounded standardization from the 9-dimension audit (knowledge-graph/standardization-audit.json). All code-safe; deploys via GitHub auto-deploy. Commits 17d403f→3915568.
+- **S1 Code hygiene:** removed fabricated home() stats, dead load_challenges(), inline imports.
+- **S2 DRY:** markdown → Challenge model properties (problem_html/concepts_html/qa_html/display_description_html/has_image); merged quote fetchers; print()→logger; /api/rate reads env creds, honest status.
+- **S3 Tokens (foundation):** added --color-accent-petrol, --color-primary-blue-dark, --font-family-mono, neutral/surface scale, brand-github; removed dead Inter font.
+- **S4 Literals→tokens:** petrol/red/github/mono + calendar grey cluster.
+- **S5 Classes:** one canonical .markdown-content (+--compact) in style.css; removed 2 duplicate <style> blocks; moved hover-zoom/blink there.
+- **S6 Anti-copy shields removed** (base.html keydown/contextmenu, modal pointer-events/oncontextmenu) — a11y + honesty.
+- **S7 A11y (WCAG 2.2 AA):** calendar tiles role=button/tabindex/keydown/focus-visible; emoji ratings → <button aria-label> in role=group; lightbox role=dialog + <button> close; navbar/register ARIA; contrast fixes (day-number, Let's-Connect).
+- **S8 Perf (CWV):** lazy Pyodide (ensurePyodide on focus/Run), defer CodeMirror/Pyodide/confetti, calendar img loading=lazy+decoding=async, home hero fetchpriority=high, preconnect + icons-in-head.
+- **S9 Responsive:** clamp() fluid type (body+h1–h5), calendar horizontal-scroll <480px, fluid CodeMirror height, fluid modal chrome.
+- **S10 Self-healing:** GET /health + /readiness (DB SELECT 1), 404/500 errorhandlers (JSON for /api/*), home() DB guarded, fcc_sync retry+backoff session, FLASK_DEBUG/HOST/PORT from env (debug default OFF).
+- **S11 Security (code-level):** SECRET_KEY fail-closed in prod; /admin @admin_required (404 unset / 403 wrong / 200 right — closes S-4 unauth upload); image_path NOT NULL default='' matches live schema; .env.example added.
+- **Deferred to production window (12 items):** schema-reconciling Alembic migration, WebP derivatives, cache/gzip headers, gunicorn/systemd runtime, sudoers cleanup, secret rotation, watchdog→/readiness rewire, FCC-HTML sanitization. See standardization-audit.json deferredServerItems.
+
 ## 2026-07-12 · Auto-deploy pipeline added
 - Owner rule: GitHub is updated in real-time and the server auto-updates from it.
 - Added `auto_deploy.sh` (server pull-deploy: fetch origin/main → ff-only → pip install → restart; idempotent, refuses to clobber local changes) and `setup_auto_deploy.sh` (one-time: make ~/portfolio a git checkout, scoped NOPASSWD for `systemctl restart portfolio` only, systemd timer every 60s).
