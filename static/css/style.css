@@ -6,6 +6,7 @@
 :root {
   /* Colors - Primary */
   --color-primary-blue: #00719a;
+  --color-primary-blue-dark: #005a7d;   /* hover/active state of primary blue */
   --color-primary-red: #a70e13;
   --color-primary-black: #000000;
   --color-primary-white: #ffffff;
@@ -13,15 +14,30 @@
   /* Colors - Secondary/Neutral */
   --color-secondary-green: #007a3d;
   --color-secondary-gold: #d58000;
+  --color-accent-petrol: #005863;       /* deliberate high-contrast CTA accent */
   --color-bg-tan: #e8d3be;
 
   --color-neutral-dark: #333333;
   --color-neutral-medium: #666666;
   --color-neutral-light: #ebebeb;
 
+  /* Neutral / surface scale — names the greys already used across templates
+     (Bootstrap-derived) so every page consumes one canonical layer. */
+  --color-surface-subtle: #f8f9fa;      /* light section / card backgrounds */
+  --color-surface-muted: #f1f3f5;       /* chips, inline code, hover tiles */
+  --color-surface-disabled: #e9ecef;    /* empty calendar cells */
+  --color-neutral-400: #adb5bd;         /* muted text / day numbers */
+  --color-neutral-800: #343a40;         /* calendar borders/headers, dark UI */
+  --color-neutral-900: #212529;         /* code-block background */
+
+  /* Brand-social (external logos/buttons) */
+  --color-brand-github: #24292e;
+  --color-brand-github-dark: #1a1e22;
+
   /* Typography */
   --font-family-serif: "Crimson Text", Georgia, "Times New Roman", serif;
   --font-family-sans: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-family-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -142,9 +158,8 @@ h5 {
 }
 
 .btn-primary:hover {
-  background-color: #005a7d !important;
-  /* Darker blue */
-  border-color: #005a7d !important;
+  background-color: var(--color-primary-blue-dark) !important;
+  border-color: var(--color-primary-blue-dark) !important;
 }
 
 .btn-danger {
