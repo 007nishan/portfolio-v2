@@ -324,20 +324,19 @@
 {% block extra_js %}
 
 
-<!-- Confetti & Gamification Libs -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<!-- Confetti & Gamification Libs (deferred — only used on all-tests-pass) -->
+<script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-<!-- CodeMirror JS -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
-
-<!-- Pyodide JS -->
-<script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+<!-- CodeMirror + Pyodide loaded with `defer` (parsed after HTML, not render-blocking).
+     Pyodide's heavy WASM runtime is NOT booted until the user first interacts with
+     the editor or clicks a Run button (PERF-05: most visitors only read the solution). -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", async function () {
-        // 1. Initialize CodeMirror Editor
+    document.addEventListener("DOMContentLoaded", function () {
+        // 1. Initialize CodeMirror Editor (cheap; safe on load)
         const editorElement = document.getElementById("codeEditor");
         const editor = CodeMirror.fromTextArea(editorElement, {
             mode: "python",
@@ -349,44 +348,58 @@
         });
 
         const runBtn = document.getElementById("runTestsBtn");
+        const runCodeBtn = document.getElementById("runCodeBtn");
         const consoleOutput = document.getElementById("consoleOutput");
         const testItems = document.querySelectorAll(".test-item");
 
+        // ── Lazy Pyodide: boot the WASM runtime only on first real intent ──
         let pyodide = null;
+        let pyodideLoading = null;   // in-flight promise (dedupes concurrent triggers)
 
-        // 2. Load Pyodide
-        try {
-            pyodide = await loadPyodide();
-            consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; </span><span class="blinking-cursor fw-bold">_</span>';
-            runBtn.disabled = false;
-        } catch (err) {
-            consoleOutput.innerHTML = `<span class="text-danger">Failed to load Pyodide: ${err.message}</span>`;
-            return;
+        async function ensurePyodide() {
+            if (pyodide) return pyodide;
+            if (pyodideLoading) return pyodideLoading;
+            consoleOutput.innerHTML = '<span class="text-warning">Loading Python runtime…</span>';
+            pyodideLoading = (async () => {
+                try {
+                    const py = await loadPyodide();
+                    py.setStdout({
+                        batched: (str) => {
+                            consoleOutput.innerHTML += `<div>${str.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</div>`;
+                            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                        }
+                    });
+                    py.setStderr({
+                        batched: (str) => {
+                            consoleOutput.innerHTML += `<div class="text-danger">${str.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</div>`;
+                            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+                        }
+                    });
+                    pyodide = py;
+                    consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; </span><span class="blinking-cursor fw-bold">_</span>';
+                    if (runBtn) runBtn.disabled = false;
+                    return py;
+                } catch (err) {
+                    consoleOutput.innerHTML = `<span class="text-danger">Failed to load Pyodide: ${err.message}</span>`;
+                    pyodideLoading = null;   // allow a retry on next intent
+                    return null;
+                }
+            })();
+            return pyodideLoading;
         }
 
-        // Capture python stdout/stderr
-        pyodide.setStdout({
-            batched: (str) => {
-                consoleOutput.innerHTML += `<div>${str.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</div>`;
-
-                consoleOutput.scrollTop = consoleOutput.scrollHeight;
-            }
-        });
-        pyodide.setStderr({
-            batched: (str) => {
-                consoleOutput.innerHTML += `<div class="text-danger">${str.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</div>`;
-
-                consoleOutput.scrollTop = consoleOutput.scrollHeight;
-            }
-        });
+        // Warm up Pyodide the moment the user focuses the editor (perceived speed).
+        editor.on("focus", () => { ensurePyodide(); });
 
         // 3. Live Execution on Type (Debounced)
         let debounceTimer;
         editor.on("change", () => {
             clearTimeout(debounceTimer);
             debounceTimer = setTimeout(async () => {
+                // Only live-run once the runtime is ready; don't force-load it
+                // on every keystroke (focus already warms it up).
                 if (!pyodide) return;
-                
+
                 // Reset Output but maintain previous session state
                 consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; </span>';
                 const userCode = editor.getValue();
@@ -420,16 +433,13 @@ sys.stdout = sys.stderr = StringIO()
 
         });
 
-        const runCodeBtn = document.getElementById("runCodeBtn");
-
         // 3.5 Run Code Button Logic (Manual Trigger)
         if (runCodeBtn) {
             runCodeBtn.addEventListener("click", async () => {
-                if (!pyodide) return;
-                
                 runCodeBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Running...';
                 runCodeBtn.disabled = true;
                 consoleOutput.innerHTML = '<span class="text-success">&gt;&gt;&gt; </span>';
+                if (!await ensurePyodide()) { runCodeBtn.innerHTML = '<i class="bi bi-play"></i> Run Code'; runCodeBtn.disabled = false; return; }
                 const userCode = editor.getValue();
 
                 try {
@@ -459,12 +469,12 @@ sys.stdout = sys.stderr = StringIO()
 
         runBtn.addEventListener("click", async () => {
 
-            if (!pyodide) return;
-
             // Reset UI
             runBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Running...';
             runBtn.disabled = true;
             consoleOutput.innerHTML = "";
+
+            if (!await ensurePyodide()) { runBtn.innerHTML = '<i class="bi bi-play-fill"></i> Run Tests'; runBtn.disabled = false; return; }
 
             testItems.forEach(item => {
                 const icon = item.querySelector('.test-icon');
