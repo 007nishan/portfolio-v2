@@ -214,15 +214,12 @@
         transform-origin: top center;
     }
 
-    /* Prevent interaction like dragging or saving on the image itself */
     #modalImage {
         width: 100%;
         height: auto;
         display: block;
-        pointer-events: none;
-        /* Stops drag and drop */
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-        border-radius: 4px;
+        border-radius: var(--radius-md);
     }
 
     /* Optional instruction text */
@@ -385,7 +382,7 @@
         <!-- IMAGE STATE: manual challenges that have a screenshot -->
         <a href="#" id="modalLink" title="Click to view breakdown! (Ctrl+Scroll to Zoom)"
             style="display:none;">
-            <img id="modalImage" src="" alt="Challenge Snapshot" oncontextmenu="return false;"
+            <img id="modalImage" src="" alt="Challenge Snapshot"
                 onerror="showTextFallback();">
         </a>
 
