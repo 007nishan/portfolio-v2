@@ -214,14 +214,14 @@
 
                     </div>
                     <div class="card-body p-4">
-                        <div id="satisfactionContainer" class="p-4 border border-1 mb-4 text-center rounded-0" style="background-color: #f8f9fa;">
-                            <h6 class="fw-bold text-uppercase small mb-2" style="letter-spacing: 1px; color: var(--color-neutral-medium);">How satisfied are you with our approach of today me's challenge Solution?</h6>
-                            <div class="d-flex justify-content-center gap-4 fs-3">
-                                <span style="cursor: pointer; transition: 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="submitRating('🤩')">🤩</span>
-                                <span style="cursor: pointer; transition: 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="submitRating('🙂')">🙂</span>
-                                <span style="cursor: pointer; transition: 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="submitRating('😐')">😐</span>
-                                <span style="cursor: pointer; transition: 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="submitRating('🙁')">🙁</span>
-                                <span style="cursor: pointer; transition: 0.2s;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'" onclick="submitRating('😭')">😭</span>
+                        <div id="satisfactionContainer" class="p-4 border border-1 mb-4 text-center rounded-0" style="background-color: var(--color-surface-subtle);">
+                            <h6 class="fw-bold text-uppercase small mb-2" style="letter-spacing: 1px; color: var(--color-neutral-medium);">How satisfied are you with our approach to today's challenge solution?</h6>
+                            <div class="d-flex justify-content-center gap-4 fs-3" role="group" aria-label="Rate this challenge's solution">
+                                <button type="button" class="rating-emoji" aria-label="Very satisfied" onclick="submitRating('🤩')">🤩</button>
+                                <button type="button" class="rating-emoji" aria-label="Satisfied" onclick="submitRating('🙂')">🙂</button>
+                                <button type="button" class="rating-emoji" aria-label="Neutral" onclick="submitRating('😐')">😐</button>
+                                <button type="button" class="rating-emoji" aria-label="Dissatisfied" onclick="submitRating('🙁')">🙁</button>
+                                <button type="button" class="rating-emoji" aria-label="Very dissatisfied" onclick="submitRating('😭')">😭</button>
                             </div>
                             
                             <!-- Suggestions Box Triggered conditionally -->
