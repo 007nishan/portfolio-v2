@@ -21,6 +21,8 @@ import sys
 import json
 import argparse
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from datetime import datetime, timedelta
 import time
 
@@ -31,6 +33,19 @@ if basedir not in sys.path:
 
 from app import app
 from models import db, Challenge
+
+# ── HTTP session with retry + exponential backoff ────────────────────────────
+# A single transient blip at the 00:30 cron must not silently drop the day's
+# challenge for 24h. Retry 5xx/429 with backoff (Release It! resilience).
+_session = requests.Session()
+_retry = Retry(
+    total=4,
+    backoff_factor=1.5,  # 0s, 1.5s, 3s, 6s
+    status_forcelist=(429, 500, 502, 503, 504),
+    allowed_methods=frozenset(["GET"]),
+)
+_session.mount("https://", HTTPAdapter(max_retries=_retry))
+_session.mount("http://", HTTPAdapter(max_retries=_retry))
 
 # ── Constants ────────────────────────────────────────────────────────────────
 FCC_API_BASE = "https://api.freecodecamp.org/daily-coding-challenge/date"
@@ -65,7 +80,7 @@ def fetch_challenge(date_str):
     """
     url = f"{FCC_API_BASE}/{date_str}"
     try:
-        resp = requests.get(url, timeout=15)
+        resp = _session.get(url, timeout=15)  # retries/backoff via _session
         if resp.status_code == 200:
             return resp.json()
         elif resp.status_code == 404:
@@ -75,7 +90,7 @@ def fetch_challenge(date_str):
             log(f"  API error for {date_str}: HTTP {resp.status_code}")
             return None
     except requests.exceptions.RequestException as e:
-        log(f"  Network error fetching {date_str}: {e}")
+        log(f"  Network error fetching {date_str} (after retries): {e}")
         return None
 
 
