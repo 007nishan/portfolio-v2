@@ -53,10 +53,12 @@
   --radius-md: 4px;
 }
 
-/* Base Typography */
+/* Base Typography — fluid (mobile-first). clamp(min, preferred, max) scales
+   smoothly with the viewport so headings don't overflow 320px screens and body
+   text stays readable without media-query steps (Marcotte fluid type). */
 body {
   font-family: var(--font-family-serif);
-  font-size: 18px;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem); /* ~16px → 18px */
   line-height: 1.6;
   color: var(--color-neutral-dark);
   background-color: var(--color-primary-white);
@@ -77,23 +79,23 @@ h6 {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: clamp(2rem, 1.4rem + 3vw, 3rem);
 }
 
 h2 {
-  font-size: 2.25rem;
+  font-size: clamp(1.6rem, 1.2rem + 2vw, 2.25rem);
 }
 
 h3 {
-  font-size: 1.75rem;
+  font-size: clamp(1.35rem, 1.1rem + 1.25vw, 1.75rem);
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 1.05rem + 0.75vw, 1.5rem);
 }
 
 h5 {
-  font-size: 1.25rem;
+  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.25rem);
   font-family: var(--font-family-sans);
   text-transform: uppercase;
   letter-spacing: 0.05em;
