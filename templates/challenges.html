@@ -358,7 +358,7 @@
                     {% if challenge %}
                         {% if challenge.image_path %}
                         <img src="/static/images/{{ challenge.image_path }}" class="challenge-thumb"
-                            alt="{{ challenge.title }}">
+                            alt="{{ challenge.title }}" loading="lazy" decoding="async">
                         {% else %}
                         <!-- FCC-synced challenge (no image): show a clickable text tile -->
                         <div class="challenge-thumb challenge-thumb-text">

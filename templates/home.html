@@ -54,6 +54,7 @@
                     <a href="/challenge/{{ daily_challenge.date_id }}">
                         <img src="{{ url_for('static', filename='images/' + daily_challenge.image_path) }}"
                             alt="{{ daily_challenge.title }}" class="img-fluid border shadow-sm hover-zoom"
+                            fetchpriority="high" decoding="async"
                             style="border-color: var(--color-neutral-light) !important;">
                     </a>
                 </div>
