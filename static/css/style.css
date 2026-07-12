@@ -343,3 +343,26 @@ footer a:hover {
 .blinking-cursor {
   animation: blink 1s step-end infinite;
 }
+
+/* Emoji rating buttons — real <button>s (keyboard/SR operable) styled to look
+   like bare emoji. Replaces click-only <span>s. */
+.rating-emoji {
+  background: none;
+  border: none;
+  padding: 4px;
+  font-size: inherit;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.rating-emoji:hover,
+.rating-emoji:focus-visible {
+  transform: scale(1.2);
+}
+
+.rating-emoji:focus-visible {
+  outline: 2px solid var(--color-accent-petrol);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}

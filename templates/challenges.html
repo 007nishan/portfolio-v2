@@ -66,9 +66,17 @@
         top: 5px;
         left: 5px;
         font-weight: 700;
-        color: var(--color-neutral-400);
+        /* WCAG 2.2 SC 1.4.3: #adb5bd on white is 2.07:1 (fails AA). Use the
+           medium neutral (#666, 5.7:1) so day numbers are legible. */
+        color: var(--color-neutral-medium);
         z-index: 2;
         font-size: 1rem;
+    }
+
+    /* Visible keyboard focus for the now-focusable calendar tiles (SC 2.4.7) */
+    .calendar-day.has-challenge:focus-visible {
+        outline: 3px solid var(--color-accent-petrol);
+        outline-offset: -3px;
     }
 
     .calendar-day.has-challenge .day-number {
@@ -186,6 +194,10 @@
         /* Keep it on-screen */
         top: 20px;
         right: 40px;
+        /* button reset */
+        background: none;
+        border: none;
+        line-height: 1;
         color: #f1f1f1;
         font-size: 40px;
         font-weight: bold;
@@ -193,6 +205,11 @@
         cursor: pointer;
         z-index: 10000;
         text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    #modalClose:focus-visible {
+        outline: 2px solid var(--color-primary-white);
+        outline-offset: 2px;
     }
 
     #modalClose:hover,
@@ -326,11 +343,16 @@
                 {% else %}
                 {% set date_str = '%04d-%02d-%02d'|format(month_data.year, month_data.month, day) %}
                 {% set challenge = month_data.challenges.get(day) %}
-                <div class="calendar-day {% if challenge %}has-challenge{% endif %}" data-date="{{ date_str }}" {% if
-                    challenge %} title="{{ challenge.title }}" data-title="{{ challenge.title|lower }}"
+                <div class="calendar-day {% if challenge %}has-challenge{% endif %}" data-date="{{ date_str }}"
+                    {% if challenge %}
+                    title="{{ challenge.title }}" data-title="{{ challenge.title|lower }}"
                     {% if challenge.image_path %}data-image="/static/images/{{ challenge.image_path }}"{% endif %}
                     data-url="/challenge/{{ challenge.date_id }}"
-                    {% endif %} onclick="handleDateClick('{{ date_str }}')">
+                    role="button" tabindex="0"
+                    aria-label="Open challenge for {{ date_str }}: {{ challenge.title }}"
+                    onclick="handleDateClick('{{ date_str }}')"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();handleDateClick('{{ date_str }}');}"
+                    {% endif %}>
                     <div class="day-number">{{ day }}</div>
 
                     {% if challenge %}
@@ -340,7 +362,7 @@
                         {% else %}
                         <!-- FCC-synced challenge (no image): show a clickable text tile -->
                         <div class="challenge-thumb challenge-thumb-text">
-                            <i class="bi bi-code-square"></i>
+                            <i class="bi bi-code-square" aria-hidden="true"></i>
                             <span>{{ challenge.title }}</span>
                         </div>
                         {% endif %}
@@ -369,8 +391,9 @@
 </section>
 
 <!-- The Lightbox Modal -->
-<div id="imageModal" onclick="closeModal(event)">
-    <span id="modalClose" onclick="closeModal(event)">&times;</span>
+<div id="imageModal" onclick="closeModal(event)" role="dialog" aria-modal="true"
+    aria-label="Challenge details">
+    <button type="button" id="modalClose" onclick="closeModal(event)" aria-label="Close">&times;</button>
     <div id="modalWrapper">
 
         <!-- ACK STATE: shown instantly on click while content is fetched -->
