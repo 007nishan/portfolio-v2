@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 import datetime
+import markdown
 
 db = SQLAlchemy()
 
@@ -60,6 +61,38 @@ class Challenge(db.Model):
 
     def __repr__(self):
         return f"<Challenge {self.date_id}: {self.title}>"
+
+    # ── Rendered-content properties (single place markdown is rendered) ──
+    # Views previously each called markdown.markdown(field or "") with slightly
+    # different null-guards. Centralizing here keeps rendering consistent (DRY).
+    @property
+    def problem_html(self):
+        return markdown.markdown(self.problem_text) if self.problem_text else ""
+
+    @property
+    def concepts_html(self):
+        return markdown.markdown(self.concepts_text) if self.concepts_text else ""
+
+    @property
+    def qa_html(self):
+        return markdown.markdown(self.qa_text) if self.qa_text else ""
+
+    @property
+    def has_image(self):
+        """The canonical 'does this challenge have an image' test. FCC-synced
+        rows use image_path="" (empty-string sentinel); manual rows have a
+        real filename. All readers should use this, not raw truthiness."""
+        return bool(self.image_path)
+
+    @property
+    def display_description_html(self):
+        """Single source for the challenge's problem description as HTML:
+        prefer FCC's pre-rendered HTML, else render the manual markdown."""
+        if self.fcc_description:
+            return self.fcc_description
+        if self.problem_text:
+            return markdown.markdown(self.problem_text)
+        return ""
 
 # ==============================================================================
 # ADDITIVE: USER MANAGEMENT & NOTEBOOK PROGRESS TABLES
