@@ -295,9 +295,16 @@
 <style>
     .CodeMirror {
         height: 100%;
-        min-height: 400px;
+        /* Fluid: shorter editor on phones, full 400px from tablet up (R-03) */
+        min-height: clamp(240px, 45vh, 400px);
         font-family: var(--font-family-mono);
         font-size: 14px;
+    }
+
+    @media (min-width: 992px) {
+        .CodeMirror {
+            min-height: 400px;
+        }
     }
 
     .test-item code {
