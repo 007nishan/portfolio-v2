@@ -1,7 +1,8 @@
 import os
 import sys
 import logging
-from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, session
+from functools import wraps
+from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, session, abort
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 import json
@@ -34,10 +35,23 @@ from models import db, Challenge, User, Comment, ConceptStrength, UserNotebook
 
 
 app = Flask(__name__)
-# Use an environment variable for the secret key in production
-app.config["SECRET_KEY"] = os.environ.get(
-    "SECRET_KEY", "default-dev-key-change-this-in-env"
-)
+
+# SECRET_KEY from the environment (12-Factor III). Fail closed in production:
+# if FLASK_ENV=production and no SECRET_KEY is set, refuse to boot rather than
+# run with a forgeable session key. A dev fallback is used only otherwise.
+_secret = os.environ.get("SECRET_KEY")
+if not _secret:
+    if os.environ.get("FLASK_ENV", "").lower() == "production":
+        raise RuntimeError(
+            "SECRET_KEY must be set in the environment when FLASK_ENV=production."
+        )
+    _secret = "dev-only-insecure-key-set-SECRET_KEY-in-env"
+    logger.warning("SECRET_KEY not set — using an insecure dev key (non-production).")
+app.config["SECRET_KEY"] = _secret
+
+# Admin key gates the content-management routes. When unset, /admin is locked
+# entirely (fail closed) rather than open to the world.
+ADMIN_KEY = os.environ.get("ADMIN_KEY")
 
 # Database Configuration (Append-only schema rule enforced in models.py)
 data_dir = os.path.join(basedir, "data")
@@ -341,9 +355,32 @@ def _handle_admin_post():
     return redirect(url_for("home"))
 
 
+def admin_required(view):
+    """Gate a view behind the ADMIN_KEY (passed as ?key=, X-Admin-Key header,
+    or an admin session flag). Fails CLOSED: if ADMIN_KEY is unset the route is
+    locked entirely. Interim control until real OAuth/OTP is wired (OTP/OAuth
+    are currently stubs), and MUST be in place before the tunnel is exposed."""
+    @wraps(view)
+    def wrapped(*args, **kwargs):
+        if not ADMIN_KEY:
+            logger.warning("Admin route blocked: ADMIN_KEY not configured.")
+            abort(404)  # don't advertise the endpoint when unconfigured
+        provided = (
+            request.args.get("key")
+            or request.headers.get("X-Admin-Key")
+            or session.get("admin_key")
+        )
+        if provided != ADMIN_KEY:
+            abort(403)
+        session["admin_key"] = ADMIN_KEY  # remember for subsequent requests
+        return view(*args, **kwargs)
+    return wrapped
+
+
 @app.route("/admin", methods=["GET", "POST"])
+@admin_required
 def admin():
-    """Admin page for updating daily challenges."""
+    """Admin page for updating daily challenges (ADMIN_KEY-gated)."""
     if request.method == "POST":
         return _handle_admin_post()
     return render_template("admin.html", today=datetime.now().strftime("%Y-%m-%d"))

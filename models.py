@@ -27,9 +27,13 @@ class Challenge(db.Model):
         db.String(10), unique=True, nullable=False
     )  # Format: YYYY-MM-DD
     title = db.Column(db.String(255), nullable=False)
+    # NOT NULL to match the live schema (the original migration created it NOT
+    # NULL and the append-only rule forbids relaxing it). FCC-synced rows use
+    # the empty-string sentinel ""; readers must use the `has_image` property,
+    # not raw truthiness. (DBN-5 / SSOT-5)
     image_path = db.Column(
-        db.String(255), nullable=True
-    )  # Nullable: FCC-synced challenges may not have images
+        db.String(255), nullable=False, default=""
+    )
 
     # Store the actual markdown/code text for layout rendering
     problem_text = db.Column(db.Text, nullable=True)
