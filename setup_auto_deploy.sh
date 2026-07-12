@@ -51,10 +51,13 @@ else
         fi
     done < <(git ls-tree -r --name-only "origin/$BRANCH")
     echo "  ✓ Backed up existing tracked files to: $BACKUP"
-    # Adopt the remote branch. reset (not checkout -f) sets tracked files to the
-    # repo version but NEVER touches untracked files (data/, venv/, .env stay).
-    git checkout -q -b "$BRANCH" "origin/$BRANCH" 2>/dev/null || git checkout -q "$BRANCH"
+    # Adopt the remote branch. `reset --hard` (NOT checkout) is conflict-proof:
+    # it overwrites tracked files to the repo version and leaves untracked files
+    # (data/, venv/, .env, admin_id.txt, claw_config.json) completely alone.
+    # checkout would abort here because the server's existing app.py/templates
+    # collide with the incoming tree; reset does not.
     git reset --hard "origin/$BRANCH"
+    git branch -M "$BRANCH"
     git branch --set-upstream-to="origin/$BRANCH" "$BRANCH" 2>/dev/null || true
 fi
 echo "  ✓ Now at $(git rev-parse --short HEAD): $(git log -1 --pretty=%s)"
@@ -105,8 +108,24 @@ sudo systemctl daemon-reload
 sudo systemctl enable --now portfolio-deploy.timer
 echo "  ✓ Timer active."
 
+# ──────────────────────────────────────────────────────────────────────────────
+# 4. Restart the app NOW so the just-pulled code (calendar fix etc.) goes live
+#    immediately — without this, the running Flask process keeps serving the old
+#    Jinja-cached templates until the next restart.
+# ──────────────────────────────────────────────────────────────────────────────
+echo "[4/4] Restarting the app so the new code is live now..."
+chmod +x "$PORTFOLIO_DIR/auto_deploy.sh" 2>/dev/null || true
+if command -v systemctl >/dev/null 2>&1 && systemctl list-unit-files 2>/dev/null | grep -q "^portfolio.service"; then
+    sudo systemctl restart portfolio && echo "  ✓ Restarted systemd service 'portfolio'."
+else
+    pkill -f "python app.py" 2>/dev/null || true
+    ( cd "$PORTFOLIO_DIR" && source venv/bin/activate 2>/dev/null; nohup python app.py > /tmp/portfolio.log 2>&1 & )
+    echo "  ✓ Restarted app.py via nohup (no systemd 'portfolio' service found)."
+fi
+
 echo ""
 echo "=== Auto-Deploy Setup Complete ==="
-echo "From now on: 'git push origin main' -> live on the server within ~60s."
+echo "The calendar fix + standardization are now LIVE on this server."
+echo "From now on: 'git push origin main' -> live here within ~60s."
 echo "Watch it:  journalctl -u portfolio-deploy.service -f"
 echo "Logs:      tail -f $PORTFOLIO_DIR/data/deploy.log"
