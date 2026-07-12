@@ -26,6 +26,20 @@
         border: 2px solid var(--color-neutral-800);
     }
 
+    /* On phones, 7 columns can't shrink below a legible width. Below 480px we
+       keep the week intact and let it scroll horizontally rather than crushing
+       cells to unreadable ~40px (R-01: legibility over fitting). */
+    @media (max-width: 480px) {
+        .calendar-grid {
+            min-width: 420px;
+        }
+
+        .month-block {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
     .calendar-header {
         text-align: center;
         font-weight: 700;
@@ -191,15 +205,15 @@
 
     #modalClose {
         position: fixed;
-        /* Keep it on-screen */
-        top: 20px;
-        right: 40px;
+        /* Keep it on-screen; fluid offsets so it doesn't crowd small screens */
+        top: clamp(10px, 3vw, 20px);
+        right: clamp(14px, 5vw, 40px);
         /* button reset */
         background: none;
         border: none;
         line-height: 1;
         color: #f1f1f1;
-        font-size: 40px;
+        font-size: clamp(32px, 8vw, 40px);
         font-weight: bold;
         transition: 0.3s;
         cursor: pointer;
@@ -263,9 +277,9 @@
     .modal-text {
         max-width: 760px;
         width: 100%;
-        background-color: #ffffff;
+        background-color: var(--color-primary-white);
         color: var(--color-neutral-dark);
-        padding: 40px 36px;
+        padding: clamp(20px, 5vw, 40px) clamp(18px, 4vw, 36px);
         border-radius: var(--radius-sm);
         text-align: left;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
