@@ -1,0 +1,97 @@
+#!/bin/bash
+# ==============================================================================
+# setup_auto_deploy.sh  —  ONE-TIME setup for GitHub -> server auto-deploy
+# ==============================================================================
+# Run this ONCE on the server (192.168.1.150, user nishan). It:
+#   1. Ensures ~/portfolio is a git checkout of the GitHub repo tracking main
+#   2. Installs a systemd timer that runs auto_deploy.sh every minute
+#   3. Allows the timer to restart the portfolio service without a password
+#
+# After this, every `git push` to origin/main goes live on the server within
+# ~1 minute — no manual SSH, no open ports, no passwords in the repo.
+#
+# Prerequisite: run this while OFF the corporate VPN if the server is on your
+# home LAN. Requires sudo on the server.
+# ==============================================================================
+
+set -euo pipefail
+
+PORTFOLIO_DIR="${PORTFOLIO_DIR:-/home/nishan/portfolio}"
+REPO_URL="${REPO_URL:-https://github.com/007nishan/portfolio-v2.git}"
+BRANCH="${DEPLOY_BRANCH:-main}"
+USER_NAME="$(whoami)"
+
+echo "=== Portfolio Auto-Deploy Setup ==="
+echo "Dir:    $PORTFOLIO_DIR"
+echo "Repo:   $REPO_URL ($BRANCH)"
+echo ""
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 1. Make ~/portfolio a git checkout of the repo (preserving data/ & venv/)
+# ──────────────────────────────────────────────────────────────────────────────
+if [ -d "$PORTFOLIO_DIR/.git" ]; then
+    echo "[1/3] Git repo already initialized in $PORTFOLIO_DIR."
+    cd "$PORTFOLIO_DIR"
+    git remote set-url origin "$REPO_URL" 2>/dev/null || git remote add origin "$REPO_URL"
+else
+    echo "[1/3] Initializing git in existing $PORTFOLIO_DIR (keeping data/ and venv/)..."
+    cd "$PORTFOLIO_DIR"
+    git init -q
+    git remote add origin "$REPO_URL"
+    git fetch --quiet origin "$BRANCH"
+    # Adopt the remote branch without deleting untracked server files (data/, venv/, .env)
+    git checkout -f -b "$BRANCH" "origin/$BRANCH"
+fi
+echo "  ✓ Now at $(git rev-parse --short HEAD)"
+
+chmod +x "$PORTFOLIO_DIR/auto_deploy.sh" 2>/dev/null || true
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 2. Allow the deploy script to restart the service without a password prompt
+#    (scoped to ONLY the restart command — not blanket NOPASSWD)
+# ──────────────────────────────────────────────────────────────────────────────
+echo "[2/3] Granting scoped sudo for service restart..."
+SUDO_RULE="$USER_NAME ALL=(ALL) NOPASSWD: /bin/systemctl restart portfolio, /usr/bin/systemctl restart portfolio"
+echo "$SUDO_RULE" | sudo tee /etc/sudoers.d/91-portfolio-deploy > /dev/null
+sudo chmod 0440 /etc/sudoers.d/91-portfolio-deploy
+echo "  ✓ Scoped sudo rule installed (restart portfolio only)."
+
+# ──────────────────────────────────────────────────────────────────────────────
+# 3. systemd service + timer to run auto_deploy.sh every minute
+# ──────────────────────────────────────────────────────────────────────────────
+echo "[3/3] Installing systemd timer (checks GitHub every 60s)..."
+
+sudo tee /etc/systemd/system/portfolio-deploy.service > /dev/null << EOF
+[Unit]
+Description=Portfolio GitHub Auto-Deploy (pull + restart)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=$USER_NAME
+WorkingDirectory=$PORTFOLIO_DIR
+ExecStart=/bin/bash $PORTFOLIO_DIR/auto_deploy.sh
+EOF
+
+sudo tee /etc/systemd/system/portfolio-deploy.timer > /dev/null << EOF
+[Unit]
+Description=Run Portfolio Auto-Deploy every minute
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=60
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl enable --now portfolio-deploy.timer
+echo "  ✓ Timer active."
+
+echo ""
+echo "=== Auto-Deploy Setup Complete ==="
+echo "From now on: 'git push origin main' -> live on the server within ~60s."
+echo "Watch it:  journalctl -u portfolio-deploy.service -f"
+echo "Logs:      tail -f $PORTFOLIO_DIR/data/deploy.log"
