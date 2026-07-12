@@ -94,7 +94,13 @@ migrate = Migrate(app, db)
 @app.route("/", methods=["GET"])
 def home():
     """Homepage — shows the latest daily challenge and a rotating quote."""
-    challenge = Challenge.query.order_by(Challenge.date_id.desc()).first()
+    # Degrade gracefully: a transient DB hiccup should render an empty-state
+    # homepage, not a 500 (SH-5).
+    try:
+        challenge = Challenge.query.order_by(Challenge.date_id.desc()).first()
+    except Exception as e:
+        logger.error("home(): failed to load latest challenge: %s", e)
+        challenge = None
 
     # Fetch the daily quote (hourly file cache; degrades to a fallback quote).
     live_quote, live_author = get_daily_quote()
@@ -599,8 +605,54 @@ def rate_challenge():
     return jsonify({"success": True, "notified": notified})
 
 
+# ==============================================================================
+# OBSERVABILITY & SELF-HEALING
+# ------------------------------------------------------------------------------
+# /health = liveness (process is up). /readiness = can actually serve traffic
+# (DB reachable). The watchdog/monitoring should poll /readiness so recovery
+# triggers on real app health, not a bare process check or an external ping.
+# ==============================================================================
+
+
+@app.route("/health", methods=["GET"])
+def health():
+    """Liveness probe — cheap, no dependencies."""
+    return jsonify({"status": "ok"}), 200
+
+
+@app.route("/readiness", methods=["GET"])
+def readiness():
+    """Readiness probe — verifies the DB is reachable (SELECT 1)."""
+    try:
+        from sqlalchemy import text
+        db.session.execute(text("SELECT 1"))
+        return jsonify({"status": "ready", "database": "ok"}), 200
+    except Exception as e:
+        logger.error("Readiness check failed: %s", e)
+        return jsonify({"status": "unavailable", "database": "error"}), 503
+
+
+@app.errorhandler(404)
+def not_found(e):
+    """Return JSON for API paths, HTML otherwise."""
+    if request.path.startswith("/api/"):
+        return jsonify({"error": "not_found", "path": request.path}), 404
+    return render_template("base.html"), 404
+
+
+@app.errorhandler(500)
+def server_error(e):
+    """Surface (log) the failure and degrade gracefully rather than crash."""
+    logger.exception("Unhandled server error on %s", request.path)
+    if request.path.startswith("/api/"):
+        return jsonify({"error": "server_error"}), 500
+    return render_template("base.html"), 500
+
+
 if __name__ == "__main__":
-
-
-
-    app.run(debug=True, host="127.0.0.1", port=5001)
+    # debug and host/port are configurable via env (12-Factor). debug defaults
+    # OFF; only enabled when FLASK_DEBUG is truthy in local development.
+    debug = os.environ.get("FLASK_DEBUG", "").lower() in ("1", "true", "yes")
+    host = os.environ.get("HOST", "127.0.0.1")
+    port = int(os.environ.get("PORT", "5001"))
+    app.run(debug=debug, host=host, port=port)
