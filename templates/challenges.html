@@ -41,7 +41,8 @@
         background-color: white;
         min-height: 120px;
         position: relative;
-        transition: all 0.2s ease;
+        /* Only transition color — never transform size (that caused hover flicker) */
+        transition: background-color 0.15s ease, box-shadow 0.15s ease;
         display: flex;
         flex-direction: column;
     }
@@ -56,7 +57,8 @@
 
     .calendar-day.has-challenge:hover {
         background-color: #f1f3f5;
-        transform: scale(0.98);
+        /* Inset highlight instead of scale() — no layout shift, no flicker loop */
+        box-shadow: inset 0 0 0 2px #005863;
     }
 
     .day-number {
@@ -87,6 +89,37 @@
         left: 0;
         padding: 28px 4px 4px 4px;
         /* Space for the day number */
+    }
+
+    /* FCC-synced challenges have no image: a clickable text tile stands in for the thumbnail */
+    .challenge-thumb-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 6px;
+        color: #343a40;
+        background-color: #f1f3f5;
+        overflow: hidden;
+    }
+
+    .challenge-thumb-text i {
+        font-size: 1.4rem;
+        color: #005863;
+    }
+
+    .challenge-thumb-text span {
+        font-size: 0.72rem;
+        font-weight: 700;
+        line-height: 1.15;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        padding: 0 4px;
     }
 
     .challenge-link {
@@ -201,6 +234,52 @@
         text-align: center;
         padding-bottom: 20px;
     }
+
+    /* ── Modal state panels (Ack: loader / text-fallback / error) ── */
+    .modal-panel {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #f1f1f1;
+        text-align: center;
+        min-height: 40vh;
+        font-family: var(--font-family-sans);
+    }
+
+    .modal-text {
+        max-width: 760px;
+        width: 100%;
+        background-color: #ffffff;
+        color: var(--color-neutral-dark);
+        padding: 40px 36px;
+        border-radius: var(--radius-sm);
+        text-align: left;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-text-title {
+        font-family: var(--font-family-serif);
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 1rem;
+        color: var(--color-primary-black);
+    }
+
+    .modal-text-body {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--color-neutral-dark);
+    }
+
+    .modal-text-body :is(pre, code) {
+        background-color: #f1f3f5;
+        border-radius: 3px;
+    }
+
+    .modal-text-body pre {
+        padding: 0.9rem;
+        overflow-x: auto;
+    }
 </style>
 {% endblock %}
 
@@ -252,13 +331,22 @@
                 {% set challenge = month_data.challenges.get(day) %}
                 <div class="calendar-day {% if challenge %}has-challenge{% endif %}" data-date="{{ date_str }}" {% if
                     challenge %} title="{{ challenge.title }}" data-title="{{ challenge.title|lower }}"
-                    data-image="/static/images/{{ challenge.image_path }}" data-url="/challenge/{{ challenge.date_id }}"
+                    {% if challenge.image_path %}data-image="/static/images/{{ challenge.image_path }}"{% endif %}
+                    data-url="/challenge/{{ challenge.date_id }}"
                     {% endif %} onclick="handleDateClick('{{ date_str }}')">
                     <div class="day-number">{{ day }}</div>
 
                     {% if challenge %}
-                    <img src="/static/images/{{ challenge.image_path }}" class="challenge-thumb"
-                        alt="{{ challenge.title }}" onerror="this.src='/static/images/placeholder.jpg'">
+                        {% if challenge.image_path %}
+                        <img src="/static/images/{{ challenge.image_path }}" class="challenge-thumb"
+                            alt="{{ challenge.title }}">
+                        {% else %}
+                        <!-- FCC-synced challenge (no image): show a clickable text tile -->
+                        <div class="challenge-thumb challenge-thumb-text">
+                            <i class="bi bi-code-square"></i>
+                            <span>{{ challenge.title }}</span>
+                        </div>
+                        {% endif %}
                     {% endif %}
                 </div>
                 {% endif %}
@@ -287,9 +375,41 @@
 <div id="imageModal" onclick="closeModal(event)">
     <span id="modalClose" onclick="closeModal(event)">&times;</span>
     <div id="modalWrapper">
-        <a href="#" id="modalLink" title="Click to view breakdown! (Ctrl+Scroll to Zoom)">
-            <img id="modalImage" src="" alt="Challenge Snapshot" oncontextmenu="return false;">
+
+        <!-- ACK STATE: shown instantly on click while content is fetched -->
+        <div id="modalLoader" class="modal-panel">
+            <div class="spinner-border text-light" role="status" aria-hidden="true"></div>
+            <div class="mt-3">Loading challenge…</div>
+        </div>
+
+        <!-- IMAGE STATE: manual challenges that have a screenshot -->
+        <a href="#" id="modalLink" title="Click to view breakdown! (Ctrl+Scroll to Zoom)"
+            style="display:none;">
+            <img id="modalImage" src="" alt="Challenge Snapshot" oncontextmenu="return false;"
+                onerror="showTextFallback();">
         </a>
+
+        <!-- TEXT STATE: fallback for challenges with no image (FCC-synced) -->
+        <div id="modalText" class="modal-panel modal-text" style="display:none;">
+            <div class="d-flex align-items-center gap-2 mb-3 flex-wrap justify-content-center">
+                <span id="modalNumber" class="badge" style="background-color:#a70e13; display:none;"></span>
+                <span id="modalDate" class="badge bg-dark"></span>
+            </div>
+            <h2 id="modalTitle" class="modal-text-title"></h2>
+            <div id="modalDescription" class="modal-text-body"></div>
+            <div id="modalConcepts" class="modal-text-body mt-3"></div>
+            <a href="#" id="modalDetailBtn" class="btn btn-light rounded-0 mt-4 text-uppercase fw-bold"
+                style="letter-spacing:1px;">
+                <i class="bi bi-braces me-2"></i> View Full Solution &amp; Breakdown
+            </a>
+        </div>
+
+        <!-- ERROR STATE: content genuinely unavailable -->
+        <div id="modalError" class="modal-panel" style="display:none;">
+            <i class="bi bi-exclamation-triangle display-4 mb-3"></i>
+            <div id="modalErrorMsg">Could not load this challenge.</div>
+        </div>
+
         <div id="modalCaption">
             <i class="bi bi-info-circle me-1"></i> Scroll to view • <strong>Ctrl+Scroll</strong> to zoom •
             <strong>Click</strong> image for solutions
@@ -307,9 +427,9 @@
     let zoomLevel = 1;
     const modalLink = document.getElementById('modalLink');
 
-    // Zoom functionality via Ctrl + MouseWheel
+    // Zoom functionality via Ctrl + MouseWheel (only meaningful in the image state)
     document.getElementById('imageModal').addEventListener('wheel', function (e) {
-        if (e.ctrlKey || e.metaKey) {
+        if ((e.ctrlKey || e.metaKey) && modalLink && modalLink.style.display !== 'none') {
             e.preventDefault(); // Prevent standard page scroll when trying to zoom
             if (e.deltaY < 0) {
                 zoomLevel += 0.15; // Zoom in
@@ -322,20 +442,106 @@
         }
     }, { passive: false });
 
-    function openModal(imageSrc, challengeUrl) {
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
+    // ── Modal state panels (Ack pattern: ack -> fetch -> render one of these) ──
+    const modalEls = {
+        modal: () => document.getElementById('imageModal'),
+        loader: () => document.getElementById('modalLoader'),
+        imageLink: () => document.getElementById('modalLink'),
+        image: () => document.getElementById('modalImage'),
+        text: () => document.getElementById('modalText'),
+        error: () => document.getElementById('modalError'),
+    };
 
-        modalImg.src = imageSrc;
-        modalLink.href = challengeUrl;
+    // The challenge URL currently in the modal (used by image onerror fallback + detail button)
+    let currentChallengeUrl = "#";
+    let currentContent = null;
 
-        // Reset zoom state on open
+    function showOnlyPanel(name) {
+        modalEls.loader().style.display = (name === 'loader') ? 'flex' : 'none';
+        modalEls.imageLink().style.display = (name === 'image') ? 'block' : 'none';
+        modalEls.text().style.display = (name === 'text') ? 'block' : 'none';
+        modalEls.error().style.display = (name === 'error') ? 'flex' : 'none';
+    }
+
+    function ensureModalOpen() {
+        const modal = modalEls.modal();
+        if (!modal.classList.contains('show')) {
+            document.body.style.overflow = "hidden";
+            modal.classList.add('show');
+        }
+    }
+
+    // Render the IMAGE state (manual challenges with a screenshot)
+    function renderImage(imageSrc, challengeUrl) {
+        currentChallengeUrl = challengeUrl || "#";
+        const img = modalEls.image();
+        modalEls.imageLink().href = currentChallengeUrl;
+        // Reset zoom state
         zoomLevel = 1;
-        modalLink.style.transform = `scale(${zoomLevel})`;
+        modalEls.imageLink().style.transform = `scale(${zoomLevel})`;
+        showOnlyPanel('image');
+        img.src = imageSrc;   // set last so onerror fires after the panel is visible
+    }
 
-        // Prevent body scrolling
-        document.body.style.overflow = "hidden";
-        modal.classList.add('show');
+    // Render the TEXT state (FCC / no-image challenges) — the guaranteed fallback
+    function renderText(content) {
+        currentChallengeUrl = content.url || "#";
+        document.getElementById('modalTitle').textContent = content.title || 'Daily Challenge';
+        document.getElementById('modalDate').textContent = content.date_id || '';
+        const numEl = document.getElementById('modalNumber');
+        if (content.challenge_number) {
+            numEl.textContent = 'Challenge #' + content.challenge_number;
+            numEl.style.display = 'inline-block';
+        } else {
+            numEl.style.display = 'none';
+        }
+        document.getElementById('modalDescription').innerHTML =
+            content.description_html || '<p class="fst-italic">No problem statement recorded for this day yet.</p>';
+        document.getElementById('modalConcepts').innerHTML = content.concepts_html || '';
+        document.getElementById('modalDetailBtn').href = content.url || '#';
+        showOnlyPanel('text');
+    }
+
+    // If an image fails to load, fall back to the text content (never leave it blank)
+    function showTextFallback() {
+        if (currentContent) {
+            renderText(currentContent);
+        } else {
+            showOnlyPanel('error');
+            document.getElementById('modalErrorMsg').textContent =
+                'Image unavailable. Open the full challenge for details.';
+        }
+    }
+
+    // ── Ack dispatch: open + acknowledge instantly, then fetch one source ──
+    async function openChallenge(dateStr) {
+        ensureModalOpen();
+        showOnlyPanel('loader');          // ACK: user sees immediate response
+        currentContent = null;
+
+        try {
+            const resp = await fetch(`/api/challenge/${dateStr}`);
+            if (!resp.ok) {
+                showOnlyPanel('error');
+                document.getElementById('modalErrorMsg').textContent =
+                    'No challenge found for ' + dateStr + '.';
+                return;
+            }
+            const data = await resp.json();
+            currentContent = data;
+
+            // Single source decides the view: image if present, else text fallback.
+            if (data.has_image && data.image) {
+                renderImage(data.image, data.url);
+            } else {
+                renderText(data);
+            }
+        } catch (e) {
+            // Network/parse failure — degrade gracefully to the detail page link
+            showOnlyPanel('error');
+            document.getElementById('modalErrorMsg').innerHTML =
+                'Could not load challenge. <a href="/challenge/' + dateStr + '" class="text-light text-decoration-underline">Open it directly</a>.';
+        }
     }
 
     function closeModal(event) {
@@ -358,24 +564,10 @@
         }
     });
 
-    // Pre-calculate all available challenges from server data for lookup
-    const allChallenges = {
-        {% for month in calendar_data %}
-    {% for week in month.matrix %}
-    {% for day in week %}
-    {% if day != 0 %}
-    {% set challenge = month.challenges.get(day) %}
-    {% if challenge %}
-    "{{ challenge.date_id }}": {
-        "image": "/static/images/{{ challenge.image_path }}",
-            "url": "/challenge/{{ challenge.date_id }}"
-    },
-    {% endif %}
-    {% endif %}
-    {% endfor %}
-    {% endfor %}
-    {% endfor %}
-    };
+    // Note: challenge content is no longer embedded in the page. handleDateClick()
+    // fetches it live from /api/challenge/<date> (single source of truth), so the
+    // calendar always reflects the current DB state — including freshly-synced FCC
+    // questions — without redeploying or duplicating data into the HTML.
 
     // Global date click handler
     function handleDateClick(dateStr) {
@@ -392,19 +584,17 @@
             return;
         }
 
-        if (allChallenges[dateStr]) {
-            const data = allChallenges[dateStr];
-            openModal(data.image, data.url);
-        } else {
-            if (dateStr < '2025-08-11') {
-                alert("[Fact: Daily coding challenge started from 11th August 2025]");
-            } else {
-                const report = confirm("Details are missing for this date. Would you like to report this to the admin and GET IN TOUCH?");
-                if (report) {
-                    window.location.href = "mailto:nishanr.pro@gmail.com?subject=Missing Challenge Details for " + dateStr;
-                }
-            }
+        // Hard guard: before the challenge series even started.
+        if (dateStr < '2025-08-11') {
+            alert("[Fact: Daily coding challenge started from 11th August 2025]");
+            return;
         }
+
+        // Single source of truth: always ask the API in real time rather than
+        // trusting the page's embedded lookup. This is what fixes recent past
+        // dates that previously showed nothing, and it guarantees the question
+        // is fetched correctly whether or not an image exists.
+        openChallenge(dateStr);
     }
 
     // Initialize Flatpickr for Inline Archive Calendar

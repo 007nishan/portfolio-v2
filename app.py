@@ -407,6 +407,47 @@ def api_challenges():
     )
 
 
+@app.route("/api/challenge/<date_id>", methods=["GET"])
+def api_challenge(date_id):
+    """Single source of truth for one challenge's display content, fetched in
+    real-time from the one parent row. The calendar modal uses this so it never
+    has to embed/duplicate content in the page, and always has a text fallback
+    when no image exists (FCC-synced challenges)."""
+    c = Challenge.query.filter_by(date_id=date_id).first()
+    if not c:
+        return jsonify({"exists": False, "date_id": date_id}), 404
+
+    has_image = bool(c.image_path)
+
+    # Prefer the FCC description (already HTML); else render manual markdown.
+    if c.fcc_description:
+        description_html = c.fcc_description
+    elif c.problem_text:
+        description_html = markdown.markdown(c.problem_text)
+    else:
+        description_html = ""
+
+    concepts_html = markdown.markdown(c.concepts_text) if c.concepts_text else ""
+
+    return jsonify(
+        {
+            "exists": True,
+            "date_id": c.date_id,
+            "title": c.title,
+            "challenge_number": c.challenge_number,
+            "has_image": has_image,
+            "image": (
+                url_for("static", filename="images/" + c.image_path)
+                if has_image
+                else None
+            ),
+            "description_html": description_html,
+            "concepts_html": concepts_html,
+            "url": url_for("challenge_detail", date_id=c.date_id),
+        }
+    )
+
+
 @app.route("/read/<token>", methods=["GET"])
 def read_book(token):
     """Serve dynamically generated illustrative books."""
