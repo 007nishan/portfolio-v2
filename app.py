@@ -1,9 +1,11 @@
 import os
 import sys
+import logging
 from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, session
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 import json
+import re
 from datetime import datetime
 import calendar
 import markdown
@@ -16,6 +18,14 @@ from dotenv import load_dotenv
 basedir = os.path.abspath(os.path.dirname(__file__))
 if basedir not in sys.path:
     sys.path.insert(0, basedir)
+
+# Structured logging (replaces scattered print() calls) — treat logs as an
+# event stream (12-Factor XI). Level configurable via LOG_LEVEL env var.
+logging.basicConfig(
+    level=os.environ.get("LOG_LEVEL", "INFO").upper(),
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+)
+logger = logging.getLogger("portfolio")
 
 # Load environment variables from .env file
 load_dotenv(os.path.join(basedir, ".env"))
@@ -81,76 +91,20 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
 migrate = Migrate(app, db)
 
 
-# Load challenge data
-def load_challenges():
-    """Load all challenges from project folder"""
-    challenges = []
-    project_dir = app.config["UPLOAD_FOLDER"]
-
-    # Create directory if it doesn't exist
-    os.makedirs(project_dir, exist_ok=True)
-
-    # Get all jpg files
-    try:
-        files = sorted([f for f in os.listdir(project_dir) if f.endswith(".jpg")])
-    except FileNotFoundError:
-        files = []
-
-    for filename in files:
-        # Parse filename: YYYYMMDD_challengename.jpg
-        date_str = filename[:8]
-        name = filename[9:-4].replace("_", " ").title()
-
-        challenge = {
-            "date": f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:8]}",
-            "name": name,
-            "image": filename,
-            "status": "not_started",  # not_started, in_progress, mastered
-            "github_link": None,
-            "concepts": [],
-        }
-        challenges.append(challenge)
-
-    return challenges
-
-
 @app.route("/", methods=["GET"])
 def home():
-    """Homepage"""
-    # Load Latest Daily Challenge from DB
-    challenge = None
-    try:
-        challenge = Challenge.query.order_by(Challenge.date_id.desc()).first()
-    except Exception as e:
-        print(f"Error loading daily challenge: {e}")
+    """Homepage — shows the latest daily challenge and a rotating quote."""
+    challenge = Challenge.query.order_by(Challenge.date_id.desc()).first()
 
-    total_challenges = Challenge.query.count()
-    mastered = total_challenges
-    in_progress = 1
-
-    stats = {
-        "total": total_challenges,
-        "mastered": mastered,
-        "in_progress": in_progress,
-        "progress_percent": (
-            round((mastered / total_challenges) * 100, 1) if total_challenges > 0 else 0
-        ),
-    }
-
-    import markdown
-    # Fetch a fresh daily quote (auto-cached for 24 hours)
+    # Fetch the daily quote (hourly file cache; degrades to a fallback quote).
     live_quote, live_author = get_daily_quote()
 
-    # Convert descriptions safely for structured rendering
-    problem_html = ""
-    concepts_html = ""
-    if challenge:
-        problem_html = markdown.markdown(challenge.problem_text or "")
-        concepts_html = markdown.markdown(challenge.concepts_text or "")
+    # Rendered markdown comes from model properties (single rendering path).
+    problem_html = challenge.problem_html if challenge else ""
+    concepts_html = challenge.concepts_html if challenge else ""
 
     return render_template(
         "home.html",
-        stats=stats,
         daily_challenge=challenge,
         problem_html=problem_html,
         concepts_html=concepts_html,
@@ -211,12 +165,10 @@ def challenge_detail(date_id):
     """Individual challenge detail"""
     challenge = Challenge.query.filter_by(date_id=date_id).first_or_404()
 
-    # Render markdown content safely
-    problem_html = markdown.markdown(challenge.problem_text or "")
-    concepts_html = markdown.markdown(challenge.concepts_text or "")
-    qa_html = markdown.markdown(challenge.qa_text or "")
-
-    import re
+    # Rendered markdown comes from model properties (single rendering path).
+    problem_html = challenge.problem_html
+    concepts_html = challenge.concepts_html
+    qa_html = challenge.qa_html
 
     # Parse FCC JSON test data for template rendering
     challenge.fcc_py_tests_parsed = []
@@ -259,32 +211,42 @@ def sql_challenges():
     return render_template("sql.html")
 
 
-def get_fcc_quote():
-    """Fetch a random motivational quote from FCC's open-source JSON.
-    Returns a formatted string for backward compatibility with admin form."""
+FCC_MOTIVATION_URL = (
+    "https://raw.githubusercontent.com/freeCodeCamp/freeCodeCamp/main/"
+    "client/i18n/locales/english/motivation.json"
+)
+FALLBACK_QUOTE = ("Whatever you are, be a good one.", "Abraham Lincoln")
+
+
+def _fetch_random_fcc_quote():
+    """Fetch a single random (quote, author) from FCC's open-source JSON.
+    Returns the fallback tuple on any failure. Single network+parse path
+    shared by both the cached daily quote and the admin form."""
     try:
-        quote_url = "https://raw.githubusercontent.com/freeCodeCamp/freeCodeCamp/main/client/i18n/locales/english/motivation.json"
-        response = requests.get(quote_url, timeout=5)
+        response = requests.get(FCC_MOTIVATION_URL, timeout=5)
         if response.status_code == 200:
-            data = response.json()
-            quotes = data.get("motivationalQuotes", [])
+            quotes = response.json().get("motivationalQuotes", [])
             if quotes:
-                random_quote = random.choice(quotes)
-                q = random_quote.get("quote", "Keep coding!")
-                a = random_quote.get("author", "FreeCodeCamp")
-                return f'"{q}"\n- {a}'
+                chosen = random.choice(quotes)
+                return (
+                    chosen.get("quote", FALLBACK_QUOTE[0]),
+                    chosen.get("author", FALLBACK_QUOTE[1]),
+                )
     except Exception as e:
-        print(f"Failed to fetch quote: {e}")
-    return '"Whatever you are, be a good one."\n- Abraham Lincoln'
+        logger.warning("Failed to fetch FCC quote: %s", e)
+    return FALLBACK_QUOTE
+
+
+def get_fcc_quote():
+    """Formatted quote string for the admin form (uses the hourly cache)."""
+    quote, author = get_daily_quote()
+    return f'"{quote}"\n- {author}'
 
 
 def get_daily_quote():
-    """Get the daily FCC quote with an hourly file cache.
-    Fetches a fresh quote once per hour, caches to disk,
-    and serves the cached version for subsequent visits.
-    Completely autonomous — no manual intervention needed."""
+    """Get the daily FCC quote with an hourly file cache. Fetches once per
+    hour, caches to disk, and serves the cache otherwise. Autonomous."""
     cache_file = os.path.join(app.root_path, "data", "quote_cache.json")
-    # Cache key including hour to update hourly
     today_hour = datetime.now().strftime("%Y-%m-%d-%H")
 
     # Check cache first
@@ -295,23 +257,9 @@ def get_daily_quote():
             if cache.get("date") == today_hour:
                 return cache.get("quote", ""), cache.get("author", "")
     except Exception:
-        pass  # Cache corrupt, fetch fresh
+        pass  # Cache corrupt — fall through and fetch fresh
 
-    # Cache miss or stale — fetch fresh from FCC
-    quote_text = "Whatever you are, be a good one."
-    author = "Abraham Lincoln"
-    try:
-        quote_url = "https://raw.githubusercontent.com/freeCodeCamp/freeCodeCamp/main/client/i18n/locales/english/motivation.json"
-        response = requests.get(quote_url, timeout=5)
-        if response.status_code == 200:
-            data = response.json()
-            quotes = data.get("motivationalQuotes", [])
-            if quotes:
-                random_quote = random.choice(quotes)
-                quote_text = random_quote.get("quote", quote_text)
-                author = random_quote.get("author", author)
-    except Exception as e:
-        print(f"Failed to fetch daily quote: {e}")
+    quote_text, author = _fetch_random_fcc_quote()
 
     # Save to cache
     try:
@@ -323,7 +271,7 @@ def get_daily_quote():
                 ensure_ascii=False,
             )
     except Exception as e:
-        print(f"Failed to write quote cache: {e}")
+        logger.warning("Failed to write quote cache: %s", e)
 
     return quote_text, author
 
@@ -417,32 +365,20 @@ def api_challenge(date_id):
     if not c:
         return jsonify({"exists": False, "date_id": date_id}), 404
 
-    has_image = bool(c.image_path)
-
-    # Prefer the FCC description (already HTML); else render manual markdown.
-    if c.fcc_description:
-        description_html = c.fcc_description
-    elif c.problem_text:
-        description_html = markdown.markdown(c.problem_text)
-    else:
-        description_html = ""
-
-    concepts_html = markdown.markdown(c.concepts_text) if c.concepts_text else ""
-
     return jsonify(
         {
             "exists": True,
             "date_id": c.date_id,
             "title": c.title,
             "challenge_number": c.challenge_number,
-            "has_image": has_image,
+            "has_image": c.has_image,
             "image": (
                 url_for("static", filename="images/" + c.image_path)
-                if has_image
+                if c.has_image
                 else None
             ),
-            "description_html": description_html,
-            "concepts_html": concepts_html,
+            "description_html": c.display_description_html,
+            "concepts_html": c.concepts_html,
             "url": url_for("challenge_detail", date_id=c.date_id),
         }
     )
@@ -620,29 +556,47 @@ def github_callback():
 
 @app.route("/api/rate", methods=["POST"])
 def rate_challenge():
-    """Trigger Telegram Instant Notification of dopamine satisfaction levels."""
-    import requests
-    data = request.get_json()
-    challenge_id = data.get('challenge_id')
-    rating = data.get('rating')
-    suggestion = data.get('suggestion', '')
-    
+    """Record a satisfaction rating and (best-effort) notify via Telegram.
+
+    The notification is best-effort: if it fails we still record the rating
+    intent, but we surface the delivery status honestly to the caller instead
+    of always claiming success."""
+    data = request.get_json(silent=True) or {}
+    challenge_id = data.get("challenge_id")
+    rating = data.get("rating")
+    suggestion = data.get("suggestion", "")
+
     flag_status = "Green Flag ✅" if rating in ["🤩", "🙂"] else "Red Flag 🚨"
-    
-    bot_token = "8571904781:AAEhaViQiEihWOHShd0a0ywJ0BMufSh13p8"
-    chat_id = "8687680759"
-    msg = f"🔔 **Dopamine Satisfaction Alert**\nChallenge: #{challenge_id}\nFeedback: {rating}\nStatus: {flag_status}"
-    
+
+    # Credentials come from the environment (12-Factor III). Secret rotation is
+    # deferred to production; until then the env var may be unset and we skip.
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+
+    msg = (
+        f"🔔 **Dopamine Satisfaction Alert**\nChallenge: #{challenge_id}\n"
+        f"Feedback: {rating}\nStatus: {flag_status}"
+    )
     if suggestion:
         msg += f"\n💡 **Suggestion**: {suggestion}"
 
-    
-    try:
-        requests.get(f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={msg}", timeout=5)
-    except Exception as e:
-        pass # Fault tolerance
-        
-    return jsonify({"success": True, "message": "Log Pushed!"})
+    notified = False
+    if bot_token and chat_id:
+        try:
+            resp = requests.get(
+                f"https://api.telegram.org/bot{bot_token}/sendMessage",
+                params={"chat_id": chat_id, "text": msg},
+                timeout=5,
+            )
+            notified = resp.ok
+            if not resp.ok:
+                logger.warning("Telegram notify returned HTTP %s", resp.status_code)
+        except Exception as e:
+            logger.warning("Telegram notify failed: %s", e)
+    else:
+        logger.info("Telegram notify skipped: TELEGRAM_BOT_TOKEN/CHAT_ID not set")
+
+    return jsonify({"success": True, "notified": notified})
 
 
 if __name__ == "__main__":
