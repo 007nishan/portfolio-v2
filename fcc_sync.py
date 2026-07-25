@@ -204,8 +204,30 @@ def upsert_challenge(data):
 # ── Main Sync Logic ─────────────────────────────────────────────────────────
 
 
+def generate_card(date_str):
+    """Best-effort: (re)generate the landing-page card for a synced challenge.
+    A card-render failure must NEVER break content sync, so this swallows
+    errors and only logs them. Manual /admin uploads are protected inside
+    challenge_card.generate_for_challenge (it skips non-generated images)."""
+    try:
+        import challenge_card
+        challenge = Challenge.query.filter_by(date_id=date_str).first()
+        if not challenge:
+            return
+        status, fname = challenge_card.generate_for_challenge(
+            challenge, apply=True, force=False
+        )
+        if status == "generated":
+            db.session.commit()
+            log(f"  card: generated {fname}")
+        elif status == "skipped-manual":
+            log(f"  card: kept manual image ({fname})")
+    except Exception as e:  # noqa: BLE001 — never let card render abort sync
+        log(f"  card: generation failed (non-fatal): {e}")
+
+
 def sync_today():
-    """Fetch and upsert today's challenge only."""
+    """Fetch and upsert today's challenge only, then refresh its card."""
     today = datetime.now().strftime("%Y-%m-%d")
     log(f"Syncing today's challenge ({today})...")
 
@@ -213,6 +235,7 @@ def sync_today():
     if data:
         action, date = upsert_challenge(data)
         log(f"  {action.upper()}: {date} — {data.get('title', '?')}")
+        generate_card(date)
     else:
         log(f"  No data returned for {today}. Challenge may not be released yet.")
 
