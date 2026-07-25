@@ -76,8 +76,15 @@ bash get_public_url.sh   # tries cloudflared → ngrok → localhost.run → ser
 | Any residual branding in DB? | `python check_fcc_text.py` |
 | Logs (server) | `data/sync_log.txt`, `data/cron_sync.log`, `data/watchdog.log`, `bot_health.log` |
 
+## Landing-challenge cards (generated, own-brand)
+- **`challenge_card.py`** renders a self-branded, Python-only, **golden-ratio** landing card per challenge from synced FCC data (title/description/`fcc_starter_py`), Editorial theme. Output: `static/images/<YYYYMMDD>_card.jpg`. One `DESIGN`/`THEMES` config → `python challenge_card.py --all --force` re-renders every card. Logo (top-left) and character (right golden column) zones are reserved for future assets.
+- **Daily hook:** `fcc_sync.py` calls `generate_card()` after each upsert (best-effort; a render failure never breaks content sync). Manual `/admin` uploads are protected — only empty or `*_card.jpg` rows regenerate.
+- **FCC images removed (2026-07-25):** the 150 FCC-sourced `static/images/*.jpg` + `daily_challenges/*` were replaced by branded cards and **purged from the ENTIRE git history** (repo `.git` 56M→35M). `main` was force-pushed with rewritten history. Backup bundle: `C:\tmp\portfolio-v2-backup-20260725.bundle` (all refs, pre-purge tip `baa2536`).
+- **Cards ARE committed** to git now (site serves them from our own server, not GitHub CDN). The daily cron regenerates them in place; `auto_deploy.sh` ignores `static/images/` drift so that never blocks a deploy.
+
 ## Key operational facts / gotchas
 - **Timezone:** sync cron is 00:30 **US Central**; watchdog compensates for missed runs after outages.
 - **Tunnel URLs are ephemeral** (trycloudflare rotates on restart) unless a *named* tunnel is set up — `book_generator.py` hardcodes a stale URL (`allowing-together-accepts-apache.trycloudflare.com`).
-- **`data/` is gitignored** — the live DB and images-in-DB references do not travel with the repo; only the 150 `static/images/*.jpg` files do.
+- **`data/` is gitignored** — the live DB does not travel with the repo. Challenge **images are now the generated `*_card.jpg` cards** (committed to git); the old FCC `*.jpg` set was removed.
+- **History rewrite → server self-heals:** `auto_deploy.sh` now falls back from `merge --ff-only` to `reset --hard origin/main` when a fast-forward is impossible (as after the history purge). Server converges automatically on next 60s tick; untracked `data/`, `venv/`, `.env`, and manual uploads are preserved. If ever doing this manually: `cd ~/portfolio && git fetch origin && git reset --hard origin/main && sudo systemctl restart portfolio`.
 - **Server-only Python deps** (pytesseract, Pillow, dateparser, opencv-python, numpy, python-telegram-bot, openai, paramiko, beautifulsoup4, lxml) are **not** in `requirements.txt` — install manually where those scripts run.
