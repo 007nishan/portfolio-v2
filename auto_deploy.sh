@@ -45,17 +45,41 @@ fi
 
 log "New commits detected: $LOCAL -> $REMOTE. Deploying..."
 
-# 2. Refuse to clobber uncommitted local changes (server-only edits, data, etc.)
-if ! git diff --quiet || ! git diff --cached --quiet; then
-    log "WARNING: uncommitted local changes present. Aborting auto-deploy to avoid data loss."
-    git status --short | tee -a "$LOG_FILE"
+# 2. Refuse to clobber uncommitted local changes to server-only edits (hand-
+#    patched app.py, templates, etc.) — EXCEPT drift under static/images/, which
+#    is expected: the daily cron regenerates challenge cards in place, so those
+#    tracked .jpg files legitimately differ. We exclude that path from the guard
+#    and then restore the tracked images to HEAD so the merge/reset is clean.
+#    Untracked images (a brand-new day's card not yet in git) are left untouched.
+if ! git diff --quiet -- ':!static/images' || ! git diff --cached --quiet -- ':!static/images'; then
+    log "WARNING: uncommitted local changes present (outside static/images). Aborting to avoid data loss."
+    git status --short -- ':!static/images' | tee -a "$LOG_FILE"
     exit 1
 fi
+# Discard regenerable card drift so ff/reset applies cleanly (safe: cards are
+# rebuilt from DB data by challenge_card.py; nothing unique lives here).
+git checkout -- static/images 2>/dev/null || true
 
-# 3. Fast-forward only (never rewrite server history)
-if ! git merge --ff-only "origin/$BRANCH" >> "$LOG_FILE" 2>&1; then
-    log "ERROR: fast-forward merge failed (diverged history). Manual intervention needed."
-    exit 1
+# 3. Fast-forward if possible. If the remote history was REWRITTEN (e.g. the
+#    one-time FCC-image history purge), a fast-forward is impossible. Because
+#    step 2 already guaranteed a clean working tree, it is safe to adopt the
+#    rewritten history with `reset --hard`: it overwrites TRACKED files to the
+#    remote version (deleting files that no longer exist upstream — like the old
+#    FCC images) while leaving UNTRACKED files (data/, venv/, .env,
+#    admin_id.txt, claw_config.json, and any manual /admin image uploads)
+#    completely untouched. This makes the server self-heal on a history rewrite
+#    instead of stalling on a failed fast-forward.
+if git merge --ff-only "origin/$BRANCH" >> "$LOG_FILE" 2>&1; then
+    log "Fast-forwarded to origin/$BRANCH."
+else
+    log "Fast-forward not possible (remote history was rewritten)."
+    log "Working tree is clean (verified above) — adopting rewritten history via reset --hard."
+    if git reset --hard "origin/$BRANCH" >> "$LOG_FILE" 2>&1; then
+        log "Reset working tree to origin/$BRANCH (untracked files preserved; stale tracked files removed)."
+    else
+        log "ERROR: reset --hard failed. Manual intervention needed."
+        exit 1
+    fi
 fi
 
 # 4. Install any new/updated Python deps into the venv
