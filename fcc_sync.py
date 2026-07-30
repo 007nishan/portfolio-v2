@@ -240,6 +240,54 @@ def sync_today():
         log(f"  No data returned for {today}. Challenge may not be released yet.")
 
 
+def _latest_synced_date():
+    """The newest date_id already in the DB, or the day before FCC_START_DATE if
+    the DB is empty (so a first run backfills from the very first challenge)."""
+    latest = Challenge.query.order_by(Challenge.date_id.desc()).first()
+    if latest and latest.date_id:
+        try:
+            return datetime.strptime(latest.date_id, "%Y-%m-%d")
+        except ValueError:
+            pass
+    return FCC_START_DATE - timedelta(days=1)
+
+
+def sync_catchup():
+    """Gap-filling daily sync: fetch every day from the day AFTER the newest
+    synced challenge through today, so a missed run (outage, Action failure) is
+    automatically caught up on the next run instead of leaving a permanent hole.
+
+    This is what the daily automation calls. It self-heals: if the newest synced
+    day is already today, it does exactly one fetch (today) and is a no-op if the
+    challenge is unchanged."""
+    today = datetime.now()
+    start = _latest_synced_date() + timedelta(days=1)
+    if start > today:
+        # Already current; still refresh today in case it was updated upstream.
+        start = today
+    log(f"Catch-up sync: {start.strftime('%Y-%m-%d')} -> {today.strftime('%Y-%m-%d')}")
+
+    current = start
+    inserted = updated = errors = 0
+    while current <= today:
+        date_str = current.strftime("%Y-%m-%d")
+        data = fetch_challenge(date_str)
+        if data:
+            action, _ = upsert_challenge(data)
+            if action == "inserted":
+                inserted += 1
+            elif action == "updated":
+                updated += 1
+            log(f"  {action.upper()}: {date_str} — {data.get('title', '?')}")
+            generate_card(date_str)
+        else:
+            errors += 1  # a 404 for a not-yet-released future day is expected/benign
+        current += timedelta(days=1)
+        time.sleep(0.3)  # be polite to FCC
+
+    log(f"Catch-up complete: {inserted} inserted, {updated} updated, {errors} no-data.")
+
+
 def backfill():
     """Fetch all challenges from FCC_START_DATE to today."""
     today = datetime.now()
@@ -296,6 +344,12 @@ def main():
         action="store_true",
         help="Backfill all challenges from 2025-08-11 to today",
     )
+    parser.add_argument(
+        "--catchup",
+        action="store_true",
+        help="Gap-filling sync: newest-synced+1 -> today (self-heals missed runs). "
+             "Use this for the daily automation.",
+    )
     args = parser.parse_args()
 
     with app.app_context():
@@ -304,6 +358,8 @@ def main():
 
         if args.backfill:
             backfill()
+        elif args.catchup:
+            sync_catchup()
         else:
             sync_today()
 

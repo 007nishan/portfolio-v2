@@ -105,6 +105,19 @@ if [ -f "$PORTFOLIO_DIR/venv/bin/pip" ] && [ -f "$PORTFOLIO_DIR/requirements.txt
         log "WARNING: pip install reported an issue (continuing)."
 fi
 
+# 4a2. Sync challenge CONTENT from the committed JSON (GitHub-as-buffer, consumer
+#      side). The daily GitHub Action is the sole WRITER of content; every host is
+#      a pure CONSUMER that rebuilds its DB from content/challenges/*.json after a
+#      pull. import_challenges.py is an idempotent UPSERT — it only ever adds/
+#      updates challenge rows and NEVER touches user tables (users/comments/etc.),
+#      so live user data is preserved. Non-fatal: a hiccup here must not block the
+#      rest of the deploy.
+if [ -f "$PORTFOLIO_DIR/venv/bin/python" ] && [ -f "$PORTFOLIO_DIR/import_challenges.py" ]; then
+    "$PORTFOLIO_DIR/venv/bin/python" import_challenges.py --quiet >> "$LOG_FILE" 2>&1 \
+        && log "Imported challenge content from content/challenges/." \
+        || log "WARNING: challenge content import reported an issue (continuing)."
+fi
+
 # 4b. Rebuild books (HTML + PDF) if their sources changed, gated by the
 #     error-free readability lint. A failing gate aborts the deploy BEFORE the
 #     restart so a broken book is never served. Non-fatal if book tooling absent.

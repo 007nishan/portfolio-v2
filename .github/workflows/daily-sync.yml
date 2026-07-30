@@ -1,0 +1,84 @@
+name: Daily FCC Challenge Sync
+
+# ==============================================================================
+# THE DAILY ROBOT — GitHub is the single source of truth for challenge content.
+# ------------------------------------------------------------------------------
+# Once a day this workflow:
+#   1. Rebuilds a throwaway DB from the committed content/challenges/*.json
+#   2. Gap-fills the FCC challenge(s) from the newest synced day -> today
+#      (self-heals: a missed run is caught up on the next run, no permanent hole)
+#   3. Regenerates the branded card image for each new/updated day
+#   4. Exports the DB back to content/challenges/*.json
+#   5. Commits + pushes ONLY if something actually changed
+#
+# This is the ONLY writer of daily content. Every host (the home server, a fresh
+# clone, a cloud runner) is a pure CONSUMER: it `git pull`s and rebuilds its DB
+# from the committed JSON. So no host needs to hit the FCC API, and the home
+# laptop is no longer the single point of failure.
+#
+# The DB here is disposable (built fresh each run under data/, which is gitignored
+# and never committed) — only the JSON + card image travel in git.
+# ==============================================================================
+
+on:
+  schedule:
+    # 06:45 UTC daily. FCC releases at 00:30 US Central, which is 05:30 UTC (CDT,
+    # summer) or 06:30 UTC (CST, winter). 06:45 UTC fires safely after both, so a
+    # single cron is correct year-round without DST juggling.
+    - cron: "45 6 * * *"
+  workflow_dispatch: {}   # allow a manual run from the Actions tab any time
+
+# Least privilege: the job only needs to push commits back to the repo.
+permissions:
+  contents: write
+
+# Never let two daily runs race each other into a push conflict.
+concurrency:
+  group: daily-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install runtime dependencies
+        # Lean install: only what sync + card generation need (Flask stack,
+        # requests, Pillow). The heavy books/PDF toolchain is not needed here.
+        run: |
+          python -m pip install --upgrade pip
+          pip install Flask==3.0.0 Flask-SQLAlchemy==3.1.1 Flask-Migrate==4.0.5 \
+                      python-dotenv==1.0.0 "markdown>=3.5,<4" requests==2.31.0 Pillow
+
+      - name: Rebuild DB from committed JSON
+        # Fresh, gitignored DB under data/ — the committed JSON is the source of
+        # truth; user tables don't exist on the runner and are never touched.
+        run: python import_challenges.py --quiet
+
+      - name: Gap-filling FCC sync (self-heals missed runs) + regenerate cards
+        run: python fcc_sync.py --catchup
+
+      - name: Export DB back to per-day JSON
+        run: python export_challenges.py --quiet
+
+      - name: Commit & push if content changed
+        run: |
+          git config user.name  "portfolio-bot"
+          git config user.email "actions@users.noreply.github.com"
+          # Stage only content + card images — never the gitignored DB.
+          git add content/challenges/ 'static/images/*_card.jpg'
+          if git diff --cached --quiet; then
+            echo "No content changes today — nothing to commit."
+          else
+            DATE="$(date -u +%Y-%m-%d)"
+            git commit -m "chore(content): daily FCC sync ${DATE} [skip ci]"
+            git push
+            echo "Pushed daily content update for ${DATE}."
+          fi
