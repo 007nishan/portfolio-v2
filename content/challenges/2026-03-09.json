@@ -1,0 +1,17 @@
+{
+  "challenge_number": 211,
+  "concepts_text": null,
+  "date_id": "2026-03-09",
+  "fcc_description": "<p>Given an array of numbers, return the sum of all the numbers.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sumArray([1, 2, 3, 4, 5])</code> should return <code>15</code>.</p>\", \"testString\": \"assert.equal(sumArray([1, 2, 3, 4, 5]), 15);\"}, {\"text\": \"<p><code>sumArray([42])</code> should return <code>42</code>.</p>\", \"testString\": \"assert.equal(sumArray([42]), 42);\"}, {\"text\": \"<p><code>sumArray([5, -2, 7, -3])</code> should return <code>7</code>.</p>\", \"testString\": \"assert.equal(sumArray([5, -2, 7, -3]), 7);\"}, {\"text\": \"<p><code>sumArray([203, 145, -129, 6293, 523, -919, 845, 2434])</code> should return <code>9395</code>.</p>\", \"testString\": \"assert.equal(sumArray([203, 145, -129, 6293, 523, -919, 845, 2434]), 9395);\"}, {\"text\": \"<p><code>sumArray([0, 0])</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(sumArray([0, 0]), 0);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sum_array([1, 2, 3, 4, 5])</code> should return <code>15</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_array([1, 2, 3, 4, 5]), 15)`)\\n}})\"}, {\"text\": \"<p><code>sum_array([42])</code> should return <code>42</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_array([42]), 42)`)\\n}})\"}, {\"text\": \"<p><code>sum_array([5, -2, 7, -3])</code> should return <code>7</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_array([5, -2, 7, -3]), 7)`)\\n}})\"}, {\"text\": \"<p><code>sum_array([203, 145, -129, 6293, 523, -919, 845, 2434])</code> should return <code>9395</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_array([203, 145, -129, 6293, 523, -919, 845, 2434]), 9395)`)\\n}})\"}, {\"text\": \"<p><code>sum_array([0, 0])</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_array([0, 0]), 0)`)\\n}})\"}]",
+  "fcc_starter_js": "function sumArray(numbers) {\n\n  return numbers;\n}",
+  "fcc_starter_py": "def sum_array(numbers):\n\n    return numbers",
+  "image_path": "20260309_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Array Sum"
+}

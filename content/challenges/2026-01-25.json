@@ -1,0 +1,17 @@
+{
+  "challenge_number": 168,
+  "concepts_text": null,
+  "date_id": "2026-01-25",
+  "fcc_description": "<p>Given a string representing the width and height of an image, and a number to scale the image, return the scaled width and height.</p>\n<ul>\n<li>The input string is in the format <code>\"WxH\"</code>. For example, <code>\"800x600\"</code>.</li>\n<li>The scale is a number to multiply the width and height by.</li>\n</ul>\n<p>Return the scaled dimensions in the same <code>\"WxH\"</code> format.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>scaleImage(\\\"800x600\\\", 2)</code> should return <code>\\\"1600x1200\\\"</code>.</p>\", \"testString\": \"assert.equal(scaleImage(\\\"800x600\\\", 2), \\\"1600x1200\\\");\"}, {\"text\": \"<p><code>scaleImage(\\\"100x100\\\", 10)</code> should return <code>\\\"1000x1000\\\"</code>.</p>\", \"testString\": \"assert.equal(scaleImage(\\\"100x100\\\", 10), \\\"1000x1000\\\");\"}, {\"text\": \"<p><code>scaleImage(\\\"1024x768\\\", 0.5)</code> should return <code>\\\"512x384\\\"</code>.</p>\", \"testString\": \"assert.equal(scaleImage(\\\"1024x768\\\", 0.5), \\\"512x384\\\");\"}, {\"text\": \"<p><code>scaleImage(\\\"300x200\\\", 1.5)</code> should return <code>\\\"450x300\\\"</code>.</p>\", \"testString\": \"assert.equal(scaleImage(\\\"300x200\\\", 1.5), \\\"450x300\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>scale_image(\\\"800x600\\\", 2)</code> should return <code>\\\"1600x1200\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(scale_image(\\\"800x600\\\", 2), \\\"1600x1200\\\")`)\\n}})\"}, {\"text\": \"<p><code>scale_image(\\\"100x100\\\", 10)</code> should return <code>\\\"1000x1000\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(scale_image(\\\"100x100\\\", 10), \\\"1000x1000\\\")`)\\n}})\"}, {\"text\": \"<p><code>scale_image(\\\"1024x768\\\", 0.5)</code> should return <code>\\\"512x384\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(scale_image(\\\"1024x768\\\", 0.5), \\\"512x384\\\")`)\\n}})\"}, {\"text\": \"<p><code>scale_image(\\\"300x200\\\", 1.5)</code> should return <code>\\\"450x300\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(scale_image(\\\"300x200\\\", 1.5), \\\"450x300\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function scaleImage(size, scale) {\n\n  return size;\n}",
+  "fcc_starter_py": "def scale_image(size, scale):\n\n    return size",
+  "image_path": "20260125_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Scaled Image"
+}

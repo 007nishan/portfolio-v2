@@ -1,0 +1,17 @@
+{
+  "challenge_number": 20,
+  "concepts_text": null,
+  "date_id": "2025-08-30",
+  "fcc_description": "<p>Given an array of integers, return an array of integers that appear more than once in the initial array, sorted in ascending order. If no values appear more than once, return an empty array.</p>\n<ul>\n<li>Only include one instance of each value in the returned array.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>findDuplicates([1, 2, 3, 4, 5])</code> should return <code>[]</code>.</p>\", \"testString\": \"assert.deepEqual(findDuplicates([1, 2, 3, 4, 5]), []);\"}, {\"text\": \"<p><code>findDuplicates([1, 2, 3, 4, 1, 2])</code> should return <code>[1, 2]</code>.</p>\", \"testString\": \"assert.deepEqual(findDuplicates([1, 2, 3, 4, 1, 2]), [1, 2]);\"}, {\"text\": \"<p><code>findDuplicates([2, 34, 0, 1, -6, 23, 5, 3, 2, 5, 67, -6, 23, 2, 43, 2, 12, 0, 2, 4, 4])</code> should return <code>[-6, 0, 2, 4, 5, 23]</code>.</p>\", \"testString\": \"assert.deepEqual(findDuplicates([2, 34, 0, 1, -6, 23, 5, 3, 2, 5, 67, -6, 23, 2, 43, 2, 12, 0, 2, 4, 4]), [-6, 0, 2, 4, 5, 23]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>find_duplicates([1, 2, 3, 4, 5])</code> should return <code>[]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_duplicates([1, 2, 3, 4, 5]), [])`)\\n}})\"}, {\"text\": \"<p><code>find_duplicates([1, 2, 3, 4, 1, 2])</code> should return <code>[1, 2]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_duplicates([1, 2, 3, 4, 1, 2]), [1, 2])`)\\n}})\"}, {\"text\": \"<p><code>find_duplicates([2, 34, 0, 1, -6, 23, 5, 3, 2, 5, 67, -6, 23, 2, 43, 2, 12, 0, 2, 4, 4])</code> should return <code>[-6, 0, 2, 4, 5, 23]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_duplicates([2, 34, 0, 1, -6, 23, 5, 3, 2, 5, 67, -6, 23, 2, 43, 2, 12, 0, 2, 4, 4]), [-6, 0, 2, 4, 5, 23])`)\\n}})\"}]",
+  "fcc_starter_js": "function findDuplicates(arr) {\n\n  return arr;\n}",
+  "fcc_starter_py": "def find_duplicates(arr):\n\n    return arr",
+  "image_path": "20250830_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Array Duplicates"
+}

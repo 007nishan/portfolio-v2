@@ -1,0 +1,17 @@
+{
+  "challenge_number": 88,
+  "concepts_text": null,
+  "date_id": "2025-11-06",
+  "fcc_description": "<p>Given a string date in the format <code>YYYY-MM-DD</code>, return the day of the week.</p>\n<p>Valid return days are:</p>\n<ul>\n<li><code>\"Sunday\"</code></li>\n<li><code>\"Monday\"</code></li>\n<li><code>\"Tuesday\"</code></li>\n<li><code>\"Wednesday\"</code></li>\n<li><code>\"Thursday\"</code></li>\n<li><code>\"Friday\"</code></li>\n<li><code>\"Saturday\"</code></li>\n</ul>\n<p>Be sure to ignore time zones.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getWeekday(\\\"2025-11-06\\\")</code> should return <code>Thursday</code>.</p>\", \"testString\": \"assert.equal(getWeekday(\\\"2025-11-06\\\"), \\\"Thursday\\\");\"}, {\"text\": \"<p><code>getWeekday(\\\"1999-12-31\\\")</code> should return <code>Friday</code>.</p>\", \"testString\": \"assert.equal(getWeekday(\\\"1999-12-31\\\"), \\\"Friday\\\");\"}, {\"text\": \"<p><code>getWeekday(\\\"1111-11-11\\\")</code> should return <code>Saturday</code>.</p>\", \"testString\": \"assert.equal(getWeekday(\\\"1111-11-11\\\"), \\\"Saturday\\\");\"}, {\"text\": \"<p><code>getWeekday(\\\"2112-12-21\\\")</code> should return <code>Wednesday</code>.</p>\", \"testString\": \"assert.equal(getWeekday(\\\"2112-12-21\\\"), \\\"Wednesday\\\");\"}, {\"text\": \"<p><code>getWeekday(\\\"2345-10-01\\\")</code> should return <code>Monday</code>.</p>\", \"testString\": \"assert.equal(getWeekday(\\\"2345-10-01\\\"), \\\"Monday\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_weekday(\\\"2025-11-06\\\")</code> should return <code>Thursday</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_weekday(\\\"2025-11-06\\\"), \\\"Thursday\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_weekday(\\\"1999-12-31\\\")</code> should return <code>Friday</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_weekday(\\\"1999-12-31\\\"), \\\"Friday\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_weekday(\\\"1111-11-11\\\")</code> should return <code>Saturday</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_weekday(\\\"1111-11-11\\\"), \\\"Saturday\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_weekday(\\\"2112-12-21\\\")</code> should return <code>Wednesday</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_weekday(\\\"2112-12-21\\\"), \\\"Wednesday\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_weekday(\\\"2345-10-01\\\")</code> should return <code>Monday</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_weekday(\\\"2345-10-01\\\"), \\\"Monday\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getWeekday(dateString) {\n\n  return dateString;\n}",
+  "fcc_starter_py": "def get_weekday(date_string):\n\n    return date_string",
+  "image_path": "20251106_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Weekday Finder"
+}

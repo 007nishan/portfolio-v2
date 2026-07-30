@@ -1,0 +1,17 @@
+{
+  "challenge_number": 156,
+  "concepts_text": null,
+  "date_id": "2026-01-13",
+  "fcc_description": "<p>Given a positive integer, return <code>\"Odd\"</code> if it's an odd number, and <code>\"Even\"</code> if it's even.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>oddOrEven(1)</code> should return <code>\\\"Odd\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEven(1), \\\"Odd\\\");\"}, {\"text\": \"<p><code>oddOrEven(2)</code> should return <code>\\\"Even\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEven(2), \\\"Even\\\");\"}, {\"text\": \"<p><code>oddOrEven(13)</code> should return <code>\\\"Odd\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEven(13), \\\"Odd\\\");\"}, {\"text\": \"<p><code>oddOrEven(196)</code> should return <code>\\\"Even\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEven(196), \\\"Even\\\");\"}, {\"text\": \"<p><code>oddOrEven(123456789)</code> should return <code>\\\"Odd\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEven(123456789), \\\"Odd\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>odd_or_even(1)</code> should return <code>\\\"Odd\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even(1), \\\"Odd\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even(2)</code> should return <code>\\\"Even\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even(2), \\\"Even\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even(13)</code> should return <code>\\\"Odd\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even(13), \\\"Odd\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even(196)</code> should return <code>\\\"Even\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even(196), \\\"Even\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even(123456789)</code> should return <code>\\\"Odd\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even(123456789), \\\"Odd\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function oddOrEven(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def odd_or_even(n):\n\n    return n",
+  "image_path": "20260113_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Odd or Even?"
+}

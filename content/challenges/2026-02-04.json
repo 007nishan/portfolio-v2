@@ -1,0 +1,17 @@
+{
+  "challenge_number": 178,
+  "concepts_text": null,
+  "date_id": "2026-02-04",
+  "fcc_description": "<p>Given a string, return it as-is if it's 20 characters or shorter. If it's longer than 20 characters, truncate it to the first 17 characters and append <code>\"...\"</code> to the end of it (so it's 20 characters total) and return the result.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>truncateText(\\\"Hello, world!\\\")</code> should return <code>\\\"Hello, world!\\\"</code>.</p>\", \"testString\": \"assert.equal(truncateText(\\\"Hello, world!\\\"), \\\"Hello, world!\\\");\"}, {\"text\": \"<p><code>truncateText(\\\"This string should get truncated.\\\")</code> should return <code>\\\"This string shoul...\\\"</code>.</p>\", \"testString\": \"assert.equal(truncateText(\\\"This string should get truncated.\\\"), \\\"This string shoul...\\\");\"}, {\"text\": \"<p><code>truncateText(\\\"Exactly twenty chars\\\")</code> should return <code>\\\"Exactly twenty chars\\\"</code>.</p>\", \"testString\": \"assert.equal(truncateText(\\\"Exactly twenty chars\\\"), \\\"Exactly twenty chars\\\");\"}, {\"text\": \"<p><code>truncateText(\\\".....................\\\")</code> should return <code>\\\"....................\\\"</code>.</p>\", \"testString\": \"assert.equal(truncateText(\\\".....................\\\"), \\\"....................\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>truncate_text(\\\"Hello, world!\\\")</code> should return <code>\\\"Hello, world!\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(truncate_text(\\\"Hello, world!\\\"), \\\"Hello, world!\\\")`)\\n}})\"}, {\"text\": \"<p><code>truncate_text(\\\"This string should get truncated.\\\")</code> should return <code>\\\"This string shoul...\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(truncate_text(\\\"This string should get truncated.\\\"), \\\"This string shoul...\\\")`)\\n}})\"}, {\"text\": \"<p><code>truncate_text(\\\"Exactly twenty chars\\\")</code> should return <code>\\\"Exactly twenty chars\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(truncate_text(\\\"Exactly twenty chars\\\"), \\\"Exactly twenty chars\\\")`)\\n}})\"}, {\"text\": \"<p><code>truncate_text(\\\".....................\\\")</code> should return <code>\\\"....................\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(truncate_text(\\\".....................\\\"), \\\"....................\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function truncateText(text) {\n\n  return text;\n}",
+  "fcc_starter_py": "def truncate_text(text):\n\n    return text",
+  "image_path": "20260204_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Truncate the Text"
+}

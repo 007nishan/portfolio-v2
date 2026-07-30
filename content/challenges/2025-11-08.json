@@ -1,0 +1,17 @@
+{
+  "challenge_number": 90,
+  "concepts_text": null,
+  "date_id": "2025-11-08",
+  "fcc_description": "<p>In this challenge, you are given a string and need to determine if it fits in a social media post. Return the following strings based on the rules given:</p>\n<ul>\n<li><code>\"short post\"</code> if it fits within a 40-character limit.</li>\n<li><code>\"long post\"</code> if it's greater than 40 characters and fits within an 80-character limit.</li>\n<li><code>\"invalid post\"</code> if it's too long to fit within either limit.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>canPost(\\\"Hello world\\\")</code> should return <code>\\\"short post\\\"</code>.</p>\", \"testString\": \"assert.equal(canPost(\\\"Hello world\\\"), \\\"short post\\\");\"}, {\"text\": \"<p><code>canPost(\\\"This is a longer message but still under eighty characters.\\\")</code> should return <code>\\\"long post\\\"</code>.</p>\", \"testString\": \"assert.equal(canPost(\\\"This is a longer message but still under eighty characters.\\\"), \\\"long post\\\");\"}, {\"text\": \"<p><code>canPost(\\\"This message is too long to fit into either of the character limits for a social media post.\\\")</code> should return <code>\\\"invalid post\\\"</code>.</p>\", \"testString\": \"assert.equal(canPost(\\\"This message is too long to fit into either of the character limits for a social media post.\\\"), \\\"invalid post\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>can_post(\\\"Hello world\\\")</code> should return <code>\\\"short post\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(can_post(\\\"Hello world\\\"), \\\"short post\\\")`)\\n}})\"}, {\"text\": \"<p><code>can_post(\\\"This is a longer message but still under eighty characters.\\\")</code> should return <code>\\\"long post\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(can_post(\\\"This is a longer message but still under eighty characters.\\\"), \\\"long post\\\")`)\\n}})\"}, {\"text\": \"<p><code>can_post(\\\"This message is too long to fit into either of the character limits for a social media post.\\\")</code> should return <code>\\\"invalid post\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(can_post(\\\"This message is too long to fit into either of the character limits for a social media post.\\\"), \\\"invalid post\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function canPost(message) {\n\n  return message;\n}",
+  "fcc_starter_py": "def can_post(message):\n\n    return message",
+  "image_path": "20251108_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Character Limit"
+}

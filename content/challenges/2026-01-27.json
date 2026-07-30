@@ -1,0 +1,17 @@
+{
+  "challenge_number": 170,
+  "concepts_text": null,
+  "date_id": "2026-01-27",
+  "fcc_description": "<p>Given a timestamp (number of milliseconds since the Unix epoch), return:</p>\n<ul>\n<li><code>\"odd\"</code> if the day of the month for that timestamp is odd.</li>\n<li><code>\"even\"</code> if the day of the month for that timestamp is even.</li>\n</ul>\n<p>For example, given <code>1769472000000</code>, a timestamp for January 27th, 2026, return <code>\"odd\"</code> because the day number (<code>27</code>) is an odd number.</p>\n<p>Note: The timestamp is in milliseconds and you should use the date in the UTC timezone, not in your local time.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>oddOrEvenDay(1769472000000)</code> should return <code>\\\"odd\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEvenDay(1769472000000), \\\"odd\\\");\"}, {\"text\": \"<p><code>oddOrEvenDay(1769444440000)</code> should return <code>\\\"even\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEvenDay(1769444440000), \\\"even\\\");\"}, {\"text\": \"<p><code>oddOrEvenDay(6739456780000)</code> should return <code>\\\"odd\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEvenDay(6739456780000), \\\"odd\\\");\"}, {\"text\": \"<p><code>oddOrEvenDay(1)</code> should return <code>\\\"odd\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEvenDay(1), \\\"odd\\\");\"}, {\"text\": \"<p><code>oddOrEvenDay(86400000)</code> should return <code>\\\"even\\\"</code>.</p>\", \"testString\": \"assert.equal(oddOrEvenDay(86400000), \\\"even\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>odd_or_even_day(1769472000000)</code> should return <code>\\\"odd\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even_day(1769472000000), \\\"odd\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even_day(1769444440000)</code> should return <code>\\\"even\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even_day(1769444440000), \\\"even\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even_day(6739456780000)</code> should return <code>\\\"odd\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even_day(6739456780000), \\\"odd\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even_day(1)</code> should return <code>\\\"odd\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even_day(1), \\\"odd\\\")`)\\n}})\"}, {\"text\": \"<p><code>odd_or_even_day(86400000)</code> should return <code>\\\"even\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(odd_or_even_day(86400000), \\\"even\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function oddOrEvenDay(timestamp) {\n\n  return timestamp;\n}",
+  "fcc_starter_py": "def odd_or_even_day(timestamp):\n\n    return timestamp",
+  "image_path": "20260127_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Odd or Even Day"
+}

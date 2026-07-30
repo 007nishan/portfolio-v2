@@ -1,0 +1,17 @@
+{
+  "challenge_number": 126,
+  "concepts_text": null,
+  "date_id": "2025-12-14",
+  "fcc_description": "<p>Given a string title, return a new string formatted in title case using the following rules:</p>\n<ul>\n<li>Capitalize the first letter of each word.</li>\n<li>Make all other letters in each word lowercase.</li>\n<li>Words are always separated by a single space.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>titleCase(\\\"hello world\\\")</code> should return <code>\\\"Hello World\\\"</code>.</p>\", \"testString\": \"assert.equal(titleCase(\\\"hello world\\\"), \\\"Hello World\\\");\"}, {\"text\": \"<p><code>titleCase(\\\"the quick brown fox\\\")</code> should return <code>\\\"The Quick Brown Fox\\\"</code>.</p>\", \"testString\": \"assert.equal(titleCase(\\\"the quick brown fox\\\"), \\\"The Quick Brown Fox\\\");\"}, {\"text\": \"<p><code>titleCase(\\\"JAVASCRIPT AND PYTHON\\\")</code> should return <code>\\\"Javascript And Python\\\"</code>.</p>\", \"testString\": \"assert.equal(titleCase(\\\"JAVASCRIPT AND PYTHON\\\"), \\\"Javascript And Python\\\");\"}, {\"text\": \"<p><code>titleCase(\\\"AvOcAdO tOAst fOr brEAkfAst\\\")</code> should return <code>\\\"Avocado Toast For Breakfast\\\"</code>.</p>\", \"testString\": \"assert.equal(titleCase(\\\"AvOcAdO tOAst fOr brEAkfAst\\\"), \\\"Avocado Toast For Breakfast\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>title_case(\\\"hello world\\\")</code> should return <code>\\\"Hello World\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(title_case(\\\"hello world\\\"), \\\"Hello World\\\")`)\\n}})\"}, {\"text\": \"<p><code>title_case(\\\"the quick brown fox\\\")</code> should return <code>\\\"The Quick Brown Fox\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(title_case(\\\"the quick brown fox\\\"), \\\"The Quick Brown Fox\\\")`)\\n}})\"}, {\"text\": \"<p><code>title_case(\\\"JAVASCRIPT AND PYTHON\\\")</code> should return <code>\\\"Javascript And Python\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(title_case(\\\"JAVASCRIPT AND PYTHON\\\"), \\\"Javascript And Python\\\")`)\\n}})\"}, {\"text\": \"<p><code>title_case(\\\"AvOcAdO tOAst fOr brEAkfAst\\\")</code> should return <code>\\\"Avocado Toast For Breakfast\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(title_case(\\\"AvOcAdO tOAst fOr brEAkfAst\\\"), \\\"Avocado Toast For Breakfast\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function titleCase(title) {\n  return title;\n}",
+  "fcc_starter_py": "def title_case(title):\n\n    return title",
+  "image_path": "20251214_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Capitalize It"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 220,
+  "concepts_text": null,
+  "date_id": "2026-03-18",
+  "fcc_description": "<p>Given a string of numbers separated by various punctuation, return the largest number.</p>\n<ul>\n<li>The given string will only contain numbers and separators.</li>\n<li>Separators can be commas (<code>\",\"</code>), exclamation points (<code>\"!\"</code>), question marks (<code>\"?\"</code>), colons (<code>\":\"</code>), or semi-colons (<code>\";\"</code>).</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>largestNumber(\\\"1,2\\\")</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(largestNumber(\\\"1,2\\\"), 2);\"}, {\"text\": \"<p><code>largestNumber(\\\"4;15:60,26?52!0\\\")</code> should return <code>60</code>.</p>\", \"testString\": \"assert.equal(largestNumber(\\\"4;15:60,26?52!0\\\"), 60);\"}, {\"text\": \"<p><code>largestNumber(\\\"-402,-1032!-569:-947;-633?-800!-1012;-402,-723?-8102!-3011\\\")</code> should return <code>-402</code>.</p>\", \"testString\": \"assert.equal(largestNumber(\\\"-402,-1032!-569:-947;-633?-800!-1012;-402,-723?-8102!-3011\\\"), -402);\"}, {\"text\": \"<p><code>largestNumber(\\\"12;-50,99.9,49.1!-10.1?88?16\\\")</code> should return <code>99.9</code>.</p>\", \"testString\": \"assert.equal(largestNumber(\\\"12;-50,99.9,49.1!-10.1?88?16\\\"), 99.9);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>largest_number(\\\"1,2\\\")</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(largest_number(\\\"1,2\\\"), 2)`)\\n}})\"}, {\"text\": \"<p><code>largest_number(\\\"4;15:60,26?52!0\\\")</code> should return <code>60</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(largest_number(\\\"4;15:60,26?52!0\\\"), 60)`)\\n}})\"}, {\"text\": \"<p><code>largest_number(\\\"-402,-1032!-569:-947;-633?-800!-1012;-402,-723?-8102!-3011\\\")</code> should return <code>-402</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(largest_number(\\\"-402,-1032!-569:-947;-633?-800!-1012;-402,-723?-8102!-3011\\\"), -402)`)\\n}})\"}, {\"text\": \"<p><code>largest_number(\\\"12;-50,99.9,49.1!-10.1?88?16\\\")</code> should return <code>99.9</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(largest_number(\\\"12;-50,99.9,49.1!-10.1?88?16\\\"), 99.9)`)\\n}})\"}]",
+  "fcc_starter_js": "function largestNumber(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def largest_number(s):\n\n    return s",
+  "image_path": "20260318_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Largest Number"
+}

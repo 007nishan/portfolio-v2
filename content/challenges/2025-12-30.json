@@ -1,0 +1,17 @@
+{
+  "challenge_number": 142,
+  "concepts_text": null,
+  "date_id": "2025-12-30",
+  "fcc_description": "<p>Given a string containing digits and other characters, return the sum of all numbers in the string.</p>\n<ul>\n<li>Treat consecutive digits as a single number. For example, <code>\"13\"</code> counts as 13, not 1 + 3.</li>\n<li>Ignore any non-digit characters.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>stringSum(\\\"3apples2bananas\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(stringSum(\\\"3apples2bananas\\\"), 5);\"}, {\"text\": \"<p><code>stringSum(\\\"10cats5dogs2birds\\\")</code> should return <code>17</code>.</p>\", \"testString\": \"assert.equal(stringSum(\\\"10cats5dogs2birds\\\"), 17);\"}, {\"text\": \"<p><code>stringSum(\\\"125344\\\")</code> should return <code>125344</code>.</p>\", \"testString\": \"assert.equal(stringSum(\\\"125344\\\"), 125344);\"}, {\"text\": \"<p><code>stringSum(\\\"a1b20c300\\\")</code> should return <code>321</code>.</p>\", \"testString\": \"assert.equal(stringSum(\\\"a1b20c300\\\"), 321);\"}, {\"text\": \"<p><code>stringSum(\\\"a12b34c56d78e90f123g456h789i0j1k2l3m4n5\\\")</code> should return <code>1653</code>.</p>\", \"testString\": \"assert.equal(stringSum(\\\"a12b34c56d78e90f123g456h789i0j1k2l3m4n5\\\"), 1653);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>string_sum(\\\"3apples2bananas\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(string_sum(\\\"3apples2bananas\\\"), 5)`)\\n}})\"}, {\"text\": \"<p><code>string_sum(\\\"10cats5dogs2birds\\\")</code> should return <code>17</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(string_sum(\\\"10cats5dogs2birds\\\"), 17)`)\\n}})\"}, {\"text\": \"<p><code>string_sum(\\\"125344\\\")</code> should return <code>125344</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(string_sum(\\\"125344\\\"), 125344)`)\\n}})\"}, {\"text\": \"<p><code>string_sum(\\\"a1b20c300\\\")</code> should return <code>321</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(string_sum(\\\"a1b20c300\\\"), 321)`)\\n}})\"}, {\"text\": \"<p><code>string_sum(\\\"a12b34c56d78e90f123g456h789i0j1k2l3m4n5\\\")</code> should return <code>1653</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(string_sum(\\\"a12b34c56d78e90f123g456h789i0j1k2l3m4n5\\\"), 1653)`)\\n}})\"}]",
+  "fcc_starter_js": "function stringSum(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def string_sum(s):\n\n    return s",
+  "image_path": "20251230_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Sum the String"
+}

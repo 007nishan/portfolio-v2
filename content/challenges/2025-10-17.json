@@ -1,0 +1,17 @@
+{
+  "challenge_number": 68,
+  "concepts_text": null,
+  "date_id": "2025-10-17",
+  "fcc_description": "<p>Given a string of credit card numbers, return a masked version of it using the following constraints:</p>\n<ul>\n<li>The string will contain four sets of four digits (<code>0-9</code>), with all sets being separated by a single space, or a single hyphen (<code>-</code>).</li>\n<li>Replace all numbers, except the last four, with an asterisk (<code>*</code>).</li>\n<li>Leave the remaining characters unchanged.</li>\n</ul>\n<p>For example, given <code>\"4012-8888-8888-1881\"</code> return <code>\"****-****-****-1881\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>mask(\\\"4012-8888-8888-1881\\\")</code> should return <code>\\\"****-****-****-1881\\\"</code>.</p>\", \"testString\": \"assert.equal(mask(\\\"4012-8888-8888-1881\\\"), \\\"****-****-****-1881\\\");\"}, {\"text\": \"<p><code>mask(\\\"5105 1051 0510 5100\\\")</code> should return <code>\\\"**** **** **** 5100\\\"</code>.</p>\", \"testString\": \"assert.equal(mask(\\\"5105 1051 0510 5100\\\"), \\\"**** **** **** 5100\\\");\"}, {\"text\": \"<p><code>mask(\\\"6011 1111 1111 1117\\\")</code> should return <code>\\\"**** **** **** 1117\\\"</code>.</p>\", \"testString\": \"assert.equal(mask(\\\"6011 1111 1111 1117\\\"), \\\"**** **** **** 1117\\\");\"}, {\"text\": \"<p><code>mask(\\\"2223-0000-4845-0010\\\")</code> should return <code>\\\"****-****-****-0010\\\"</code>.</p>\", \"testString\": \"assert.equal(mask(\\\"2223-0000-4845-0010\\\"), \\\"****-****-****-0010\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>mask(\\\"4012-8888-8888-1881\\\")</code> should return <code>\\\"****-****-****-1881\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mask(\\\"4012-8888-8888-1881\\\"), \\\"****-****-****-1881\\\")`)\\n}})\"}, {\"text\": \"<p><code>mask(\\\"5105 1051 0510 5100\\\")</code> should return <code>\\\"**** **** **** 5100\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mask(\\\"5105 1051 0510 5100\\\"), \\\"**** **** **** 5100\\\")`)\\n}})\"}, {\"text\": \"<p><code>mask(\\\"6011 1111 1111 1117\\\")</code> should return <code>\\\"**** **** **** 1117\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mask(\\\"6011 1111 1111 1117\\\"), \\\"**** **** **** 1117\\\")`)\\n}})\"}, {\"text\": \"<p><code>mask(\\\"2223-0000-4845-0010\\\")</code> should return <code>\\\"****-****-****-0010\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mask(\\\"2223-0000-4845-0010\\\"), \\\"****-****-****-0010\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function mask(card) {\n\n  return card;\n}",
+  "fcc_starter_py": "def mask(card):\n\n    return card",
+  "image_path": "20251017_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Credit Card Masker"
+}

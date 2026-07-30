@@ -1,0 +1,17 @@
+{
+  "challenge_number": 52,
+  "concepts_text": null,
+  "date_id": "2025-10-01",
+  "fcc_description": "<p>Given a string representing a binary number, return its decimal equivalent as a number.</p>\n<p>A binary number uses only the digits <code>0</code> and <code>1</code> to represent any number. To convert binary to decimal, multiply each digit by a power of <code>2</code> and add them together. Start by multiplying the rightmost digit by <code>2^0</code>, the next digit to the left by <code>2^1</code>, and so on. Once all digits have been multiplied by a power of <code>2</code>, add the result together.</p>\n<p>For example, the binary number <code>101</code> equals <code>5</code> in decimal because:</p>\n<pre><code class=\"language-mathml\">1 * 2^2 + 0 * 2^1 + 1 * 2^0 = 4 + 0 + 1 = 5\n</code></pre>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>toDecimal(\\\"101\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(toDecimal(\\\"101\\\"), 5);\"}, {\"text\": \"<p><code>toDecimal(\\\"1010\\\")</code> should return <code>10</code>.</p>\", \"testString\": \"assert.equal(toDecimal(\\\"1010\\\"), 10);\"}, {\"text\": \"<p><code>toDecimal(\\\"10010\\\")</code> should return <code>18</code>.</p>\", \"testString\": \"assert.equal(toDecimal(\\\"10010\\\"), 18);\"}, {\"text\": \"<p><code>toDecimal(\\\"1010101\\\")</code> should return <code>85</code>.</p>\", \"testString\": \"assert.equal(toDecimal(\\\"1010101\\\"), 85);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>to_decimal(\\\"101\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_decimal(\\\"101\\\"), 5)`)\\n}})\"}, {\"text\": \"<p><code>to_decimal(\\\"1010\\\")</code> should return <code>10</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_decimal(\\\"1010\\\"), 10)`)\\n}})\"}, {\"text\": \"<p><code>to_decimal(\\\"10010\\\")</code> should return <code>18</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_decimal(\\\"10010\\\"), 18)`)\\n}})\"}, {\"text\": \"<p><code>to_decimal(\\\"1010101\\\")</code> should return <code>85</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_decimal(\\\"1010101\\\"), 85)`)\\n}})\"}]",
+  "fcc_starter_js": "function toDecimal(binary) {\n\n  return binary;\n}",
+  "fcc_starter_py": "def to_decimal(binary):\n\n    return binary",
+  "image_path": "20251001_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Binary to Decimal"
+}

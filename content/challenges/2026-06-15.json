@@ -1,0 +1,17 @@
+{
+  "challenge_number": 309,
+  "concepts_text": null,
+  "date_id": "2026-06-15",
+  "fcc_description": "<p>Given a string of numbers separated by commas, return an array of the numbers sorted from smallest to largest.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sortNumbers(\\\"3,1,2\\\")</code> should return <code>[1, 2, 3]</code>.</p>\", \"testString\": \"assert.deepEqual(sortNumbers(\\\"3,1,2\\\"), [1, 2, 3]);\"}, {\"text\": \"<p><code>sortNumbers(\\\"5,3,8,1,9,2\\\")</code> should return <code>[1, 2, 3, 5, 8, 9]</code>.</p>\", \"testString\": \"assert.deepEqual(sortNumbers(\\\"5,3,8,1,9,2\\\"), [1, 2, 3, 5, 8, 9]);\"}, {\"text\": \"<p><code>sortNumbers(\\\"12,61,49,80,19,50,77,38\\\")</code> should return <code>[12, 19, 38, 49, 50, 61, 77, 80]</code>.</p>\", \"testString\": \"assert.deepEqual(sortNumbers(\\\"12,61,49,80,19,50,77,38\\\"), [12, 19, 38, 49, 50, 61, 77, 80]);\"}, {\"text\": \"<p><code>sortNumbers(\\\"0,6,-19,44,-2,7,0\\\")</code> should return <code>[-19, -2, 0, 0, 6, 7, 44]</code>.</p>\", \"testString\": \"assert.deepEqual(sortNumbers(\\\"0,6,-19,44,-2,7,0\\\"), [-19, -2, 0, 0, 6, 7, 44]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sort_numbers(\\\"3,1,2\\\")</code> should return <code>[1, 2, 3]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sort_numbers(\\\"3,1,2\\\"), [1, 2, 3])`)\\n}})\"}, {\"text\": \"<p><code>sort_numbers(\\\"5,3,8,1,9,2\\\")</code> should return <code>[1, 2, 3, 5, 8, 9]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sort_numbers(\\\"5,3,8,1,9,2\\\"), [1, 2, 3, 5, 8, 9])`)\\n}})\"}, {\"text\": \"<p><code>sort_numbers(\\\"12,61,49,80,19,50,77,38\\\")</code> should return <code>[12, 19, 38, 49, 50, 61, 77, 80]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sort_numbers(\\\"12,61,49,80,19,50,77,38\\\"), [12, 19, 38, 49, 50, 61, 77, 80])`)\\n}})\"}, {\"text\": \"<p><code>sort_numbers(\\\"0,6,-19,44,-2,7,0\\\")</code> should return <code>[-19, -2, 0, 0, 6, 7, 44]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sort_numbers(\\\"0,6,-19,44,-2,7,0\\\"), [-19, -2, 0, 0, 6, 7, 44])`)\\n}})\"}]",
+  "fcc_starter_js": "function sortNumbers(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def sort_numbers(s):\n\n    return s",
+  "image_path": "20260615_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Number Sort"
+}

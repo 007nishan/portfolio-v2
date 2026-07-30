@@ -1,0 +1,17 @@
+{
+  "challenge_number": 240,
+  "concepts_text": null,
+  "date_id": "2026-04-07",
+  "fcc_description": "<p>Given a string, determine if it's a palindrome and return the middle character (if it's odd length) or middle two characters (if it's even).</p>\n<ul>\n<li>A palindrome is a string that is the same forward and backward.</li>\n<li>If it's not a palindrome, return <code>\"none\"</code>.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>palindromeLocator(\\\"racecar\\\")</code> should return <code>\\\"e\\\"</code>.</p>\", \"testString\": \"assert.equal(palindromeLocator(\\\"racecar\\\"), \\\"e\\\");\"}, {\"text\": \"<p><code>palindromeLocator(\\\"level\\\")</code> should return <code>\\\"v\\\"</code>.</p>\", \"testString\": \"assert.equal(palindromeLocator(\\\"level\\\"), \\\"v\\\");\"}, {\"text\": \"<p><code>palindromeLocator(\\\"freecodecamp\\\")</code> should return <code>\\\"none\\\"</code>.</p>\", \"testString\": \"assert.equal(palindromeLocator(\\\"freecodecamp\\\"), \\\"none\\\");\"}, {\"text\": \"<p><code>palindromeLocator(\\\"noon\\\")</code> should return <code>\\\"oo\\\"</code>.</p>\", \"testString\": \"assert.equal(palindromeLocator(\\\"noon\\\"), \\\"oo\\\");\"}, {\"text\": \"<p><code>palindromeLocator(\\\"11100111\\\")</code> should return <code>\\\"00\\\"</code>.</p>\", \"testString\": \"assert.equal(palindromeLocator(\\\"11100111\\\"), \\\"00\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>palindrome_locator(\\\"racecar\\\")</code> should return <code>\\\"e\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(palindrome_locator(\\\"racecar\\\"), \\\"e\\\")`)\\n}})\"}, {\"text\": \"<p><code>palindrome_locator(\\\"level\\\")</code> should return <code>\\\"v\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(palindrome_locator(\\\"level\\\"), \\\"v\\\")`)\\n}})\"}, {\"text\": \"<p><code>palindrome_locator(\\\"freecodecamp\\\")</code> should return <code>\\\"none\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(palindrome_locator(\\\"freecodecamp\\\"), \\\"none\\\")`)\\n}})\"}, {\"text\": \"<p><code>palindrome_locator(\\\"noon\\\")</code> should return <code>\\\"oo\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(palindrome_locator(\\\"noon\\\"), \\\"oo\\\")`)\\n}})\"}, {\"text\": \"<p><code>palindrome_locator(\\\"11100111\\\")</code> should return <code>\\\"00\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(palindrome_locator(\\\"11100111\\\"), \\\"00\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function palindromeLocator(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def palindrome_locator(s):\n\n    return s",
+  "image_path": "20260407_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Palindrome Characters"
+}

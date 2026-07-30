@@ -1,0 +1,17 @@
+{
+  "challenge_number": 242,
+  "concepts_text": null,
+  "date_id": "2026-04-09",
+  "fcc_description": "<p>Given a bingo number, return the next bingo number sequentially.</p>\n<p>A bingo number is a single letter followed by a number in its range according to this chart:</p>\n<table>\n<thead>\n<tr>\n<th>Letter</th>\n<th>Number Range</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>\"B\"</code></td>\n<td>1-15</td>\n</tr>\n<tr>\n<td><code>\"I\"</code></td>\n<td>16-30</td>\n</tr>\n<tr>\n<td><code>\"N\"</code></td>\n<td>31-45</td>\n</tr>\n<tr>\n<td><code>\"G\"</code></td>\n<td>46-60</td>\n</tr>\n<tr>\n<td><code>\"O\"</code></td>\n<td>61-75</td>\n</tr>\n</tbody>\n</table>\n<p>For example, given <code>\"B10\"</code>, return <code>\"B11\"</code>, the next bingo number. If given the last bingo number, return <code>\"B1\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getNextBingoNumber(\\\"B10\\\")</code> should return <code>\\\"B11\\\"</code>.</p>\", \"testString\": \"assert.equal(getNextBingoNumber(\\\"B10\\\"), \\\"B11\\\");\"}, {\"text\": \"<p><code>getNextBingoNumber(\\\"N33\\\")</code> should return <code>\\\"N34\\\"</code>.</p>\", \"testString\": \"assert.equal(getNextBingoNumber(\\\"N33\\\"), \\\"N34\\\");\"}, {\"text\": \"<p><code>getNextBingoNumber(\\\"I30\\\")</code> should return <code>\\\"N31\\\"</code>.</p>\", \"testString\": \"assert.equal(getNextBingoNumber(\\\"I30\\\"), \\\"N31\\\");\"}, {\"text\": \"<p><code>getNextBingoNumber(\\\"G60\\\")</code> should return <code>\\\"O61\\\"</code>.</p>\", \"testString\": \"assert.equal(getNextBingoNumber(\\\"G60\\\"), \\\"O61\\\");\"}, {\"text\": \"<p><code>getNextBingoNumber(\\\"O75\\\")</code> should return <code>\\\"B1\\\"</code>.</p>\", \"testString\": \"assert.equal(getNextBingoNumber(\\\"O75\\\"), \\\"B1\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_next_bingo_number(\\\"B10\\\")</code> should return <code>\\\"B11\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_next_bingo_number(\\\"B10\\\"), \\\"B11\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_next_bingo_number(\\\"N33\\\")</code> should return <code>\\\"N34\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_next_bingo_number(\\\"N33\\\"), \\\"N34\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_next_bingo_number(\\\"I30\\\")</code> should return <code>\\\"N31\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_next_bingo_number(\\\"I30\\\"), \\\"N31\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_next_bingo_number(\\\"G60\\\")</code> should return <code>\\\"O61\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_next_bingo_number(\\\"G60\\\"), \\\"O61\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_next_bingo_number(\\\"O75\\\")</code> should return <code>\\\"B1\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_next_bingo_number(\\\"O75\\\"), \\\"B1\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getNextBingoNumber(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def get_next_bingo_number(n):\n\n    return n",
+  "image_path": "20260409_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Next Bingo Number"
+}

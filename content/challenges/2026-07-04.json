@@ -1,0 +1,17 @@
+{
+  "challenge_number": 328,
+  "concepts_text": null,
+  "date_id": "2026-07-04",
+  "fcc_description": "<p>Given a 4-digit number, return the number of times you need to apply Kaprekar's routine until reaching 6174.</p>\n<p>Kaprekar's routine works as follows:</p>\n<ul>\n<li>Arrange the digits in descending order to form the largest number</li>\n<li>Arrange the digits in ascending order to form the smallest number (pad with leading zeros if necessary)</li>\n<li>Subtract the smaller from the larger</li>\n<li>Repeat with the new number</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>kaprekar(1234)</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(kaprekar(1234), 3);\"}, {\"text\": \"<p><code>kaprekar(2025)</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(kaprekar(2025), 6);\"}, {\"text\": \"<p><code>kaprekar(7173)</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(kaprekar(7173), 4);\"}, {\"text\": \"<p><code>kaprekar(3164)</code> should return <code>7</code>.</p>\", \"testString\": \"assert.equal(kaprekar(3164), 7);\"}, {\"text\": \"<p><code>kaprekar(8082)</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(kaprekar(8082), 2);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>kaprekar(1234)</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(kaprekar(1234), 3)`)\\n}})\"}, {\"text\": \"<p><code>kaprekar(2025)</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(kaprekar(2025), 6)`)\\n}})\"}, {\"text\": \"<p><code>kaprekar(7173)</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(kaprekar(7173), 4)`)\\n}})\"}, {\"text\": \"<p><code>kaprekar(3164)</code> should return <code>7</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(kaprekar(3164), 7)`)\\n}})\"}, {\"text\": \"<p><code>kaprekar(8082)</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(kaprekar(8082), 2)`)\\n}})\"}]",
+  "fcc_starter_js": "function kaprekar(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def kaprekar(n):\n\n    return n",
+  "image_path": "20260704_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Kaprekar's Routine"
+}

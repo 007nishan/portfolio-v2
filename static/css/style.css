@@ -368,3 +368,490 @@ footer a:hover {
   outline-offset: 2px;
   border-radius: var(--radius-sm);
 }
+
+/* ============================================================================
+   BOOK READING SHELL + COMPONENTS  (BCS v1.1 — golden-ratio book system)
+   Scoped under .reader so nothing leaks into challenge/dashboard chrome.
+   Extends the brand :root above; adds golden-ratio (phi) tokens + Fibonacci
+   scale. See BOOK_STANDARD.md. One system serves BOTH books (Python + LA).
+   ============================================================================ */
+:root {
+  /* phi constants (SSOT — identical to challenge_card.py PHI) */
+  --phi: 1.6180339887;
+  --sqrt-phi: 1.2720196495;
+
+  /* Fibonacci scale (px -> rem @16px): type AND spacing */
+  --fib-xs: 1.3125rem;   /* 21px */
+  --fib-sm: 2.125rem;    /* 34px — gutter */
+  --fib-md: 3.4375rem;   /* 55px — outer margin */
+  --fib-lg: 5.5625rem;   /* 89px */
+  --fib-xl: 9rem;        /* 144px */
+  --fib-xxl: 14.5625rem; /* 233px */
+  /* raw px aliases used by component fallbacks */
+  --fib-21: 21px;
+  --fib-34: 34px;
+
+  /* reading measure + golden cuts */
+  --measure: 38rem;                                                    /* ~66ch */
+  --measure-major: calc(var(--measure) / var(--phi));                  /* 23.485rem (0.618) */
+  --measure-minor: calc(var(--measure) - var(--measure) / var(--phi)); /* 14.515rem (0.382) */
+  --accent-rule: calc(var(--measure) / var(--phi) / var(--phi));       /* measure/phi^2 = 14.515rem */
+
+  /* rhythm + line-heights */
+  --rhythm: 1.6875rem;   /* 27px baseline (18 x 1.5) */
+  --lh-body: 1.62;       /* ~phi */
+  --lh-heading: 1.15;
+  --lh-code: 1.45;
+
+  /* golden two-column shell */
+  --book-shell-max: 1200px;
+  --book-reading-w: calc(var(--book-shell-max) / var(--phi));                  /* 742px */
+  --book-toc-w: calc(var(--book-shell-max) - var(--book-shell-max) / var(--phi)); /* 458px */
+  --book-scroll-offset: 5.5625rem;  /* fib-lg */
+  --book-progress-h: 4px;
+
+  /* print geometry tokens (no bare literals elsewhere) */
+  --textblock-w: 157.6mm;
+  --print-accent-rule: 60.2mm;      /* 157.6mm / phi^2 */
+
+  /* reading-track type scale (screen, clamp; step = sqrt-phi) */
+  --fs-caption: clamp(0.79rem, 0.76rem + 0.15vw, 0.875rem);
+  --fs-code: clamp(0.8125rem, 0.78rem + 0.18vw, 0.9375rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-h6: clamp(1.05rem, 1rem + 0.25vw, 1.25rem);
+  --fs-h5: clamp(1.125rem, 1.06rem + 0.32vw, 1.375rem);
+  --fs-h4: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --fs-h3: clamp(1.75rem, 1.5rem + 1.25vw, 2.226rem);
+  --fs-h2: clamp(2.226rem, 1.85rem + 1.9vw, 2.832rem);
+  --fs-h1: clamp(2.832rem, 2.3rem + 2.6vw, 3.602rem);
+  --fs-display: clamp(4.5rem, 3rem + 7.5vw, 5.5625rem);
+
+  /* code palette (card ink theme; string shade AA-corrected for dark bg) */
+  --code-bg: #212529;
+  --code-kw: #78beff;
+  --code-fn: #f0c878;
+  --code-arg: #e68c8c;
+  --code-str-dark: #4ec9a0;   /* was #007a3d (3.9:1 FAIL) -> AA-safe on #212529 */
+  --code-comment: #6b7785;
+  --code-txt: #e2e8f0;
+  --code-bg-print: #f5f7f9;
+  --code-ink-print: #212529;
+}
+
+/* ---- Golden two-column shell ---- */
+.book-shell {
+  max-width: var(--book-shell-max);
+  margin-inline: auto;
+  padding-inline: var(--fib-md);
+  display: grid;
+  grid-template-columns: var(--book-toc-w) 1fr;
+  gap: var(--fib-sm);
+  align-items: start;
+}
+.book-toc {
+  position: sticky;
+  top: var(--book-scroll-offset);
+  max-height: calc(100vh - var(--book-scroll-offset) - 1rem);
+  overflow-y: auto;
+  font-family: var(--font-family-sans);
+  font-size: 0.85rem;
+}
+.book-toc__group-title {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 0.72rem;
+  color: var(--color-neutral-medium);
+  margin: var(--spacing-md) 0 var(--spacing-xs);
+}
+.book-toc a {
+  display: block;
+  padding: 0.25rem 0 0.25rem 0.75rem;
+  color: var(--color-neutral-dark);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+}
+.book-toc a:hover { color: var(--color-primary-red); }
+.book-toc a.active {
+  border-left-color: var(--color-primary-red);
+  color: var(--color-primary-black);
+  font-weight: 700;
+}
+
+/* The reading column — capped at the golden measure. Window is the scroll port
+   (no inner overflow pane), so scrollspy uses documentElement.scrollTop. */
+.reader {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-block: calc(var(--rhythm) * 2);
+  font-family: var(--font-family-serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-neutral-dark);
+  text-wrap: pretty;
+}
+.reader p { margin: 0 0 0.618em; }
+.reader h1, .reader h2, .reader h3, .reader h4 {
+  font-family: var(--font-family-serif);
+  font-weight: 700;
+  line-height: var(--lh-heading);
+  letter-spacing: -0.02em;
+  color: var(--color-primary-black);
+  margin: calc(var(--rhythm) * 1.5) 0 var(--rhythm);
+}
+.reader h1 { font-size: var(--fs-h1); }
+.reader h2 { font-size: var(--fs-h2); }
+.reader h3 { font-size: var(--fs-h3); }
+.reader h4 { font-size: var(--fs-h4); }
+.reader h5, .reader h6, .reader .label {
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--color-neutral-dark);
+}
+.reader h5 { font-size: var(--fs-h5); }
+.reader h6 { font-size: var(--fs-h6); }
+
+/* ---- Chapter/module opener ---- */
+.opener {
+  margin: calc(var(--rhythm) * 2) 0 calc(var(--rhythm) * 1.5);
+  padding-bottom: var(--rhythm);
+  border-bottom: 2px solid var(--color-neutral-light);
+}
+.opener .chapter-num {
+  display: block;
+  font-family: var(--font-family-mono);
+  font-size: var(--fs-display);
+  line-height: 1;
+  color: var(--color-primary-red);
+}
+.opener h1 { margin-top: 0.25em; }
+.reader .accent-rule {
+  display: block;
+  width: var(--accent-rule);          /* measure/phi^2 */
+  height: 4px;
+  background: var(--color-primary-red);
+  border-radius: 0;
+  margin: var(--rhythm) 0;
+}
+
+/* ---- Question + collapsible solution (LA book) ---- */
+.question { margin: calc(var(--rhythm) * 1.5) 0; }
+.question__badge {
+  display: inline-block;
+  font-family: var(--font-family-mono);
+  font-weight: 700;
+  background: var(--color-primary-red);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-size: 0.85em;
+  margin-bottom: 0.35rem;
+}
+.reader details.solution {
+  margin: var(--rhythm) 0;
+  border: 1px solid var(--color-neutral-light);
+  border-radius: 2px;
+  background: var(--color-surface-subtle);
+}
+.reader details.solution > summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #fff;
+  background: var(--color-secondary-green);
+  padding: 0.45rem 0.8rem;
+  border-radius: 2px 2px 0 0;
+}
+.reader details.solution > summary::-webkit-details-marker { display: none; }
+.reader details.solution > summary::before { content: "\25B8  "; }   /* right triangle */
+.reader details.solution[open] > summary::before { content: "\25BE  "; }
+.reader details.solution > :not(summary) { padding: 0 var(--spacing-lg); }
+.reader details.solution > *:last-child { padding-bottom: var(--spacing-md); }
+
+/* ---- Callouts / admonitions (python-markdown 'admonition' output) ---- */
+.reader .admonition, .reader .rule-banner {
+  margin: var(--rhythm) 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-left: 3px solid var(--color-neutral-medium);
+  background: var(--color-surface-subtle);
+  border-radius: 0 2px 2px 0;
+}
+.reader .admonition-title {
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-size: 0.78rem;
+  margin: 0 0 0.4rem;
+}
+.reader .admonition.tip { border-left-color: var(--color-secondary-green); }
+.reader .admonition.tip .admonition-title { color: var(--color-secondary-green); }
+.reader .admonition.note { border-left-color: var(--color-primary-blue); }
+.reader .admonition.note .admonition-title { color: var(--color-primary-blue); }
+.reader .admonition.warning { border-left-color: var(--color-secondary-gold); }
+.reader .admonition.warning .admonition-title { color: var(--color-secondary-gold); }
+
+/* RULE banner (GeoGebra hard rule) — tan wash + red spine */
+.reader .rule-banner {
+  background: var(--color-bg-tan);
+  border-left: 4px solid var(--color-primary-red);
+  border-top: 2px solid var(--color-primary-red);
+  border-radius: 0;
+}
+.reader .rule-banner strong, .reader .rule-banner .h {
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--color-primary-red);
+}
+
+/* ---- Golden tables ---- */
+.reader table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: var(--rhythm) 0;
+  font-size: 0.95em;
+}
+.reader table.golden col.label { width: var(--measure-minor); }   /* 0.382 */
+.reader table.golden col.value { width: var(--measure-major); }   /* 0.618 */
+.reader th {
+  font-family: var(--font-family-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  color: var(--color-primary-blue);
+  border-bottom: 2px solid var(--color-bg-tan);
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+}
+.reader td { border-bottom: 1px solid var(--color-neutral-light); padding: 0.4rem 0.6rem; }
+
+/* ---- Figures ---- */
+.reader .book-figure { margin: calc(var(--rhythm) * 1.2) 0; }
+.reader .book-figure img { max-width: 100%; height: auto; border: 1px solid var(--color-neutral-light); border-radius: 0; display: block; }
+.reader .book-figure__caption {
+  font-family: var(--font-family-sans);
+  font-size: 0.8rem;
+  color: var(--color-neutral-medium);
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 3px solid var(--color-primary-red);
+  border-top-width: 3px;
+  max-width: var(--accent-rule);
+}
+
+/* ---- Inline code (unchanged brand treatment) ---- */
+.reader :not(pre) > code {
+  background: var(--color-surface-muted);
+  color: var(--color-primary-red);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+}
+
+/* ---- Block code card + language tab (Pygments class-only spans) ---- */
+.book-code {
+  position: relative;
+  margin: var(--fib-34) 0;
+  max-width: var(--measure);
+  border-radius: 2px;
+}
+.book-code::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0; left: 0;
+  transform: translateY(-100%);
+  background: var(--color-secondary-green);
+  color: #fff;
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  line-height: 1;
+  padding: 0.34rem 0.55rem;
+  border-radius: 2px 2px 0 0;
+}
+.book-code .bcs-hl, .book-code pre { margin: 0; background: var(--code-bg); color: var(--code-txt); border-radius: 0 2px 2px 2px; }
+.book-code pre {
+  padding: var(--fib-21);
+  overflow-x: auto;
+  font-family: var(--font-family-mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  tab-size: 4;
+}
+.book-code code { background: transparent; color: inherit; padding: 0; }
+.book-code .k, .book-code .kn, .book-code .kd, .book-code .kc, .book-code .kr, .book-code .bp, .book-code .ow { color: var(--code-kw); }
+.book-code .nf, .book-code .fm, .book-code .nb, .book-code .nn, .book-code .nc, .book-code .nd { color: var(--code-fn); }
+.book-code .s, .book-code .s1, .book-code .s2, .book-code .sb, .book-code .se, .book-code .sd { color: var(--code-str-dark); }
+.book-code .c, .book-code .c1, .book-code .cm, .book-code .ch { color: var(--code-comment); font-style: italic; }
+.book-code .mi, .book-code .mf, .book-code .mh, .book-code .il { color: var(--code-arg); }
+.book-code .o, .book-code .p, .book-code .n, .book-code .nv, .book-code .nx { color: var(--code-txt); }
+.book-code .err { color: var(--color-primary-red); }
+
+/* ---- Output / REPL panel (light, distinct from source card) ---- */
+.book-output {
+  max-width: var(--measure);
+  margin: var(--fib-21) 0 var(--fib-34);
+  background: var(--color-surface-subtle);
+  color: var(--color-neutral-900);
+  border: 1px solid var(--color-neutral-light);
+  border-left: 3px solid var(--color-neutral-medium);
+  border-radius: 0 2px 2px 0;
+  padding: var(--fib-21);
+  font-family: var(--font-family-mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.book-output::before {
+  content: "OUTPUT";
+  display: block;
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.62rem;
+  color: var(--color-neutral-medium);
+  margin-bottom: 0.5rem;
+}
+.book-output--repl { border-left-color: var(--color-accent-petrol); }
+.book-output--repl::before { content: "PYTHON REPL"; }
+
+/* ---- GeoGebra embed (live on screen, static image in print) ---- */
+.ggb-embed { margin: calc(var(--rhythm) * 1.2) 0; }
+.ggb-embed .ggb-static { display: none; }
+.ggb-embed .ggb-live { width: 100%; aspect-ratio: 1.618 / 1; border: 1px solid var(--color-neutral-light); }
+.ggb-embed .ggb-caption { font-family: var(--font-family-sans); font-size: 0.8rem; color: var(--color-neutral-medium); margin-top: 0.5rem; }
+
+/* ---- Project section (embedded content, NOT a link card) ----
+   Projects are full book material embedded inline; a printed book has no links.
+   The card is a visual container with a red kicker + green left spine. */
+.reader .project-card {
+  border: 1px solid var(--color-neutral-light);
+  border-left: 4px solid var(--color-secondary-green);
+  border-radius: 0;
+  padding: var(--spacing-lg);
+  margin: calc(var(--rhythm) * 1.5) 0;
+  background: var(--color-surface-subtle);
+}
+.reader .project-card .kicker { font-family: var(--font-family-sans); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; font-size: 0.72rem; color: var(--color-primary-red); }
+.reader .project-card h3 { margin: 0.3rem 0 0.6rem; }
+
+/* ---- Sticky book-bar (breadcrumbs + prev/next + progress rule) ---- */
+.book-bar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-primary-white);
+  border-bottom: 1px solid var(--color-neutral-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem var(--spacing-md);
+  font-family: var(--font-family-sans);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.book-bar__crumbs { color: var(--color-neutral-medium); }
+.book-bar__crumbs .sep { color: var(--color-neutral-light); margin: 0 0.4rem; }
+.book-bar__crumbs .current { color: var(--color-primary-black); font-weight: 700; }
+.book-bar__nav a { color: var(--color-primary-blue); text-decoration: none; font-weight: 700; margin-left: 0.8rem; }
+.book-bar__nav a[aria-disabled="true"] { color: var(--color-neutral-light); pointer-events: none; }
+.book-progress { position: absolute; left: 0; bottom: 0; height: var(--book-progress-h); width: 0; background: var(--color-primary-red); }
+.book-toc-toggle { display: none; }
+
+/* ---- Responsive: collapse TOC to off-canvas drawer < 992px ---- */
+@media (max-width: 991px) {
+  .book-shell { grid-template-columns: 1fr; }
+  .book-toc {
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    width: min(80vw, 20rem);
+    max-height: none;
+    background: var(--color-primary-white);
+    border-right: 1px solid var(--color-neutral-light);
+    padding: var(--spacing-lg);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    z-index: 40;
+  }
+  .book-toc.open { transform: translateX(0); }
+  /* belt-and-braces for browsers without inert */
+  .book-toc:not(.open) { visibility: hidden; pointer-events: none; }
+  .book-toc.open { visibility: visible; pointer-events: auto; }
+  .book-toc-toggle { display: inline-block; background: none; border: none; color: var(--color-primary-blue); font: inherit; font-weight: 700; cursor: pointer; }
+}
+
+/* ============================================================================
+   FULL-WIDTH APP LAYOUT (Layout Standardization Rule)
+   ----------------------------------------------------------------------------
+   App/chrome pages (home, challenges, detail, dashboard, sql, admin, nav,
+   footer) must FILL the viewport at every form factor — no fixed centered
+   gutter. Bootstrap's .container caps width per breakpoint (540/720/960/1140/
+   1320px), which is exactly the left/right margin we're removing.
+
+   We neutralize that cap globally and replace it with responsive side padding
+   sized by clamp() so content breathes on huge monitors without a hard max.
+   The side padding rises with the viewport (golden-ish: ~2.36% each side)
+   between a comfortable phone minimum and a generous desktop maximum.
+
+   Book READING surfaces (.reader / .book-shell) keep their own ~66-char golden
+   measure — see BOOK READING SHELL above — and are explicitly NOT widened here.
+   ============================================================================ */
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  max-width: 100% !important;             /* override Bootstrap's per-breakpoint caps */
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: clamp(1rem, 2.36vw, 4rem); /* responsive gutter, no hard max width */
+}
+
+/* The book reading shell manages its OWN width/centering (golden measure +
+   marginalia). Keep it immune to the full-width rule above. */
+.book-shell {
+  max-width: var(--book-shell-max) !important;
+  margin-inline: auto;
+}
+
+/* ---- Home hero: golden two-column split (major 61.8% : minor 38.2%) ----
+   The inline flex-basis on .hero-major/.hero-minor creates the golden split on
+   large screens. Below the lg breakpoint the columns STACK full-width so the
+   portrait card and framing text remain readable on phones/tablets. */
+@media (max-width: 991.98px) {
+  .hero-major,
+  .hero-minor {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-minor { padding-top: 0 !important; }
+}
+
+/* ---- Readable centered rows for narrow single-column pages ----
+   Full-width is right for content-dense pages (calendar, detail, books), but a
+   login/register/OTP form or a centred CTA shouldn't stretch to 2500px on an
+   ultra-wide monitor. A page opts in by adding class="row-readable" to its .row;
+   the row itself stays centred at a comfortable measure while the surrounding
+   .container remains full-width. (Progressive: pages without the class are
+   unaffected.) */
+.row-readable {
+  max-width: 60rem;
+  margin-inline: auto;
+}

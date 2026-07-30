@@ -1,0 +1,17 @@
+{
+  "challenge_number": 103,
+  "concepts_text": null,
+  "date_id": "2025-11-21",
+  "fcc_description": "<p>Given two integers, return the least common multiple (LCM) of the two numbers.</p>\n<p>The LCM of two numbers is the smallest positive integer that is a multiple of both numbers. For example, given <code>4</code> and <code>6</code>, return <code>12</code> because:</p>\n<ul>\n<li>Multiples of <code>4</code> are <code>4</code>, <code>8</code>, <code>12</code> and so on.</li>\n<li>Multiples of <code>6</code> are <code>6</code>, <code>12</code>, <code>18</code> and so on.</li>\n<li><code>12</code> is the smallest number that is a multiple of both.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>lcm(4, 6)</code> should return <code>12</code>.</p>\", \"testString\": \"assert.equal(lcm(4, 6), 12);\"}, {\"text\": \"<p><code>lcm(9, 6)</code> should return <code>18</code>.</p>\", \"testString\": \"assert.equal(lcm(9, 6), 18);\"}, {\"text\": \"<p><code>lcm(10, 100)</code> should return <code>100</code>.</p>\", \"testString\": \"assert.equal(lcm(10, 100), 100);\"}, {\"text\": \"<p><code>lcm(13, 17)</code> should return <code>221</code>.</p>\", \"testString\": \"assert.equal(lcm(13, 17), 221);\"}, {\"text\": \"<p><code>lcm(45, 70)</code> should return <code>630</code>.</p>\", \"testString\": \"assert.equal(lcm(45, 70), 630);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>lcm(4, 6)</code> should return <code>12</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(lcm(4, 6), 12)`)\\n}})\"}, {\"text\": \"<p><code>lcm(9, 6)</code> should return <code>18</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(lcm(9, 6), 18)`)\\n}})\"}, {\"text\": \"<p><code>lcm(10, 100)</code> should return <code>100</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(lcm(10, 100), 100)`)\\n}})\"}, {\"text\": \"<p><code>lcm(13, 17)</code> should return <code>221</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(lcm(13, 17), 221)`)\\n}})\"}, {\"text\": \"<p><code>lcm(45, 70)</code> should return <code>630</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(lcm(45, 70), 630)`)\\n}})\"}]",
+  "fcc_starter_js": "function lcm(a, b) {\n\n  return a;\n}",
+  "fcc_starter_py": "def lcm(a, b):\n\n    return a",
+  "image_path": "20251121_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "LCM"
+}

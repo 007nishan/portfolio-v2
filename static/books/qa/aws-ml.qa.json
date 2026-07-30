@@ -1,0 +1,9 @@
+{
+  "slug": "aws-ml",
+  "gate": "PASS",
+  "counts": {
+    "error": 0,
+    "warn": 0
+  },
+  "findings": []
+}

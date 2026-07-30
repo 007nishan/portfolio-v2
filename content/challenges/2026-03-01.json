@@ -1,0 +1,17 @@
+{
+  "challenge_number": 203,
+  "concepts_text": null,
+  "date_id": "2026-03-01",
+  "fcc_description": "<p>Given an array, determine if it is flat.</p>\n<ul>\n<li>An array is flat if none of its elements are arrays.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isFlat([1, 2, 3, 4])</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isFlat([1, 2, 3, 4]));\"}, {\"text\": \"<p><code>isFlat([1, [2, 3], 4])</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isFlat([1, [2, 3], 4]));\"}, {\"text\": \"<p><code>isFlat([1, 0, false, true, \\\"a\\\", \\\"b\\\"])</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isFlat([1, 0, false, true, \\\"a\\\", \\\"b\\\"]));\"}, {\"text\": \"<p><code>isFlat([\\\"a\\\", [0], \\\"b\\\", true])</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isFlat([\\\"a\\\", [0], \\\"b\\\", true]));\"}, {\"text\": \"<p><code>isFlat([1, [2, [3, [4, [5]]]], 6])</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isFlat([1, [2, [3, [4, [5]]]], 6]));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_flat([1, 2, 3, 4])</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_flat([1, 2, 3, 4]), True)`)\\n}})\"}, {\"text\": \"<p><code>is_flat([1, [2, 3], 4])</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_flat([1, [2, 3], 4]), False)`)\\n}})\"}, {\"text\": \"<p><code>is_flat([1, 0, False, True, \\\"a\\\", \\\"b\\\"])</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_flat([1, 0, False, True, \\\"a\\\", \\\"b\\\"]), True)`)\\n}})\"}, {\"text\": \"<p><code>is_flat([\\\"a\\\", [0], \\\"b\\\", True])</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_flat([\\\"a\\\", [0], \\\"b\\\", True]), False)`)\\n}})\"}, {\"text\": \"<p><code>is_flat([1, [2, [3, [4, [5]]]], 6])</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_flat([1, [2, [3, [4, [5]]]], 6]), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function isFlat(arr) {\n\n  return arr;\n}",
+  "fcc_starter_py": "def is_flat(arr):\n\n    return arr",
+  "image_path": "20260301_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Flattened"
+}

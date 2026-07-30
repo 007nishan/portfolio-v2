@@ -1,0 +1,17 @@
+{
+  "challenge_number": 226,
+  "concepts_text": null,
+  "date_id": "2026-03-24",
+  "fcc_description": "<p>Given an array of student exam scores and the score needed to pass it, return the number of students that passed the exam.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>passingCount([90, 85, 75, 60, 50], 70)</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(passingCount([90, 85, 75, 60, 50], 70), 3);\"}, {\"text\": \"<p><code>passingCount([100, 80, 75, 88, 72, 74, 79, 71, 60, 92], 75)</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(passingCount([100, 80, 75, 88, 72, 74, 79, 71, 60, 92], 75), 6);\"}, {\"text\": \"<p><code>passingCount([79, 60, 88, 72, 74, 59, 75, 71, 80, 92], 60)</code> should return <code>9</code>.</p>\", \"testString\": \"assert.equal(passingCount([79, 60, 88, 72, 74, 59, 75, 71, 80, 92], 60), 9);\"}, {\"text\": \"<p><code>passingCount([76, 79, 80, 70, 71, 65, 79, 78, 59, 72], 85)</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(passingCount([76, 79, 80, 70, 71, 65, 79, 78, 59, 72], 85), 0);\"}, {\"text\": \"<p><code>passingCount([84, 65, 98, 53, 58, 71, 91, 80, 92, 70, 73, 83, 86, 69, 84, 77, 72, 58, 69, 75, 66, 68, 72, 96, 90, 63, 88, 63, 80, 67], 60)</code> should return <code>27</code>.</p>\", \"testString\": \"assert.equal(passingCount([84, 65, 98, 53, 58, 71, 91, 80, 92, 70, 73, 83, 86, 69, 84, 77, 72, 58, 69, 75, 66, 68, 72, 96, 90, 63, 88, 63, 80, 67], 60), 27);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>passing_count([90, 85, 75, 60, 50], 70)</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(passing_count([90, 85, 75, 60, 50], 70), 3)`)\\n}})\"}, {\"text\": \"<p><code>passing_count([100, 80, 75, 88, 72, 74, 79, 71, 60, 92], 75)</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(passing_count([100, 80, 75, 88, 72, 74, 79, 71, 60, 92], 75), 6)`)\\n}})\"}, {\"text\": \"<p><code>passing_count([79, 60, 88, 72, 74, 59, 75, 71, 80, 92], 60)</code> should return <code>9</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(passing_count([79, 60, 88, 72, 74, 59, 75, 71, 80, 92], 60), 9)`)\\n}})\"}, {\"text\": \"<p><code>passing_count([76, 79, 80, 70, 71, 65, 79, 78, 59, 72], 85)</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(passing_count([76, 79, 80, 70, 71, 65, 79, 78, 59, 72], 85), 0)`)\\n}})\"}, {\"text\": \"<p><code>passing_count([84, 65, 98, 53, 58, 71, 91, 80, 92, 70, 73, 83, 86, 69, 84, 77, 72, 58, 69, 75, 66, 68, 72, 96, 90, 63, 88, 63, 80, 67], 60)</code> should return <code>27</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(passing_count([84, 65, 98, 53, 58, 71, 91, 80, 92, 70, 73, 83, 86, 69, 84, 77, 72, 58, 69, 75, 66, 68, 72, 96, 90, 63, 88, 63, 80, 67], 60), 27)`)\\n}})\"}]",
+  "fcc_starter_js": "function passingCount(scores, passingScore) {\n\n  return scores;\n}",
+  "fcc_starter_py": "def passing_count(scores, passing_score):\n\n    return scores",
+  "image_path": "20260324_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Passing Exam Count"
+}

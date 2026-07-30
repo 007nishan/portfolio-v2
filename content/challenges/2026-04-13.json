@@ -1,0 +1,17 @@
+{
+  "challenge_number": 246,
+  "concepts_text": null,
+  "date_id": "2026-04-13",
+  "fcc_description": "<p>Given a full name as a string, return their initials.</p>\n<ul>\n<li>Names to initialize are separated by a space.</li>\n<li>Initials should be made uppercase.</li>\n<li>Initials should be separated by dots.</li>\n</ul>\n<p>For example, <code>\"Tommy Millwood\"</code> returns <code>\"T.M.\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getInitials(\\\"Tommy Millwood\\\")</code> should return <code>\\\"T.M.\\\"</code>.</p>\", \"testString\": \"assert.equal(getInitials(\\\"Tommy Millwood\\\"), \\\"T.M.\\\");\"}, {\"text\": \"<p><code>getInitials(\\\"Savanna Puddlesplash\\\")</code> should return <code>\\\"S.P.\\\"</code>.</p>\", \"testString\": \"assert.equal(getInitials(\\\"Savanna Puddlesplash\\\"), \\\"S.P.\\\");\"}, {\"text\": \"<p><code>getInitials(\\\"Frances Cowell Conrad\\\")</code> should return <code>\\\"F.C.C.\\\"</code>.</p>\", \"testString\": \"assert.equal(getInitials(\\\"Frances Cowell Conrad\\\"), \\\"F.C.C.\\\");\"}, {\"text\": \"<p><code>getInitials(\\\"Dragon\\\")</code> should return <code>\\\"D.\\\"</code>.</p>\", \"testString\": \"assert.equal(getInitials(\\\"Dragon\\\"), \\\"D.\\\");\"}, {\"text\": \"<p><code>getInitials(\\\"Dorothy Vera Clump Haverstock Norris\\\")</code> should return <code>\\\"D.V.C.H.N.\\\"</code>.</p>\", \"testString\": \"assert.equal(getInitials(\\\"Dorothy Vera Clump Haverstock Norris\\\"), \\\"D.V.C.H.N.\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_initials(\\\"Tommy Millwood\\\")</code> should return <code>\\\"T.M.\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_initials(\\\"Tommy Millwood\\\"), \\\"T.M.\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_initials(\\\"Savanna Puddlesplash\\\")</code> should return <code>\\\"S.P.\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_initials(\\\"Savanna Puddlesplash\\\"), \\\"S.P.\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_initials(\\\"Frances Cowell Conrad\\\")</code> should return <code>\\\"F.C.C.\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_initials(\\\"Frances Cowell Conrad\\\"), \\\"F.C.C.\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_initials(\\\"Dragon\\\")</code> should return <code>\\\"D.\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_initials(\\\"Dragon\\\"), \\\"D.\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_initials(\\\"Dorothy Vera Clump Haverstock Norris\\\")</code> should return <code>\\\"D.V.C.H.N.\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_initials(\\\"Dorothy Vera Clump Haverstock Norris\\\"), \\\"D.V.C.H.N.\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getInitials(name) {\n\n  return name;\n}",
+  "fcc_starter_py": "def get_initials(name):\n\n    return name",
+  "image_path": "20260413_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Name Initials"
+}

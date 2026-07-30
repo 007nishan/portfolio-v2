@@ -1,0 +1,17 @@
+{
+  "challenge_number": 32,
+  "concepts_text": null,
+  "date_id": "2025-09-11",
+  "fcc_description": "<p>Given a string of words, return a new string with the words in reverse order. For example, the first word should be at the end of the returned string, and the last word should be at the beginning of the returned string.</p>\n<ul>\n<li>In the given string, words can be separated by one or more spaces.</li>\n<li>The returned string should only have one space between words.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>reverseSentence(\\\"world hello\\\")</code> should return <code>\\\"hello world\\\"</code>.</p>\", \"testString\": \"assert.equal(reverseSentence(\\\"world hello\\\"), \\\"hello world\\\");\"}, {\"text\": \"<p><code>reverseSentence(\\\"push commit git\\\")</code> should return <code>\\\"git commit push\\\"</code>.</p>\", \"testString\": \"assert.equal(reverseSentence(\\\"push commit git\\\"), \\\"git commit push\\\");\"}, {\"text\": \"<p><code>reverseSentence(\\\"npm  install  sudo\\\")</code> should return <code>\\\"sudo install npm\\\"</code>.</p>\", \"testString\": \"assert.equal(reverseSentence(\\\"npm  install   apt    sudo\\\"), \\\"sudo apt install npm\\\");\"}, {\"text\": \"<p><code>reverseSentence(\\\"import    default   function  export\\\")</code> should return <code>\\\"export function default import\\\"</code>.</p>\", \"testString\": \"assert.equal(reverseSentence(\\\"import    default   function  export\\\"), \\\"export function default import\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>reverse_sentence(\\\"world hello\\\")</code> should return <code>\\\"hello world\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(reverse_sentence(\\\"world hello\\\"), \\\"hello world\\\")`)\\n}})\"}, {\"text\": \"<p><code>reverse_sentence(\\\"push commit git\\\")</code> should return <code>\\\"git commit push\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(reverse_sentence(\\\"push commit git\\\"), \\\"git commit push\\\")`)\\n}})\"}, {\"text\": \"<p><code>reverse_sentence(\\\"npm  install   apt    sudo\\\")</code> should return <code>\\\"sudo apt install npm\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(reverse_sentence(\\\"npm  install   apt    sudo\\\"), \\\"sudo apt install npm\\\")`)\\n}})\"}, {\"text\": \"<p><code>reverse_sentence(\\\"import    default   function  export\\\")</code> should return <code>\\\"export function default import\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(reverse_sentence(\\\"import    default   function  export\\\"), \\\"export function default import\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function reverseSentence(sentence) {\n\n  return sentence;\n}",
+  "fcc_starter_py": "def reverse_sentence(sentence):\n\n    return sentence",
+  "image_path": "20250911_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Reverse Sentence"
+}

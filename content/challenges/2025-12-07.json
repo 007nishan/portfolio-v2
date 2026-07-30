@@ -1,0 +1,17 @@
+{
+  "challenge_number": 119,
+  "concepts_text": null,
+  "date_id": "2025-12-07",
+  "fcc_description": "<p>Given a string sentence, return a compressed version of the sentence where consecutive duplicate words are replaced by the word followed with the number of times it repeats in parentheses.</p>\n<ul>\n<li>Only consecutive duplicates are compressed.</li>\n<li>Words are separated by single spaces.</li>\n</ul>\n<p>For example, given <code>\"yes yes yes please\"</code>, return <code>\"yes(3) please\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>compressString(\\\"yes yes yes please\\\")</code> should return <code>\\\"yes(3) please\\\"</code>.</p>\", \"testString\": \"assert.equal(compressString(\\\"yes yes yes please\\\"), \\\"yes(3) please\\\");\"}, {\"text\": \"<p><code>compressString(\\\"I have have have apples\\\")</code> should return <code>\\\"I have(3) apples\\\"</code>.</p>\", \"testString\": \"assert.equal(compressString(\\\"I have have have apples\\\"), \\\"I have(3) apples\\\");\"}, {\"text\": \"<p><code>compressString(\\\"one one three and to the the the the\\\")</code> should return <code>\\\"one(2) three and to the(4)\\\"</code>.</p>\", \"testString\": \"assert.equal(compressString(\\\"one one three and to the the the the\\\"), \\\"one(2) three and to the(4)\\\");\"}, {\"text\": \"<p><code>compressString(\\\"route route route route route route tee tee tee tee tee tee\\\")</code> should return <code>\\\"route(6) tee(6)\\\"</code>.</p>\", \"testString\": \"assert.equal(compressString(\\\"route route route route route route tee tee tee tee tee tee\\\"), \\\"route(6) tee(6)\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>compress_string(\\\"yes yes yes please\\\")</code> should return <code>\\\"yes(3) please\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(compress_string(\\\"yes yes yes please\\\"), \\\"yes(3) please\\\")`)\\n}})\"}, {\"text\": \"<p><code>compress_string(\\\"I have have have apples\\\")</code> should return <code>\\\"I have(3) apples\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(compress_string(\\\"I have have have apples\\\"), \\\"I have(3) apples\\\")`)\\n}})\"}, {\"text\": \"<p><code>compress_string(\\\"one one three and to the the the the\\\")</code> should return <code>\\\"one(2) three and to the(4)\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(compress_string(\\\"one one three and to the the the the\\\"), \\\"one(2) three and to the(4)\\\")`)\\n}})\"}, {\"text\": \"<p><code>compress_string(\\\"route route route route route route tee tee tee tee tee tee\\\")</code> should return <code>\\\"route(6) tee(6)\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(compress_string(\\\"route route route route route route tee tee tee tee tee tee\\\"), \\\"route(6) tee(6)\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function compressString(sentence) {\n\n  return sentence;\n}",
+  "fcc_starter_py": "def compress_string(sentence):\n\n    return sentence",
+  "image_path": "20251207_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "String Compression"
+}

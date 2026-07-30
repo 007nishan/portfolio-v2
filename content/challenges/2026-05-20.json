@@ -1,0 +1,17 @@
+{
+  "challenge_number": 283,
+  "concepts_text": null,
+  "date_id": "2026-05-20",
+  "fcc_description": "<p>Given two strings, return a new string that interleaves their characters one at a time. If one string is longer, append the remaining characters at the end.</p>\n<p>Begin with the first character of the first string.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>zipStrings(\\\"abc\\\", \\\"123\\\")</code> should return <code>\\\"a1b2c3\\\"</code>.</p>\", \"testString\": \"assert.equal(zipStrings(\\\"abc\\\", \\\"123\\\"), \\\"a1b2c3\\\");\"}, {\"text\": \"<p><code>zipStrings(\\\"acegikmoqsuwy\\\", \\\"bdfhjlnprtvxz\\\")</code> should return <code>\\\"abcdefghijklmnopqrstuvwxyz\\\"</code>.</p>\", \"testString\": \"assert.equal(zipStrings(\\\"acegikmoqsuwy\\\", \\\"bdfhjlnprtvxz\\\"), \\\"abcdefghijklmnopqrstuvwxyz\\\");\"}, {\"text\": \"<p><code>zipStrings(\\\"day\\\", \\\"night\\\")</code> should return <code>\\\"dnaiyght\\\"</code>.</p>\", \"testString\": \"assert.equal(zipStrings(\\\"day\\\", \\\"night\\\"), \\\"dnaiyght\\\");\"}, {\"text\": \"<p><code>zipStrings(\\\"python\\\", \\\"javascript\\\")</code> should return <code>\\\"pjyatvhaosncript\\\"</code>.</p>\", \"testString\": \"assert.equal(zipStrings(\\\"python\\\", \\\"javascript\\\"), \\\"pjyatvhaosncript\\\");\"}, {\"text\": \"<p><code>zipStrings(\\\"feCdCm\\\", \\\"reoeap\\\")</code> should return <code>\\\"freeCodeCamp\\\"</code>.</p>\", \"testString\": \"assert.equal(zipStrings(\\\"feCdCm\\\", \\\"reoeap\\\"), \\\"freeCodeCamp\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>zip_strings(\\\"abc\\\", \\\"123\\\")</code> should return <code>\\\"a1b2c3\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(zip_strings(\\\"abc\\\", \\\"123\\\"), \\\"a1b2c3\\\")`)\\n}})\"}, {\"text\": \"<p><code>zip_strings(\\\"acegikmoqsuwy\\\", \\\"bdfhjlnprtvxz\\\")</code> should return <code>\\\"abcdefghijklmnopqrstuvwxyz\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(zip_strings(\\\"acegikmoqsuwy\\\", \\\"bdfhjlnprtvxz\\\"), \\\"abcdefghijklmnopqrstuvwxyz\\\")`)\\n}})\"}, {\"text\": \"<p><code>zip_strings(\\\"day\\\", \\\"night\\\")</code> should return <code>\\\"dnaiyght\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(zip_strings(\\\"day\\\", \\\"night\\\"), \\\"dnaiyght\\\")`)\\n}})\"}, {\"text\": \"<p><code>zip_strings(\\\"python\\\", \\\"javascript\\\")</code> should return <code>\\\"pjyatvhaosncript\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(zip_strings(\\\"python\\\", \\\"javascript\\\"), \\\"pjyatvhaosncript\\\")`)\\n}})\"}, {\"text\": \"<p><code>zip_strings(\\\"feCdCm\\\", \\\"reoeap\\\")</code> should return <code>\\\"freeCodeCamp\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(zip_strings(\\\"feCdCm\\\", \\\"reoeap\\\"), \\\"freeCodeCamp\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function zipStrings(a, b) {\n\n  return a;\n}",
+  "fcc_starter_py": "def zip_strings(a, b):\n\n    return a",
+  "image_path": "20260520_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "String Zipper"
+}

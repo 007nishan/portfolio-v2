@@ -1,0 +1,17 @@
+{
+  "challenge_number": 64,
+  "concepts_text": null,
+  "date_id": "2025-10-13",
+  "fcc_description": "<p>Given a string representing a time of the day in the 24-hour format of <code>\"HHMM\"</code>, return the time in its equivalent 12-hour format of <code>\"H:MM AM\"</code> or <code>\"H:MM PM\"</code>.</p>\n<ul>\n<li>The given input will always be a four-digit string in 24-hour time format, from <code>\"0000\"</code> to <code>\"2359\"</code>.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>to12(\\\"1124\\\")</code> should return <code>\\\"11:24 AM\\\"</code>.</p>\", \"testString\": \"assert.equal(to12(\\\"1124\\\"), \\\"11:24 AM\\\");\"}, {\"text\": \"<p><code>to12(\\\"0900\\\")</code> should return <code>\\\"9:00 AM\\\"</code>.</p>\", \"testString\": \"assert.equal(to12(\\\"0900\\\"), \\\"9:00 AM\\\");\"}, {\"text\": \"<p><code>to12(\\\"1455\\\")</code> should return <code>\\\"2:55 PM\\\"</code>.</p>\", \"testString\": \"assert.equal(to12(\\\"1455\\\"), \\\"2:55 PM\\\");\"}, {\"text\": \"<p><code>to12(\\\"2346\\\")</code> should return <code>\\\"11:46 PM\\\"</code>.</p>\", \"testString\": \"assert.equal(to12(\\\"2346\\\"), \\\"11:46 PM\\\");\"}, {\"text\": \"<p><code>to12(\\\"0030\\\")</code> should return <code>\\\"12:30 AM\\\"</code>.</p>\", \"testString\": \"assert.equal(to12(\\\"0030\\\"), \\\"12:30 AM\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>to_12(\\\"1124\\\")</code> should return <code>\\\"11:24 AM\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_12(\\\"1124\\\"), \\\"11:24 AM\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_12(\\\"0900\\\")</code> should return <code>\\\"9:00 AM\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_12(\\\"0900\\\"), \\\"9:00 AM\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_12(\\\"1455\\\")</code> should return <code>\\\"2:55 PM\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_12(\\\"1455\\\"), \\\"2:55 PM\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_12(\\\"2346\\\")</code> should return <code>\\\"11:46 PM\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_12(\\\"2346\\\"), \\\"11:46 PM\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_12(\\\"0030\\\")</code> should return <code>\\\"12:30 AM\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_12(\\\"0030\\\"), \\\"12:30 AM\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function to12(time) {\n\n  return time;\n}",
+  "fcc_starter_py": "def to_12(time):\n\n    return time",
+  "image_path": "20251013_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "24 to 12"
+}

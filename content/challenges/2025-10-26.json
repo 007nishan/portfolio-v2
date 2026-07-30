@@ -1,0 +1,17 @@
+{
+  "challenge_number": 77,
+  "concepts_text": null,
+  "date_id": "2025-10-26",
+  "fcc_description": "<p>Given an integer number of seconds, return a string representing the same duration in the format <code>\"H:MM:SS\"</code>, where <code>\"H\"</code> is the number of hours, <code>\"MM\"</code> is the number of minutes, and <code>\"SS\"</code> is the number of seconds. Return the time using the following rules:</p>\n<ul>\n<li>Seconds: Should always be two digits.</li>\n<li>Minutes: Should omit leading zeros when they aren't needed. Use <code>\"0\"</code> if the duration is less than one minute.</li>\n<li>Hours: Should be included only if they're greater than zero.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>format(500)</code> should return <code>\\\"8:20\\\"</code>.</p>\", \"testString\": \"assert.equal(format(500), \\\"8:20\\\");\"}, {\"text\": \"<p><code>format(4000)</code> should return <code>\\\"1:06:40\\\"</code>.</p>\", \"testString\": \"assert.equal(format(4000), \\\"1:06:40\\\");\"}, {\"text\": \"<p><code>format(1)</code> should return <code>\\\"0:01\\\"</code>.</p>\", \"testString\": \"assert.equal(format(1), \\\"0:01\\\");\"}, {\"text\": \"<p><code>format(5555)</code> should return <code>\\\"1:32:35\\\"</code>.</p>\", \"testString\": \"assert.equal(format(5555), \\\"1:32:35\\\");\"}, {\"text\": \"<p><code>format(99999)</code> should return <code>\\\"27:46:39\\\"</code>.</p>\", \"testString\": \"assert.equal(format(99999), \\\"27:46:39\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>format(500)</code> should return <code>\\\"8:20\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(format(500), \\\"8:20\\\")`)\\n}})\"}, {\"text\": \"<p><code>format(4000)</code> should return <code>\\\"1:06:40\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(format(4000), \\\"1:06:40\\\")`)\\n}})\"}, {\"text\": \"<p><code>format(1)</code> should return <code>\\\"0:01\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(format(1), \\\"0:01\\\")`)\\n}})\"}, {\"text\": \"<p><code>format(5555)</code> should return <code>\\\"1:32:35\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(format(5555), \\\"1:32:35\\\")`)\\n}})\"}, {\"text\": \"<p><code>format(99999)</code> should return <code>\\\"27:46:39\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(format(99999), \\\"27:46:39\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function format(seconds) {\n\n  return seconds;\n}",
+  "fcc_starter_py": "def format(seconds):\n\n    return seconds",
+  "image_path": "20251026_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Duration Formatter"
+}

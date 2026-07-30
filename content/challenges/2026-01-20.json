@@ -1,0 +1,17 @@
+{
+  "challenge_number": 163,
+  "concepts_text": null,
+  "date_id": "2026-01-20",
+  "fcc_description": "<p>Given a string representing a variable name, convert it to consonant case using the following rules:</p>\n<ul>\n<li>All consonants should be converted to uppercase.</li>\n<li>All vowels (<code>a</code>, <code>e</code>, <code>i</code>, <code>o</code>, <code>u</code> in any case) should be converted to lowercase.</li>\n<li>All hyphens (<code>-</code>) should be converted to underscores (<code>_</code>).</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>toConsonantCase(\\\"helloworld\\\")</code> should return <code>\\\"HeLLoWoRLD\\\"</code>.</p>\", \"testString\": \"assert.equal(toConsonantCase(\\\"helloworld\\\"), \\\"HeLLoWoRLD\\\");\"}, {\"text\": \"<p><code>toConsonantCase(\\\"HELLOWORLD\\\")</code> should return <code>\\\"HeLLoWoRLD\\\"</code>.</p>\", \"testString\": \"assert.equal(toConsonantCase(\\\"HELLOWORLD\\\"), \\\"HeLLoWoRLD\\\");\"}, {\"text\": \"<p><code>toConsonantCase(\\\"_hElLO-WOrlD-\\\")</code> should return <code>\\\"_HeLLo_WoRLD_\\\"</code>.</p>\", \"testString\": \"assert.equal(toConsonantCase(\\\"_hElLO-WOrlD-\\\"), \\\"_HeLLo_WoRLD_\\\");\"}, {\"text\": \"<p><code>toConsonantCase(\\\"_~-generic_~-variable_~-name_~-here-~_\\\")</code> should return <code>\\\"_~_GeNeRiC_~_VaRiaBLe_~_NaMe_~_HeRe_~_\\\"</code>.</p>\", \"testString\": \"assert.equal(toConsonantCase(\\\"_~-generic_~-variable_~-name_~-here-~_\\\"), \\\"_~_GeNeRiC_~_VaRiaBLe_~_NaMe_~_HeRe_~_\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>to_consonant_case(\\\"helloworld\\\")</code> should return <code>\\\"HeLLoWoRLD\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_consonant_case(\\\"helloworld\\\"), \\\"HeLLoWoRLD\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_consonant_case(\\\"HELLOWORLD\\\")</code> should return <code>\\\"HeLLoWoRLD\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_consonant_case(\\\"HELLOWORLD\\\"), \\\"HeLLoWoRLD\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_consonant_case(\\\"_hElLO-WOrlD-\\\")</code> should return <code>\\\"_HeLLo_WoRLD_\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_consonant_case(\\\"_hElLO-WOrlD-\\\"), \\\"_HeLLo_WoRLD_\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_consonant_case(\\\"_~-generic_~-variable_~-name_~-here-~_\\\")</code> should return <code>\\\"_~_GeNeRiC_~_VaRiaBLe_~_NaMe_~_HeRe_~_\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_consonant_case(\\\"_~-generic_~-variable_~-name_~-here-~_\\\"), \\\"_~_GeNeRiC_~_VaRiaBLe_~_NaMe_~_HeRe_~_\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function toConsonantCase(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def to_consonant_case(s):\n\n    return s",
+  "image_path": "20260120_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Consonant Case"
+}

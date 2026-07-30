@@ -1,0 +1,17 @@
+{
+  "challenge_number": 276,
+  "concepts_text": null,
+  "date_id": "2026-05-13",
+  "fcc_description": "<p>Given an array of integers that is sorted in ascending order except for one out-of-place element, return the index of that element.</p>\n<ul>\n<li>If more than one element could be considered out of place, return the index of the first one.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>findOffender([1, 6, 2, 3, 4, 5])</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(findOffender([1, 6, 2, 3, 4, 5]), 1);\"}, {\"text\": \"<p><code>findOffender([1, 2, 3, 5, 4, 5])</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(findOffender([1, 2, 3, 5, 4, 5]), 3);\"}, {\"text\": \"<p><code>findOffender([2, 1])</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(findOffender([2, 1]), 0);\"}, {\"text\": \"<p><code>findOffender([2, 4, 1, 6, 8])</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(findOffender([2, 4, 1, 6, 8]), 2);\"}, {\"text\": \"<p><code>findOffender([5, 18, 24, 33, 40, 55, 15, 68, 84, 91])</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(findOffender([5, 18, 24, 33, 40, 55, 15, 68, 84, 91]), 6);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>find_offender([1, 6, 2, 3, 4, 5])</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_offender([1, 6, 2, 3, 4, 5]), 1)`)\\n}})\"}, {\"text\": \"<p><code>find_offender([1, 2, 3, 5, 4, 5])</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_offender([1, 2, 3, 5, 4, 5]), 3)`)\\n}})\"}, {\"text\": \"<p><code>find_offender([2, 1])</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_offender([2, 1]), 0)`)\\n}})\"}, {\"text\": \"<p><code>find_offender([2, 4, 1, 6, 8])</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_offender([2, 4, 1, 6, 8]), 2)`)\\n}})\"}, {\"text\": \"<p><code>find_offender([5, 18, 24, 33, 40, 55, 15, 68, 84, 91])</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(find_offender([5, 18, 24, 33, 40, 55, 15, 68, 84, 91]), 6)`)\\n}})\"}]",
+  "fcc_starter_js": "function findOffender(arr) {\n\n  return arr;\n}",
+  "fcc_starter_py": "def find_offender(arr):\n\n    return arr",
+  "image_path": "20260513_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Offending Element"
+}

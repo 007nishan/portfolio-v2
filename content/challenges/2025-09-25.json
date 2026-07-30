@@ -1,0 +1,17 @@
+{
+  "challenge_number": 46,
+  "concepts_text": null,
+  "date_id": "2025-09-25",
+  "fcc_description": "<p>Given an array, return the second largest distinct number.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>secondLargest([1, 2, 3, 4])</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(secondLargest([1, 2, 3, 4]), 3);\"}, {\"text\": \"<p><code>secondLargest([20, 139, 94, 67, 31])</code> should return <code>94</code>.</p>\", \"testString\": \"assert.equal(secondLargest([20, 139, 94, 67, 31]), 94);\"}, {\"text\": \"<p><code>secondLargest([2, 3, 4, 6, 6])</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(secondLargest([2, 3, 4, 6, 6]), 4);\"}, {\"text\": \"<p><code>secondLargest([10, -17, 55.5, 44, 91, 0])</code> should return <code>55.5</code>.</p>\", \"testString\": \"assert.equal(secondLargest([10, -17, 55.5, 44, 91, 0]), 55.5);\"}, {\"text\": \"<p><code>secondLargest([1, 0, -1, 0, 1, 0, -1, 1, 0])</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(secondLargest([1, 0, -1, 0, 1, 0, -1, 1, 0]), 0);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>second_largest([1, 2, 3, 4])</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(second_largest([1, 2, 3, 4]), 3)`)\\n}})\"}, {\"text\": \"<p><code>second_largest([20, 139, 94, 67, 31])</code> should return <code>94</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(second_largest([20, 139, 94, 67, 31]), 94)`)\\n}})\"}, {\"text\": \"<p><code>second_largest([2, 3, 4, 6, 6])</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(second_largest([2, 3, 4, 6, 6]), 4)`)\\n}})\"}, {\"text\": \"<p><code>second_largest([10, -17, 55.5, 44, 91, 0])</code> should return <code>55.5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(second_largest([10, -17, 55.5, 44, 91, 0]), 55.5)`)\\n}})\"}, {\"text\": \"<p><code>second_largest([1, 0, -1, 0, 1, 0, -1, 1, 0])</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(second_largest([1, 0, -1, 0, 1, 0, -1, 1, 0]), 0)`)\\n}})\"}]",
+  "fcc_starter_js": "function secondLargest(arr) {\n\n  return arr;\n}",
+  "fcc_starter_py": "def second_largest(arr):\n\n    return arr",
+  "image_path": "20250925_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "2nd Largest"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 238,
+  "concepts_text": null,
+  "date_id": "2026-04-05",
+  "fcc_description": "<p>Given a positive integer, determine if it, or any of its rotations, is evenly divisible by its digit count.</p>\n<p>A rotation means to move the first digit to the end. For example, after 1 rotation, 123 becomes 231.</p>\n<ul>\n<li>Check rotation <code>0</code> (the given number) first.</li>\n<li>Given numbers won't contain any zeros.</li>\n<li>Return the first rotation number if one is found, or <code>\"none\"</code> if not.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getRotation(123)</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(getRotation(123), 0);\"}, {\"text\": \"<p><code>getRotation(13579)</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(getRotation(13579), 3);\"}, {\"text\": \"<p><code>getRotation(24681)</code> should return <code>\\\"none\\\"</code>.</p>\", \"testString\": \"assert.equal(getRotation(24681), \\\"none\\\");\"}, {\"text\": \"<p><code>getRotation(84138789345)</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(getRotation(84138789345), 6);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_rotation(123)</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_rotation(123), 0)`)\\n}})\"}, {\"text\": \"<p><code>get_rotation(13579)</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_rotation(13579), 3)`)\\n}})\"}, {\"text\": \"<p><code>get_rotation(24681)</code> should return <code>\\\"none\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_rotation(24681), \\\"none\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_rotation(84138789345)</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_rotation(84138789345), 6)`)\\n}})\"}]",
+  "fcc_starter_js": "function getRotation(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def get_rotation(n):\n\n    return n",
+  "image_path": "20260405_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Digit Rotation Escape"
+}

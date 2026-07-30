@@ -1,0 +1,17 @@
+{
+  "challenge_number": 97,
+  "concepts_text": null,
+  "date_id": "2025-11-15",
+  "fcc_description": "<p>Given two positive integers, return their greatest common divisor (GCD).</p>\n<ul>\n<li>The GCD of two integers is the largest number that divides evenly into both numbers without leaving a remainder.</li>\n</ul>\n<p>For example, the divisors of <code>4</code> are <code>1</code>, <code>2</code>, and <code>4</code>. The divisors of <code>6</code> are <code>1</code>, <code>2</code>, <code>3</code>, and <code>6</code>. So given <code>4</code> and <code>6</code>, return <code>2</code>, the largest number that appears in both sets of divisors.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>gcd(4, 6)</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(gcd(4, 6), 2);\"}, {\"text\": \"<p><code>gcd(20, 15)</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(gcd(20, 15), 5);\"}, {\"text\": \"<p><code>gcd(13, 17)</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(gcd(13, 17), 1);\"}, {\"text\": \"<p><code>gcd(654, 456)</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(gcd(654, 456), 6);\"}, {\"text\": \"<p><code>gcd(3456, 4320)</code> should return <code>864</code>.</p>\", \"testString\": \"assert.equal(gcd(3456, 4320), 864);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>gcd(4, 6)</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(gcd(4, 6), 2)`)\\n}})\"}, {\"text\": \"<p><code>gcd(20, 15)</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(gcd(20, 15), 5)`)\\n}})\"}, {\"text\": \"<p><code>gcd(13, 17)</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(gcd(13, 17), 1)`)\\n}})\"}, {\"text\": \"<p><code>gcd(654, 456)</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(gcd(654, 456), 6)`)\\n}})\"}, {\"text\": \"<p><code>gcd(3456, 4320)</code> should return <code>864</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(gcd(3456, 4320), 864)`)\\n}})\"}]",
+  "fcc_starter_js": "function gcd(x, y) {\n\n  return x;\n}",
+  "fcc_starter_py": "def gcd(x, y):\n\n    return x",
+  "image_path": "20251115_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "GCD"
+}

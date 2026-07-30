@@ -1,0 +1,17 @@
+{
+  "challenge_number": 89,
+  "concepts_text": null,
+  "date_id": "2025-11-07",
+  "fcc_description": "<p>A standard deck of playing cards has 13 unique cards in each suit. Given an integer representing the number of cards to pick from the deck, return the number of unique combinations of cards you can pick.</p>\n<ul>\n<li>Order does not matter. Picking card A then card B is the same as picking card B then card A.</li>\n</ul>\n<p>For example, given <code>52</code>, return <code>1</code>. There's only one combination of 52 cards to pick from a 52 card deck. And given <code>2</code>, return <code>1326</code>, There's 1326 card combinations you can end up with when picking 2 cards from the deck.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>combinations(52)</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(combinations(52), 1);\"}, {\"text\": \"<p><code>combinations(1)</code> should return <code>52</code>.</p>\", \"testString\": \"assert.equal(combinations(1), 52);\"}, {\"text\": \"<p><code>combinations(2)</code> should return <code>1326</code>.</p>\", \"testString\": \"assert.equal(combinations(2), 1326);\"}, {\"text\": \"<p><code>combinations(5)</code> should return <code>2598960</code>.</p>\", \"testString\": \"assert.equal(combinations(5), 2598960);\"}, {\"text\": \"<p><code>combinations(10)</code> should return <code>15820024220</code>.</p>\", \"testString\": \"assert.equal(combinations(10), 15820024220);\"}, {\"text\": \"<p><code>combinations(50)</code> should return <code>1326</code>.</p>\", \"testString\": \"assert.equal(combinations(50), 1326);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>combinations(52)</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(combinations(52), 1)`)\\n}})\"}, {\"text\": \"<p><code>combinations(1)</code> should return <code>52</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(combinations(1), 52)`)\\n}})\"}, {\"text\": \"<p><code>combinations(2)</code> should return <code>1326</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(combinations(2), 1326)`)\\n}})\"}, {\"text\": \"<p><code>combinations(5)</code> should return <code>2598960</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(combinations(5), 2598960)`)\\n}})\"}, {\"text\": \"<p><code>combinations(10)</code> should return <code>15820024220</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(combinations(10), 15820024220)`)\\n}})\"}, {\"text\": \"<p><code>combinations(50)</code> should return <code>1326</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(combinations(50), 1326)`)\\n}})\"}]",
+  "fcc_starter_js": "function combinations(cards) {\n\n  return cards;\n}",
+  "fcc_starter_py": "def combinations(cards):\n\n    return cards",
+  "image_path": "20251107_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Counting Cards"
+}

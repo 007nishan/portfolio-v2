@@ -1,0 +1,17 @@
+{
+  "challenge_number": 212,
+  "concepts_text": null,
+  "date_id": "2026-03-10",
+  "fcc_description": "<p>Given an array, a value to insert into the array, and an index to insert the value at, return a new array with the value inserted at the specified index.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>insertIntoArray([2, 4, 8, 10], 6, 2)</code> should return <code>[2, 4, 6, 8, 10]</code>.</p>\", \"testString\": \"assert.deepEqual(insertIntoArray([2, 4, 8, 10], 6, 2), [2, 4, 6, 8, 10]);\"}, {\"text\": \"<p><code>insertIntoArray([\\\"the\\\", \\\"quick\\\", \\\"fox\\\"], \\\"brown\\\", 2)</code> should return <code>[\\\"the\\\", \\\"quick\\\", \\\"brown\\\", \\\"fox\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(insertIntoArray([\\\"the\\\", \\\"quick\\\", \\\"fox\\\"], \\\"brown\\\", 2), [\\\"the\\\", \\\"quick\\\", \\\"brown\\\", \\\"fox\\\"]);\"}, {\"text\": \"<p><code>insertIntoArray([], 0, 0)</code> should return <code>[0]</code>.</p>\", \"testString\": \"assert.deepEqual(insertIntoArray([], 0, 0), [0]);\"}, {\"text\": \"<p><code>insertIntoArray([0, 1, 1, 2, 3, 8, 13], 5, 5)</code> should return <code>[0, 1, 1, 2, 3, 5, 8, 13]</code>.</p>\", \"testString\": \"assert.deepEqual(insertIntoArray([0, 1, 1, 2, 3, 8, 13], 5, 5), [0, 1, 1, 2, 3, 5, 8, 13]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>insert_into_array([2, 4, 8, 10], 6, 2)</code> should return <code>[2, 4, 6, 8, 10]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(insert_into_array([2, 4, 8, 10], 6, 2), [2, 4, 6, 8, 10])`)\\n}})\"}, {\"text\": \"<p><code>insert_into_array([\\\"the\\\", \\\"quick\\\", \\\"fox\\\"], \\\"brown\\\", 2)</code> should return <code>[\\\"the\\\", \\\"quick\\\", \\\"brown\\\", \\\"fox\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(insert_into_array([\\\"the\\\", \\\"quick\\\", \\\"fox\\\"], \\\"brown\\\", 2), [\\\"the\\\", \\\"quick\\\", \\\"brown\\\", \\\"fox\\\"])`)\\n}})\"}, {\"text\": \"<p><code>insert_into_array([], 0, 0)</code> should return <code>[0]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(insert_into_array([], 0, 0), [0])`)\\n}})\"}, {\"text\": \"<p><code>insert_into_array([0, 1, 1, 2, 3, 8, 13], 5, 5)</code> should return <code>[0, 1, 1, 2, 3, 5, 8, 13]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(insert_into_array([0, 1, 1, 2, 3, 8, 13], 5, 5), [0, 1, 1, 2, 3, 5, 8, 13])`)\\n}})\"}]",
+  "fcc_starter_js": "function insertIntoArray(arr, value, index) {\n\n  return arr;\n}",
+  "fcc_starter_py": "def insert_into_array(arr, value, index):\n\n    return arr",
+  "image_path": "20260310_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Array Insertion"
+}

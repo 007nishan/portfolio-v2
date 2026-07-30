@@ -1,0 +1,17 @@
+{
+  "challenge_number": 231,
+  "concepts_text": null,
+  "date_id": "2026-03-29",
+  "fcc_description": "<p>Given a string, determine if it's a valid ISBN-10.</p>\n<p>An ISBN-10 consists of hyphens (<code>\"-\"</code>) and 10 other characters. After removing the hyphens (<code>\"-\"</code>):</p>\n<ul>\n<li>The first 9 characters must be digits, and</li>\n<li>The final character may be a digit or the letter <code>\"X\"</code>, which represents the number 10.</li>\n</ul>\n<p>To validate it:</p>\n<ul>\n<li>Multiply each digit (or value) by its position (multiply the first digit by 1, the second by 2, and so on).</li>\n<li>Add all the results together.</li>\n<li>If the total is divisible by 11, it's valid.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isValidIsbn10(\\\"0-306-40615-2\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isValidIsbn10(\\\"0-306-40615-2\\\"));\"}, {\"text\": \"<p><code>isValidIsbn10(\\\"0-306-40615-1\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isValidIsbn10(\\\"0-306-40615-1\\\"));\"}, {\"text\": \"<p><code>isValidIsbn10(\\\"0-8044-2957-X\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isValidIsbn10(\\\"0-8044-2957-X\\\"));\"}, {\"text\": \"<p><code>isValidIsbn10(\\\"X-306-40615-2\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isValidIsbn10(\\\"X-306-40615-2\\\"));\"}, {\"text\": \"<p><code>isValidIsbn10(\\\"0-6822-2589-4\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isValidIsbn10(\\\"0-6822-2589-4\\\"));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_valid_isbn10(\\\"0-306-40615-2\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_isbn10(\\\"0-306-40615-2\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_isbn10(\\\"0-306-40615-1\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_isbn10(\\\"0-306-40615-1\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_isbn10(\\\"0-8044-2957-X\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_isbn10(\\\"0-8044-2957-X\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_isbn10(\\\"X-306-40615-2\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_isbn10(\\\"X-306-40615-2\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_isbn10(\\\"0-6822-2589-4\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_isbn10(\\\"0-6822-2589-4\\\"), True)`)\\n}})\"}]",
+  "fcc_starter_js": "function isValidIsbn10(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def is_valid_isbn10(s):\n\n    return s",
+  "image_path": "20260329_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "ISBN-10 Validator"
+}

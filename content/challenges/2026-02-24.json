@@ -1,0 +1,17 @@
+{
+  "challenge_number": 198,
+  "concepts_text": null,
+  "date_id": "2026-02-24",
+  "fcc_description": "<p>Given a start date and an end date, return the number of business days between the two.</p>\n<ul>\n<li>Given dates are in the format <code>\"YYYY-MM-DD\"</code>.</li>\n<li>Weekdays are business days (Monday through Friday).</li>\n<li>Weekends are not business days (Saturday and Sunday).</li>\n<li>Include both the start and end dates when counting.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>countBusinessDays(\\\"2026-02-24\\\", \\\"2026-02-26\\\")</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(countBusinessDays(\\\"2026-02-24\\\", \\\"2026-02-26\\\"), 3);\"}, {\"text\": \"<p><code>countBusinessDays(\\\"2026-02-24\\\", \\\"2026-02-28\\\")</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(countBusinessDays(\\\"2026-02-24\\\", \\\"2026-02-28\\\"), 4);\"}, {\"text\": \"<p><code>countBusinessDays(\\\"2026-02-21\\\", \\\"2026-03-01\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(countBusinessDays(\\\"2026-02-21\\\", \\\"2026-03-01\\\"), 5);\"}, {\"text\": \"<p><code>countBusinessDays(\\\"2026-03-08\\\", \\\"2026-03-17\\\")</code> should return <code>7</code>.</p>\", \"testString\": \"assert.equal(countBusinessDays(\\\"2026-03-08\\\", \\\"2026-03-17\\\"), 7);\"}, {\"text\": \"<p><code>countBusinessDays(\\\"2026-02-24\\\", \\\"2027-02-24\\\")</code> should return <code>262</code>.</p>\", \"testString\": \"assert.equal(countBusinessDays(\\\"2026-02-24\\\", \\\"2027-02-24\\\"), 262);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>count_business_days(\\\"2026-02-24\\\", \\\"2026-02-26\\\")</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_business_days(\\\"2026-02-24\\\", \\\"2026-02-26\\\"), 3)`)\\n}})\"}, {\"text\": \"<p><code>count_business_days(\\\"2026-02-24\\\", \\\"2026-02-28\\\")</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_business_days(\\\"2026-02-24\\\", \\\"2026-02-28\\\"), 4)`)\\n}})\"}, {\"text\": \"<p><code>count_business_days(\\\"2026-02-21\\\", \\\"2026-03-01\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_business_days(\\\"2026-02-21\\\", \\\"2026-03-01\\\"), 5)`)\\n}})\"}, {\"text\": \"<p><code>count_business_days(\\\"2026-03-08\\\", \\\"2026-03-17\\\")</code> should return <code>7</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_business_days(\\\"2026-03-08\\\", \\\"2026-03-17\\\"), 7)`)\\n}})\"}, {\"text\": \"<p><code>count_business_days(\\\"2026-02-24\\\", \\\"2027-02-24\\\")</code> should return <code>262</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_business_days(\\\"2026-02-24\\\", \\\"2027-02-24\\\"), 262)`)\\n}})\"}]",
+  "fcc_starter_js": "function countBusinessDays(start, end) {\n\n  return start;\n}",
+  "fcc_starter_py": "def count_business_days(start, end):\n\n    return start",
+  "image_path": "20260224_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Business Day Count"
+}

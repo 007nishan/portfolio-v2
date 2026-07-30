@@ -1,0 +1,223 @@
+/* ============================================================================
+   print.css — CSS Paged Media for the WeasyPrint PDF (BCS v1.1 §8, r2).
+   Loaded ONLY by make_book_pdf.py. A4, reader-friendly book typography:
+   comfortable measure (~65 chars/line), restrained heading scale sized for the
+   page (NOT the screen scale), generous rhythm, clean page breaks. Ink #212529.
+   Redesigned for ease-of-reading: the page should be a candy to the eye.
+   ============================================================================ */
+
+/* ---- Page geometry ----------------------------------------------------------
+   A4 = 210x297mm. Comfortable, symmetric-ish margins give a ~118mm text column
+   (≈ 62-68 chars at 10.5pt serif — the classic readable measure). Slightly
+   larger inner (binding) margin than outer. */
+@page {
+  size: A4;
+  margin: 22mm 26mm 24mm 30mm;   /* top right bottom left(binding) */
+  @bottom-center {
+    content: counter(page);
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 8.5pt;
+    color: #8a8f94;
+  }
+}
+@page :left {
+  margin: 22mm 30mm 24mm 26mm;   /* verso: binding on the right */
+  @top-left {
+    content: string(book-title);
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #9aa0a6;
+  }
+}
+@page :right {
+  margin: 22mm 26mm 24mm 30mm;
+  @top-right {
+    content: string(unit-title);
+    font-family: "Libre Franklin", sans-serif;
+    font-size: 7.5pt; letter-spacing: 0.08em; text-transform: uppercase; color: #9aa0a6;
+  }
+}
+@page :blank { @top-left { content: ""; } @top-right { content: ""; } @bottom-center { content: ""; } }
+@page cover { margin: 0; @top-left { content: ""; } @top-right { content: ""; } @bottom-center { content: ""; } }
+
+/* running-head string sources */
+.book-title-src { string-set: book-title content(); }
+
+.book-cover { page: cover; break-after: page; }
+.book-body { counter-reset: page 1; }
+
+@media print {
+  html, body { background: #fff; }
+
+  /* ---- Body text: 10.5pt serif, airy leading, the ~118mm column ---- */
+  .reader {
+    max-width: none;              /* the @page margins define the column now */
+    margin: 0;
+    font-family: "Crimson Text", Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: #222629;
+    text-align: left;             /* ragged-right: cleaner than justify w/o hyphenation */
+    -weasy-hyphens: auto;
+    hyphens: auto;
+  }
+  .reader p { margin: 0 0 0.55em; text-indent: 0; }
+
+  /* ---- Heading scale: sized for the PAGE, clear hierarchy, not billboard ----
+     h1 (chapter/module title) 21pt · h2 16pt · h3 13pt · h4 11.5pt · h5/h6 label */
+  .reader h1, .reader h2, .reader h3, .reader h4 {
+    font-family: "Crimson Text", Georgia, serif;
+    font-weight: 700; color: #16191c; line-height: 1.15;
+    -weasy-hyphens: none; hyphens: none;
+  }
+  .reader h1 { font-size: 21pt; margin: 0 0 0.35em; letter-spacing: -0.01em; }
+  .reader h2 { font-size: 15.5pt; margin: 1.5em 0 0.4em; }
+  .reader h3 { font-size: 12.75pt; margin: 1.35em 0 0.35em; }
+  .reader h4 { font-size: 11.25pt; margin: 1.1em 0 0.3em; }
+  .reader h5, .reader h6 {
+    font-family: "Libre Franklin", sans-serif; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; font-size: 8.5pt;
+    color: #444; margin: 1.1em 0 0.3em;
+  }
+
+  /* ---- Chapter/module opener: restrained numeral, tidy rule ---- */
+  .reader .opener { margin: 0 0 1.6em; padding: 0; border: 0; }
+  .reader .opener .chapter-num {
+    display: block;
+    font-family: "Libre Franklin", sans-serif; font-weight: 900;
+    font-size: 34pt; line-height: 1; color: #a70e13; margin: 0 0 0.15em;
+  }
+  .reader .accent-rule {
+    display: block; width: 48mm; height: 2.5pt;
+    background: #a70e13; margin: 0.5em 0 0; border: 0;
+  }
+
+  /* ---- Question + solution: clear, boxed, comfortable ---- */
+  .reader .question { margin: 1.4em 0 0; }
+  .reader .question__badge {
+    display: inline-block; font-family: "JetBrains Mono", monospace; font-weight: 700;
+    background: #a70e13; color: #fff; padding: 1pt 5pt; border-radius: 2px;
+    font-size: 8pt; margin: 0 0 0.35em;
+  }
+  .reader details.solution {
+    margin: 0.7em 0 0; border: 0.75pt solid #e3e6e8; border-radius: 2px;
+    background: #fbfcfd; break-inside: auto;
+  }
+  .reader details.solution > summary {
+    font-family: "Libre Franklin", sans-serif; text-transform: uppercase;
+    letter-spacing: 0.07em; font-weight: 700; font-size: 7.5pt; color: #fff;
+    background: #007a3d; padding: 3pt 8pt; list-style: none;
+  }
+  .reader details.solution > summary::before { content: ""; }
+  .reader details.solution > *:not(summary) { margin-left: 9pt; margin-right: 9pt; }
+  .reader details.solution > *:nth-child(2) { margin-top: 0.6em; }
+  .reader details.solution > *:last-child { margin-bottom: 0.6em; }
+  /* solutions always fully visible in print regardless of open attr */
+  .reader details.solution:not([open]) > :not(summary) { display: block; }
+
+  /* ---- Callouts / rule banner ---- */
+  .reader .admonition, .reader .rule-banner {
+    margin: 0.9em 0; padding: 7pt 11pt; border-left: 2.5pt solid #888;
+    background: #f6f7f8; border-radius: 0 2px 2px 0; break-inside: avoid;
+  }
+  .reader .rule-banner { background: #f4ece2; border-left-color: #a70e13; border-top: 1.5pt solid #a70e13; }
+  .reader .admonition-title, .reader .rule-banner strong {
+    font-family: "Libre Franklin", sans-serif; text-transform: uppercase;
+    letter-spacing: 0.05em; font-weight: 700; font-size: 8pt;
+  }
+
+  /* ---- Code: light editorial panel, smaller mono ---- */
+  .book-code { margin: 0.8em 0; break-inside: avoid; }
+  .book-code::before {
+    content: attr(data-lang); display: inline-block;
+    font-family: "Libre Franklin", sans-serif; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; font-size: 6.5pt; color: #fff; background: #007a3d;
+    padding: 1.5pt 5pt; border-radius: 2px 2px 0 0;
+  }
+  .book-code .bcs-hl, .book-code pre {
+    background: #f5f7f9 !important; color: #222629 !important;
+    border: 0.75pt solid #d6dfe6 !important; border-radius: 0 2px 2px 2px;
+    padding: 7pt 9pt; margin: 0;
+    font-family: "JetBrains Mono", monospace; font-size: 8.5pt; line-height: 1.45;
+  }
+  .book-code .k, .book-code .kn, .book-code .kd, .book-code .kc, .book-code .kr, .book-code .bp, .book-code .ow { color: #005a7d; }
+  .book-code .nf, .book-code .fm, .book-code .nb, .book-code .nn, .book-code .nc, .book-code .nd { color: #b06400; }
+  .book-code .s, .book-code .s1, .book-code .s2, .book-code .sb, .book-code .se, .book-code .sd { color: #007a3d; }
+  .book-code .c, .book-code .c1, .book-code .cm, .book-code .ch { color: #6b7075; font-style: italic; }
+  .book-code .mi, .book-code .mf, .book-code .mh, .book-code .il { color: #a70e13; }
+  .book-code .o, .book-code .p, .book-code .n, .book-code .nv, .book-code .nx { color: #222629; }
+
+  /* ---- Output / REPL panel ---- */
+  .book-output {
+    margin: 0.7em 0; background: #f6f7f8; color: #222629;
+    border: 0.75pt solid #e3e6e8; border-left: 2.5pt solid #888;
+    padding: 7pt 9pt; font-family: "JetBrains Mono", monospace;
+    font-size: 8.5pt; line-height: 1.45; white-space: pre-wrap; word-break: break-word;
+    break-inside: avoid;
+  }
+  .book-output::before {
+    content: "OUTPUT"; display: block; font-family: "Libre Franklin", sans-serif;
+    font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    font-size: 6.5pt; color: #8a8f94; margin-bottom: 3pt;
+  }
+  .book-output--repl::before { content: "PYTHON REPL"; }
+
+  /* ---- Inline code ---- */
+  .reader :not(pre) > code {
+    background: #f1f3f5; color: #a70e13; padding: 0.5pt 3pt;
+    border-radius: 2px; font-family: "JetBrains Mono", monospace; font-size: 0.88em;
+  }
+
+  /* ---- Tables ---- */
+  .reader table { width: 100%; border-collapse: collapse; margin: 0.9em 0; font-size: 9.5pt; break-inside: avoid; }
+  .reader th { font-family: "Libre Franklin", sans-serif; font-weight: 700; text-transform: uppercase;
+    font-size: 7.5pt; letter-spacing: 0.04em; color: #005a7d; border-bottom: 1.5pt solid #e8d3be;
+    text-align: left; padding: 3pt 6pt; }
+  .reader td { border-bottom: 0.5pt solid #e3e6e8; padding: 3pt 6pt; }
+
+  /* ---- Figures ---- */
+  .reader .book-figure { margin: 1em 0; break-inside: avoid; text-align: center; }
+  .reader .book-figure img { max-width: 82%; max-height: 95mm; height: auto; border: 0.5pt solid #e3e6e8; }
+  .reader .book-figure__caption {
+    font-family: "Libre Franklin", sans-serif; font-size: 8pt; color: #6b7075;
+    margin: 5pt auto 0; padding-top: 3pt; max-width: 82%;
+  }
+
+  /* ---- Math: display equations sized to page, wide ones scaled ---- */
+  .reader .katex { font-size: 1em; }
+  .reader .katex-display { margin: 0.7em 0; font-size: 11pt; max-width: 100%; overflow: visible; }
+  .reader .katex-display.is-wide { transform: scale(0.72); transform-origin: left center; }
+
+  /* ---- Project cards ---- */
+  .reader .project-card {
+    margin: 1.1em 0; padding: 9pt 12pt; border: 0.75pt solid #e3e6e8;
+    border-left: 2.5pt solid #007a3d; background: #fbfcfd; break-inside: avoid;
+  }
+  .reader .project-card .kicker {
+    font-family: "Libre Franklin", sans-serif; text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 700; font-size: 7.5pt; color: #a70e13;
+  }
+
+  /* ---- Page-break discipline (no confusing blanks; keep units whole) ----
+     Chapters/modules simply start on a NEW page (not forced recto) — avoids the
+     stream of blank verso pages that made the old build confusing. */
+  .opener { break-before: page; }
+  .reader > .opener:first-child, .book-body > .reader > .opener:first-child { break-before: avoid; }
+  .reader h1, .reader h2, .reader h3, .reader h4 { break-after: avoid; break-inside: avoid; }
+  .reader .question { break-inside: avoid; }          /* keep a question + its solution together when it fits */
+  .reader p, .reader li { orphans: 2; widows: 2; }
+  pre, .book-code, .book-output, figure, .book-figure, table, .katex-display, .katex-display-wrap { break-inside: avoid; }
+
+  /* colour fidelity for filled elements */
+  .book-code::before, .book-output, .ggb-embed .ggb-static, .reader .rule-banner,
+  .question__badge, .reader details.solution > summary {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  /* screen-only chrome hidden */
+  .book-bar, .book-toc, .book-toc-toggle { display: none !important; }
+  .book-shell { display: block; }
+
+  /* GeoGebra: static image only in print */
+  .ggb-embed .ggb-live { display: none !important; }
+  .ggb-embed .ggb-static { display: block; max-width: 82%; margin: 0 auto; height: auto; }
+}

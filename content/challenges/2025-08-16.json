@@ -1,0 +1,17 @@
+{
+  "challenge_number": 6,
+  "concepts_text": null,
+  "date_id": "2025-08-16",
+  "fcc_description": "<p>Given two strings, determine if they are anagrams of each other (contain the same characters in any order).</p>\n<ul>\n<li>Ignore casing and white space.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>areAnagrams(\\\"listen\\\", \\\"silent\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(areAnagrams(\\\"listen\\\", \\\"silent\\\"));\"}, {\"text\": \"<p><code>areAnagrams(\\\"School master\\\", \\\"The classroom\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(areAnagrams(\\\"School master\\\", \\\"The classroom\\\"));\"}, {\"text\": \"<p><code>areAnagrams(\\\"A gentleman\\\", \\\"Elegant man\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(areAnagrams(\\\"A gentleman\\\", \\\"Elegant man\\\"));\"}, {\"text\": \"<p><code>areAnagrams(\\\"Hello\\\", \\\"World\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(areAnagrams(\\\"Hello\\\", \\\"World\\\"));\"}, {\"text\": \"<p><code>areAnagrams(\\\"apple\\\", \\\"banana\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(areAnagrams(\\\"apple\\\", \\\"banana\\\"));\"}, {\"text\": \"<p><code>areAnagrams(\\\"cat\\\", \\\"dog\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(areAnagrams(\\\"cat\\\", \\\"dog\\\"));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>are_anagrams(\\\"listen\\\", \\\"silent\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(are_anagrams(\\\"listen\\\", \\\"silent\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>are_anagrams(\\\"School master\\\", \\\"The classroom\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(are_anagrams(\\\"School master\\\", \\\"The classroom\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>are_anagrams(\\\"A gentleman\\\", \\\"Elegant man\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(are_anagrams(\\\"A gentleman\\\", \\\"Elegant man\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>are_anagrams(\\\"Hello\\\", \\\"World\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(are_anagrams(\\\"Hello\\\", \\\"World\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>are_anagrams(\\\"apple\\\", \\\"banana\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(are_anagrams(\\\"apple\\\", \\\"banana\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>are_anagrams(\\\"cat\\\", \\\"dog\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(are_anagrams(\\\"cat\\\", \\\"dog\\\"), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function areAnagrams(str1, str2) {\n\n  return str1;\n}",
+  "fcc_starter_py": "def are_anagrams(str1, str2):\n\n    return str1",
+  "image_path": "20250816_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Anagram Checker"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 344,
+  "concepts_text": null,
+  "date_id": "2026-07-20",
+  "fcc_description": "<p>Given two numbers, determine if their ratio approximates the golden ratio.</p>\n<ul>\n<li>Use a golden ratio of <code>1.618</code></li>\n<li>Allow a tolerance of <code>0.01</code></li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isGoldenRatio(21, 34)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isGoldenRatio(21, 34));\"}, {\"text\": \"<p><code>isGoldenRatio(15, 20)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isGoldenRatio(15, 20));\"}, {\"text\": \"<p><code>isGoldenRatio(8, 13)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isGoldenRatio(8, 13));\"}, {\"text\": \"<p><code>isGoldenRatio(10, 16)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isGoldenRatio(10, 16));\"}, {\"text\": \"<p><code>isGoldenRatio(1618, 1000)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isGoldenRatio(1618, 1000));\"}, {\"text\": \"<p><code>isGoldenRatio(88, 55)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isGoldenRatio(88, 55));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_golden_ratio(21, 34)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_golden_ratio(21, 34), True)`)\\n}})\"}, {\"text\": \"<p><code>is_golden_ratio(15, 20)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_golden_ratio(15, 20), False)`)\\n}})\"}, {\"text\": \"<p><code>is_golden_ratio(8, 13)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_golden_ratio(8, 13), True)`)\\n}})\"}, {\"text\": \"<p><code>is_golden_ratio(10, 16)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_golden_ratio(10, 16), False)`)\\n}})\"}, {\"text\": \"<p><code>is_golden_ratio(1618, 1000)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_golden_ratio(1618, 1000), True)`)\\n}})\"}, {\"text\": \"<p><code>is_golden_ratio(88, 55)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_golden_ratio(88, 55), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function isGoldenRatio(a, b) {\n\n  return a;\n}",
+  "fcc_starter_py": "def is_golden_ratio(a, b):\n\n    return a",
+  "image_path": "20260720_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Golden Ratio"
+}

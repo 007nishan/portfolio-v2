@@ -1,0 +1,17 @@
+{
+  "challenge_number": 158,
+  "concepts_text": null,
+  "date_id": "2026-01-15",
+  "fcc_description": "<p>Given an array with two values, return an array with the values swapped.</p>\n<p>For example, given <code>[\"A\", \"B\"]</code> return <code>[\"B\", \"A\"]</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>arraySwap([\\\"A\\\", \\\"B\\\"])</code> should return <code>[\\\"B\\\", \\\"A\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(arraySwap([\\\"A\\\", \\\"B\\\"]), [\\\"B\\\", \\\"A\\\"]);\"}, {\"text\": \"<p><code>arraySwap([25, 20])</code> should return <code>[20, 25]</code>.</p>\", \"testString\": \"assert.deepEqual(arraySwap([25, 20]), [20, 25]);\"}, {\"text\": \"<p><code>arraySwap([true, false])</code> should return <code>[false, true]</code>.</p>\", \"testString\": \"assert.deepEqual(arraySwap([true, false]), [false, true]);\"}, {\"text\": \"<p><code>arraySwap([\\\"1\\\", 1])</code> should return <code>[1, \\\"1\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(arraySwap([\\\"1\\\", 1]), [1, \\\"1\\\"]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>array_swap([\\\"A\\\", \\\"B\\\"])</code> should return <code>[\\\"B\\\", \\\"A\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(array_swap([\\\"A\\\", \\\"B\\\"]), [\\\"B\\\", \\\"A\\\"])`)\\n}})\"}, {\"text\": \"<p><code>array_swap([25, 20])</code> should return <code>[20, 25]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(array_swap([25, 20]), [20, 25])`)\\n}})\"}, {\"text\": \"<p><code>array_swap([True, False])</code> should return <code>[False, True]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(array_swap([True, False]), [False, True])`)\\n}})\"}, {\"text\": \"<p><code>array_swap([\\\"1\\\", 1])</code> should return <code>[1, \\\"1\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(array_swap([\\\"1\\\", 1]), [1, \\\"1\\\"])`)\\n}})\"}]",
+  "fcc_starter_js": "function arraySwap(arr) {\n\n  return arr;\n}",
+  "fcc_starter_py": "def array_swap(arr):\n\n    return arr",
+  "image_path": "20260115_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Array Swap"
+}

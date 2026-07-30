@@ -1,0 +1,17 @@
+{
+  "challenge_number": 129,
+  "concepts_text": null,
+  "date_id": "2025-12-17",
+  "fcc_description": "<p>Given a string that includes a blockquote in Markdown, return the equivalent HTML string.</p>\n<p>A blockquote in Markdown is any line that:</p>\n<ul>\n<li>Starts with zero or more spaces</li>\n<li>Followed by a greater-than sign (<code>></code>)</li>\n<li>Then, one or more spaces</li>\n<li>And finally, the blockquote text.</li>\n</ul>\n<p>Return the blockquote text surrounded by opening and closing HTML <code>blockquote</code> tags.</p>\n<p>For example, given <code>\"> This is a quote\"</code>, return <code>&#x3C;blockquote>This is a quote&#x3C;/blockquote></code>.</p>\n<p>Note: The console may not display HTML tags in strings when logging messages. Check the browser console to see logs with tags included.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>parseBlockquote(\\\"> This is a quote\\\")</code> should return <code>\\\"&#x3C;blockquote>This is a quote&#x3C;/blockquote>\\\"</code>.</p>\", \"testString\": \"assert.equal(parseBlockquote(\\\"> This is a quote\\\"), \\\"<blockquote>This is a quote</blockquote>\\\");\"}, {\"text\": \"<p><code>parseBlockquote(\\\" > This is also a quote\\\")</code> should return <code>\\\"&#x3C;blockquote>This is also a quote&#x3C;/blockquote>\\\"</code>.</p>\", \"testString\": \"assert.equal(parseBlockquote(\\\" > This is also a quote\\\"), \\\"<blockquote>This is also a quote</blockquote>\\\");\"}, {\"text\": \"<p><code>parseBlockquote(\\\"  >    So  Is  This\\\")</code> should return <code>\\\"&#x3C;blockquote>So  Is  This&#x3C;/blockquote>\\\"</code>.</p>\", \"testString\": \"assert.equal(parseBlockquote(\\\"  >    So  Is  This\\\"), \\\"<blockquote>So  Is  This</blockquote>\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>parse_blockquote(\\\"> This is a quote\\\")</code> should return <code>\\\"&#x3C;blockquote>This is a quote&#x3C;/blockquote>\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(parse_blockquote(\\\"> This is a quote\\\"), \\\"<blockquote>This is a quote</blockquote>\\\")`)\\n}})\"}, {\"text\": \"<p><code>parse_blockquote(\\\" > This is also a quote\\\")</code> should return <code>\\\"&#x3C;blockquote>This is also a quote&#x3C;/blockquote>\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(parse_blockquote(\\\" > This is also a quote\\\"), \\\"<blockquote>This is also a quote</blockquote>\\\")`)\\n}})\"}, {\"text\": \"<p><code>parse_blockquote(\\\"  >    So  Is  This\\\")</code> should return <code>\\\"&#x3C;blockquote>So  Is  This&#x3C;/blockquote>\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(parse_blockquote(\\\"  >    So  Is  This\\\"), \\\"<blockquote>So  Is  This</blockquote>\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function parseBlockquote(markdown) {\n  return markdown;\n}",
+  "fcc_starter_py": "def parse_blockquote(markdown):\n\n    return markdown",
+  "image_path": "20251217_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Markdown Blockquote Parser"
+}

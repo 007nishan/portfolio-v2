@@ -1,0 +1,17 @@
+{
+  "challenge_number": 252,
+  "concepts_text": null,
+  "date_id": "2026-04-19",
+  "fcc_description": "<p>Given a number of stairs, return how many distinct ways someone can climb them taking either 1 or 2 steps at a time.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getUniqueClimbs(4)</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(getUniqueClimbs(4), 5);\"}, {\"text\": \"<p><code>getUniqueClimbs(5)</code> should return <code>8</code>.</p>\", \"testString\": \"assert.equal(getUniqueClimbs(5), 8);\"}, {\"text\": \"<p><code>getUniqueClimbs(10)</code> should return <code>89</code>.</p>\", \"testString\": \"assert.equal(getUniqueClimbs(10), 89);\"}, {\"text\": \"<p><code>getUniqueClimbs(18)</code> should return <code>4181</code>.</p>\", \"testString\": \"assert.equal(getUniqueClimbs(18), 4181);\"}, {\"text\": \"<p><code>getUniqueClimbs(29)</code> should return <code>832040</code>.</p>\", \"testString\": \"assert.equal(getUniqueClimbs(29), 832040);\"}, {\"text\": \"<p><code>getUniqueClimbs(50)</code> should return <code>20365011074</code>.</p>\", \"testString\": \"assert.equal(getUniqueClimbs(50), 20365011074);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_unique_climbs(4)</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_unique_climbs(4), 5)`)\\n}})\"}, {\"text\": \"<p><code>get_unique_climbs(5)</code> should return <code>8</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_unique_climbs(5), 8)`)\\n}})\"}, {\"text\": \"<p><code>get_unique_climbs(10)</code> should return <code>89</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_unique_climbs(10), 89)`)\\n}})\"}, {\"text\": \"<p><code>get_unique_climbs(18)</code> should return <code>4181</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_unique_climbs(18), 4181)`)\\n}})\"}, {\"text\": \"<p><code>get_unique_climbs(29)</code> should return <code>832040</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_unique_climbs(29), 832040)`)\\n}})\"}, {\"text\": \"<p><code>get_unique_climbs(50)</code> should return <code>20365011074</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_unique_climbs(50), 20365011074)`)\\n}})\"}]",
+  "fcc_starter_js": "function getUniqueClimbs(steps) {\n\n  return steps;\n}",
+  "fcc_starter_py": "def get_unique_climbs(steps):\n\n    return steps",
+  "image_path": "20260419_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Unique Stair Climber"
+}

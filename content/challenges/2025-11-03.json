@@ -1,0 +1,17 @@
+{
+  "challenge_number": 85,
+  "concepts_text": null,
+  "date_id": "2025-11-03",
+  "fcc_description": "<p>Given a sentence string, return the number of words that are in the sentence.</p>\n<ul>\n<li>Words are any sequence of non-space characters and are separated by a single space.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>countWords(\\\"Hello world\\\")</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(countWords(\\\"Hello world\\\"), 2);\"}, {\"text\": \"<p><code>countWords(\\\"The quick brown fox jumps over the lazy dog.\\\")</code> should return <code>9</code>.</p>\", \"testString\": \"assert.equal(countWords(\\\"The quick brown fox jumps over the lazy dog.\\\"), 9);\"}, {\"text\": \"<p><code>countWords(\\\"I like coding challenges!\\\")</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(countWords(\\\"I like coding challenges!\\\"), 4);\"}, {\"text\": \"<p><code>countWords(\\\"Complete the challenge in JavaScript and Python.\\\")</code> should return <code>7</code>.</p>\", \"testString\": \"assert.equal(countWords(\\\"Complete the challenge in JavaScript and Python.\\\"), 7);\"}, {\"text\": \"<p><code>countWords(\\\"The missing semi-colon crashed the entire internet.\\\")</code> should return <code>7</code>.</p>\", \"testString\": \"assert.equal(countWords(\\\"The missing semi-colon crashed the entire internet.\\\"), 7);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>count_words(\\\"Hello world\\\")</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_words(\\\"Hello world\\\"), 2)`)\\n}})\"}, {\"text\": \"<p><code>count_words(\\\"The quick brown fox jumps over the lazy dog.\\\")</code> should return <code>9</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_words(\\\"The quick brown fox jumps over the lazy dog.\\\"), 9)`)\\n}})\"}, {\"text\": \"<p><code>count_words(\\\"I like coding challenges!\\\")</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_words(\\\"I like coding challenges!\\\"), 4)`)\\n}})\"}, {\"text\": \"<p><code>count_words(\\\"Complete the challenge in JavaScript and Python.\\\")</code> should return <code>7</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_words(\\\"Complete the challenge in JavaScript and Python.\\\"), 7)`)\\n}})\"}, {\"text\": \"<p><code>count_words(\\\"The missing semi-colon crashed the entire internet.\\\")</code> should return <code>7</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count_words(\\\"The missing semi-colon crashed the entire internet.\\\"), 7)`)\\n}})\"}]",
+  "fcc_starter_js": "function countWords(sentence) {\n\n  return sentence;\n}",
+  "fcc_starter_py": "def count_words(sentence):\n\n    return sentence",
+  "image_path": "20251103_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Word Counter"
+}

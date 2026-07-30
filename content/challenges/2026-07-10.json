@@ -1,0 +1,17 @@
+{
+  "challenge_number": 334,
+  "concepts_text": null,
+  "date_id": "2026-07-10",
+  "fcc_description": "<p>Given an integer amount in cents, return the number of distinct ways to make exact change using pennies (1 cent), nickels (5 cents), dimes (10 cents), and quarters (25 cents).</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>exactChange(3)</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(exactChange(3), 1);\"}, {\"text\": \"<p><code>exactChange(9)</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(exactChange(9), 2);\"}, {\"text\": \"<p><code>exactChange(17)</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(exactChange(17), 6);\"}, {\"text\": \"<p><code>exactChange(39)</code> should return <code>24</code>.</p>\", \"testString\": \"assert.equal(exactChange(39), 24);\"}, {\"text\": \"<p><code>exactChange(61)</code> should return <code>73</code>.</p>\", \"testString\": \"assert.equal(exactChange(61), 73);\"}, {\"text\": \"<p><code>exactChange(99)</code> should return <code>213</code>.</p>\", \"testString\": \"assert.equal(exactChange(99), 213);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>exact_change(3)</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(exact_change(3), 1)`)\\n}})\"}, {\"text\": \"<p><code>exact_change(9)</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(exact_change(9), 2)`)\\n}})\"}, {\"text\": \"<p><code>exact_change(17)</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(exact_change(17), 6)`)\\n}})\"}, {\"text\": \"<p><code>exact_change(39)</code> should return <code>24</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(exact_change(39), 24)`)\\n}})\"}, {\"text\": \"<p><code>exact_change(61)</code> should return <code>73</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(exact_change(61), 73)`)\\n}})\"}, {\"text\": \"<p><code>exact_change(99)</code> should return <code>213</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(exact_change(99), 213)`)\\n}})\"}]",
+  "fcc_starter_js": "function exactChange(amount) {\n\n  return amount;\n}",
+  "fcc_starter_py": "def exact_change(amount):\n\n    return amount",
+  "image_path": "20260710_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Exact Change"
+}

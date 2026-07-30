@@ -28,26 +28,56 @@
 </section>
 {% endif %}
 
-<!-- Daily Challenge Section -->
+<!-- Daily Challenge Section — golden two-column hero.
+     LEFT (major golden column ~61.8%): editorial framing (welcome + date +
+     challenge # + nav). This is NOT the question text (no duplication) — it
+     frames the card. RIGHT (minor golden column ~38.2%): the portrait card
+     image, which itself contains the full question. On phones the columns
+     stack (framing above the card). -->
 {% if daily_challenge %}
-<section class="py-5" style="background-color: var(--color-primary-white);">
-    <div class="container">
-        <div class="row align-items-center">
-            <!-- Left Column: Image (if available) or Challenge card -->
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <div class="mb-3 d-flex align-items-center gap-2">
-                    {% if daily_challenge.challenge_number %}
-                    <span class="badge p-2 text-uppercase"
-                        style="background-color: var(--color-primary-red); letter-spacing: 1px; font-family: var(--font-family-sans);">
-                        Challenge #{{ daily_challenge.challenge_number }}
-                    </span>
-                    {% endif %}
-                    <span class="badge bg-dark p-2 text-uppercase"
-                        style="letter-spacing: 1px; font-family: var(--font-family-sans);">
-                        {{ daily_challenge.date_id }}
-                    </span>
-                </div>
+<section class="py-5 py-lg-0 d-lg-flex align-items-lg-stretch" style="background-color: var(--color-primary-white); min-height: 78vh;">
+    <!-- LEFT: framing text, vertically centred in the major golden column -->
+    <div class="d-flex flex-column justify-content-center hero-major"
+         style="flex: 0 0 61.8%; max-width: 61.8%; padding: clamp(1.5rem, 4vw, 5rem);">
+        <div class="mb-3 d-flex align-items-center gap-2">
+            {% if daily_challenge.challenge_number %}
+            <span class="badge p-2 text-uppercase"
+                style="background-color: var(--color-primary-red); letter-spacing: 1px; font-family: var(--font-family-sans);">
+                Challenge #{{ daily_challenge.challenge_number }}
+            </span>
+            {% endif %}
+            <span class="badge bg-dark p-2 text-uppercase"
+                style="letter-spacing: 1px; font-family: var(--font-family-sans);">
+                {{ daily_challenge.date_id }}
+            </span>
+        </div>
+        <p class="text-uppercase fw-bold mb-2" style="letter-spacing: 3px; font-size: .85rem; color: var(--color-primary-blue); font-family: var(--font-family-sans);">
+            Daily Python Challenge
+        </p>
+        <h1 class="fw-bold mb-3" style="font-family: var(--font-family-serif); letter-spacing: -.02em; line-height: 1.05;">
+            {{ daily_challenge.title }}
+        </h1>
+        <span style="display:block; width: 14.5rem; height: 5px; background: var(--color-primary-red); margin-bottom: 1.75rem;"></span>
+        <p class="lead mb-4" style="font-family: var(--font-family-serif); font-style: italic; color: var(--color-neutral-medium); max-width: 34rem;">
+            Today's problem, solved and explained — one challenge a day on the road to mastery.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+            <a href="/challenge/{{ daily_challenge.date_id }}"
+                class="btn rounded-0 px-4 py-2 text-uppercase fw-bold"
+                style="letter-spacing: 1px; background-color: var(--color-primary-blue); color: var(--color-primary-white); font-family: var(--font-family-sans);">
+                <i class="bi bi-braces me-2"></i> View Today's Challenge
+            </a>
+            <a href="/challenges" class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase fw-bold"
+                style="letter-spacing: 1px; font-family: var(--font-family-sans);">
+                <i class="bi bi-grid-3x3 me-2"></i> All Challenges
+            </a>
+        </div>
+    </div>
 
+    <!-- RIGHT: the portrait card image in the minor golden column -->
+    <div class="d-flex align-items-center justify-content-center hero-minor"
+         style="flex: 0 0 38.2%; max-width: 38.2%; background-color: var(--color-surface-subtle); padding: clamp(1.5rem, 3vw, 3.5rem);">
+        <div style="width: 100%; max-width: 30rem;">
                 {% if daily_challenge.image_path %}
                 <!-- Manual upload: show the image thumbnail -->
                 <div class="position-relative">
@@ -91,73 +121,6 @@
                     </div>
                 </div>
                 {% endif %}
-            </div>
-
-            <!-- Right Column: Title + Structured Overview -->
-            <div class="col-lg-6">
-                <h2 class="fw-bold mb-3 display-5" style="letter-spacing: -1px; font-family: var(--font-family-serif);">
-                    {{ daily_challenge.title }}</h2>
-
-                <div class="row g-3">
-                    <!-- 1. Problem Statement -->
-                    <div class="col-12">
-                        <div class="card border-0 shadow-sm rounded-0" style="border-left: 4px solid var(--color-primary-black) !important;">
-                            <div class="card-body p-4">
-                                <h6 class="text-uppercase fw-bold mb-2 small" style="letter-spacing: 1px; color: var(--color-primary-black);"><i class="bi bi-file-text me-1"></i> Problem Statement</h6>
-                                <div class="markdown-content markdown-content--compact" style="font-size: 0.95rem; line-height: 1.6;">
-                                    {% if daily_challenge.fcc_description %}
-                                        {{ daily_challenge.fcc_description | safe }}
-                                    {% elif daily_challenge.problem_text %}
-                                        {{ problem_html | safe }}
-                                    {% else %}
-                                        <p class="text-muted fst-italic mb-0">No problem statement provided for this challenge.</p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 2. Breakdown & Concepts (If populated) -->
-                    {% if daily_challenge.concepts_text %}
-                    <div class="col-12">
-                        <div class="card border-0 shadow-sm rounded-0" style="border-left: 4px solid var(--color-primary-red) !important; background-color: #fdfdfd;">
-                            <div class="card-body p-4">
-                                <h6 class="text-uppercase fw-bold mb-2 small" style="letter-spacing: 1px; color: var(--color-primary-red);"><i class="bi bi-lightbulb me-1"></i> Breakdown & Concepts</h6>
-                                <div class="markdown-content markdown-content--compact" style="font-size: 0.95rem; line-height: 1.6;">
-                                    {{ concepts_html | safe }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-
-                    <!-- 3. Solution Preview (If populated) -->
-                    {% if daily_challenge.solution_code %}
-                    <div class="col-12">
-                        <div class="card border-0 shadow-sm rounded-0" style="border-left: 4px solid var(--color-primary-blue) !important; background-color: #212529; color: white;">
-                            <div class="card-body p-4">
-                                <h6 class="text-uppercase fw-bold mb-2 small" style="letter-spacing: 1px; color: #0dcaf0;"><i class="bi bi-code-slash me-1"></i> Solution Preview</h6>
-                                <pre class="m-0 p-0" style="max-height: 250px; overflow-y: auto; background-color: transparent;"><code class="language-python" style="font-size: 0.85rem; color: #f8f9fa;">{{ daily_challenge.solution_code }}</code></pre>
-                            </div>
-                        </div>
-                    </div>
-                    {% endif %}
-                </div>
-
-
-
-                <div class="d-flex gap-3 mt-5">
-                    <a href="/challenge/{{ daily_challenge.date_id }}"
-                        class="btn rounded-0 px-4 py-2 text-uppercase fw-bold"
-                        style="letter-spacing: 1px; background-color: var(--color-primary-blue); color: var(--color-primary-white); font-family: var(--font-family-sans);">
-                        <i class="bi bi-braces me-2"></i> View Solution & Breakdown
-                    </a>
-                    <a href="/challenges" class="btn btn-outline-dark rounded-0 px-4 py-2 text-uppercase fw-bold"
-                        style="letter-spacing: 1px; font-family: var(--font-family-sans);">
-                        <i class="bi bi-grid-3x3 me-2"></i> More Challenges
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </section>

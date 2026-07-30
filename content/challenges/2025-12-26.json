@@ -1,0 +1,17 @@
+{
+  "challenge_number": 138,
+  "concepts_text": null,
+  "date_id": "2025-12-26",
+  "fcc_description": "<p>Given a positive integer, return the sum of all its divisors.</p>\n<ul>\n<li>A divisor is any integer that divides the number evenly (the remainder is <code>0</code>).</li>\n<li>Only count each divisor once.</li>\n</ul>\n<p>For example, given <code>6</code>, return <code>12</code> because the divisors of <code>6</code> are <code>1</code>, <code>2</code>, <code>3</code>, and <code>6</code>, and the sum of those is <code>12</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sumDivisors(6)</code> should return <code>12</code>.</p>\", \"testString\": \"assert.equal(sumDivisors(6), 12);\"}, {\"text\": \"<p><code>sumDivisors(13)</code> should return <code>14</code>.</p>\", \"testString\": \"assert.equal(sumDivisors(13), 14);\"}, {\"text\": \"<p><code>sumDivisors(28)</code> should return <code>56</code>.</p>\", \"testString\": \"assert.equal(sumDivisors(28), 56);\"}, {\"text\": \"<p><code>sumDivisors(84)</code> should return <code>224</code>.</p>\", \"testString\": \"assert.equal(sumDivisors(84), 224);\"}, {\"text\": \"<p><code>sumDivisors(549)</code> should return <code>806</code>.</p>\", \"testString\": \"assert.equal(sumDivisors(549), 806);\"}, {\"text\": \"<p><code>sumDivisors(9348)</code> should return <code>23520</code>.</p>\", \"testString\": \"assert.equal(sumDivisors(9348), 23520);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sum_divisors(6)</code> should return <code>12</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_divisors(6), 12)`)\\n}})\"}, {\"text\": \"<p><code>sum_divisors(13)</code> should return <code>14</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_divisors(13), 14)`)\\n}})\"}, {\"text\": \"<p><code>sum_divisors(28)</code> should return <code>56</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_divisors(28), 56)`)\\n}})\"}, {\"text\": \"<p><code>sum_divisors(84)</code> should return <code>224</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_divisors(84), 224)`)\\n}})\"}, {\"text\": \"<p><code>sum_divisors(549)</code> should return <code>806</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_divisors(549), 806)`)\\n}})\"}, {\"text\": \"<p><code>sum_divisors(9348)</code> should return <code>23520</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_divisors(9348), 23520)`)\\n}})\"}]",
+  "fcc_starter_js": "function sumDivisors(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def sum_divisors(n):\n\n    return n",
+  "image_path": "20251226_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Sum of Divisors"
+}

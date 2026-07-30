@@ -1,0 +1,17 @@
+{
+  "challenge_number": 16,
+  "concepts_text": null,
+  "date_id": "2025-08-26",
+  "fcc_description": "<p>Given a string that contains properly nested parentheses, return the decoded version of the string using the following rules:</p>\n<ul>\n<li>All characters inside each pair of parentheses should be reversed.</li>\n<li>Parentheses should be removed from the final result.</li>\n<li>If parentheses are nested, the innermost pair should be reversed first, and then its result should be included in the reversal of the outer pair.</li>\n<li>Assume all parentheses are evenly balanced and correctly nested.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>decode(\\\"(f(b(dc)e)a)\\\")</code> should return <code>\\\"abcdef\\\"</code>.</p>\", \"testString\": \"assert.equal(decode(\\\"(f(b(dc)e)a)\\\"), \\\"abcdef\\\");\"}, {\"text\": \"<p><code>decode(\\\"((is?)(a(t d)h)e(n y( uo)r)aC)\\\")</code> should return <code>\\\"Can you read this?\\\"</code>.</p>\", \"testString\": \"assert.equal(decode(\\\"((is?)(a(t d)h)e(n y( uo)r)aC)\\\"), \\\"Can you read this?\\\");\"}, {\"text\": \"<p><code>decode(\\\"f(Ce(re))o((e(aC)m)d)p\\\")</code> should return <code>\\\"freeCodeCamp\\\"</code>.</p>\", \"testString\": \"assert.equal(decode(\\\"f(Ce(re))o((e(aC)m)d)p\\\"), \\\"freeCodeCamp\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>decode(\\\"(f(b(dc)e)a)\\\")</code> should return <code>\\\"abcdef\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(decode(\\\"(f(b(dc)e)a)\\\"), \\\"abcdef\\\")`)\\n}})\"}, {\"text\": \"<p><code>decode(\\\"((is?)(a(t d)h)e(n y( uo)r)aC)\\\")</code> should return <code>\\\"Can you read this?\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(decode(\\\"((is?)(a(t d)h)e(n y( uo)r)aC)\\\"), \\\"Can you read this?\\\")`)\\n}})\"}, {\"text\": \"<p><code>decode(\\\"f(Ce(re))o((e(aC)m)d)p\\\")</code> should return <code>\\\"freeCodeCamp\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(decode(\\\"f(Ce(re))o((e(aC)m)d)p\\\"), \\\"freeCodeCamp\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function decode(s) {\n\n  return s;\n}",
+  "fcc_starter_py": "def decode(s):\n\n    return s",
+  "image_path": "20250826_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Reverse Parenthesis"
+}

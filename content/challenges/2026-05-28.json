@@ -1,0 +1,17 @@
+{
+  "challenge_number": 291,
+  "concepts_text": null,
+  "date_id": "2026-05-28",
+  "fcc_description": "<p>Given a start and end number, count the number of fizz and buzz appearances in the range (inclusive).</p>\n<ul>\n<li>Numbers divisible by 3 count as a fizz.</li>\n<li>Numbers divisible by 5 count as a buzz.</li>\n<li>Numbers divisible by both 3 and 5 count as both a fizz and a buzz.</li>\n</ul>\n<p>Return an object or dictionary with the counts in the format: <code>{ fizz, buzz }</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>fizzBuzzCount(1, 11)</code> should return <code>{fizz: 3, buzz: 2}</code>.</p>\", \"testString\": \"assert.deepEqual(fizzBuzzCount(1, 11), {fizz: 3, buzz: 2});\"}, {\"text\": \"<p><code>fizzBuzzCount(14, 41)</code> should return <code>{fizz: 9, buzz: 6}</code>.</p>\", \"testString\": \"assert.deepEqual(fizzBuzzCount(14, 41), {fizz: 9, buzz: 6});\"}, {\"text\": \"<p><code>fizzBuzzCount(24, 100)</code> should return <code>{fizz: 26, buzz: 16}</code>.</p>\", \"testString\": \"assert.deepEqual(fizzBuzzCount(24, 100), {fizz: 26, buzz: 16});\"}, {\"text\": \"<p><code>fizzBuzzCount(-635, -14)</code> should return <code>{fizz: 207, buzz: 125}</code>.</p>\", \"testString\": \"assert.deepEqual(fizzBuzzCount(-635, -14), {fizz: 207, buzz: 125});\"}, {\"text\": \"<p><code>fizzBuzzCount(-5432, 6789)</code> should return <code>{fizz: 4074, buzz: 2444}</code>.</p>\", \"testString\": \"assert.deepEqual(fizzBuzzCount(-5432, 6789), {fizz: 4074, buzz: 2444});\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>fizz_buzz_count(1, 11)</code> should return <code>{\\\"fizz\\\": 3, \\\"buzz\\\": 2}</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fizz_buzz_count(1, 11), {\\\"fizz\\\": 3, \\\"buzz\\\": 2})`)\\n}})\"}, {\"text\": \"<p><code>fizz_buzz_count(14, 41)</code> should return <code>{\\\"fizz\\\": 9, \\\"buzz\\\": 6}</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fizz_buzz_count(14, 41), {\\\"fizz\\\": 9, \\\"buzz\\\": 6})`)\\n}})\"}, {\"text\": \"<p><code>fizz_buzz_count(24, 100)</code> should return <code>{\\\"fizz\\\": 26, \\\"buzz\\\": 16}</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fizz_buzz_count(24, 100), {\\\"fizz\\\": 26, \\\"buzz\\\": 16})`)\\n}})\"}, {\"text\": \"<p><code>fizz_buzz_count(-635, -14)</code> should return <code>{\\\"fizz\\\": 207, \\\"buzz\\\": 125}</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fizz_buzz_count(-635, -14), {\\\"fizz\\\": 207, \\\"buzz\\\": 125})`)\\n}})\"}, {\"text\": \"<p><code>fizz_buzz_count(-5432, 6789)</code> should return <code>{\\\"fizz\\\": 4074, \\\"buzz\\\": 2444}</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fizz_buzz_count(-5432, 6789), {\\\"fizz\\\": 4074, \\\"buzz\\\": 2444})`)\\n}})\"}]",
+  "fcc_starter_js": "function fizzBuzzCount(start, end) {\n\n  return start;\n}",
+  "fcc_starter_py": "def fizz_buzz_count(start, end):\n\n    return start",
+  "image_path": "20260528_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "FizzBuzz Count"
+}

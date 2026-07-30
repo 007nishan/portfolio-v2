@@ -1,0 +1,17 @@
+{
+  "challenge_number": 152,
+  "concepts_text": null,
+  "date_id": "2026-01-09",
+  "fcc_description": "<p>Given an integer, determine if it is a circular prime.</p>\n<p>A circular prime is an integer where all rotations of its digits are themselves prime.</p>\n<p>For example, <code>197</code> is a circular prime because all rotations of its digits: <code>197</code>, <code>971</code>, and <code>719</code>, are prime numbers.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isCircularPrime(197)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isCircularPrime(197));\"}, {\"text\": \"<p><code>isCircularPrime(23)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isCircularPrime(23));\"}, {\"text\": \"<p><code>isCircularPrime(13)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isCircularPrime(13));\"}, {\"text\": \"<p><code>isCircularPrime(89)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isCircularPrime(89));\"}, {\"text\": \"<p><code>isCircularPrime(1193)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isCircularPrime(1193));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_circular_prime(197)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_circular_prime(197), True)`)\\n}})\"}, {\"text\": \"<p><code>is_circular_prime(23)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_circular_prime(23), False)`)\\n}})\"}, {\"text\": \"<p><code>is_circular_prime(13)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_circular_prime(13), True)`)\\n}})\"}, {\"text\": \"<p><code>is_circular_prime(89)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_circular_prime(89), False)`)\\n}})\"}, {\"text\": \"<p><code>is_circular_prime(1193)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_circular_prime(1193), True)`)\\n}})\"}]",
+  "fcc_starter_js": "function isCircularPrime(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def is_circular_prime(n):\n\n    return n",
+  "image_path": "20260109_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Circular Prime"
+}

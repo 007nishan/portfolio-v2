@@ -1,0 +1,17 @@
+{
+  "challenge_number": 213,
+  "concepts_text": null,
+  "date_id": "2026-03-11",
+  "fcc_description": "<p>Given a string of words, return a new string where each word is replaced by its length.</p>\n<ul>\n<li>Words in the given string will be separated by a single space</li>\n<li>Keep the spaces in the returned string.</li>\n</ul>\n<p>For example, given <code>\"hello world\"</code>, return <code>\"5 5\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>convertWords(\\\"hello world\\\")</code> should return <code>\\\"5 5\\\"</code>.</p>\", \"testString\": \"assert.equal(convertWords(\\\"hello world\\\"), \\\"5 5\\\");\"}, {\"text\": \"<p><code>convertWords(\\\"Thanks and happy coding\\\")</code> should return <code>\\\"6 3 5 6\\\"</code>.</p>\", \"testString\": \"assert.equal(convertWords(\\\"Thanks and happy coding\\\"), \\\"6 3 5 6\\\");\"}, {\"text\": \"<p><code>convertWords(\\\"The quick brown fox jumps over the lazy dog\\\")</code> should return <code>\\\"3 5 5 3 5 4 3 4 3\\\"</code>.</p>\", \"testString\": \"assert.equal(convertWords(\\\"The quick brown fox jumps over the lazy dog\\\"), \\\"3 5 5 3 5 4 3 4 3\\\");\"}, {\"text\": \"<p><code>convertWords(\\\"Lorem ipsum dolor sit amet consectetur adipiscing elit donec ut ligula vehicula iaculis orci vel semper nisl\\\")</code> should return <code>\\\"5 5 5 3 4 11 10 4 5 2 6 8 7 4 3 6 4\\\"</code>.</p>\", \"testString\": \"assert.equal(convertWords(\\\"Lorem ipsum dolor sit amet consectetur adipiscing elit donec ut ligula vehicula iaculis orci vel semper nisl\\\"), \\\"5 5 5 3 4 11 10 4 5 2 6 8 7 4 3 6 4\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>convert_words(\\\"hello world\\\")</code> should return <code>\\\"5 5\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(convert_words(\\\"hello world\\\"), \\\"5 5\\\")`)\\n}})\"}, {\"text\": \"<p><code>convert_words(\\\"Thanks and happy coding\\\")</code> should return <code>\\\"6 3 5 6\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(convert_words(\\\"Thanks and happy coding\\\"), \\\"6 3 5 6\\\")`)\\n}})\"}, {\"text\": \"<p><code>convert_words(\\\"The quick brown fox jumps over the lazy dog\\\")</code> should return <code>\\\"3 5 5 3 5 4 3 4 3\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(convert_words(\\\"The quick brown fox jumps over the lazy dog\\\"), \\\"3 5 5 3 5 4 3 4 3\\\")`)\\n}})\"}, {\"text\": \"<p><code>convert_words(\\\"Lorem ipsum dolor sit amet consectetur adipiscing elit donec ut ligula vehicula iaculis orci vel semper nisl\\\")</code> should return <code>\\\"5 5 5 3 4 11 10 4 5 2 6 8 7 4 3 6 4\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(convert_words(\\\"Lorem ipsum dolor sit amet consectetur adipiscing elit donec ut ligula vehicula iaculis orci vel semper nisl\\\"), \\\"5 5 5 3 4 11 10 4 5 2 6 8 7 4 3 6 4\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function convertWords(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def convert_words(s):\n\n    return s",
+  "image_path": "20260311_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Word Length Converter"
+}

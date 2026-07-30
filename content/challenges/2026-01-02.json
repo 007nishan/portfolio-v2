@@ -1,0 +1,17 @@
+{
+  "challenge_number": 145,
+  "concepts_text": null,
+  "date_id": "2026-01-02",
+  "fcc_description": "<p>Given an integer <code>n</code>, return the <code>n</code>th number in the fibonacci sequence.</p>\n<p>The Fibonacci sequence is a series of numbers where each number is the sum of the two preceding ones. The first 10 numbers in the sequence are <code>0</code>, <code>1</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>5</code>, <code>8</code>, <code>13</code>, <code>21</code>, <code>34</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>nthFibonacci(4)</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(nthFibonacci(4), 2);\"}, {\"text\": \"<p><code>nthFibonacci(10)</code> should return <code>34</code>.</p>\", \"testString\": \"assert.equal(nthFibonacci(10), 34);\"}, {\"text\": \"<p><code>nthFibonacci(15)</code> should return <code>377</code>.</p>\", \"testString\": \"assert.equal(nthFibonacci(15), 377);\"}, {\"text\": \"<p><code>nthFibonacci(40)</code> should return <code>63245986</code>.</p>\", \"testString\": \"assert.equal(nthFibonacci(40), 63245986);\"}, {\"text\": \"<p><code>nthFibonacci(75)</code> should return <code>1304969544928657</code>.</p>\", \"testString\": \"assert.equal(nthFibonacci(75), 1304969544928657);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>nth_fibonacci(4)</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_fibonacci(4), 2)`)\\n}})\"}, {\"text\": \"<p><code>nth_fibonacci(10)</code> should return <code>34</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_fibonacci(10), 34)`)\\n}})\"}, {\"text\": \"<p><code>nth_fibonacci(15)</code> should return <code>377</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_fibonacci(15), 377)`)\\n}})\"}, {\"text\": \"<p><code>nth_fibonacci(40)</code> should return <code>63245986</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_fibonacci(40), 63245986)`)\\n}})\"}, {\"text\": \"<p><code>nth_fibonacci(75)</code> should return <code>1304969544928657</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_fibonacci(75), 1304969544928657)`)\\n}})\"}]",
+  "fcc_starter_js": "function nthFibonacci(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def nth_fibonacci(n):\n\n    return n",
+  "image_path": "20260102_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Nth Fibonacci Number"
+}

@@ -45,6 +45,17 @@ echo "=================================================="
 echo "  Portfolio dev sync  (branch: $BRANCH)"
 echo "=================================================="
 
+# ── 0. BOOK NOTES: refresh the "Notes as We Learn — AWS ML" book source from the
+#      AWS-ML-Notes engine, so the book fills in as learning happens. This runs
+#      LOCALLY only (the deploy server has no notes repo); it is a no-op there and
+#      on any box without the notes repo. Commit the resulting AWS ML/src/*.md to
+#      ship — auto_deploy rebuilds HTML+PDF from committed source.
+if [ "$DO_CODE" = "1" ] && [ -f "$REPO_DIR/aws_sync.py" ]; then
+    echo ""
+    echo "[0] Refreshing AWS ML book source from the notes engine..."
+    "$PY" aws_sync.py || echo "  ! aws_sync reported an issue (continuing)."
+fi
+
 # ── 1. CODE: pull latest from GitHub (safe, fast-forward only) ────────────────
 if [ "$DO_CODE" = "1" ]; then
     echo ""
