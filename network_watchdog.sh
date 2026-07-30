@@ -4,7 +4,9 @@
 # ==============================================================================
 # Monitors internet connectivity and auto-recovers after outages.
 # After connectivity is restored, it:
-#   1. Runs fcc_sync.py to catch up on any missed daily challenges
+#   1. Pulls the latest committed content from GitHub and rebuilds the DB from
+#      it (CONSUMER behaviour — the daily GitHub Action is the sole content
+#      WRITER; the watchdog must NOT run fcc_sync or it becomes a second writer).
 #   2. Restarts the portfolio service if it's not running
 #
 # Designed to be run as a systemd timer (every 2 minutes).
@@ -12,7 +14,7 @@
 
 PORTFOLIO_DIR="/home/nishan/portfolio"
 VENV_PYTHON="$PORTFOLIO_DIR/venv/bin/python"
-SYNC_SCRIPT="$PORTFOLIO_DIR/fcc_sync.py"
+IMPORT_SCRIPT="$PORTFOLIO_DIR/import_challenges.py"
 LOG_FILE="$PORTFOLIO_DIR/data/watchdog.log"
 STATE_FILE="$PORTFOLIO_DIR/data/.watchdog_state"
 
@@ -48,12 +50,24 @@ main() {
     if check_internet; then
         if [ "$PREV_STATE" = "offline" ]; then
             # Internet just came back! Recovery actions:
-            log "RECOVERY: Internet restored after outage. Running catch-up sync..."
-            
-            # Sync any missed FCC challenges
+            log "RECOVERY: Internet restored after outage. Pulling latest content from GitHub..."
+
+            # CONSUMER catch-up: pull committed content and rebuild the DB from it.
+            # (auto_deploy.sh also runs on its own timer; doing a lightweight pull
+            #  here means content is current the moment connectivity returns.)
             cd "$PORTFOLIO_DIR"
-            $VENV_PYTHON "$SYNC_SCRIPT" >> "$LOG_FILE" 2>&1
-            
+            if git fetch --quiet origin main 2>>"$LOG_FILE" \
+               && git merge --ff-only origin/main >> "$LOG_FILE" 2>&1; then
+                log "RECOVERY: pulled latest origin/main."
+            else
+                log "RECOVERY: git pull skipped (auto_deploy.sh will reconcile shortly)."
+            fi
+            if [ -f "$IMPORT_SCRIPT" ]; then
+                $VENV_PYTHON "$IMPORT_SCRIPT" --quiet >> "$LOG_FILE" 2>&1 \
+                    && log "RECOVERY: rebuilt DB from committed challenge JSON." \
+                    || log "RECOVERY: content import reported an issue (continuing)."
+            fi
+
             # Restart portfolio service if not active
             if ! systemctl is-active --quiet portfolio; then
                 log "RECOVERY: Restarting portfolio service..."

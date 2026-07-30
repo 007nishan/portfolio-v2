@@ -32,6 +32,19 @@ log() {
 
 cd "$PORTFOLIO_DIR"
 
+# 0. SINGLE-WRITER SELF-HEAL (runs EVERY tick, before the up-to-date short-circuit).
+#    The daily GitHub Action is now the SOLE writer of challenge content. Any
+#    fcc_sync cron previously installed on this host (by an older setup_server.sh)
+#    would be a SECOND, conflicting writer that hits the FCC API and mutates the DB
+#    behind the Action's back. Remove it. This host is a pure CONSUMER: it pulls
+#    committed JSON and rebuilds its DB (step 4a2 below). Idempotent + quiet — does
+#    nothing once the cron is gone. Placed before the early-exit so the host
+#    self-heals even on ticks with no new commits.
+if command -v crontab >/dev/null 2>&1 && crontab -l 2>/dev/null | grep -q "fcc_sync.py"; then
+    crontab -l 2>/dev/null | grep -v "fcc_sync.py" | grep -v "FCC Daily Challenge Sync" | crontab - \
+        && log "Single-writer: removed local fcc_sync cron (GitHub Action is the sole content writer now)."
+fi
+
 # 1. Fetch latest without touching the working tree
 git fetch --quiet origin "$BRANCH" || { log "ERROR: git fetch failed (network?)"; exit 1; }
 

@@ -15,7 +15,6 @@ echo "=== Portfolio Server Setup ==="
 echo ""
 
 PORTFOLIO_DIR="/home/nishan/portfolio"
-SYNC_SCRIPT="$PORTFOLIO_DIR/fcc_sync.py"
 WATCHDOG_SCRIPT="$PORTFOLIO_DIR/network_watchdog.sh"
 VENV_PYTHON="$PORTFOLIO_DIR/venv/bin/python"
 
@@ -52,18 +51,23 @@ else
 fi
 
 # ──────────────────────────────────────────────────────────────────────────────
-# 2. DAILY FCC SYNC CRON JOB
+# 2. CONTENT SYNC — now handled by the GitHub Action (single-writer model)
 # ──────────────────────────────────────────────────────────────────────────────
-echo "[2/4] Setting up daily FCC sync cron job..."
+echo "[2/4] Content sync: GitHub Action is the sole writer (no local cron)..."
 
-CRON_LINE="30 0 * * * cd $PORTFOLIO_DIR && $VENV_PYTHON $SYNC_SCRIPT >> $PORTFOLIO_DIR/data/cron_sync.log 2>&1"
-
-# Check if cron already exists
+# The daily FCC sync + card generation now runs in a GitHub Action
+# (.github/workflows/daily-sync.yml), which commits content to the repo. This
+# host is a pure CONSUMER: auto_deploy.sh pulls that committed content and
+# rebuilds the DB via import_challenges.py. We deliberately do NOT install a
+# local fcc_sync cron — a second writer would race the Action and corrupt state.
+#
+# Belt-and-braces: remove any legacy fcc_sync cron a previous setup left behind
+# (auto_deploy.sh also self-heals this on every tick).
 if crontab -l 2>/dev/null | grep -q "fcc_sync.py"; then
-    echo "  ✓ FCC sync cron job already exists"
+    crontab -l 2>/dev/null | grep -v "fcc_sync.py" | grep -v "FCC Daily Challenge Sync" | crontab -
+    echo "  ✓ Removed legacy fcc_sync cron (GitHub Action is the sole content writer)"
 else
-    (crontab -l 2>/dev/null; echo "# FCC Daily Challenge Sync - runs at 12:30 AM US Central (6:00 AM IST)"; echo "$CRON_LINE") | crontab -
-    echo "  ✓ Cron job added: runs daily at 12:30 AM Central"
+    echo "  ✓ No local content cron (correct — content comes from GitHub)"
 fi
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -131,7 +135,7 @@ echo ""
 echo "=== Setup Complete ==="
 echo "Summary:"
 echo "  ✓ Lid close → server keeps running"
-echo "  ✓ Daily FCC sync → 12:30 AM Central via cron"
+echo "  ✓ Content sync → GitHub Action (this host is a pull-only consumer)"
 echo "  ✓ Network watchdog → every 2 minutes via systemd timer"
 echo "  ✓ Portfolio service → auto-restart on crash"
 echo ""

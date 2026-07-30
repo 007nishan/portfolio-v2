@@ -26,7 +26,12 @@ on:
     # summer) or 06:30 UTC (CST, winter). 06:45 UTC fires safely after both, so a
     # single cron is correct year-round without DST juggling.
     - cron: "45 6 * * *"
-  workflow_dispatch: {}   # allow a manual run from the Actions tab any time
+  workflow_dispatch:      # allow a manual run from the Actions tab any time
+    inputs:
+      regenerate_all:
+        description: "Force-regenerate ALL cards (e.g. after a card-design/font change)"
+        type: boolean
+        default: false
 
 # Least privilege: the job only needs to push commits back to the repo.
 permissions:
@@ -64,6 +69,10 @@ jobs:
 
       - name: Gap-filling FCC sync (self-heals missed runs) + regenerate cards
         run: python fcc_sync.py --catchup
+
+      - name: Force-regenerate ALL cards (manual, after a design/font change)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.regenerate_all }}
+        run: python challenge_card.py --all --force
 
       - name: Export DB back to per-day JSON
         run: python export_challenges.py --quiet
