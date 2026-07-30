@@ -1,0 +1,12 @@
+{# GeoGebra construction — live iframe on screen, static image in the PDF.
+   A printed book has no links, so there is NO "view online" anchor here.
+   ggb_png (required for print) is a committed PNG under static/books/<slug>/ggb/. #}
+<figure class="ggb-embed">
+  <iframe class="ggb-live" src="{{ interactive_url }}" title="{{ caption }}" loading="lazy"></iframe>
+  {% if ggb_png %}
+    <img class="ggb-static" src="{{ url_for('static', filename=ggb_png) }}" alt="{{ caption }}">
+  {% else %}
+    <div class="ggb-static ggb-fallback">Interactive GeoGebra construction (see the online edition).</div>
+  {% endif %}
+  <figcaption class="ggb-caption">{{ caption }}</figcaption>
+</figure>

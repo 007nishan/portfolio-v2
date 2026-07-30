@@ -1,0 +1,17 @@
+{
+  "challenge_number": 76,
+  "concepts_text": null,
+  "date_id": "2025-10-25",
+  "fcc_description": "<p>Given a string representing a DNA sequence, return its complementary strand using the following rules:</p>\n<ul>\n<li>DNA consists of the letters <code>\"A\"</code>, <code>\"C\"</code>, <code>\"G\"</code>, and <code>\"T\"</code>.</li>\n<li>The letters <code>\"A\"</code> and <code>\"T\"</code> complement each other.</li>\n<li>The letters <code>\"C\"</code> and <code>\"G\"</code> complement each other.</li>\n</ul>\n<p>For example, given <code>\"ACGT\"</code>, return <code>\"TGCA\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>complementaryDNA(\\\"ACGT\\\")</code> should return <code>\\\"TGCA\\\"</code>.</p>\", \"testString\": \"assert.equal(complementaryDNA(\\\"ACGT\\\"), \\\"TGCA\\\");\"}, {\"text\": \"<p><code>complementaryDNA(\\\"ATGCGTACGTTAGC\\\")</code> should return <code>\\\"TACGCATGCAATCG\\\"</code>.</p>\", \"testString\": \"assert.equal(complementaryDNA(\\\"ATGCGTACGTTAGC\\\"), \\\"TACGCATGCAATCG\\\");\"}, {\"text\": \"<p><code>complementaryDNA(\\\"GGCTTACGATCGAAG\\\")</code> should return <code>\\\"CCGAATGCTAGCTTC\\\"</code>.</p>\", \"testString\": \"assert.equal(complementaryDNA(\\\"GGCTTACGATCGAAG\\\"), \\\"CCGAATGCTAGCTTC\\\");\"}, {\"text\": \"<p><code>complementaryDNA(\\\"GATCTAGCTAGGCTAGCTAG\\\")</code> should return <code>\\\"CTAGATCGATCCGATCGATC\\\"</code>.</p>\", \"testString\": \"assert.equal(complementaryDNA(\\\"GATCTAGCTAGGCTAGCTAG\\\"), \\\"CTAGATCGATCCGATCGATC\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>complementary_dna(\\\"ACGT\\\")</code> should return <code>\\\"TGCA\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(complementary_dna(\\\"ACGT\\\"), \\\"TGCA\\\")`)\\n}})\"}, {\"text\": \"<p><code>complementary_dna(\\\"ATGCGTACGTTAGC\\\")</code> should return <code>\\\"TACGCATGCAATCG\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(complementary_dna(\\\"ATGCGTACGTTAGC\\\"), \\\"TACGCATGCAATCG\\\")`)\\n}})\"}, {\"text\": \"<p><code>complementary_dna(\\\"GGCTTACGATCGAAG\\\")</code> should return <code>\\\"CCGAATGCTAGCTTC\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(complementary_dna(\\\"GGCTTACGATCGAAG\\\"), \\\"CCGAATGCTAGCTTC\\\")`)\\n}})\"}, {\"text\": \"<p><code>complementary_dna(\\\"GATCTAGCTAGGCTAGCTAG\\\")</code> should return <code>\\\"CTAGATCGATCCGATCGATC\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(complementary_dna(\\\"GATCTAGCTAGGCTAGCTAG\\\"), \\\"CTAGATCGATCCGATCGATC\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function complementaryDNA(strand) {\n\n  return strand;\n}",
+  "fcc_starter_py": "def complementary_dna(strand):\n\n    return strand",
+  "image_path": "20251025_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Complementary DNA"
+}

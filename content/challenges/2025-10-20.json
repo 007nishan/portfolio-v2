@@ -1,0 +1,17 @@
+{
+  "challenge_number": 71,
+  "concepts_text": null,
+  "date_id": "2025-10-20",
+  "fcc_description": "<p>Given the price of your meal and a custom tip percent, return an array with three tip values; 15%, 20%, and the custom amount.</p>\n<ul>\n<li>Prices will be given in the format: <code>\"$N.NN\"</code>.</li>\n<li>Custom tip percents will be given in this format: <code>\"25%\"</code>.</li>\n<li>Return amounts in the same <code>\"$N.NN\"</code> format, rounded to two decimal places.</li>\n</ul>\n<p>For example, given a <code>\"$10.00\"</code> meal price, and a <code>\"25%\"</code> custom tip value, return <code>[\"$1.50\", \"$2.00\", \"$2.50\"]</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>calculateTips(\\\"$10.00\\\", \\\"25%\\\")</code> should return <code>[\\\"$1.50\\\", \\\"$2.00\\\", \\\"$2.50\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(calculateTips(\\\"$10.00\\\", \\\"25%\\\"), [\\\"$1.50\\\", \\\"$2.00\\\", \\\"$2.50\\\"]);\"}, {\"text\": \"<p><code>calculateTips(\\\"$89.67\\\", \\\"26%\\\")</code> should return <code>[\\\"$13.45\\\", \\\"$17.93\\\", \\\"$23.31\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(calculateTips(\\\"$89.67\\\", \\\"26%\\\"), [\\\"$13.45\\\", \\\"$17.93\\\", \\\"$23.31\\\"]);\"}, {\"text\": \"<p><code>calculateTips(\\\"$19.85\\\", \\\"9%\\\")</code> should return <code>[\\\"$2.98\\\", \\\"$3.97\\\", \\\"$1.79\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(calculateTips(\\\"$19.85\\\", \\\"9%\\\"), [\\\"$2.98\\\", \\\"$3.97\\\", \\\"$1.79\\\"]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>calculate_tips(\\\"$10.00\\\", \\\"25%\\\")</code> should return <code>[\\\"$1.50\\\", \\\"$2.00\\\", \\\"$2.50\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_tips(\\\"$10.00\\\", \\\"25%\\\"), [\\\"$1.50\\\", \\\"$2.00\\\", \\\"$2.50\\\"])`)\\n}})\"}, {\"text\": \"<p><code>calculate_tips(\\\"$89.67\\\", \\\"26%\\\")</code> should return <code>[\\\"$13.45\\\", \\\"$17.93\\\", \\\"$23.31\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_tips(\\\"$89.67\\\", \\\"26%\\\"), [\\\"$13.45\\\", \\\"$17.93\\\", \\\"$23.31\\\"])`)\\n}})\"}, {\"text\": \"<p><code>calculate_tips(\\\"$19.85\\\", \\\"9%\\\")</code> should return <code>[\\\"$2.98\\\", \\\"$3.97\\\", \\\"$1.79\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_tips(\\\"$19.85\\\", \\\"9%\\\"), [\\\"$2.98\\\", \\\"$3.97\\\", \\\"$1.79\\\"])`)\\n}})\"}]",
+  "fcc_starter_js": "function calculateTips(mealPrice, customTip) {\n\n  return mealPrice;\n}",
+  "fcc_starter_py": "def calculate_tips(meal_price, custom_tip):\n\n    return meal_price",
+  "image_path": "20251020_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Tip Calculator"
+}

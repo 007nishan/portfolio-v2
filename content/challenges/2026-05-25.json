@@ -1,0 +1,17 @@
+{
+  "challenge_number": 288,
+  "concepts_text": null,
+  "date_id": "2026-05-25",
+  "fcc_description": "<p>Given a secret number and a guess, determine if the guess is correct.</p>\n<p>Return:</p>\n<ul>\n<li><code>\"higher\"</code> if the secret number is higher than the guess.</li>\n<li><code>\"lower\"</code> if the secret number is lower than the guess.</li>\n<li><code>\"you got it!\"</code> if the guess is correct.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>guessNumber(50, 30)</code> should return <code>\\\"higher\\\"</code>.</p>\", \"testString\": \"assert.equal(guessNumber(50, 30), \\\"higher\\\");\"}, {\"text\": \"<p><code>guessNumber(85, 99)</code> should return <code>\\\"lower\\\"</code>.</p>\", \"testString\": \"assert.equal(guessNumber(85, 99), \\\"lower\\\");\"}, {\"text\": \"<p><code>guessNumber(2026, 2026)</code> should return <code>\\\"you got it!\\\"</code>.</p>\", \"testString\": \"assert.equal(guessNumber(2026, 2026), \\\"you got it!\\\");\"}, {\"text\": \"<p><code>guessNumber(92904, 11283)</code> should return <code>\\\"higher\\\"</code>.</p>\", \"testString\": \"assert.equal(guessNumber(92904, 11283), \\\"higher\\\");\"}, {\"text\": \"<p><code>guessNumber(230495, 423920)</code> should return <code>\\\"lower\\\"</code>.</p>\", \"testString\": \"assert.equal(guessNumber(230495, 423920), \\\"lower\\\");\"}, {\"text\": \"<p><code>guessNumber(120349, 120349)</code> should return <code>\\\"you got it!\\\"</code>.</p>\", \"testString\": \"assert.equal(guessNumber(120349, 120349), \\\"you got it!\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>guess_number(50, 30)</code> should return <code>\\\"higher\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(guess_number(50, 30), \\\"higher\\\")`)\\n}})\"}, {\"text\": \"<p><code>guess_number(85, 99)</code> should return <code>\\\"lower\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(guess_number(85, 99), \\\"lower\\\")`)\\n}})\"}, {\"text\": \"<p><code>guess_number(2026, 2026)</code> should return <code>\\\"you got it!\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(guess_number(2026, 2026), \\\"you got it!\\\")`)\\n}})\"}, {\"text\": \"<p><code>guess_number(92904, 11283)</code> should return <code>\\\"higher\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(guess_number(92904, 11283), \\\"higher\\\")`)\\n}})\"}, {\"text\": \"<p><code>guess_number(230495, 423920)</code> should return <code>\\\"lower\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(guess_number(230495, 423920), \\\"lower\\\")`)\\n}})\"}, {\"text\": \"<p><code>guess_number(120349, 120349)</code> should return <code>\\\"you got it!\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(guess_number(120349, 120349), \\\"you got it!\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function guessNumber(secret, guess) {\n\n  return secret;\n}",
+  "fcc_starter_py": "def guess_number(secret, guess):\n\n    return secret",
+  "image_path": "20260525_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Secret Number"
+}

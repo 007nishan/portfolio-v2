@@ -1,0 +1,17 @@
+{
+  "challenge_number": 65,
+  "concepts_text": null,
+  "date_id": "2025-10-14",
+  "fcc_description": "<p>Given two strings, determine how many times the second string appears in the first.</p>\n<ul>\n<li>The pattern string can overlap in the first string. For example, <code>\"aaa\"</code> contains <code>\"aa\"</code> twice. The first two <code>a</code>'s and the second two.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>count('abcdefg', 'def')</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(count('abcdefg', 'def'), 1);\"}, {\"text\": \"<p><code>count('hello', 'world')</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(count('hello', 'world'), 0);\"}, {\"text\": \"<p><code>count('mississippi', 'iss')</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(count('mississippi', 'iss'), 2);\"}, {\"text\": \"<p><code>count('she sells seashells by the seashore', 'sh')</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(count('she sells seashells by the seashore', 'sh'), 3);\"}, {\"text\": \"<p><code>count('101010101010101010101', '101')</code> should return <code>10</code>.</p>\", \"testString\": \"assert.equal(count('101010101010101010101', '101'), 10);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>count('abcdefg', 'def')</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count('abcdefg', 'def'), 1)`)\\n}})\"}, {\"text\": \"<p><code>count('hello', 'world')</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count('hello', 'world'), 0)`)\\n}})\"}, {\"text\": \"<p><code>count('mississippi', 'iss')</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count('mississippi', 'iss'), 2)`)\\n}})\"}, {\"text\": \"<p><code>count('she sells seashells by the seashore', 'sh')</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count('she sells seashells by the seashore', 'sh'), 3)`)\\n}})\"}, {\"text\": \"<p><code>count('101010101010101010101', '101')</code> should return <code>10</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count('101010101010101010101', '101'), 10)`)\\n}})\"}]",
+  "fcc_starter_js": "function count(text, pattern) {\n\n  return text;\n}",
+  "fcc_starter_py": "def count(text, parameter):\n\n    return text",
+  "image_path": "20251014_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "String Count"
+}

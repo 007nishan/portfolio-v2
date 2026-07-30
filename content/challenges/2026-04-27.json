@@ -1,0 +1,17 @@
+{
+  "challenge_number": 260,
+  "concepts_text": null,
+  "date_id": "2026-04-27",
+  "fcc_description": "<p>Given a word, return its score using a standard letter-value table:</p>\n<table>\n<thead>\n<tr>\n<th>Letter</th>\n<th>Value</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td>A</td>\n<td>1</td>\n</tr>\n<tr>\n<td>B</td>\n<td>2</td>\n</tr>\n<tr>\n<td>...</td>\n<td>...</td>\n</tr>\n<tr>\n<td>Z</td>\n<td>26</td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>Upper and lowercase letters have the same value.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getWordScore(\\\"hi\\\")</code> should return <code>17</code>.</p>\", \"testString\": \"assert.equal(getWordScore(\\\"hi\\\"), 17);\"}, {\"text\": \"<p><code>getWordScore(\\\"hello\\\")</code> should return <code>52</code>.</p>\", \"testString\": \"assert.equal(getWordScore(\\\"hello\\\"), 52);\"}, {\"text\": \"<p><code>getWordScore(\\\"hippopotamus\\\")</code> should return <code>169</code>.</p>\", \"testString\": \"assert.equal(getWordScore(\\\"hippopotamus\\\"), 169);\"}, {\"text\": \"<p><code>getWordScore(\\\"freeCodeCamp\\\")</code> should return <code>94</code>.</p>\", \"testString\": \"assert.equal(getWordScore(\\\"freeCodeCamp\\\"), 94);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_word_score(\\\"hi\\\")</code> should return <code>17</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_word_score(\\\"hi\\\"), 17)`)\\n}})\"}, {\"text\": \"<p><code>get_word_score(\\\"hello\\\")</code> should return <code>52</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_word_score(\\\"hello\\\"), 52)`)\\n}})\"}, {\"text\": \"<p><code>get_word_score(\\\"hippopotamus\\\")</code> should return <code>169</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_word_score(\\\"hippopotamus\\\"), 169)`)\\n}})\"}, {\"text\": \"<p><code>get_word_score(\\\"freeCodeCamp\\\")</code> should return <code>94</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_word_score(\\\"freeCodeCamp\\\"), 94)`)\\n}})\"}]",
+  "fcc_starter_js": "function getWordScore(word) {\n\n  return word;\n}",
+  "fcc_starter_py": "def get_word_score(word):\n\n    return word",
+  "image_path": "20260427_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Word Score"
+}

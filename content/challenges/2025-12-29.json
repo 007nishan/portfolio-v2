@@ -1,0 +1,17 @@
+{
+  "challenge_number": 141,
+  "concepts_text": null,
+  "date_id": "2025-12-29",
+  "fcc_description": "<p>Given the numbers of gallons of fuel currently in your airplane, and the required number of liters of fuel to reach your destination, determine how many additional gallons of fuel you should add.</p>\n<ul>\n<li>1 gallon equals 3.78541 liters.</li>\n<li>If the airplane already has enough fuel, return <code>0</code>.</li>\n<li>You can only add whole gallons.</li>\n<li>Do not include decimals in the return number.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>fuelToAdd(0, 1)</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(fuelToAdd(0, 1), 1);\"}, {\"text\": \"<p><code>fuelToAdd(5, 40)</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(fuelToAdd(5, 40), 6);\"}, {\"text\": \"<p><code>fuelToAdd(10, 30)</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(fuelToAdd(10, 30), 0);\"}, {\"text\": \"<p><code>fuelToAdd(896, 20500)</code> should return <code>4520</code>.</p>\", \"testString\": \"assert.equal(fuelToAdd(896, 20500), 4520);\"}, {\"text\": \"<p><code>fuelToAdd(1000, 50000)</code> should return <code>12209</code>.</p>\", \"testString\": \"assert.equal(fuelToAdd(1000, 50000), 12209);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>fuel_to_add(0, 1)</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fuel_to_add(0, 1), 1)`)\\n}})\"}, {\"text\": \"<p><code>fuel_to_add(5, 40)</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fuel_to_add(5, 40), 6)`)\\n}})\"}, {\"text\": \"<p><code>fuel_to_add(10, 30)</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fuel_to_add(10, 30), 0)`)\\n}})\"}, {\"text\": \"<p><code>fuel_to_add(896, 20500)</code> should return <code>4520</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fuel_to_add(896, 20500), 4520)`)\\n}})\"}, {\"text\": \"<p><code>fuel_to_add(1000, 50000)</code> should return <code>12209</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(fuel_to_add(1000, 50000), 12209)`)\\n}})\"}]",
+  "fcc_starter_js": "function fuelToAdd(currentGallons, requiredLiters) {\n\n  return currentGallons;\n}",
+  "fcc_starter_py": "def fuel_to_add(current_gallons, required_liters):\n\n    return current_gallons",
+  "image_path": "20251229_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Takeoff Fuel"
+}

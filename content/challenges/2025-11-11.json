@@ -1,0 +1,17 @@
+{
+  "challenge_number": 93,
+  "concepts_text": null,
+  "date_id": "2025-11-11",
+  "fcc_description": "<p>Given a string, return an array with the number of vowels and number of consonants in the string.</p>\n<ul>\n<li>Vowels consist of <code>a</code>, <code>e</code>, <code>i</code>, <code>o</code>, <code>u</code> in any case.</li>\n<li>Consonants consist of all other letters in any case.</li>\n<li>Ignore any non-letter characters.</li>\n</ul>\n<p>For example, given <code>\"Hello World\"</code>, return <code>[3, 7]</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>count(\\\"Hello World\\\")</code> should return <code>[3, 7]</code>.</p>\", \"testString\": \"assert.deepEqual(count(\\\"Hello World\\\"), [3, 7]);\"}, {\"text\": \"<p><code>count(\\\"JavaScript\\\")</code> should return <code>[3, 7]</code>.</p>\", \"testString\": \"assert.deepEqual(count(\\\"JavaScript\\\"), [3, 7]);\"}, {\"text\": \"<p><code>count(\\\"Python\\\")</code> should return <code>[1, 5]</code>.</p>\", \"testString\": \"assert.deepEqual(count(\\\"Python\\\"), [1, 5]);\"}, {\"text\": \"<p><code>count(\\\"freeCodeCamp\\\")</code> should return <code>[5, 7]</code>.</p>\", \"testString\": \"assert.deepEqual(count(\\\"freeCodeCamp\\\"), [5, 7]);\"}, {\"text\": \"<p><code>count(\\\"Hello, World!\\\")</code> should return <code>[3, 7]</code>.</p>\", \"testString\": \"assert.deepEqual(count(\\\"Hello, World!\\\"), [3, 7]);\"}, {\"text\": \"<p><code>count(\\\"The quick brown fox jumps over the lazy dog.\\\")</code> should return <code>[11, 24]</code>.</p>\", \"testString\": \"assert.deepEqual(count(\\\"The quick brown fox jumps over the lazy dog.\\\"), [11, 24]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>count(\\\"Hello World\\\")</code> should return <code>[3, 7]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count(\\\"Hello World\\\"), [3, 7])`)\\n}})\"}, {\"text\": \"<p><code>count(\\\"JavaScript\\\")</code> should return <code>[3, 7]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count(\\\"JavaScript\\\"), [3, 7])`)\\n}})\"}, {\"text\": \"<p><code>count(\\\"Python\\\")</code> should return <code>[1, 5]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count(\\\"Python\\\"), [1, 5])`)\\n}})\"}, {\"text\": \"<p><code>count(\\\"freeCodeCamp\\\")</code> should return <code>[5, 7]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count(\\\"freeCodeCamp\\\"), [5, 7])`)\\n}})\"}, {\"text\": \"<p><code>count(\\\"Hello, World!\\\")</code> should return <code>[3, 7]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count(\\\"Hello World\\\"), [3, 7])`)\\n}})\"}, {\"text\": \"<p><code>count(\\\"The quick brown fox jumps over the lazy dog.\\\")</code> should return <code>[11, 24]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(count(\\\"Hello World\\\"), [3, 7])`)\\n}})\"}]",
+  "fcc_starter_js": "function count(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def count(s):\n\n    return s",
+  "image_path": "20251111_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Vowels and Consonants"
+}

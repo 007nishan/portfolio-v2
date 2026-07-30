@@ -1,0 +1,17 @@
+{
+  "challenge_number": 49,
+  "concepts_text": null,
+  "date_id": "2025-09-28",
+  "fcc_description": "<p>Given the first line of a comma-separated values (CSV) file, return an array containing the headings.</p>\n<ul>\n<li>The first line of a CSV file contains headings separated by commas.</li>\n<li>Remove any leading or trailing whitespace from each heading.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getHeadings(\\\"name,age,city\\\")</code> should return <code>[\\\"name\\\", \\\"age\\\", \\\"city\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(getHeadings(\\\"name,age,city\\\"), [\\\"name\\\", \\\"age\\\", \\\"city\\\"]);\"}, {\"text\": \"<p><code>getHeadings(\\\"first name,last name,phone\\\")</code> should return <code>[\\\"first name\\\", \\\"last name\\\", \\\"phone\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(getHeadings(\\\"first name,last name,phone\\\"), [\\\"first name\\\", \\\"last name\\\", \\\"phone\\\"]);\"}, {\"text\": \"<p><code>getHeadings(\\\"username , email , signup date \\\")</code> should return <code>[\\\"username\\\", \\\"email\\\", \\\"signup date\\\"]</code>.</p>\", \"testString\": \"assert.deepEqual(getHeadings(\\\"username , email , signup date \\\"), [\\\"username\\\", \\\"email\\\", \\\"signup date\\\"]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_headings(\\\"name,age,city\\\")</code> should return <code>[\\\"name\\\", \\\"age\\\", \\\"city\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_headings(\\\"name,age,city\\\"), [\\\"name\\\", \\\"age\\\", \\\"city\\\"])`)\\n}})\"}, {\"text\": \"<p><code>get_headings(\\\"first name,last name,phone\\\")</code> should return <code>[\\\"first name\\\", \\\"last name\\\", \\\"phone\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_headings(\\\"first name,last name,phone\\\"), [\\\"first name\\\", \\\"last name\\\", \\\"phone\\\"])`)\\n}})\"}, {\"text\": \"<p><code>get_headings(\\\"username , email , signup date \\\")</code> should return <code>[\\\"username\\\", \\\"email\\\", \\\"signup date\\\"]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_headings(\\\"username , email , signup date \\\"), [\\\"username\\\", \\\"email\\\", \\\"signup date\\\"])`)\\n}})\"}]",
+  "fcc_starter_js": "function getHeadings(csv) {\n\n  return csv;\n}",
+  "fcc_starter_py": "def get_headings(csv):\n\n    return csv",
+  "image_path": "20250928_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "CSV Header Parser"
+}

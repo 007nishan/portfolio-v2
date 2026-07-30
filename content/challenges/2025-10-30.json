@@ -1,0 +1,17 @@
+{
+  "challenge_number": 81,
+  "concepts_text": null,
+  "date_id": "2025-10-30",
+  "fcc_description": "<p>A prime number is a positive integer greater than 1 that is divisible only by 1 and itself. The first five prime numbers are <code>2</code>, <code>3</code>, <code>5</code>, <code>7</code>, and <code>11</code>.</p>\n<p>Given a positive integer <code>n</code>, return the <code>n</code>th prime number. For example, given <code>5</code> return the 5th prime number: <code>11</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>nthPrime(5)</code> should return <code>11</code>.</p>\", \"testString\": \"assert.equal(nthPrime(5), 11);\"}, {\"text\": \"<p><code>nthPrime(10)</code> should return <code>29</code>.</p>\", \"testString\": \"assert.equal(nthPrime(10), 29);\"}, {\"text\": \"<p><code>nthPrime(16)</code> should return <code>53</code>.</p>\", \"testString\": \"assert.equal(nthPrime(16), 53);\"}, {\"text\": \"<p><code>nthPrime(99)</code> should return <code>523</code>.</p>\", \"testString\": \"assert.equal(nthPrime(99), 523);\"}, {\"text\": \"<p><code>nthPrime(1000)</code> should return <code>7919</code>.</p>\", \"testString\": \"assert.equal(nthPrime(1000), 7919);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>nth_prime(5)</code> should return <code>11</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_prime(5), 11)`)\\n}})\"}, {\"text\": \"<p><code>nth_prime(10)</code> should return <code>29</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_prime(10), 29)`)\\n}})\"}, {\"text\": \"<p><code>nth_prime(16)</code> should return <code>53</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_prime(16), 53)`)\\n}})\"}, {\"text\": \"<p><code>nth_prime(99)</code> should return <code>523</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_prime(99), 523)`)\\n}})\"}, {\"text\": \"<p><code>nth_prime(1000)</code> should return <code>7919</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(nth_prime(1000), 7919)`)\\n}})\"}]",
+  "fcc_starter_js": "function nthPrime(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def nth_prime(n):\n\n    return n",
+  "image_path": "20251030_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Nth Prime"
+}

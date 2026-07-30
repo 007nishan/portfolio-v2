@@ -1,0 +1,17 @@
+{
+  "challenge_number": 172,
+  "concepts_text": null,
+  "date_id": "2026-01-29",
+  "fcc_description": "<p>Given a string containing only letters and numbers, return a new string where a hyphen (<code>-</code>) is inserted every time the string switches from a letter to a number, or a number to a letter.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>separateLettersAndNumbers(\\\"ABC123\\\")</code> should return <code>\\\"ABC-123\\\"</code>.</p>\", \"testString\": \"assert.equal(separateLettersAndNumbers(\\\"ABC123\\\"), \\\"ABC-123\\\");\"}, {\"text\": \"<p><code>separateLettersAndNumbers(\\\"Route66\\\")</code> should return <code>\\\"Route-66\\\"</code>.</p>\", \"testString\": \"assert.equal(separateLettersAndNumbers(\\\"Route66\\\"), \\\"Route-66\\\");\"}, {\"text\": \"<p><code>separateLettersAndNumbers(\\\"H3LL0W0RLD\\\")</code> should return <code>\\\"H-3-LL-0-W-0-RLD\\\"</code>.</p>\", \"testString\": \"assert.equal(separateLettersAndNumbers(\\\"H3LL0W0RLD\\\"), \\\"H-3-LL-0-W-0-RLD\\\");\"}, {\"text\": \"<p><code>separateLettersAndNumbers(\\\"a1b2c3d4\\\")</code> should return <code>\\\"a-1-b-2-c-3-d-4\\\"</code>.</p>\", \"testString\": \"assert.equal(separateLettersAndNumbers(\\\"a1b2c3d4\\\"), \\\"a-1-b-2-c-3-d-4\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>separate_letters_and_numbers(\\\"ABC123\\\")</code> should return <code>\\\"ABC-123\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(separate_letters_and_numbers(\\\"ABC123\\\"), \\\"ABC-123\\\")`)\\n}})\"}, {\"text\": \"<p><code>separate_letters_and_numbers(\\\"Route66\\\")</code> should return <code>\\\"Route-66\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(separate_letters_and_numbers(\\\"Route66\\\"), \\\"Route-66\\\")`)\\n}})\"}, {\"text\": \"<p><code>separate_letters_and_numbers(\\\"H3LL0W0RLD\\\")</code> should return <code>\\\"H-3-LL-0-W-0-RLD\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(separate_letters_and_numbers(\\\"H3LL0W0RLD\\\"), \\\"H-3-LL-0-W-0-RLD\\\")`)\\n}})\"}, {\"text\": \"<p><code>separate_letters_and_numbers(\\\"a1b2c3d4\\\")</code> should return <code>\\\"a-1-b-2-c-3-d-4\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(separate_letters_and_numbers(\\\"a1b2c3d4\\\"), \\\"a-1-b-2-c-3-d-4\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function separateLettersAndNumbers(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def separate_letters_and_numbers(s):\n\n    return s",
+  "image_path": "20260129_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Letters-Numbers"
+}

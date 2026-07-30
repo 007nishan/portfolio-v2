@@ -1,0 +1,17 @@
+{
+  "challenge_number": 53,
+  "concepts_text": null,
+  "date_id": "2025-10-02",
+  "fcc_description": "<p>Given a non-negative integer, return its binary representation as a string.</p>\n<p>A binary number uses only the digits <code>0</code> and <code>1</code> to represent any number. To convert a decimal number to binary, repeatedly divide the number by <code>2</code> and record the remainder. Repeat until the number is zero. Read the remainders last recorded to first. For example, to convert <code>12</code> to binary:</p>\n<pre><code class=\"language-mathml\">12 ÷ 2 = 6 remainder 0\n6 ÷ 2 = 3 remainder 0\n3 ÷ 2 = 1 remainder 1\n1 ÷ 2 = 0 remainder 1\n</code></pre>\n<p><code>12</code> in binary is <code>1100</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>toBinary(5)</code> should return <code>\\\"101\\\"</code>.</p>\", \"testString\": \"assert.equal(toBinary(5), \\\"101\\\");\"}, {\"text\": \"<p><code>toBinary(12)</code> should return <code>\\\"1100\\\"</code>.</p>\", \"testString\": \"assert.equal(toBinary(12), \\\"1100\\\");\"}, {\"text\": \"<p><code>toBinary(50)</code> should return <code>\\\"110010\\\"</code>.</p>\", \"testString\": \"assert.equal(toBinary(50), \\\"110010\\\");\"}, {\"text\": \"<p><code>toBinary(99)</code> should return <code>\\\"1100011\\\"</code>.</p>\", \"testString\": \"assert.equal(toBinary(99), \\\"1100011\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>to_binary(5)</code> should return <code>\\\"101\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_binary(5), \\\"101\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_binary(12)</code> should return <code>\\\"1100\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_binary(12), \\\"1100\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_binary(50)</code> should return <code>\\\"110010\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_binary(50), \\\"110010\\\")`)\\n}})\"}, {\"text\": \"<p><code>to_binary(99)</code> should return <code>\\\"1100011\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(to_binary(99), \\\"1100011\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function toBinary(decimal) {\n\n  return decimal;\n}",
+  "fcc_starter_py": "def to_binary(decimal):\n\n    return decimal",
+  "image_path": "20251002_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Decimal to Binary"
+}

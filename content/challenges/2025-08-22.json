@@ -1,0 +1,17 @@
+{
+  "challenge_number": 12,
+  "concepts_text": null,
+  "date_id": "2025-08-22",
+  "fcc_description": "<p>Given a secret message string, and an integer representing the number of letters that were used to shift the message to encode it, return the decoded string.</p>\n<ul>\n<li>A positive number means the message was shifted forward in the alphabet.</li>\n<li>A negative number means the message was shifted backward in the alphabet.</li>\n<li>Case matters, decoded characters should retain the case of their encoded counterparts.</li>\n<li>Non-alphabetical characters should not get decoded.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>decode(\\\"Xlmw mw e wigvix qiwweki.\\\", 4)</code> should return <code>\\\"This is a secret message.\\\"</code></p>\", \"testString\": \"assert.equal(decode(\\\"Xlmw mw e wigvix qiwweki.\\\", 4), \\\"This is a secret message.\\\");\"}, {\"text\": \"<p><code>decode(\\\"Byffi Qilfx!\\\", 20)</code> should return <code>\\\"Hello World!\\\"</code></p>\", \"testString\": \"assert.equal(decode(\\\"Byffi Qilfx!\\\", 20), \\\"Hello World!\\\");\"}, {\"text\": \"<p><code>decode(\\\"Zqd xnt njzx?\\\", -1)</code> should return <code>\\\"Are you okay?\\\"</code></p>\", \"testString\": \"assert.equal(decode(\\\"Zqd xnt njzx?\\\", -1), \\\"Are you okay?\\\");\"}, {\"text\": \"<p><code>decode(\\\"oannLxmnLjvy\\\", 9)</code> should return <code>\\\"freeCodeCamp\\\"</code></p>\", \"testString\": \"assert.equal(decode(\\\"oannLxmnLjvy\\\", 9), \\\"freeCodeCamp\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>decode(\\\"Xlmw mw e wigvix qiwweki.\\\", 4)</code> should return <code>\\\"This is a secret message.\\\"</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(decode(\\\"Xlmw mw e wigvix qiwweki.\\\", 4), \\\"This is a secret message.\\\")`)\\n}})\"}, {\"text\": \"<p><code>decode(\\\"Byffi Qilfx!\\\", 20)</code> should return <code>\\\"Hello World!\\\"</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(decode(\\\"Byffi Qilfx!\\\", 20), \\\"Hello World!\\\")`)\\n}})\"}, {\"text\": \"<p><code>decode(\\\"Zqd xnt njzx?\\\", -1)</code> should return <code>\\\"Are you okay?\\\"</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(decode(\\\"Zqd xnt njzx?\\\", -1), \\\"Are you okay?\\\")`)\\n}})\"}, {\"text\": \"<p><code>decode(\\\"oannLxmnLjvy\\\", 9)</code> should return <code>\\\"freeCodeCamp\\\"</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(decode(\\\"oannLxmnLjvy\\\", 9), \\\"freeCodeCamp\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function decode(message, shift) {\n\n  return message;\n}",
+  "fcc_starter_py": "def decode(message, shift):\n\n    return message",
+  "image_path": "20250822_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Message Decoder"
+}

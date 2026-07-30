@@ -1,0 +1,17 @@
+{
+  "challenge_number": 30,
+  "concepts_text": null,
+  "date_id": "2025-09-09",
+  "fcc_description": "<p>Given a string, determine if all the characters in the string are unique.</p>\n<ul>\n<li>Uppercase and lowercase letters should be considered different characters.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>allUnique(\\\"abc\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(allUnique(\\\"abc\\\"));\"}, {\"text\": \"<p><code>allUnique(\\\"aA\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(allUnique(\\\"aA\\\"));\"}, {\"text\": \"<p><code>allUnique(\\\"QwErTy123!@\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(allUnique(\\\"QwErTy123!@\\\"));\"}, {\"text\": \"<p><code>allUnique(\\\"~!@#$%^&#x26;*()_+\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(allUnique(\\\"~!@#$%^&*()_+\\\"));\"}, {\"text\": \"<p><code>allUnique(\\\"hello\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(allUnique(\\\"hello\\\"));\"}, {\"text\": \"<p><code>allUnique(\\\"freeCodeCamp\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(allUnique(\\\"freeCodeCamp\\\"));\"}, {\"text\": \"<p><code>allUnique(\\\"!@#*$%^&#x26;*()aA\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(allUnique(\\\"!@#*$%^&*()aA\\\"));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>all_unique(\\\"abc\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(all_unique(\\\"abc\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>all_unique(\\\"aA\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(all_unique(\\\"aA\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>all_unique(\\\"QwErTy123!@\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(all_unique(\\\"QwErTy123!@\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>all_unique(\\\"~!@#$%^&#x26;*()_+\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(all_unique(\\\"~!@#$%^&*()_+\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>all_unique(\\\"hello\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(all_unique(\\\"hello\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>all_unique(\\\"freeCodeCamp\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(all_unique(\\\"freeCodeCamp\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>all_unique(\\\"!@#*$%^&#x26;*()aA\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(all_unique(\\\"!@#*$%^&*()aA\\\"), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function allUnique(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def all_unique(s):\n\n    return s",
+  "image_path": "20250909_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Unique Characters"
+}

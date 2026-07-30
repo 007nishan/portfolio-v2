@@ -128,6 +128,36 @@ data/
 *.db-journal
 *.log
 
+# GitHub-as-buffer: committed challenge CONTENT (DB→JSON export).
+# The live DB (data/) stays ignored and is rebuilt per-machine from these JSON
+# files by import_challenges.py. This folder is the source of truth for content
+# and MUST be tracked — pin it explicitly so it survives any broad ignore above.
+!content/
+!content/challenges/
+!content/challenges/*.json
+
+# Old FCC-sourced challenge images — PURGED from history on 2026-07-25 and
+# replaced by our own branded *_card.jpg cards. These 150 <date>_<slug>.jpg files
+# may still sit untracked in a working copy; keep them OUT of git so a stray
+# `git add` never re-bloats the repo or undoes the purge. Only *_card.jpg (our
+# generated cards) are tracked under static/images/.
+static/images/*.jpg
+!static/images/*_card.jpg
+static/daily_challenges/
+
+# Compiled-books pipeline (BCS v1.1)
+# NOTE: .gitignore does NOT support inline (trailing) comments — a '#' after a
+# pattern becomes part of the pattern. Keep comments on their own lines.
+# build-time npm deps (KaTeX is vendored to static/ instead)
+node_modules/
+# generated QA reports (written atomically per build)
+static/books/qa/*.qa.json
+static/books/qa/*.qa.html
+# generated print PDFs (rebuilt on the host)
+static/books/*.pdf
+# NOTE: keep tracked — static/vendor/katex/**, static/books/covers/**, templates/books/**,
+#       Python Book/**, Linear Algebra/** (these ARE the committed book sources/assets)
+
 # Secrets / keys — NEVER commit (this is a public repo)
 id_rsa
 id_rsa.pub

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 59,
+  "concepts_text": null,
+  "date_id": "2025-10-08",
+  "fcc_description": "<p>For the fifth day of Space Week, you will calculate the \"Goldilocks zone\" of a star - the region around a star where conditions are \"just right\" for liquid water to exist.</p>\n<p>Given the mass of a star, return an array with the start and end distances of its Goldilocks Zone in Astronomical Units.</p>\n<p>To calculate the Goldilocks Zone:</p>\n<ol>\n<li>Find the luminosity of the star by raising its mass to the power of 3.5.</li>\n<li>The start of the zone is 0.95 times the square root of its luminosity.</li>\n<li>The end of the zone is 1.37 times the square root of its luminosity.</li>\n</ol>\n<ul>\n<li>Return the distances rounded to two decimal places.</li>\n</ul>\n<p>For example, given <code>1</code> as a mass, return <code>[0.95, 1.37]</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>goldilocksZone(1)</code> should return <code>[0.95, 1.37]</code>.</p>\", \"testString\": \"assert.deepEqual(goldilocksZone(1), [0.95, 1.37]);\"}, {\"text\": \"<p><code>goldilocksZone(0.5)</code> should return <code>[0.28, 0.41]</code>.</p>\", \"testString\": \"assert.deepEqual(goldilocksZone(0.5), [0.28, 0.41]);\"}, {\"text\": \"<p><code>goldilocksZone(6)</code> should return <code>[21.85, 31.51]</code>.</p>\", \"testString\": \"assert.deepEqual(goldilocksZone(6), [21.85, 31.51]);\"}, {\"text\": \"<p><code>goldilocksZone(3.7)</code> should return <code>[9.38, 13.52]</code>.</p>\", \"testString\": \"assert.deepEqual(goldilocksZone(3.7), [9.38, 13.52]);\"}, {\"text\": \"<p><code>goldilocksZone(20)</code> should return <code>[179.69, 259.13]</code>.</p>\", \"testString\": \"assert.deepEqual(goldilocksZone(20), [179.69, 259.13]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>goldilocks_zone(1)</code> should return <code>[0.95, 1.37]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(goldilocks_zone(1), [0.95, 1.37])`)\\n}})\"}, {\"text\": \"<p><code>goldilocks_zone(0.5)</code> should return <code>[0.28, 0.41]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(goldilocks_zone(0.5), [0.28, 0.41])`)\\n}})\"}, {\"text\": \"<p><code>goldilocks_zone(6)</code> should return <code>[21.85, 31.51]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(goldilocks_zone(6), [21.85, 31.51])`)\\n}})\"}, {\"text\": \"<p><code>goldilocks_zone(3.7)</code> should return <code>[9.38, 13.52]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(goldilocks_zone(3.7), [9.38, 13.52])`)\\n}})\"}, {\"text\": \"<p><code>goldilocks_zone(20)</code> should return <code>[179.69, 259.13]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(goldilocks_zone(20), [179.69, 259.13])`)\\n}})\"}]",
+  "fcc_starter_js": "function goldilocksZone(mass) {\n\n  return mass;\n}",
+  "fcc_starter_py": "def goldilocks_zone(mass):\n\n    return mass",
+  "image_path": "20251008_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Space Week Day 5: Goldilocks Zone"
+}

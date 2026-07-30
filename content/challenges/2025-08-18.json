@@ -1,0 +1,17 @@
+{
+  "challenge_number": 8,
+  "concepts_text": null,
+  "date_id": "2025-08-18",
+  "fcc_description": "<p>Given an integer from zero to 20, return the factorial of that number. The factorial of a number is the product of all the numbers between 1 and the given number.</p>\n<ul>\n<li>The factorial of zero is 1.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>factorial(0)</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(factorial(0), 1);\"}, {\"text\": \"<p><code>factorial(5)</code> should return <code>120</code>.</p>\", \"testString\": \"assert.equal(factorial(5), 120);\"}, {\"text\": \"<p><code>factorial(20)</code> should return <code>2432902008176640000</code>.</p>\", \"testString\": \"assert.equal(factorial(20), 2432902008176640000);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>factorial(0)</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(factorial(0), 1)`)\\n}})\"}, {\"text\": \"<p><code>factorial(5)</code> should return <code>120</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(factorial(5), 120)`)\\n}})\"}, {\"text\": \"<p><code>factorial(20)</code> should return <code>2432902008176640000</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(factorial(20), 2432902008176640000)`)\\n}})\"}]",
+  "fcc_starter_js": "function factorial(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def factorial(n):\n\n    return n",
+  "image_path": "20250818_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Factorializer"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 225,
+  "concepts_text": null,
+  "date_id": "2026-03-23",
+  "fcc_description": "<p>Given a string, determine if it has no repeating characters.</p>\n<ul>\n<li>A string has no repeats if it does not have the same character two or more times in a row.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>hasNoRepeats(\\\"hi world\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(hasNoRepeats(\\\"hi world\\\"));\"}, {\"text\": \"<p><code>hasNoRepeats(\\\"hello world\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(hasNoRepeats(\\\"hello world\\\"));\"}, {\"text\": \"<p><code>hasNoRepeats(\\\"abcdefghijklmnopqrstuvwxyz\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(hasNoRepeats(\\\"abcdefghijklmnopqrstuvwxyz\\\"));\"}, {\"text\": \"<p><code>hasNoRepeats(\\\"freeCodeCamp\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(hasNoRepeats(\\\"freeCodeCamp\\\"));\"}, {\"text\": \"<p><code>hasNoRepeats(\\\"The quick brown fox jumped over the lazy dog.\\\")</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(hasNoRepeats(\\\"The quick brown fox jumped over the lazy dog.\\\"));\"}, {\"text\": \"<p><code>hasNoRepeats(\\\"Mississippi\\\")</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(hasNoRepeats(\\\"Mississippi\\\"));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>has_no_repeats(\\\"hi world\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(has_no_repeats(\\\"hi world\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>has_no_repeats(\\\"hello world\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(has_no_repeats(\\\"hello world\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>has_no_repeats(\\\"abcdefghijklmnopqrstuvwxyz\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(has_no_repeats(\\\"abcdefghijklmnopqrstuvwxyz\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>has_no_repeats(\\\"freeCodeCamp\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(has_no_repeats(\\\"freeCodeCamp\\\"), False)`)\\n}})\"}, {\"text\": \"<p><code>has_no_repeats(\\\"The quick brown fox jumped over the lazy dog.\\\")</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(has_no_repeats(\\\"The quick brown fox jumped over the lazy dog.\\\"), True)`)\\n}})\"}, {\"text\": \"<p><code>has_no_repeats(\\\"Mississippi\\\")</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(has_no_repeats(\\\"Mississippi\\\"), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function hasNoRepeats(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def has_no_repeats(s):\n\n    return s",
+  "image_path": "20260323_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "No Consecutive Repeats"
+}

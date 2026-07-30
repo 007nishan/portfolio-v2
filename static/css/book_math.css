@@ -1,0 +1,51 @@
+/* ============================================================================
+   book_math.css — KaTeX font embedding + display-equation behavior (BCS v1.1 §B)
+   Loaded by the reader template (screen) AND passed to WeasyPrint (print).
+   All @font-face src URLs are relative to static/ (no ../) so WeasyPrint's
+   base_url=<dir of static> resolves them and the PDF is self-contained.
+   Size1-4 supply bmatrix/pmatrix delimiters — all four REQUIRED or brackets tofu.
+   ============================================================================ */
+@font-face { font-family: "KaTeX_Main"; src: url("../vendor/katex/fonts/KaTeX_Main-Regular.woff2") format("woff2"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "KaTeX_Main"; src: url("../vendor/katex/fonts/KaTeX_Main-Bold.woff2") format("woff2"); font-weight: bold; font-style: normal; }
+@font-face { font-family: "KaTeX_Main"; src: url("../vendor/katex/fonts/KaTeX_Main-Italic.woff2") format("woff2"); font-weight: normal; font-style: italic; }
+@font-face { font-family: "KaTeX_Main"; src: url("../vendor/katex/fonts/KaTeX_Main-BoldItalic.woff2") format("woff2"); font-weight: bold; font-style: italic; }
+@font-face { font-family: "KaTeX_Math"; src: url("../vendor/katex/fonts/KaTeX_Math-Italic.woff2") format("woff2"); font-weight: normal; font-style: italic; }
+@font-face { font-family: "KaTeX_Math"; src: url("../vendor/katex/fonts/KaTeX_Math-BoldItalic.woff2") format("woff2"); font-weight: bold; font-style: italic; }
+@font-face { font-family: "KaTeX_AMS"; src: url("../vendor/katex/fonts/KaTeX_AMS-Regular.woff2") format("woff2"); }
+@font-face { font-family: "KaTeX_Caligraphic"; src: url("../vendor/katex/fonts/KaTeX_Caligraphic-Regular.woff2") format("woff2"); font-weight: normal; }
+@font-face { font-family: "KaTeX_Caligraphic"; src: url("../vendor/katex/fonts/KaTeX_Caligraphic-Bold.woff2") format("woff2"); font-weight: bold; }
+@font-face { font-family: "KaTeX_Fraktur"; src: url("../vendor/katex/fonts/KaTeX_Fraktur-Regular.woff2") format("woff2"); font-weight: normal; }
+@font-face { font-family: "KaTeX_Fraktur"; src: url("../vendor/katex/fonts/KaTeX_Fraktur-Bold.woff2") format("woff2"); font-weight: bold; }
+@font-face { font-family: "KaTeX_SansSerif"; src: url("../vendor/katex/fonts/KaTeX_SansSerif-Regular.woff2") format("woff2"); font-weight: normal; font-style: normal; }
+@font-face { font-family: "KaTeX_SansSerif"; src: url("../vendor/katex/fonts/KaTeX_SansSerif-Bold.woff2") format("woff2"); font-weight: bold; font-style: normal; }
+@font-face { font-family: "KaTeX_SansSerif"; src: url("../vendor/katex/fonts/KaTeX_SansSerif-Italic.woff2") format("woff2"); font-weight: normal; font-style: italic; }
+@font-face { font-family: "KaTeX_Script"; src: url("../vendor/katex/fonts/KaTeX_Script-Regular.woff2") format("woff2"); }
+@font-face { font-family: "KaTeX_Size1"; src: url("../vendor/katex/fonts/KaTeX_Size1-Regular.woff2") format("woff2"); }
+@font-face { font-family: "KaTeX_Size2"; src: url("../vendor/katex/fonts/KaTeX_Size2-Regular.woff2") format("woff2"); }
+@font-face { font-family: "KaTeX_Size3"; src: url("../vendor/katex/fonts/KaTeX_Size3-Regular.woff2") format("woff2"); }
+@font-face { font-family: "KaTeX_Size4"; src: url("../vendor/katex/fonts/KaTeX_Size4-Regular.woff2") format("woff2"); }
+@font-face { font-family: "KaTeX_Typewriter"; src: url("../vendor/katex/fonts/KaTeX_Typewriter-Regular.woff2") format("woff2"); }
+
+/* Screen: inline math = body size; display math steps to h4 and scrolls if wide */
+.reader .katex { font-size: 1em; }
+.reader .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  margin-block: var(--fib-34, 34px);
+  font-size: var(--fs-h4);
+}
+.reader .katex-display-wrap { margin-block: var(--fib-34, 34px); }
+
+/* Print: no scrollbars on paper. A display block flagged .is-wide by the build
+   (real WeasyPrint measurement) shrinks uniformly to the golden floor 1/phi. */
+@media print {
+  .reader .katex-display {
+    max-width: var(--textblock-w);
+    overflow: visible;
+    transform-origin: left center;
+    font-size: var(--fs-h4);
+  }
+  .reader .katex-display.is-wide { transform: scale(0.618); }   /* 1/phi golden floor */
+}

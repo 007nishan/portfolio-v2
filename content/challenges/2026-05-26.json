@@ -1,0 +1,17 @@
+{
+  "challenge_number": 289,
+  "concepts_text": null,
+  "date_id": "2026-05-26",
+  "fcc_description": "<p>Given an array of numbers, return the sum of the differences between each number and the one that follows it.</p>\n<p>For example, given <code>[1, 3, 4]</code>, return <code>3</code> (2 + 1).</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sumOfDifferences([1, 3, 4])</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(sumOfDifferences([1, 3, 4]), 3);\"}, {\"text\": \"<p><code>sumOfDifferences([5, -3, 3, 9, 10])</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(sumOfDifferences([5, -3, 3, 9, 10]), 5);\"}, {\"text\": \"<p><code>sumOfDifferences([9, 6, 15, -20, 33, 14, 25, 16, -7])</code> should return <code>-16</code>.</p>\", \"testString\": \"assert.equal(sumOfDifferences([9, 6, 15, -20, 33, 14, 25, 16, -7]), -16);\"}, {\"text\": \"<p><code>sumOfDifferences([50, 102, -46, 82, -49, 29, 71, 902, -237, 111, -61, 75])</code> should return <code>25</code>.</p>\", \"testString\": \"assert.equal(sumOfDifferences([50, 102, -46, 82, -49, 29, 71, 902, -237, 111, -61, 75]), 25);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sum_of_differences([1, 3, 4])</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_differences([1, 3, 4]), 3)`)\\n}})\"}, {\"text\": \"<p><code>sum_of_differences([5, -3, 3, 9, 10])</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_differences([5, -3, 3, 9, 10]), 5)`)\\n}})\"}, {\"text\": \"<p><code>sum_of_differences([9, 6, 15, -20, 33, 14, 25, 16, -7])</code> should return <code>-16</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_differences([9, 6, 15, -20, 33, 14, 25, 16, -7]), -16)`)\\n}})\"}, {\"text\": \"<p><code>sum_of_differences([50, 102, -46, 82, -49, 29, 71, 902, -237, 111, -61, 75])</code> should return <code>25</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_differences([50, 102, -46, 82, -49, 29, 71, 902, -237, 111, -61, 75]), 25)`)\\n}})\"}]",
+  "fcc_starter_js": "function sumOfDifferences(arr) {\n\n  return arr;\n}",
+  "fcc_starter_py": "def sum_of_differences(arr):\n\n    return arr",
+  "image_path": "20260526_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Sum of Differences"
+}

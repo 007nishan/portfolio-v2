@@ -64,6 +64,33 @@ IMAGE_DIR = os.path.join(basedir, "static", "images")
 PHI = (1 + 5 ** 0.5) / 2  # 1.6180339887…
 FIB = {"xs": 21, "sm": 34, "md": 55, "lg": 89, "xl": 144, "xxl": 233}
 
+# ── Render resolution (owner ask: crisp up to 4K, no pixel scatter) ───────────
+# The card's LOGICAL design is 1000-wide; CARD_SCALE renders it at that many
+# device pixels per logical pixel. At 3× the base canvas is 3000×4854 — sharp on
+# any display up to 4K and on 2× Retina panels. Because EVERY coordinate derives
+# from FIB + the golden math, a single uniform multiplier keeps all golden ratios
+# exact; scale=1 reproduces the original 1000px output. NOTE: this scales ONLY the
+# challenge-card path — book covers import FIB/Golden/DESIGN and are deliberately
+# unaffected (their size is locked by the Book Compilation Standard).
+CARD_SCALE = 3
+
+
+def _scaled_fib(s):
+    """FIB modular scale multiplied by the render scale (keeps the type/spacing
+    scale golden at any resolution)."""
+    return {k: int(round(v * s)) for k, v in FIB.items()}
+
+
+def _sc(v, s):
+    """Scale a raw (non-FIB) logical pixel length by the render scale."""
+    return int(round(v * s))
+
+
+def _wd(v, s):
+    """Scale a stroke width by the render scale; never below 1px so a hairline
+    rule never disappears at high resolution."""
+    return max(1, int(round(v * s)))
+
 
 # ==============================================================================
 # SINGLE SOURCE OF TRUTH — change here, re-render all cards with `--all --force`
@@ -426,57 +453,54 @@ def spaced(text, gap=" "):
 # ==============================================================================
 # Rendering primitives
 # ==============================================================================
-def _draw_reserve(d, box, label, design):
+def _draw_reserve(d, box, label, design, s=1):
     """Faint outlined placeholder for a future asset (logo / character)."""
     if not design["show_reserves"]:
         return
+    F = _scaled_fib(s)
     x0, y0, x1, y1 = box
-    d.rounded_rectangle(box, radius=FIB["xs"] // 2, outline=design["tan"], width=2)
-    f = load_font("sans_bold", FIB["xs"])
+    d.rounded_rectangle(box, radius=F["xs"] // 2, outline=design["tan"], width=_wd(2, s))
+    f = load_font("sans_bold", F["xs"])
     tw = d.textlength(label, font=f)
-    d.text(((x0 + x1) / 2 - tw / 2, (y0 + y1) / 2 - FIB["xs"] / 2),
+    d.text(((x0 + x1) / 2 - tw / 2, (y0 + y1) / 2 - F["xs"] / 2),
            label, font=f, fill=design["tan"])
 
 
-def _draw_description_blocks(d, blocks, x, y, max_w, limit_y, design):
-    """Render parsed description blocks (paragraphs, bullet lists, tables) with
-    a shared golden line-rhythm. Stops before limit_y and returns the end-y.
-    Adds a '…' marker if content is clipped."""
+def _draw_description_blocks(d, blocks, x, y, max_w, design, render=True, s=1):
+    """Render (or, when render=False, MEASURE) parsed description blocks
+    (paragraphs, bullet lists, tables) with a shared golden line-rhythm, and
+    return the end-y.
+
+    GOLDEN RULE (never auto-truncate): nothing is ever clipped here — the caller
+    grows the canvas to fit whatever height this returns. `render=False` runs the
+    identical layout math WITHOUT drawing, so the canvas can be pre-sized to the
+    exact content height (one source of truth for measure + draw — no drift)."""
     D = design
-    body = load_font("serif", FIB["sm"])
-    row_f = load_font("sans", FIB["xs"] + 3)
-    head_f = load_font("sans_bold", FIB["xs"] + 3)
+    F = _scaled_fib(s)
+    body = load_font("serif", F["sm"])
+    row_f = load_font("sans", F["xs"] + _sc(3, s))
+    head_f = load_font("sans_bold", F["xs"] + _sc(3, s))
     line_h = int(body.size * 1.42)
-    clipped = False
 
     for block in blocks:
-        if y + line_h > limit_y:
-            clipped = True
-            break
-
         if block["type"] == "para":
             for line in wrap_text(d, block["text"], body, max_w):
-                if y + line_h > limit_y:
-                    clipped = True
-                    break
-                d.text((x, y), line, font=body, fill=(60, 60, 60))
+                if render:
+                    d.text((x, y), line, font=body, fill=(60, 60, 60))
                 y += line_h
-            y += FIB["xs"] // 2
+            y += F["xs"] // 2
 
         elif block["type"] == "bullets":
             for item in block["items"]:
-                blines = wrap_text(d, item, body, max_w - FIB["sm"])
+                blines = wrap_text(d, item, body, max_w - F["sm"])
                 for i, line in enumerate(blines):
-                    if y + line_h > limit_y:
-                        clipped = True
-                        break
-                    if i == 0:
-                        d.ellipse([x + 6, y + 12, x + 18, y + 24], fill=D["gold"])
-                    d.text((x + FIB["sm"], y), line, font=body, fill=(70, 70, 70))
+                    if render:
+                        if i == 0:
+                            d.ellipse([x + _sc(6, s), y + _sc(12, s),
+                                       x + _sc(18, s), y + _sc(24, s)], fill=D["gold"])
+                        d.text((x + F["sm"], y), line, font=body, fill=(70, 70, 70))
                     y += line_h
-                if clipped:
-                    break
-            y += FIB["xs"] // 2
+            y += F["xs"] // 2
 
         elif block["type"] == "table":
             head = block.get("head", [])
@@ -492,56 +516,123 @@ def _draw_description_blocks(d, blocks, x, y, max_w, limit_y, design):
             row_h = int(row_f.size * 1.7)
 
             if head:
-                cx = x
-                for j, cell in enumerate(head):
-                    d.text((cx + 10, y + 6), cell, font=head_f, fill=D["blue"])
-                    cx += cols[j] if j < len(cols) else cols[-1]
+                if render:
+                    cx = x
+                    for j, cell in enumerate(head):
+                        d.text((cx + _sc(10, s), y + _sc(6, s)), cell, font=head_f, fill=D["blue"])
+                        cx += cols[j] if j < len(cols) else cols[-1]
                 y += row_h
-                d.line([(x, y), (x + max_w, y)], fill=D["tan"], width=2)
+                if render:
+                    d.line([(x, y), (x + max_w, y)], fill=D["tan"], width=_wd(2, s))
             for r in rows:
-                if y + row_h > limit_y:
-                    clipped = True
-                    break
-                cx = x
-                for j in range(ncol):
-                    cell = r[j] if j < len(r) else ""
-                    d.text((cx + 10, y + 6), cell, font=row_f, fill=(70, 70, 70))
-                    cx += cols[j] if j < len(cols) else cols[-1]
+                if render:
+                    cx = x
+                    for j in range(ncol):
+                        cell = r[j] if j < len(r) else ""
+                        d.text((cx + _sc(10, s), y + _sc(6, s)), cell, font=row_f, fill=(70, 70, 70))
+                        cx += cols[j] if j < len(cols) else cols[-1]
                 y += row_h
-                d.line([(x, y), (x + max_w, y)], fill=(238, 238, 238), width=1)
-            y += FIB["xs"] // 2
+                if render:
+                    d.line([(x, y), (x + max_w, y)], fill=(238, 238, 238), width=_wd(1, s))
+            y += F["xs"] // 2
 
-    if clipped:
-        d.text((x, min(y, limit_y - line_h)), "…", font=body, fill=design["muted"])
     return y
 
 
-def _draw_python_code(d, box, code, design):
-    """Draw the Python starter in a golden-rectangle panel with light
-    keyword/def highlighting. `box` is the golden rectangle (x0,y0,x1,y1)."""
-    x0, y0, x1, y1 = box
-    border = design.get("code_border")
-    d.rounded_rectangle(box, radius=FIB["xs"] // 2, fill=design["code_bg"],
-                        outline=border, width=2 if border else 0)
+def _code_font_and_metrics(s=1):
+    """Shared code-panel font + geometry constants (one source for measure+draw)."""
+    F = _scaled_fib(s)
+    font = load_font("mono", F["xs"] + _sc(4, s))   # 25 @1x
+    line_h = int(font.size * 1.4)
+    pad = F["sm"]
+    head = F["xs"] + F["md"]  # vertical space for the "python" tab
+    return font, line_h, pad, head
 
-    # A small "python" tab, upper-left (themed; defaults to the brand green).
-    tab_f = load_font("mono", FIB["xs"])
-    d.text((x0 + FIB["sm"], y0 + FIB["xs"]), "python", font=tab_f,
-           fill=design.get("code_tab", design["green"]))
+
+def _wrap_code_lines(d, code, font, inner_w):
+    """Soft-wrap code so long lines CONTINUE on the next visual row instead of
+    being clipped (GOLDEN RULE: never truncate). Wrapped continuation rows are
+    indented to signal they belong to the line above. Returns a list of
+    (text, is_continuation) visual rows — the true rendered line count.
+
+    Splitting favors natural break points (after '(', ',', space) so signatures
+    like `def f(l1, l2, is_large):` wrap cleanly rather than mid-token."""
+    code = (code or "def solve():\n    ...").replace("\t", "    ")
+    rows = []
+    for logical in code.splitlines():
+        if d.textlength(logical, font=font) <= inner_w:
+            rows.append((logical, False))
+            continue
+        # Preserve leading indentation on continuation rows for readability.
+        indent = logical[: len(logical) - len(logical.lstrip())] + "    "
+
+        def _emit(text, is_cont):
+            """Append a visual row, char-breaking any piece still wider than the
+            panel (e.g. one enormous unbreakable token) so NOTHING overflows the
+            panel edge — the Golden Rule applied to code too."""
+            prefix = indent if is_cont else ""
+            if d.textlength(prefix + text, font=font) <= inner_w:
+                rows.append((prefix + text if is_cont else text, is_cont))
+                return
+            # Hard character wrap for the overflowing remainder.
+            piece = ""
+            for ch in text:
+                if d.textlength((indent if (is_cont or piece and rows) else "") + piece + ch,
+                                font=font) <= inner_w or not piece:
+                    piece += ch
+                else:
+                    rows.append(((indent + piece) if is_cont else piece, is_cont))
+                    is_cont = True
+                    piece = ch
+            if piece:
+                rows.append(((indent + piece) if is_cont else piece, is_cont))
+
+        # Tokenize keeping delimiters so we can break after ( , or spaces.
+        toks = [t for t in re.split(r"(\s+|(?<=[(,]))", logical) if t]
+        cur, first = "", True
+        for tok in toks:
+            trial = cur + tok
+            prefix = "" if first else indent
+            if d.textlength(prefix + trial, font=font) <= inner_w or not cur.strip():
+                cur = trial
+            else:
+                _emit(cur if first else cur, not first)
+                first = False
+                cur = tok.lstrip()
+        if cur:
+            _emit(cur, not first)
+    return rows
+
+
+def _draw_python_code(d, box, code, design, render=True, s=1):
+    """Draw (or, when render=False, no-op) the Python starter in a code panel
+    with light keyword/def highlighting. `box` is (x0,y0,x1,y1).
+
+    GOLDEN RULE: no line cap and no horizontal clip — long lines soft-wrap and
+    ALL lines render. The panel height is sized by the caller from
+    code_panel_height() so every line fits."""
+    F = _scaled_fib(s)
+    x0, y0, x1, y1 = box
+    if render:
+        border = design.get("code_border")
+        d.rounded_rectangle(box, radius=F["xs"] // 2, fill=design["code_bg"],
+                            outline=border, width=_wd(2, s) if border else 0)
+        # A small "python" tab, upper-left (themed; defaults to the brand green).
+        tab_f = load_font("mono", F["xs"])
+        d.text((x0 + F["sm"], y0 + F["xs"]), "python", font=tab_f,
+               fill=design.get("code_tab", design["green"]))
+    if not render:
+        return
 
     kw = {"def", "return", "for", "if", "in", "else", "elif", "while",
           "None", "True", "False", "and", "or", "not", "import", "from"}
-    font = load_font("mono", FIB["xs"] + 4)   # 25
-    line_h = int(font.size * 1.4)
-    pad = FIB["sm"]
+    font, line_h, pad, head = _code_font_and_metrics(s)
     inner_w = (x1 - x0) - 2 * pad
-    top = y0 + FIB["xs"] + FIB["md"]
-    max_lines = max(1, int((y1 - top - pad) / line_h))
+    top = y0 + head
 
-    code = (code or "def solve():\n    ...").replace("\t", "    ")
-    lines = code.splitlines()[:max_lines]
+    rows = _wrap_code_lines(d, code, font, inner_w)
     y = top
-    for raw in lines:
+    for raw, _is_cont in rows:
         cx = x0 + pad
         seen_def = False
         for tok in re.split(r"(\s+|[(),:\[\]=])", raw):
@@ -553,123 +644,174 @@ def _draw_python_code(d, box, code, design):
                     seen_def = True
             elif seen_def and re.fullmatch(r"[A-Za-z_]\w*", tok):
                 color = design["code_fn"]; seen_def = False
-            elif re.fullmatch(r"[a-z_]\w*", tok) and cx > x0 + pad + 160:
+            elif re.fullmatch(r"[a-z_]\w*", tok) and cx > x0 + pad + _sc(160, s):
                 color = design["code_arg"]
             else:
                 color = design["code_txt"]
-            if (cx - x0) + d.textlength(tok, font=font) > inner_w + pad:
-                break
             d.text((cx, y), tok, font=font, fill=color)
             cx += d.textlength(tok, font=font)
         y += line_h
 
 
-def _draw_guides(d, page, design):
+def code_panel_height(d, code, inner_w, s=1):
+    """Height the code panel needs to show ALL (soft-wrapped) lines — used to
+    grow the canvas so nothing is clipped. Mirrors _draw_python_code geometry."""
+    font, line_h, pad, head = _code_font_and_metrics(s)
+    rows = _wrap_code_lines(d, code, font, inner_w)
+    return head + len(rows) * line_h + pad
+
+
+def _draw_guides(d, page, design, s=1):
     """Overlay the golden grid + golden points (review aid, `--guides`)."""
     g = page
     c = (0, 180, 220)
+    r = _sc(7, s)
     for x in (g.minor_x, g.major_x):
-        d.line([(x, g.y0), (x, g.y0 + g.h)], fill=c, width=1)
+        d.line([(x, g.y0), (x, g.y0 + g.h)], fill=c, width=_wd(1, s))
     for y in (g.minor_y, g.major_y):
-        d.line([(g.x0, y), (g.x0 + g.w, y)], fill=c, width=1)
+        d.line([(g.x0, y), (g.x0 + g.w, y)], fill=c, width=_wd(1, s))
     for (px, py) in g.points:
-        d.ellipse([px - 7, py - 7, px + 7, py + 7], outline=design["red"], width=3)
+        d.ellipse([px - r, py - r, px + r, py + r], outline=design["red"], width=_wd(3, s))
 
 
 # ==============================================================================
 # The card renderer — reads DESIGN + Golden for every position/size
 # ==============================================================================
 def render_card(title, challenge_number, date_id, description,
-                starter_py=None, design=None, draw_guides=False):
+                starter_py=None, design=None, draw_guides=False, scale=CARD_SCALE):
+    """Render a golden-ratio challenge card.
+
+    GOLDEN RULE + GOLDEN RATIO reconciled: WIDTH is fixed at 1000 (logical) so
+    every HORIZONTAL golden relationship (column split, code-panel width,
+    Fibonacci margins/type scale) is exact. HEIGHT is content-driven with a
+    MINIMUM of the golden ideal (1000×1618): short cards keep the exact golden
+    canvas and layout; content-heavy cards GROW taller so nothing is truncated.
+    A measure pass computes the needed height before drawing.
+
+    `scale` multiplies every pixel quantity uniformly, so the card renders at high
+    resolution (default 3× → 3000-wide, crisp up to 4K and on 2× Retina panels).
+    Every golden ratio is preserved exactly; scale=1 reproduces the 1000px card."""
+    s = scale
     D = design or THEMES[DEFAULT_THEME]
-    W, H, M = D["canvas_w"], D["canvas_h"], D["margin"]
+    F = _scaled_fib(s)
+    W, M = _sc(D["canvas_w"], s), _sc(D["margin"], s)
+    canvas_h = _sc(D["canvas_h"], s)
+    cw = W - 2 * M                                 # content width (fixed)
+
+    # ── Fonts (Fibonacci sizes, scaled) ──
+    f_kicker = load_font("sans_bold", F["xs"])            # 21 @1x
+    f_index  = load_font("mono", F["sm"])                 # 34 @1x
+    f_date   = load_font("sans", F["xs"])                 # 21 @1x
+    f_title  = load_font("serif_bold", F["lg"])           # 89 @1x
+
+    # A scratch draw context for MEASURING (text metrics need a draw object but
+    # not the final-size canvas — the layout math is identical whether measuring
+    # or drawing, so measure→size→draw can never drift).
+    scratch = Image.new("RGB", (W, 8), D["paper"])
+    dm = ImageDraw.Draw(scratch)
+
+    logo_w, logo_h = F["xxl"], round(F["xxl"] / PHI)  # 233 x 144 (golden) @1x
+    div_y = M + logo_h + F["sm"]
+
+    # ── Title layout (shared by measure + draw): shrink one golden step if long,
+    #    but NEVER cap the number of lines (Golden Rule — no title truncation). ──
+    tf = f_title
+    tlines = wrap_text(dm, standardize_title(title), tf, cw)
+    if len(tlines) > 2:
+        tf = load_font("serif_bold", F["md"] + _sc(5, s))  # ~60 @1x
+        tlines = wrap_text(dm, standardize_title(title), tf, cw)
+    title_line_h = int(tf.size * 1.12)
+
+    y_title = div_y + F["md"]
+    y_after_title = y_title + len(tlines) * title_line_h
+    y_accent = y_after_title + F["xs"] // 2
+    y_desc = y_accent + F["md"]
+
+    # ── Description height (measure-only pass; never clipped) ──
+    blocks = parse_description_blocks(description)
+    desc_end = _draw_description_blocks(dm, blocks, M, y_desc, cw, D, render=False, s=s)
+
+    # ── Lower band geometry: golden vertical split → CODE | CHARACTER ──
+    split_x = M + cw / PHI              # x = M + contentW/phi  (golden cut)
+    gap = F["sm"]
+    code_w = (split_x - M) - gap
+    code_h_ideal = round(code_w / PHI)  # golden rectangle (the ideal)
+    inner_w = code_w - 2 * F["sm"]
+    code_h_needed = code_panel_height(dm, starter_py, inner_w, s)
+    code_h = max(code_h_ideal, code_h_needed)   # grow vertically if code overflows
+
+    gap_upper_lower = F["lg"]           # breathing space between desc and band
+
+    # Where the lower band starts. For a card that fits the golden ideal, this is
+    # exactly the canvas's documented major golden cut (canvas_h/phi = 1000), which
+    # reproduces the original composition. For a taller card it sits just below the
+    # description. We first compute the minimal height the content needs, then take
+    # the golden cut of the FINAL height so the major/minor split stays golden at
+    # whatever size the canvas ends up (fixes: don't hard-code the 1618 cut).
+    ideal_cut = canvas_h / PHI
+    lower_top = max(ideal_cut, desc_end + gap_upper_lower)
+
+    # Final canvas height: never below the golden ideal; grows to fit everything.
+    H = int(max(canvas_h, lower_top + code_h + M))
+    # Re-anchor the band to the FINAL canvas's golden cut when it doesn't crowd
+    # the description (keeps the golden 'square + remainder' split self-similar as
+    # the canvas grows; for the ideal 1618 canvas this is a no-op = 1000).
+    lower_top = max(lower_top, min(H / PHI, H - M - code_h))
+
+    # Centre the code+character group within the lower band [lower_top, H-M].
+    # For the ideal canvas this reproduces the original centred placement; for a
+    # grown canvas the band exactly equals the group (no dead space).
+    band_top, band_bot = lower_top, H - M
+    group_top = band_top + ((band_bot - band_top) - code_h) / 2
+    group_bot = group_top + code_h
+
+    # ── Now draw onto the correctly-sized canvas ──
     img = Image.new("RGB", (W, H), D["paper"])
     d = ImageDraw.Draw(img)
+    page = Golden(0, 0, W, H)
 
-    page = Golden(0, 0, W, H)                      # whole canvas (golden rect)
-    content = Golden(M, M, W - 2 * M, H - 2 * M)   # inside the margins
-    cw = content.w
+    # (reserved) LOGO zone: a golden rectangle, top-left.
+    _draw_reserve(d, (M, M, M + logo_w, M + logo_h), D["reserve_logo_label"], D, s=s)
 
-    # ── Fonts (Fibonacci sizes) ──
-    f_kicker = load_font("sans_bold", FIB["xs"])          # 21
-    f_index  = load_font("mono", FIB["sm"])               # 34
-    f_date   = load_font("sans", FIB["xs"])               # 21
-    f_title  = load_font("serif_bold", FIB["lg"])         # 89
-    f_body   = load_font("serif", FIB["sm"])              # 34
-
-    # ── (reserved) LOGO zone: a golden rectangle, top-left ──
-    logo_w, logo_h = FIB["xxl"], round(FIB["xxl"] / PHI)  # 233 x 144 (golden)
-    logo_box = (M, M, M + logo_w, M + logo_h)
-    _draw_reserve(d, logo_box, D["reserve_logo_label"], D)
-
-    # ── Masthead text: kicker + date to the right of the logo; index top-right ─
-    tx = M + logo_w + FIB["sm"]
-    d.text((tx, M + FIB["xs"]), spaced(D["kicker"]), font=f_kicker, fill=D["blue"])
-    d.text((tx, M + FIB["xs"] + FIB["sm"]), standardize_date(date_id),
+    # Masthead text: kicker + date to the right of the logo; index top-right.
+    tx = M + logo_w + F["sm"]
+    d.text((tx, M + F["xs"]), spaced(D["kicker"]), font=f_kicker, fill=D["blue"])
+    d.text((tx, M + F["xs"] + F["sm"]), standardize_date(date_id),
            font=f_date, fill=D["muted"])
     idx = standardize_index(challenge_number)
     if idx:
         iw = d.textlength(idx, font=f_index)
-        pad = FIB["xs"] // 2
-        d.rectangle([W - M - iw - 2 * pad, M, W - M, M + FIB["sm"] + pad],
+        pad = F["xs"] // 2
+        d.rectangle([W - M - iw - 2 * pad, M, W - M, M + F["sm"] + pad],
                     fill=D["red"])
         d.text((W - M - iw - pad, M + pad // 2), idx, font=f_index, fill=D["paper"])
 
-    # Divider under masthead, aligned to a Fibonacci offset.
-    div_y = M + logo_h + FIB["sm"]
-    d.line([(M, div_y), (W - M, div_y)], fill=D["ink"], width=2)
+    # Divider under masthead.
+    d.line([(M, div_y), (W - M, div_y)], fill=D["ink"], width=_wd(2, s))
 
-    # ── UPPER region (title + description): everything above the major cut ──
-    y = div_y + FIB["md"]
-
-    # Title — shrink by golden steps if it wraps long.
-    tf = f_title
-    tlines = wrap_text(d, standardize_title(title), tf, cw)
-    if len(tlines) > 2:
-        tf = load_font("serif_bold", FIB["md"] + 5)  # ~60
-        tlines = wrap_text(d, standardize_title(title), tf, cw)
-    for line in tlines[:3]:
+    # UPPER region — title (all lines).
+    y = y_title
+    for line in tlines:
         d.text((M, y), line, font=tf, fill=D["ink"])
-        y += int(tf.size * 1.12)
+        y += title_line_h
 
     # Red accent rule — length is the golden segment of the content width.
-    y += FIB["xs"] // 2
-    d.line([(M, y), (M + Golden.seg(cw) / PHI, y)], fill=D["red"], width=6)
-    y += FIB["md"]
+    d.line([(M, y_accent), (M + Golden.seg(cw) / PHI, y_accent)], fill=D["red"], width=_wd(6, s))
 
-    # Description: real HTML structure (paragraphs / bullet lists / tables)
-    # parsed from fcc_description, capped to the major horizontal golden cut so
-    # it never collides with the lower band.
-    blocks = parse_description_blocks(description)
-    limit_y = page.major_y - FIB["md"]
-    y = _draw_description_blocks(d, blocks, M, y, cw, limit_y, D)
+    # Description: real HTML structure (paragraphs / bullet lists / tables),
+    # rendered in FULL — the canvas was sized to fit it (Golden Rule).
+    _draw_description_blocks(d, blocks, M, y_desc, cw, D, render=True, s=s)
 
-    # ── LOWER region: split by the vertical golden cut into CODE | CHARACTER ──
-    # The band runs from the canvas's major golden cut to the bottom margin;
-    # the code + character pair is a matched, vertically-centred group so short
-    # challenges don't leave dead space (balanced negative space top & bottom).
-    lower_top = page.major_y            # y = H/phi (the canvas's golden cut)
-    lower_bot = H - M
-    split_x = content.major_x           # x = M + contentW/phi  (golden)
-    gap = FIB["sm"]
-
-    # LEFT: Python code panel — itself a GOLDEN rectangle (w x w/phi).
-    code_w = (split_x - M) - gap
-    code_h = round(code_w / PHI)        # golden rectangle
-    # Group height = the code panel; centre the pair within the lower band.
-    group_top = lower_top + ((lower_bot - lower_top) - code_h) / 2
-    group_bot = group_top + code_h
-
+    # LOWER region — LEFT: Python code panel (golden rect, grown if needed).
     code_box = (M, group_top, M + code_w, group_bot)
-    _draw_python_code(d, code_box, starter_py, D)
+    _draw_python_code(d, code_box, starter_py, D, render=True, s=s)
 
-    # RIGHT: reserved CHARACTER zone — same vertical extent as the code panel,
-    # filling the right golden column (the future mascot stands here).
+    # LOWER region — RIGHT: reserved CHARACTER zone, matching the code height.
     char_box = (split_x + gap, group_top, W - M, group_bot)
-    _draw_reserve(d, char_box, D["reserve_char_label"], D)
+    _draw_reserve(d, char_box, D["reserve_char_label"], D, s=s)
 
     if draw_guides:
-        _draw_guides(d, page, D)
+        _draw_guides(d, page, D, s=s)
 
     return img
 
@@ -687,7 +829,7 @@ def _is_generated_or_empty(image_path):
     return (not image_path) or image_path.endswith("_card.jpg")
 
 
-def generate_for_challenge(challenge, apply=True, force=False, draw_guides=False):
+def generate_for_challenge(challenge, apply=True, force=False, draw_guides=False, scale=CARD_SCALE):
     if not force and challenge.image_path and not _is_generated_or_empty(challenge.image_path):
         return ("skipped-manual", challenge.image_path)
     try:
@@ -698,10 +840,15 @@ def generate_for_challenge(challenge, apply=True, force=False, draw_guides=False
             description=challenge.fcc_description or challenge.problem_text,
             starter_py=challenge.fcc_starter_py,
             draw_guides=draw_guides,
+            scale=scale,
         )
         os.makedirs(IMAGE_DIR, exist_ok=True)
         fname = _card_filename(challenge.date_id)
-        img.save(os.path.join(IMAGE_DIR, fname), "JPEG", quality=90)
+        # quality=92 + subsampling=0 (4:4:4, no chroma subsampling) keeps text
+        # edges and the red index chip crisp at high resolution; optimize trims
+        # bytes. progressive lets a large card paint as it loads.
+        img.save(os.path.join(IMAGE_DIR, fname), "JPEG",
+                 quality=92, subsampling=0, optimize=True, progressive=True)
     except Exception as e:  # never let one bad row abort a batch
         print(f"  ! error rendering {challenge.date_id}: {e}")
         return ("error", None)
@@ -720,6 +867,8 @@ def main():
     parser.add_argument("--no-apply", dest="apply", action="store_false", help="Write image but do NOT set image_path in the DB")
     parser.add_argument("--force", action="store_true", help="Overwrite generated cards too (never manual images)")
     parser.add_argument("--guides", action="store_true", help="Overlay the golden grid + golden points")
+    parser.add_argument("--scale", type=int, default=CARD_SCALE,
+                        help=f"Render resolution multiplier (default {CARD_SCALE} -> {1000 * CARD_SCALE}px wide, 4K-crisp). Use 1 for the legacy 1000px card.")
     args = parser.parse_args()
 
     from app import app
@@ -739,10 +888,11 @@ def main():
         else:
             rows = [c for c in Challenge.query.order_by(Challenge.date_id.asc()).all() if not c.has_image]
 
-        print(f"Generating cards for {len(rows)} challenge(s)  [DESIGN v{DESIGN['version']}]...")
+        print(f"Generating cards for {len(rows)} challenge(s)  [DESIGN v{DESIGN['version']}, scale {args.scale}x -> {1000 * args.scale}px]...")
         gen = skip = err = 0
         for c in rows:
-            status, fname = generate_for_challenge(c, apply=args.apply, force=args.force, draw_guides=args.guides)
+            status, fname = generate_for_challenge(c, apply=args.apply, force=args.force,
+                                                   draw_guides=args.guides, scale=args.scale)
             if status == "generated":
                 gen += 1
                 print(f"  + {c.date_id}  #{c.challenge_number or '?'}  {c.title}  ->  {fname}")

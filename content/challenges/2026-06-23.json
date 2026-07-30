@@ -1,0 +1,17 @@
+{
+  "challenge_number": 317,
+  "concepts_text": null,
+  "date_id": "2026-06-23",
+  "fcc_description": "<p>Given a weight in pounds and a height in inches, return the BMI (Body Mass Index) rounded to one decimal place.</p>\n<p>To get BMI: divide the weight by the height squared, then multiply the result by 703.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>calculateBmi(180, 70)</code> should return <code>25.8</code>.</p>\", \"testString\": \"assert.equal(calculateBmi(180, 70), 25.8);\"}, {\"text\": \"<p><code>calculateBmi(140, 64)</code> should return <code>24.0</code>.</p>\", \"testString\": \"assert.equal(calculateBmi(140, 64), 24.0);\"}, {\"text\": \"<p><code>calculateBmi(160, 76)</code> should return <code>19.5</code>.</p>\", \"testString\": \"assert.equal(calculateBmi(160, 76), 19.5);\"}, {\"text\": \"<p><code>calculateBmi(200, 60)</code> should return <code>39.1</code>.</p>\", \"testString\": \"assert.equal(calculateBmi(200, 60), 39.1);\"}, {\"text\": \"<p><code>calculateBmi(150, 68)</code> should return <code>22.8</code>.</p>\", \"testString\": \"assert.equal(calculateBmi(150, 68), 22.8);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>calculate_bmi(180, 70)</code> should return <code>25.8</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_bmi(180, 70), 25.8)`)\\n}})\"}, {\"text\": \"<p><code>calculate_bmi(140, 64)</code> should return <code>24.0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_bmi(140, 64), 24.0)`)\\n}})\"}, {\"text\": \"<p><code>calculate_bmi(160, 76)</code> should return <code>19.5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_bmi(160, 76), 19.5)`)\\n}})\"}, {\"text\": \"<p><code>calculate_bmi(200, 60)</code> should return <code>39.1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_bmi(200, 60), 39.1)`)\\n}})\"}, {\"text\": \"<p><code>calculate_bmi(150, 68)</code> should return <code>22.8</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_bmi(150, 68), 22.8)`)\\n}})\"}]",
+  "fcc_starter_js": "function calculateBmi(weight, height) {\n\n  return weight;\n}",
+  "fcc_starter_py": "def calculate_bmi(weight, height):\n\n    return weight",
+  "image_path": "20260623_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "BMI Calculator"
+}

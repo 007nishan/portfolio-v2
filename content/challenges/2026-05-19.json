@@ -1,0 +1,17 @@
+{
+  "challenge_number": 282,
+  "concepts_text": null,
+  "date_id": "2026-05-19",
+  "fcc_description": "<p>Given an array of hours slept each night leading up to today, and a target number of hours per night, return how many hours of sleep you need tonight to eliminate your sleep debt.</p>\n<ul>\n<li>Include tonight's hours in the total time needed to catch up.</li>\n<li>If you've slept enough to cover tonight's target or more, return <code>0</code>.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sleepDebt([6, 6, 6, 6, 6, 6], 8)</code> should return <code>20</code>.</p>\", \"testString\": \"assert.equal(sleepDebt([6, 6, 6, 6, 6, 6], 8), 20);\"}, {\"text\": \"<p><code>sleepDebt([6, 7, 8, 4, 8, 6], 7)</code> should return <code>10</code>.</p>\", \"testString\": \"assert.equal(sleepDebt([6, 7, 8, 4, 8, 6], 7), 10);\"}, {\"text\": \"<p><code>sleepDebt([10, 10, 9, 10, 9, 11], 9)</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(sleepDebt([10, 10, 9, 10, 9, 11], 9), 4);\"}, {\"text\": \"<p><code>sleepDebt([8, 7, 6, 7, 6, 8], 6)</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(sleepDebt([8, 7, 6, 7, 6, 8], 6), 0);\"}, {\"text\": \"<p><code>sleepDebt([8, 9, 10, 9, 10, 7], 7)</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(sleepDebt([8, 9, 10, 9, 10, 7], 7), 0);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sleep_debt([6, 6, 6, 6, 6, 6], 8)</code> should return <code>20</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sleep_debt([6, 6, 6, 6, 6, 6], 8), 20)`)\\n}})\"}, {\"text\": \"<p><code>sleep_debt([6, 7, 8, 4, 8, 6], 7)</code> should return <code>10</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sleep_debt([6, 7, 8, 4, 8, 6], 7), 10)`)\\n}})\"}, {\"text\": \"<p><code>sleep_debt([10, 10, 9, 10, 9, 11], 9)</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sleep_debt([10, 10, 9, 10, 9, 11], 9), 4)`)\\n}})\"}, {\"text\": \"<p><code>sleep_debt([8, 7, 6, 7, 6, 8], 6)</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sleep_debt([8, 7, 6, 7, 6, 8], 6), 0)`)\\n}})\"}, {\"text\": \"<p><code>sleep_debt([8, 9, 10, 9, 10, 7], 7)</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sleep_debt([8, 9, 10, 9, 10, 7], 7), 0)`)\\n}})\"}]",
+  "fcc_starter_js": "function sleepDebt(hoursSlept, targetHours) {\n\n  return hoursSlept;\n}",
+  "fcc_starter_py": "def sleep_debt(hours_slept, target_hours):\n\n    return hours_slept",
+  "image_path": "20260519_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Sleep Debt"
+}

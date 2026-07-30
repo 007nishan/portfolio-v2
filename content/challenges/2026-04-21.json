@@ -1,0 +1,17 @@
+{
+  "challenge_number": 254,
+  "concepts_text": null,
+  "date_id": "2026-04-21",
+  "fcc_description": "<p>Given a string of words, return only the words with an odd number of letters.</p>\n<ul>\n<li>Words in the given string will be separated by a single space.</li>\n<li>Return the words separated by a single space.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getOddWords(\\\"This is a super good test\\\")</code> should return <code>\\\"a super\\\"</code>.</p>\", \"testString\": \"assert.equal(getOddWords(\\\"This is a super good test\\\"), \\\"a super\\\");\"}, {\"text\": \"<p><code>getOddWords(\\\"one two three four\\\")</code> should return <code>\\\"one two three\\\"</code>.</p>\", \"testString\": \"assert.equal(getOddWords(\\\"one two three four\\\"), \\\"one two three\\\");\"}, {\"text\": \"<p><code>getOddWords(\\\"banana split sundae with rainbow sprinkles on top\\\")</code> should return <code>\\\"split rainbow sprinkles top\\\"</code>.</p>\", \"testString\": \"assert.equal(getOddWords(\\\"banana split sundae with rainbow sprinkles on top\\\"), \\\"split rainbow sprinkles top\\\");\"}, {\"text\": \"<p><code>getOddWords(\\\"The quick brown fox jumped over the lazy river\\\")</code> should return <code>\\\"The quick brown fox the river\\\"</code>.</p>\", \"testString\": \"assert.equal(getOddWords(\\\"The quick brown fox jumped over the lazy river\\\"), \\\"The quick brown fox the river\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_odd_words(\\\"This is a super good test\\\")</code> should return <code>\\\"a super\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odd_words(\\\"This is a super good test\\\"), \\\"a super\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odd_words(\\\"one two three four\\\")</code> should return <code>\\\"one two three\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odd_words(\\\"one two three four\\\"), \\\"one two three\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odd_words(\\\"banana split sundae with rainbow sprinkles on top\\\")</code> should return <code>\\\"split rainbow sprinkles top\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odd_words(\\\"banana split sundae with rainbow sprinkles on top\\\"), \\\"split rainbow sprinkles top\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odd_words(\\\"The quick brown fox jumped over the lazy river\\\")</code> should return <code>\\\"The quick brown fox the river\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odd_words(\\\"The quick brown fox jumped over the lazy river\\\"), \\\"The quick brown fox the river\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getOddWords(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def get_odd_words(s):\n\n    return s",
+  "image_path": "20260421_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Odd Words"
+}

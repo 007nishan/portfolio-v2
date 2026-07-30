@@ -1,0 +1,17 @@
+{
+  "challenge_number": 17,
+  "concepts_text": null,
+  "date_id": "2025-08-27",
+  "fcc_description": "<p>Given an array of integers and an array of string operators, apply the operations to the numbers sequentially from left-to-right. Repeat the operations as needed until all numbers are used. Return the final result.</p>\n<p>For example, given <code>[1, 2, 3, 4, 5]</code> and <code>['+', '*']</code>, return the result of evaluating <code>1 + 2 * 3 + 4 * 5</code> from left-to-right ignoring standard order of operations.</p>\n<ul>\n<li>Valid operators are <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>%</code>.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>evaluate([5, 6, 7, 8, 9], ['+', '-'])</code> should return <code>3</code></p>\", \"testString\": \"assert.equal(evaluate([5, 6, 7, 8, 9], ['+', '-']), 3);\"}, {\"text\": \"<p><code>evaluate([17, 61, 40, 24, 38, 14], ['+', '%'])</code> should return <code>38</code></p>\", \"testString\": \"assert.equal(evaluate([17, 61, 40, 24, 38, 14], ['+', '%']), 38);\"}, {\"text\": \"<p><code>evaluate([20, 2, 4, 24, 12, 3], ['*', '/'])</code> should return <code>60</code></p>\", \"testString\": \"assert.equal(evaluate([20, 2, 4, 24, 12, 3], ['*', '/']), 60);\"}, {\"text\": \"<p><code>evaluate([11, 4, 10, 17, 2], ['*', '*', '%'])</code> should return <code>30</code></p>\", \"testString\": \"assert.equal(evaluate([11, 4, 10, 17, 2], ['*', '*', '%']), 30);\"}, {\"text\": \"<p><code>evaluate([33, 11, 29, 13], ['/', '-'])</code> should return <code>-2</code></p>\", \"testString\": \"assert.equal(evaluate([33, 11, 29, 13], ['/', '-']), -2);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>evaluate([5, 6, 7, 8, 9], ['+', '-'])</code> should return <code>3</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(evaluate([5, 6, 7, 8, 9], ['+', '-']), 3)`)\\n}})\"}, {\"text\": \"<p><code>evaluate([17, 61, 40, 24, 38, 14], ['+', '%'])</code> should return <code>38</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(evaluate([17, 61, 40, 24, 38, 14], ['+', '%']), 38)`)\\n}})\"}, {\"text\": \"<p><code>evaluate([20, 2, 4, 24, 12, 3], ['*', '/'])</code> should return <code>60</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(evaluate([20, 2, 4, 24, 12, 3], ['*', '/']), 60)`)\\n}})\"}, {\"text\": \"<p><code>evaluate([11, 4, 10, 17, 2], ['*', '*', '%'])</code> should return <code>30</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(evaluate([11, 4, 10, 17, 2], ['*', '*', '%']), 30)`)\\n}})\"}, {\"text\": \"<p><code>evaluate([33, 11, 29, 13], ['/', '-'])</code> should return <code>-2</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(evaluate([33, 11, 29, 13], ['/', '-']), -2)`)\\n}})\"}]",
+  "fcc_starter_js": "function evaluate(numbers, operators) {\n\n  return numbers;\n}",
+  "fcc_starter_py": "def evaluate(numbers, operators):\n\n    return numbers",
+  "image_path": "20250827_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Unorder of Operations"
+}

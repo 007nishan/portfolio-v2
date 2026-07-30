@@ -1,0 +1,17 @@
+{
+  "challenge_number": 331,
+  "concepts_text": null,
+  "date_id": "2026-07-07",
+  "fcc_description": "<p>Given two integers, round the first to the nearest multiple of the second.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>roundToNearestMultiple(5, 3)</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(roundToNearestMultiple(5, 3), 6);\"}, {\"text\": \"<p><code>roundToNearestMultiple(17, 4)</code> should return <code>16</code>.</p>\", \"testString\": \"assert.equal(roundToNearestMultiple(17, 4), 16);\"}, {\"text\": \"<p><code>roundToNearestMultiple(43, 5)</code> should return <code>45</code>.</p>\", \"testString\": \"assert.equal(roundToNearestMultiple(43, 5), 45);\"}, {\"text\": \"<p><code>roundToNearestMultiple(38, 11)</code> should return <code>33</code>.</p>\", \"testString\": \"assert.equal(roundToNearestMultiple(38, 11), 33);\"}, {\"text\": \"<p><code>roundToNearestMultiple(93, 12)</code> should return <code>96</code>.</p>\", \"testString\": \"assert.equal(roundToNearestMultiple(93, 12), 96);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>round_to_nearest_multiple(5, 3)</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(round_to_nearest_multiple(5, 3), 6)`)\\n}})\"}, {\"text\": \"<p><code>round_to_nearest_multiple(17, 4)</code> should return <code>16</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(round_to_nearest_multiple(17, 4), 16)`)\\n}})\"}, {\"text\": \"<p><code>round_to_nearest_multiple(43, 5)</code> should return <code>45</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(round_to_nearest_multiple(43, 5), 45)`)\\n}})\"}, {\"text\": \"<p><code>round_to_nearest_multiple(38, 11)</code> should return <code>33</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(round_to_nearest_multiple(38, 11), 33)`)\\n}})\"}, {\"text\": \"<p><code>round_to_nearest_multiple(93, 12)</code> should return <code>96</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(round_to_nearest_multiple(93, 12), 96)`)\\n}})\"}]",
+  "fcc_starter_js": "function roundToNearestMultiple(num, multiple) {\n\n  return num;\n}",
+  "fcc_starter_py": "def round_to_nearest_multiple(num, multiple):\n\n    return num",
+  "image_path": "20260707_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Nearest Multiple"
+}

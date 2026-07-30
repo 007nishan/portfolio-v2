@@ -1,0 +1,17 @@
+{
+  "challenge_number": 51,
+  "concepts_text": null,
+  "date_id": "2025-09-30",
+  "fcc_description": "<p>Given a string of eleven digits, return the string as a phone number in this format: <code>\"+D (DDD) DDD-DDDD\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>formatNumber(\\\"05552340182\\\")</code> should return <code>\\\"+0 (555) 234-0182\\\"</code>.</p>\", \"testString\": \"assert.equal(formatNumber(\\\"05552340182\\\"), \\\"+0 (555) 234-0182\\\");\"}, {\"text\": \"<p><code>formatNumber(\\\"15554354792\\\")</code> should return <code>\\\"+1 (555) 435-4792\\\"</code>.</p>\", \"testString\": \"assert.equal(formatNumber(\\\"15554354792\\\"), \\\"+1 (555) 435-4792\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>format_number(\\\"05552340182\\\")</code> should return <code>\\\"+0 (555) 234-0182\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(format_number(\\\"05552340182\\\"), \\\"+0 (555) 234-0182\\\")`)\\n}})\"}, {\"text\": \"<p><code>format_number(\\\"15554354792\\\")</code> should return <code>\\\"+1 (555) 435-4792\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(format_number(\\\"15554354792\\\"), \\\"+1 (555) 435-4792\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function formatNumber(number) {\n\n  return number;\n}",
+  "fcc_starter_py": "def format_number(number):\n\n    return number",
+  "image_path": "20250930_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Phone Number Formatter"
+}

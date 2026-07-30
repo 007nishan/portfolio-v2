@@ -1,0 +1,17 @@
+{
+  "challenge_number": 9,
+  "concepts_text": null,
+  "date_id": "2025-08-19",
+  "fcc_description": "<p>Given a positive integer up to 1,000, return the sum of all the integers squared from 1 up to the number.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sumOfSquares(5)</code> should return <code>55</code>.</p>\", \"testString\": \"assert.equal(sumOfSquares(5), 55);\"}, {\"text\": \"<p><code>sumOfSquares(10)</code> should return <code>385</code>.</p>\", \"testString\": \"assert.equal(sumOfSquares(10), 385);\"}, {\"text\": \"<p><code>sumOfSquares(25)</code> should return <code>5525</code>.</p>\", \"testString\": \"assert.equal(sumOfSquares(25), 5525);\"}, {\"text\": \"<p><code>sumOfSquares(500)</code> should return <code>41791750</code>.</p>\", \"testString\": \"assert.equal(sumOfSquares(500), 41791750);\"}, {\"text\": \"<p><code>sumOfSquares(1000)</code> should return <code>333833500</code>.</p>\", \"testString\": \"assert.equal(sumOfSquares(1000), 333833500);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sum_of_squares(5)</code> should return <code>55</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_squares(5), 55)`)\\n}})\"}, {\"text\": \"<p><code>sum_of_squares(10)</code> should return <code>385</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_squares(10), 385)`)\\n}})\"}, {\"text\": \"<p><code>sum_of_squares(25)</code> should return <code>5525</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_squares(25), 5525)`)\\n}})\"}, {\"text\": \"<p><code>sum_of_squares(500)</code> should return <code>41791750</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_squares(500), 41791750)`)\\n}})\"}, {\"text\": \"<p><code>sum_of_squares(1000)</code> should return <code>333833500</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sum_of_squares(1000), 333833500)`)\\n}})\"}]",
+  "fcc_starter_js": "function sumOfSquares(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def sum_of_squares(n):\n\n    return n",
+  "image_path": "20250819_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Sum of Squares"
+}

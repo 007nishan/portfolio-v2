@@ -2,7 +2,7 @@ import os
 import sys
 import logging
 from functools import wraps
-from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, session, abort
+from flask import Flask, render_template, jsonify, request, flash, redirect, url_for, session, abort, send_from_directory
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 import json
@@ -54,11 +54,16 @@ app.config["SECRET_KEY"] = _secret
 ADMIN_KEY = os.environ.get("ADMIN_KEY")
 
 # Database Configuration (Append-only schema rule enforced in models.py)
+# The URI is overridable via DATABASE_URL (12-Factor IV) so a host, a test, or a
+# throwaway rebuild can point at its own DB without code changes. Default: the
+# local gitignored SQLite file (rebuilt per-machine from content/challenges/).
 data_dir = os.path.join(basedir, "data")
 os.makedirs(data_dir, exist_ok=True)
 db_path = os.path.join(data_dir, "portfolio.db")
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + db_path
+app.config["SQLALCHEMY_DATABASE_URI"] = (
+    os.environ.get("DATABASE_URL") or ("sqlite:///" + db_path)
+)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["UPLOAD_FOLDER"] = os.path.join(app.root_path, "static", "images")
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16MB max upload
@@ -103,6 +108,33 @@ def set_sqlite_pragma(dbapi_connection, connection_record):
 
 
 migrate = Migrate(app, db)
+
+
+def _bootstrap_content():
+    """Make a fresh clone 'just work': ensure tables exist and, if the challenges
+    table is empty, rebuild it from the committed per-day JSON in
+    content/challenges/ (GitHub-as-buffer). This lets any host serve a fully
+    populated site straight from `git clone` with no FCC-API call at boot.
+
+    Safe + idempotent: only imports when the table is EMPTY (never clobbers a
+    populated or manually-edited DB), only ever touches the challenges table, and
+    never aborts startup — a failure here degrades to an empty-state homepage,
+    exactly as a transient DB hiccup would. Disable with BOOTSTRAP_CONTENT=0."""
+    if os.environ.get("BOOTSTRAP_CONTENT", "1").lower() in ("0", "false", "no"):
+        return
+    try:
+        with app.app_context():
+            db.create_all()  # additive only; creates missing tables
+            if Challenge.query.count() == 0:
+                import import_challenges
+                ins, _upd, _noc = import_challenges.import_all(quiet=True)
+                if ins:
+                    logger.info("Bootstrapped %d challenges from content/challenges/.", ins)
+    except Exception as e:  # never let bootstrap block startup
+        logger.warning("Content bootstrap skipped (non-fatal): %s", e)
+
+
+_bootstrap_content()
 
 
 @app.route("/", methods=["GET"])
@@ -436,6 +468,75 @@ def read_book(token):
         return render_template(f"books/{token}.html")
     except Exception:
         return "Book link has expired or is invalid.", 404
+
+
+# ==============================================================================
+# ADDITIVE: COMPILED BOOKS (golden-ratio HTML + print PDF). See BOOK_STANDARD.md.
+# Backend-only wiring; books are compiled offline into templates/books/<slug>.html
+# and static/books/<slug>.pdf. Listing derives from whichever are present.
+# ==============================================================================
+
+# slug -> display metadata for the /books index (kept here so the route has no
+# hard dependency on the build modules being importable at request time).
+_BOOKS_CATALOG = [
+    {
+        "slug": "linear-algebra",
+        "title": "Linear Algebra for AI",
+        "subtitle": "Oceanverse — a GeoGebra-first path from vectors to neural networks.",
+        "institution": "AI Vicharana Shala · IIT Ropar",
+    },
+    {
+        "slug": "python",
+        "title": "Programming in Python",
+        "subtitle": "A hands-on companion, from the shell to object-oriented design.",
+        "institution": "IIT Madras Online Degree",
+    },
+    {
+        "slug": "aws-ml",
+        "title": "Notes as We Learn — AWS ML",
+        "subtitle": "A living notebook for the AWS ML Engineer Associate (MLA-C01), filling in as the learning happens.",
+        "institution": "AWS Certification · MLA-C01",
+    },
+]
+
+
+def _book_assets(slug):
+    """Return (has_html, has_pdf) for a compiled book slug."""
+    html_path = os.path.join(app.root_path, "templates", "books", f"{slug}.html")
+    pdf_path = os.path.join(app.static_folder, "books", f"{slug}.pdf")
+    return os.path.isfile(html_path), os.path.isfile(pdf_path)
+
+
+@app.route("/books", methods=["GET"])
+def books_index():
+    """Public listing of compiled books (only those actually built)."""
+    catalog = []
+    for meta in _BOOKS_CATALOG:
+        has_html, has_pdf = _book_assets(meta["slug"])
+        if has_html or has_pdf:
+            catalog.append({**meta, "has_html": has_html, "has_pdf": has_pdf})
+    return render_template("books_index.html", books=catalog)
+
+
+@app.route("/book/<slug>", methods=["GET"])
+def book_reader(slug):
+    """Serve a compiled book's reader page by slug."""
+    slug = secure_filename(slug)
+    html_path = os.path.join(app.root_path, "templates", "books", f"{slug}.html")
+    if not os.path.isfile(html_path):
+        abort(404)
+    return render_template(f"books/{slug}.html")
+
+
+@app.route("/book/<slug>.pdf", methods=["GET"])
+def book_pdf(slug):
+    """Serve a compiled book's print PDF."""
+    slug = secure_filename(slug)
+    return send_from_directory(
+        os.path.join(app.static_folder, "books"),
+        f"{slug}.pdf",
+        mimetype="application/pdf",
+    )
 
 
 # ==============================================================================

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 247,
+  "concepts_text": null,
+  "date_id": "2026-04-14",
+  "fcc_description": "<p>Given a string, return the letter from the string that appears last in the alphabet.</p>\n<ul>\n<li>If two or more letters tie for the last in the alphabet, return the first one.</li>\n<li>Ignore all non-letter characters.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getLastLetter(\\\"world\\\")</code> should return <code>\\\"w\\\"</code>.</p>\", \"testString\": \"assert.equal(getLastLetter(\\\"world\\\"), \\\"w\\\");\"}, {\"text\": \"<p><code>getLastLetter(\\\"Hello World\\\")</code> should return <code>\\\"W\\\"</code>.</p>\", \"testString\": \"assert.equal(getLastLetter(\\\"Hello World\\\"), \\\"W\\\");\"}, {\"text\": \"<p><code>getLastLetter(\\\"The quick brown fox jumped over the lazy dog.\\\")</code> should return <code>\\\"z\\\"</code>.</p>\", \"testString\": \"assert.equal(getLastLetter(\\\"The quick brown fox jumped over the lazy dog.\\\"), \\\"z\\\");\"}, {\"text\": \"<p><code>getLastLetter(\\\"HeLl0\\\")</code> should return <code>\\\"L\\\"</code>.</p>\", \"testString\": \"assert.equal(getLastLetter(\\\"HeLl0\\\"), \\\"L\\\");\"}, {\"text\": \"<p><code>getLastLetter(\\\"!#$ er@R asd fT.,> 2t0e9\\\")</code> should return <code>\\\"T\\\"</code>.</p>\", \"testString\": \"assert.equal(getLastLetter(\\\"!#$ er@R asd fT.,> 2t0e9\\\"), \\\"T\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_last_letter(\\\"world\\\")</code> should return <code>\\\"w\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_last_letter(\\\"world\\\"), \\\"w\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_last_letter(\\\"Hello World\\\")</code> should return <code>\\\"W\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_last_letter(\\\"Hello World\\\"), \\\"W\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_last_letter(\\\"The quick brown fox jumped over the lazy dog.\\\")</code> should return <code>\\\"z\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_last_letter(\\\"The quick brown fox jumped over the lazy dog.\\\"), \\\"z\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_last_letter(\\\"HeLl0\\\")</code> should return <code>\\\"L\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_last_letter(\\\"HeLl0\\\"), \\\"L\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_last_letter(\\\"!#$ er@R asd fT.,> 2t0e9\\\")</code> should return <code>\\\"T\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_last_letter(\\\"!#$ er@R asd fT.,> 2t0e9\\\"), \\\"T\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getLastLetter(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def get_last_letter(s):\n\n    return s",
+  "image_path": "20260414_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Last Letter"
+}

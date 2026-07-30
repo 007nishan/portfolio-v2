@@ -1,0 +1,17 @@
+{
+  "challenge_number": 182,
+  "concepts_text": null,
+  "date_id": "2026-02-08",
+  "fcc_description": "<p>Given an array of integers, where each value represents the number of targets hit in a single round of a biathlon, return the total penalty distance the athlete must ski.</p>\n<ul>\n<li>Each round consists of 5 targets.</li>\n<li>Each missed target results in a 150 meter penalty loop.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>calculatePenaltyDistance([4, 4])</code> should return <code>300</code>.</p>\", \"testString\": \"assert.equal(calculatePenaltyDistance([4, 4]), 300);\"}, {\"text\": \"<p><code>calculatePenaltyDistance([5, 5])</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(calculatePenaltyDistance([5, 5]), 0);\"}, {\"text\": \"<p><code>calculatePenaltyDistance([4, 5, 3, 5])</code> should return <code>450</code>.</p>\", \"testString\": \"assert.equal(calculatePenaltyDistance([4, 5, 3, 5]), 450);\"}, {\"text\": \"<p><code>calculatePenaltyDistance([5, 4, 5, 5])</code> should return <code>150</code>.</p>\", \"testString\": \"assert.equal(calculatePenaltyDistance([5, 4, 5, 5]), 150);\"}, {\"text\": \"<p><code>calculatePenaltyDistance([4, 3, 0, 3])</code> should return <code>1500</code>.</p>\", \"testString\": \"assert.equal(calculatePenaltyDistance([4, 3, 0, 3]), 1500);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>calculate_penalty_distance([4, 4])</code> should return <code>300</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_penalty_distance([4, 4]), 300)`)\\n}})\"}, {\"text\": \"<p><code>calculate_penalty_distance([5, 5])</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_penalty_distance([5, 5]), 0)`)\\n}})\"}, {\"text\": \"<p><code>calculate_penalty_distance([4, 5, 3, 5])</code> should return <code>450</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_penalty_distance([4, 5, 3, 5]), 450)`)\\n}})\"}, {\"text\": \"<p><code>calculate_penalty_distance([5, 4, 5, 5])</code> should return <code>150</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_penalty_distance([5, 4, 5, 5]), 150)`)\\n}})\"}, {\"text\": \"<p><code>calculate_penalty_distance([4, 3, 0, 3])</code> should return <code>1500</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_penalty_distance([4, 3, 0, 3]), 1500)`)\\n}})\"}]",
+  "fcc_starter_js": "function calculatePenaltyDistance(rounds) {\n\n  return rounds;\n}",
+  "fcc_starter_py": "def calculate_penalty_distance(rounds):\n\n    return rounds",
+  "image_path": "20260208_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "2026 Winter Games Day 3: Biathlon"
+}

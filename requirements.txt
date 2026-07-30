@@ -3,5 +3,18 @@ Flask-SQLAlchemy==3.1.1
 Flask-Migrate==4.0.5
 gunicorn==21.2.0
 python-dotenv==1.0.0
-markdown==3.5.1
+markdown>=3.5,<4
 requests==2.31.0
+
+# --- Compiled books pipeline (BCS v1.1). See BOOK_STANDARD.md. ---
+# Native libs for weasyprint on the Linux deploy host are installed via apt in
+# auto_deploy.sh (pango/cairo/gdk-pixbuf). Build-time KaTeX is vendored under
+# node_modules/katex + static/vendor/katex (no npm install needed at deploy).
+pymdown-extensions>=10.9,<11
+Pygments>=2.18
+weasyprint>=62
+nh3>=0.2
+selectolax>=0.3
+pyspellchecker>=0.8
+wcag-contrast-ratio>=0.9
+pypdf>=4.0

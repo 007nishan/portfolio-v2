@@ -1,0 +1,17 @@
+{
+  "challenge_number": 23,
+  "concepts_text": null,
+  "date_id": "2025-09-02",
+  "fcc_description": "<p>Given a CSS <code>rgb(r, g, b)</code> color string, return its hexadecimal equivalent.</p>\n<p>Here are some example outputs for a given input:</p>\n<table>\n<thead>\n<tr>\n<th>Input</th>\n<th>Output</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>\"rgb(255, 255, 255)\"</code></td>\n<td><code>\"#ffffff\"</code></td>\n</tr>\n<tr>\n<td><code>\"rgb(1, 2, 3)\"</code></td>\n<td><code>\"#010203\"</code></td>\n</tr>\n</tbody>\n</table>\n<ul>\n<li>Make any letters lowercase.</li>\n<li>Return a <code>#</code> followed by six characters. Don't use any shorthand values.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>rgbToHex(\\\"rgb(255, 255, 255)\\\")</code> should return <code>\\\"#ffffff\\\"</code>.</p>\", \"testString\": \"assert.equal(rgbToHex(\\\"rgb(255, 255, 255)\\\"), \\\"#ffffff\\\");\"}, {\"text\": \"<p><code>rgbToHex(\\\"rgb(1, 11, 111)\\\")</code> should return <code>\\\"#010b6f\\\"</code>.</p>\", \"testString\": \"assert.equal(rgbToHex(\\\"rgb(1, 11, 111)\\\"), \\\"#010b6f\\\");\"}, {\"text\": \"<p><code>rgbToHex(\\\"rgb(173, 216, 230)\\\")</code> should return <code>\\\"#add8e6\\\"</code>.</p>\", \"testString\": \"assert.equal(rgbToHex(\\\"rgb(173, 216, 230)\\\"), \\\"#add8e6\\\");\"}, {\"text\": \"<p><code>rgbToHex(\\\"rgb(79, 123, 201)\\\")</code> should return <code>\\\"#4f7bc9\\\"</code>.</p>\", \"testString\": \"assert.equal(rgbToHex(\\\"rgb(79, 123, 201)\\\"), \\\"#4f7bc9\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>rgb_to_hex(\\\"rgb(255, 255, 255)\\\")</code> should return <code>\\\"#ffffff\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(rgb_to_hex(\\\"rgb(255, 255, 255)\\\"), \\\"#ffffff\\\")`)\\n}})\"}, {\"text\": \"<p><code>rgb_to_hex(\\\"rgb(1, 11, 111)\\\")</code> should return <code>\\\"#010b6f\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(rgb_to_hex(\\\"rgb(1, 11, 111)\\\"), \\\"#010b6f\\\")`)\\n}})\"}, {\"text\": \"<p><code>rgb_to_hex(\\\"rgb(173, 216, 230)\\\")</code> should return <code>\\\"#add8e6\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(rgb_to_hex(\\\"rgb(173, 216, 230)\\\"), \\\"#add8e6\\\")`)\\n}})\"}, {\"text\": \"<p><code>rgb_to_hex(\\\"rgb(79, 123, 201)\\\")</code> should return <code>\\\"#4f7bc9\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(rgb_to_hex(\\\"rgb(79, 123, 201)\\\"), \\\"#4f7bc9\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function rgbToHex(rgb) {\n\n  return rgb;\n}",
+  "fcc_starter_py": "def rgb_to_hex(rgb):\n\n    return rgb",
+  "image_path": "20250902_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "RGB to Hex"
+}

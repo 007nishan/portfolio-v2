@@ -1,0 +1,17 @@
+{
+  "challenge_number": 39,
+  "concepts_text": null,
+  "date_id": "2025-09-18",
+  "fcc_description": "<p>Given the size of a fuel tank, the current fuel level, and the price per gallon, return the cost to fill the tank all the way.</p>\n<ul>\n<li><code>tankSize</code> is the total capacity of the tank in gallons.</li>\n<li><code>fuelLevel</code> is the current amount of fuel in the tank in gallons.</li>\n<li><code>pricePerGallon</code> is the cost of one gallon of fuel.</li>\n<li>The returned value should be rounded to two decimal places in the format: <code>\"$d.dd\"</code>.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>costToFill(20, 0, 4.00)</code> should return <code>\\\"$80.00\\\"</code>.</p>\", \"testString\": \"assert.equal(costToFill(20, 0, 4.00), \\\"$80.00\\\");\"}, {\"text\": \"<p><code>costToFill(15, 10, 3.50)</code> should return <code>\\\"$17.50\\\"</code>.</p>\", \"testString\": \"assert.equal(costToFill(15, 10, 3.50), \\\"$17.50\\\");\"}, {\"text\": \"<p><code>costToFill(18, 9, 3.25)</code> should return <code>\\\"$29.25\\\"</code>.</p>\", \"testString\": \"assert.equal(costToFill(18, 9, 3.25), \\\"$29.25\\\");\"}, {\"text\": \"<p><code>costToFill(12, 12, 4.99)</code> should return <code>\\\"$0.00\\\"</code>.</p>\", \"testString\": \"assert.equal(costToFill(12, 12, 4.99), \\\"$0.00\\\");\"}, {\"text\": \"<p><code>costToFill(15, 9.5, 3.98)</code> should return <code>\\\"$21.89\\\"</code>.</p>\", \"testString\": \"assert.equal(costToFill(15, 9.5, 3.98), \\\"$21.89\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>cost_to_fill(20, 0, 4.00)</code> should return <code>\\\"$80.00\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(cost_to_fill(20, 0, 4.00), \\\"$80.00\\\")`)\\n}})\"}, {\"text\": \"<p><code>cost_to_fill(15, 10, 3.50)</code> should return <code>\\\"$17.50\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(cost_to_fill(15, 10, 3.50), \\\"$17.50\\\")`)\\n}})\"}, {\"text\": \"<p><code>cost_to_fill(18, 9, 3.25)</code> should return <code>\\\"$29.25\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(cost_to_fill(18, 9, 3.25), \\\"$29.25\\\")`)\\n}})\"}, {\"text\": \"<p><code>cost_to_fill(12, 12, 4.99)</code> should return <code>\\\"$0.00\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(cost_to_fill(12, 12, 4.99), \\\"$0.00\\\")`)\\n}})\"}, {\"text\": \"<p><code>cost_to_fill(15, 9.5, 3.98)</code> should return <code>\\\"$21.89\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(cost_to_fill(15, 9.5, 3.98), \\\"$21.89\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function costToFill(tankSize, fuelLevel, pricePerGallon) {\n\n  return tankSize;\n}",
+  "fcc_starter_py": "def cost_to_fill(tank_size, fuel_level, price_per_gallon):\n\n    return tank_size",
+  "image_path": "20250918_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Fill The Tank"
+}

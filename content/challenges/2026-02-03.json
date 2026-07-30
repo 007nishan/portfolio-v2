@@ -1,0 +1,17 @@
+{
+  "challenge_number": 177,
+  "concepts_text": null,
+  "date_id": "2026-02-03",
+  "fcc_description": "<p>Given a string, return a new string that consists of the given string with a reversed copy of itself appended to the end of it.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>mirror(\\\"freeCodeCamp\\\")</code> should return <code>\\\"freeCodeCamppmaCedoCeerf\\\"</code>.</p>\", \"testString\": \"assert.equal(mirror(\\\"freeCodeCamp\\\"), \\\"freeCodeCamppmaCedoCeerf\\\");\"}, {\"text\": \"<p><code>mirror(\\\"RaceCar\\\")</code> should return <code>\\\"RaceCarraCecaR\\\"</code>.</p>\", \"testString\": \"assert.equal(mirror(\\\"RaceCar\\\"), \\\"RaceCarraCecaR\\\");\"}, {\"text\": \"<p><code>mirror(\\\"helloworld\\\")</code> should return <code>\\\"helloworlddlrowolleh\\\"</code>.</p>\", \"testString\": \"assert.equal(mirror(\\\"helloworld\\\"), \\\"helloworlddlrowolleh\\\");\"}, {\"text\": \"<p><code>mirror(\\\"The quick brown fox...\\\")</code> should return <code>\\\"The quick brown fox......xof nworb kciuq ehT\\\"</code>.</p>\", \"testString\": \"assert.equal(mirror(\\\"The quick brown fox...\\\"), \\\"The quick brown fox......xof nworb kciuq ehT\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>mirror(\\\"freeCodeCamp\\\")</code> should return <code>\\\"freeCodeCamppmaCedoCeerf\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mirror(\\\"freeCodeCamp\\\"), \\\"freeCodeCamppmaCedoCeerf\\\")`)\\n}})\"}, {\"text\": \"<p><code>mirror(\\\"RaceCar\\\")</code> should return <code>\\\"RaceCarraCecaR\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mirror(\\\"RaceCar\\\"), \\\"RaceCarraCecaR\\\")`)\\n}})\"}, {\"text\": \"<p><code>mirror(\\\"helloworld\\\")</code> should return <code>\\\"helloworlddlrowolleh\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mirror(\\\"helloworld\\\"), \\\"helloworlddlrowolleh\\\")`)\\n}})\"}, {\"text\": \"<p><code>mirror(\\\"The quick brown fox...\\\")</code> should return <code>\\\"The quick brown fox......xof nworb kciuq ehT\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(mirror(\\\"The quick brown fox...\\\"), \\\"The quick brown fox......xof nworb kciuq ehT\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function mirror(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def mirror(s):\n\n    return s",
+  "image_path": "20260203_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "String Mirror"
+}

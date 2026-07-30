@@ -1,0 +1,726 @@
+{% extends "base.html" %}
+{% block title %}Notes as We Learn — AWS ML{% endblock %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/katex/katex.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/book_math.css') }}">
+{% endblock %}
+{% block content %}
+<div class="book-bar">
+  <nav class="book-bar__crumbs" aria-label="Breadcrumb">
+    <span>BOOKS</span><span class="sep">/</span><span class="current">Notes as We Learn — AWS ML</span>
+  </nav>
+  <button class="book-toc-toggle" aria-controls="book-toc" aria-expanded="false">Contents</button>
+  <div class="book-bar__nav">
+    <a class="book-prev" href="#" aria-disabled="true">&lsaquo; Prev</a>
+    <a class="book-next" href="#">Next &rsaquo;</a>
+  </div>
+  <div class="book-progress" aria-hidden="true"></div>
+</div>
+<div class="book-shell">
+  <aside class="book-toc" id="book-toc" aria-label="Table of contents">
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Foundations — Math, Programming & “What Is a Model?”</p>
+      <a href="#ch-0" data-crumbs="Foundations — Math, Programming & “What Is a Model?”">Foundations — Math, Programming & “What Is a Model?”</a>
+    </div>
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Core Machine Learning Concepts</p>
+      <a href="#ch-1" data-crumbs="Core Machine Learning Concepts">Core Machine Learning Concepts</a>
+    </div>
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Deep Learning & Modern AI</p>
+      <a href="#ch-2" data-crumbs="Deep Learning & Modern AI">Deep Learning & Modern AI</a>
+    </div>
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Responsible AI, Problem Formulation & SageMaker</p>
+      <a href="#ch-3" data-crumbs="Responsible AI, Problem Formulation & SageMaker">Responsible AI, Problem Formulation & SageMaker</a>
+    </div>
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Domain 1 — Data Preparation</p>
+      <a href="#ch-4" data-crumbs="Domain 1 — Data Preparation">Domain 1 — Data Preparation</a>
+      <a href="#ch-4-lesson-1" data-crumbs="Domain 1 — Data Preparation">Fundamentals of Data Collection</a>
+      <a href="#ch-4-lesson-2" data-crumbs="Domain 1 — Data Preparation">Types of Data</a>
+      <a href="#ch-4-lesson-3" data-crumbs="Domain 1 — Data Preparation">Data Visualization & Exploratory Data Analysis</a>
+      <a href="#ch-4-lesson-4" data-crumbs="Domain 1 — Data Preparation">AWS Storage Options (Amazon S3, EBS, EFS, FSx)</a>
+      <a href="#ch-4-lesson-5" data-crumbs="Domain 1 — Data Preparation">Data Formats & File Types (row · column · object notation)</a>
+      <a href="#ch-4-lesson-6" data-crumbs="Domain 1 — Data Preparation">Data Ingestion: Batch vs Streaming (+ Amazon Kinesis)</a>
+    </div>
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Domain 2 — Model Development</p>
+      <a href="#ch-5" data-crumbs="Domain 2 — Model Development">Domain 2 — Model Development</a>
+    </div>
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Domain 3 — Deployment & Orchestration</p>
+      <a href="#ch-6" data-crumbs="Domain 3 — Deployment & Orchestration">Domain 3 — Deployment & Orchestration</a>
+    </div>
+    <div class="book-toc__group">
+      <p class="book-toc__group-title">Domain 4 — Monitoring, Maintenance & Security</p>
+      <a href="#ch-7" data-crumbs="Domain 4 — Monitoring, Maintenance & Security">Domain 4 — Monitoring, Maintenance & Security</a>
+    </div>
+  </aside>
+  <article class="reader book-content markdown-content">
+    <span class="book-title-src" hidden>Notes as We Learn — AWS ML</span>
+<section class="opener" id="ch-0">
+<p><span class="chapter-num">0</span></p>
+<h1 id="ch-0-foundations-math-programming-what-is-a-model">Foundations — Math, Programming &amp; “What Is a Model?”</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>The floor everything else rests on: the math, data, and programming intuition an ML engineer keeps reaching back to.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Coming as we learn</p>
+<p>This chapter is on the roadmap. It will fill in with worked notes as the learning gets there — for now, here is what it will cover:</p>
+<ul>
+<li>Math for ML: vectors, matrices &amp; dot products → features and weights.</li>
+<li>Probability &amp; statistics: distributions, mean/variance, conditional probability.</li>
+<li>Calculus intuition: derivatives &amp; gradients → how models “learn”.</li>
+<li>Programming &amp; data: Python, data structures, JSON; tabular data (rows = observations, columns = features).</li>
+<li>What a “model” really is: a function mapping features → prediction, tuned by data.</li>
+</ul>
+</div>
+<section class="opener" id="ch-1">
+<p><span class="chapter-num">1</span></p>
+<h1 id="ch-1-core-machine-learning-concepts">Core Machine Learning Concepts</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>The vocabulary that the whole certification is built on.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Coming as we learn</p>
+<p>This chapter is on the roadmap. It will fill in with worked notes as the learning gets there — for now, here is what it will cover:</p>
+<ul>
+<li>Feature vs. label; ML as a subset of AI that learns patterns without explicit rules.</li>
+<li>The three learning paradigms: supervised, unsupervised, reinforcement.</li>
+<li>Classification vs. regression; clustering, dimensionality reduction, anomaly detection.</li>
+<li>Overfitting vs. underfitting; the train / validate / test split.</li>
+</ul>
+</div>
+<section class="opener" id="ch-2">
+<p><span class="chapter-num">2</span></p>
+<h1 id="ch-2-deep-learning-modern-ai">Deep Learning &amp; Modern AI</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>From artificial neurons to the foundation models behind generative AI.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Coming as we learn</p>
+<p>This chapter is on the roadmap. It will fill in with worked notes as the learning gets there — for now, here is what it will cover:</p>
+<ul>
+<li>Deep learning as a subset of ML; artificial neural networks and hidden layers.</li>
+<li>Automatic feature extraction (input → edges → parts → object).</li>
+<li>Generative AI: creating new text, image, audio, video, and code.</li>
+<li>Foundation Models and Large Language Models: pre-train once, adapt to many tasks.</li>
+</ul>
+</div>
+<section class="opener" id="ch-3">
+<p><span class="chapter-num">3</span></p>
+<h1 id="ch-3-responsible-ai-problem-formulation-sagemaker">Responsible AI, Problem Formulation &amp; SageMaker</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>Turning a business problem into a well-posed ML problem — responsibly — and the platform it runs on.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Coming as we learn</p>
+<p>This chapter is on the roadmap. It will fill in with worked notes as the learning gets there — for now, here is what it will cover:</p>
+<ul>
+<li>Responsible AI — the eight dimensions (fairness, explainability, privacy &amp; security, safety, controllability, veracity &amp; robustness, governance, transparency).</li>
+<li>Problem formulation: define the business problem, choose the data, set measurable ML success criteria.</li>
+<li>Feasibility = f(data availability, problem complexity).</li>
+<li>Amazon SageMaker &amp; SageMaker Studio: the managed build / train / deploy platform.</li>
+</ul>
+</div>
+<section class="opener" id="ch-4">
+<p><span class="chapter-num">4</span></p>
+<h1 id="ch-4-domain-1-data-preparation">Domain 1 — Data Preparation</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>Collecting, ingesting and storing data, then transforming and validating it — the front door of the whole ML process and 28% of the MLA-C01 exam.</em></p>
+<h2 id="ch-4-lesson-1">Fundamentals of Data Collection</h2>
+<h3 id="ch-4-why-data-collection-matters">Why data collection matters</h3>
+<p>Think of data as the raw ingredients for cooking. A great chef cannot make a good meal from spoiled or wrong ingredients — and a machine learning model cannot make good predictions from poor data. The data you collect is the foundation the model learns from, so it decides how good the model can ever be.</p>
+<p>A quick note on terms used throughout: a <strong>machine learning (ML) model</strong> is just a program that learns patterns from examples instead of being given fixed rules; <strong>training</strong> means showing the model those examples so it can learn.</p>
+<p>What good collected data looks like:
+- It is <strong>relevant</strong> — it actually relates to the question you are trying to answer.
+- It has <strong>enough quantity and enough variety</strong> to learn from — but piling on more data does not help if that data is low quality.
+- It is <strong>accurate and clean</strong> — free of mistakes and unfair skews.
+- It is gathered <strong>ethically and lawfully</strong>, hiding personal identities when needed.
+- Bottom line: the <em>right</em> data produces an accurate model that copes with many real-world situations.</p>
+<h3 id="ch-4-centralize-first-then-prepare">Centralize first, then prepare</h3>
+<p>Real-life picture: imagine a shop owner whose sales records are spread across a cash till, a paper notebook, some emails, and a phone app. Before spotting any trend, they first copy everything into one ledger. Machine learning data works the same way — it starts scattered across many places, so you bring it together before you can learn from it.</p>
+<p>The order of work:
+1. <strong>Find</strong> where all the data lives.
+2. <strong>Pick one central place</strong> to keep it.
+3. <strong>Bring the data in</strong> to that place.
+4. <strong>Clean, prepare, and secure</strong> it so it is ready to learn from.</p>
+<h3 id="ch-4-common-places-data-is-stored">Common places data is stored</h3>
+<p>Before machine learning uses data, it usually sits in one of three kinds of storage. The easiest way to tell them apart is by what they hold and what job they are built for.</p>
+<table>
+<thead>
+<tr>
+<th>Storage type</th>
+<th>What it holds</th>
+<th>What it is built for</th>
+<th>Everyday way to picture it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Data lake</strong></td>
+<td>Every kind of data, kept raw — neat table data, loose data like photos and text, and in-between data — pulled from many sources (other databases, sensors, live feeds, purchases)</td>
+<td>A single raw collection point that later feeds analysis and models</td>
+<td>A large storage yard where everything is dropped as-is, sorted later</td>
+</tr>
+<tr>
+<td><strong>Data warehouse</strong></td>
+<td>Only neat, table-shaped data, kept in related tables</td>
+<td><strong>Analysis and reporting.</strong> It is tuned for <em>Online Analytical Processing (OLAP)</em> — a fancy way of saying "quickly summarize huge amounts of data to answer business questions"</td>
+<td>A well-organized library built for looking things up fast</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>Neat, table-shaped data, smaller in scale</td>
+<td><strong>Day-to-day running of an app.</strong> It is tuned for <em>Online Transaction Processing (OLTP)</em> — handling many small, live reads and writes like recording a sale the moment it happens</td>
+<td>A shop's live cash register and record book</td>
+</tr>
+</tbody>
+</table>
+<p>A couple of terms in that table, in plain words:
+- <strong>Structured data</strong> = data that fits neatly into rows and columns, like a spreadsheet. <strong>Unstructured data</strong> = things with no fixed shape, like photos, video, or free text. <strong>Semi-structured data</strong> sits in between (more on all three in the next lesson).
+- Data warehouses are usually queried with <strong>SQL (Structured Query Language)</strong> — a standard language for asking a database questions like "how many customers cancelled last month?"</p>
+<p>The one-line distinction to remember: a <strong>data warehouse is for analysis</strong>, a <strong>database is for live day-to-day transactions</strong>, and a <strong>data lake holds every kind of data in raw form</strong>.</p>
+<h3 id="ch-4-what-makes-data-high-quality-four-traits">What makes data "high quality" — four traits</h3>
+<p>Running example: a <strong>fitness company trying to predict which members will cancel their membership</strong> (cancelling is often called <em>churn</em>). If the data is poor or incomplete, the model struggles to find patterns and its predictions are unreliable. Good data has four traits:</p>
+<ul>
+<li><strong>Representative</strong> — it mirrors the real world. If about 20% of members actually cancel each year, the data should show roughly that 20%. If it does not, the model will over- or under-predict cancellations.</li>
+<li><strong>Relevant</strong> — it relates to the exact problem. To predict cancellations you want things like past visits and payment history, not unrelated trivia.</li>
+<li><strong>Feature-rich</strong> — it includes enough useful details (each detail is called a <strong>feature</strong>) for the model to spot patterns. Too few details — say, leaving out member age or location — and the model misses real signals.</li>
+<li><strong>Consistent</strong> — everything is recorded the same way. If one source writes dates as "1/11/22" and another as "Jan 11 2022", the mismatch confuses the model and lowers accuracy.</li>
+</ul>
+<p>The takeaway: <strong>quality of data in = quality of results out.</strong> Better data leads to better machine learning results.</p>
+<h3 id="ch-4-coming-up-next">Coming up next</h3>
+<p>The next lesson looks closely at the <em>types</em> of data — and how traits like accuracy, completeness, and relevance shape how well a model can learn.</p>
+<h3 id="ch-4-concepts-explained-simply">Concepts explained simply</h3>
+<h4 id="ch-4-who-does-all-this-data-work-it-is-a-team-sport">Who does all this data work? (it is a team sport)</h4>
+<p>Preparing data — collecting it, cleaning it, shaping it, storing it — is rarely one person's job. The same dataset flows through several pairs of hands: a <strong>data engineer</strong> gathers and reshapes raw data into usable form, a <strong>data scientist</strong> experiments with it to find patterns and build models, a <strong>machine learning engineer</strong> turns a working experiment into dependable production software, and an <strong>operations-focused engineer</strong> owns the automation that keeps it all running. Amazon Web Services (AWS) treats these role names as a loose organizing device, not fixed job titles — what the exam really tests is <em>which tool fits which need</em>. AWS groups its data-preparation tooling by <strong>use case</strong>: a visual point-and-click path for non-coders, a code-and-SQL (Structured Query Language) path for analysts, and a heavy-duty path for data too big for one machine. The glue that makes preparation genuinely <em>shared</em> is a <strong>feature store</strong> — a central, searchable pantry of already-prepared data ingredients that every team member can discover and reuse instead of re-cooking them from scratch.
+<strong>In real life:</strong> Think of a restaurant kitchen. One person sources and stocks the pantry, the chef invents the recipe, the line manager turns the winning recipe into a repeatable process for every shift, and the labeled pantry of prepped ingredients is what lets them all work from the same stock without duplicating effort.
+<strong>Why it matters:</strong> Reusing centrally-prepared data avoids repeated work and, importantly, avoids the subtle bug where a model is trained on data prepared one way but makes live predictions on data prepared another way.</p>
+<div class="admonition warning">
+<p class="admonition-title">Exam trap</p>
+<p>"Shared responsibility" here means shared across <em>human roles in the team</em>. Do not confuse it with the AWS Shared Responsibility Model, which is a completely different security concept about what AWS secures versus what the customer secures.</p>
+</div>
+<h4 id="ch-4-why-data-preparation-decides-everything-garbage-in-garbage-out">Why data preparation decides everything (garbage in, garbage out)</h4>
+<p>A model learns <em>only</em> from the data you feed it, so data quality sets a hard ceiling on how good the model can ever be. Feed it wrong, skewed, incomplete, or inconsistently-recorded data (the same country written as "United States" in one file and "US" in another) and it faithfully learns the wrong patterns. AWS describes the full machine learning journey in six phases, in order: agree on the business goal, frame it as a learning problem, process the data, develop the model, deploy it, and monitor it. Two things to remember about that journey: <strong>data processing sits near the front</strong>, so any defect there flows downstream into everything else — and the journey is a <strong>loop, not a straight line</strong>: monitoring the live model catches the world drifting away from the training data and feeds fresh data back into retraining.
+<strong>In real life:</strong> Building on a bad foundation — every floor above inherits the flaw, and the earlier you catch it, the cheaper it is to fix.
+<strong>Why it matters:</strong> Collecting, ingesting, and storing data well is the front door of the whole process. It is the cheapest place to fix problems and the most expensive place to ignore them.</p>
+<h2 id="ch-4-lesson-2">Types of Data</h2>
+<h3 id="ch-4-why-the-type-of-data-matters">Why the type of data matters</h3>
+<p>The kind of data you have strongly shapes which learning method works best — a bit like how a recipe depends on the ingredient. Plain numbers in a table suit simple prediction methods, while photos usually need more powerful, brain-inspired methods. Preparing and reshaping the data first almost always improves the result.</p>
+<p>There are really <strong>two separate questions</strong> you can ask about any dataset. Learners often mix them up, so keep them apart:
+- <strong>Question 1 — What kind of content is it?</strong> (This picks the learning method.)
+- <strong>Question 2 — How organized is it?</strong> (This tells you how much cleanup it needs.)</p>
+<h3 id="ch-4-question-1-what-kind-of-content-is-it">Question 1 — What kind of content is it?</h3>
+<p>Data usually falls into one of four kinds:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>What it is</th>
+<th>Everyday example</th>
+<th>Typically used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Text</strong></td>
+<td>Words and documents</td>
+<td>product reviews, emails</td>
+<td>understanding language, such as judging if a review is positive or negative</td>
+</tr>
+<tr>
+<td><strong>Tabular</strong></td>
+<td>Numbers arranged in rows and columns, like a spreadsheet</td>
+<td>a sales table</td>
+<td>straightforward predictions from neat numbers</td>
+</tr>
+<tr>
+<td><strong>Time series</strong></td>
+<td>Values recorded over time, in order</td>
+<td>daily temperatures, stock prices</td>
+<td>spotting trends and forecasting what comes next</td>
+</tr>
+<tr>
+<td><strong>Image</strong></td>
+<td>Pictures made of coloured dots (pixels)</td>
+<td>photos, scans, video frames</td>
+<td>recognizing what is in a picture</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ch-4-question-2-how-organized-is-it">Question 2 — How organized is it?</h3>
+<p>This is about the <em>shape</em> the data comes in, which decides how much tidying it needs before a model can use it. Three levels:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Plain meaning</th>
+<th>Needs how much cleanup?</th>
+<th>Everyday examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Well organized</strong></td>
+<td>Already in neat rows and columns with a fixed layout</td>
+<td>Very little</td>
+<td>Parquet and ORC files (compact table-style files built for fast analysis)</td>
+</tr>
+<tr>
+<td><strong>Partly organized</strong></td>
+<td>Has helpful labels or tags, but not a strict table</td>
+<td>Some</td>
+<td>CSV files, spreadsheet exports, and JSON files (a common text format that stores data as labelled fields)</td>
+</tr>
+<tr>
+<td><strong>Not organized</strong></td>
+<td>No fixed shape at all</td>
+<td>The most — but it holds the richest detail</td>
+<td>plain text, photos, video</td>
+</tr>
+</tbody>
+</table>
+<p>The three levels look like this — from tidy grids to loose, mixed material:</p>
+<p>The most common mix-up to remember: a <strong>CSV file looks like a neat table, but it counts as partly organized, not well organized.</strong> (CSV stands for <em>comma-separated values</em> — a plain text file where each value is separated by a comma.)</p>
+<h3 id="ch-4-putting-the-two-questions-together">Putting the two questions together</h3>
+<p>The same piece of data answers <em>both</em> questions independently. A photo is "image" content (Question 1) <strong>and</strong> "not organized" in shape (Question 2). A sales spreadsheet is "tabular" content <strong>and</strong> "partly organized" as a CSV file. That is the whole point — they are two different lenses, not one.</p>
+<p>This is exactly why the previous lesson insisted on gathering everything into a <strong>data lake</strong> first: a lake happily holds all three levels of organization side by side, which is what lets you keep the messy-but-rich material instead of throwing it away. The catch is that a model cannot learn from raw, not-organized data directly — so the very next step in the journey, <strong>transforming the data</strong>, is about reshaping these loose formats into something a model can actually use. Types and organization are the vocabulary you will lean on the moment that transformation work begins.</p>
+<h3 id="ch-4-concepts-explained-simply_1">Concepts explained simply</h3>
+<h4 id="ch-4-how-can-a-computer-tell-if-a-written-review-is-happy-or-unhappy">How can a computer tell if a written review is happy or unhappy?</h4>
+<p>Natural Language Processing (NLP) means teaching computers to read and make sense of everyday human language, the kind you speak and type, such as emails, reviews, or tweets. Normally computers only understand numbers, not words, so NLP is the bridge that lets a machine work with writing. One popular NLP job is figuring out the feeling behind a piece of text, whether it sounds positive (happy or approving), negative (unhappy or complaining), or neutral (no strong feeling either way). The tricky part for beginners: a computer cannot do math on the word "great" or "terrible" directly, so before any learning can happen, the text must first be turned into numbers. Turning words into lists of numbers is the required first step, because a computer learns only by crunching numbers, not letters. Once the words are numbers, the machine can spot patterns and predict the feeling. There is also a ready-made cloud tool from Amazon Web Services (AWS) that does all of this for you: you hand it text, and it labels the overall feeling as Positive, Negative, Neutral (no strong feeling), or Mixed (contains both happy and unhappy parts), and it gives a certainty number showing how sure it is, close to 100 percent when very sure and close to 0 when barely sure.
+<strong>In real life:</strong> A pizza restaurant gets 500 online reviews overnight. Instead of a person reading each one, they feed the reviews into one of these tools. It reads "The crust was amazing and the staff was friendly!" and labels it Positive, while "Cold food and rude service, never again" gets labeled Negative. In seconds the owner sees that 80 out of every 100 reviews are Positive, without reading a single one by hand, like having an assistant who instantly sorts every comment into a happy pile or an unhappy pile.
+<strong>Why it matters:</strong> Businesses use this to automatically watch customer opinions at huge scale, for example scanning product reviews, support messages, or social media to catch complaints early. When you want this done without building and training your own program, the ready-made AWS text-reading service is the standard choice.</p>
+<h4 id="ch-4-why-is-tabular-data-a-good-fit-for-predicting-a-number-with-linear-regression">Why is tabular data a good fit for predicting a number with linear regression?</h4>
+<p>Linear regression is a method that predicts a number by learning how it relates to other numbers. It studies examples and works out a straight-line rule, meaning a simple pattern like "the answer goes up by a fixed amount every time an input goes up by one." Once it learns that rule, you feed it new inputs and it gives you a predicted number, and that number can be any value, including decimals like 3.7, not just whole categories. Tabular data just means data arranged in a neat table of rows and columns, like a spreadsheet, where each row is one example (say, one house) and each column is one measured number (size, number of bedrooms, price). This fits the method perfectly because it needs exactly that shape: each column that describes something becomes an input the line uses, and the one column you want to predict becomes the answer it aims for. So the reason a table is a good fit is that its layout already matches what the math needs. Every input the rule multiplies and adds up is sitting in its own column, and every row is a ready-made example to learn from, so nothing needs rearranging.
+<strong>In real life:</strong> Picture a spreadsheet of houses. Each row is one house; the columns are its size in square feet and its selling price. Linear regression studies these rows and finds a rule like "price = 100,000 + 150 times the size." Then for a new house where you only know the size, you plug the size into that rule and it predicts the price. The size column is the input, the price column is the answer being learned, and each row is one lesson the method learns from.
+<strong>Why it matters:</strong> Most business and real-world data already lives in tables (sales logs, sensor readings, customer records), so linear regression can be applied straight away to predict a numeric outcome like price, demand, or temperature. This is why table-shaped number data is the go-to answer for linear regression, and why the matching AWS tool for this method expects data laid out exactly this way, with rows as examples and columns as the measured facts.</p>
+<h2 id="ch-4-lesson-3">Data Visualization &amp; Exploratory Data Analysis</h2>
+<h3 id="ch-4-what-this-lesson-is-about-in-one-line">What this lesson is about, in one line</h3>
+<p>Before you train a model, you <em>look at</em> your data with charts to understand it and catch problems early. Exploring data with charts and summaries is called <strong>Exploratory Data Analysis (EDA)</strong>.</p>
+<h3 id="ch-4-why-look-at-data-first-data-visualization">Why look at data first (data visualization)</h3>
+<p>Drawing your data as pictures helps you judge its quality and relevance <em>before</em> training. By seeing the data, you can spot problems like odd values, lopsided spreads, and outliers (values far from the rest). Catching these early means the model is less likely to end up inaccurate.</p>
+<p><strong>Three goals of looking at your data:</strong>
+1. <strong>Understand the data</strong> — see its patterns, trends, shape, and limits. This helps you pick the right method.
+2. <strong>Identify quality issues</strong> — find missing values, outliers, and inconsistencies. Clean data is essential.
+3. <strong>Shape the data</strong> — improve it through changes and by creating better inputs, so it is ready for modelling.</p>
+<h3 id="ch-4-four-ways-charts-help-you-explore-eda-methods">Four ways charts help you explore (EDA methods)</h3>
+<ul>
+<li><strong>Relationship analysis</strong> — do two things move together? (helps pick useful inputs and drop repetitive ones)</li>
+<li><strong>Distribution analysis</strong> — where do values cluster, and how spread out are they? (shows the typical value, the variety, the shape, and outliers)</li>
+<li><strong>Comparison</strong> — how do groups differ? (reveals separate trends between subgroups)</li>
+<li><strong>Composition</strong> — what are the proportions? (shows percentages and counts that make up a whole)</li>
+</ul>
+<h3 id="ch-4-two-broad-kinds-of-data-different-charts">Two broad kinds of data → different charts</h3>
+<ul>
+<li><strong>Categorical data</strong> = labels/groups, not amounts. Examples: gender, membership tier, dietary preference. You summarise it with counts and percentages.</li>
+<li><strong>Numerical data</strong> = measured amounts. Examples: age, income, test score. It supports more math (averages, spreads).</li>
+</ul>
+<h4 id="ch-4-charts-for-categorical-data">Charts for CATEGORICAL data</h4>
+<p>Categorical data has a <strong>limited number of possible values with no inherent order</strong>, so its analysis leans on <strong>counts, percentages (proportions), and cross-tabulations</strong> (tables counting how often two categories occur together).</p>
+<table>
+<thead>
+<tr>
+<th>Chart</th>
+<th>What it shows</th>
+<th>EDA method it assists</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bar chart</strong></td>
+<td>Bars sized by how much of the data falls in each group</td>
+<td><strong>Comparison</strong></td>
+</tr>
+<tr>
+<td><strong>Pie chart</strong></td>
+<td>A circle representing the whole dataset, split into slices — each slice is one category's share</td>
+<td><strong>Composition</strong></td>
+</tr>
+<tr>
+<td><strong>Heatmap</strong></td>
+<td>A grid that uses <strong>colour</strong> to show values and patterns</td>
+<td><strong>Relationship</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bar chart, worked example — catching skew:</strong> chart the education levels <em>in your dataset</em> next to the same chart for the <em>general population</em>. If high-school diplomas are under-represented and advanced degrees over-represented in yours, your data is <strong>skewed</strong> — and skewed data can bias the model. This is quality-checking with a single picture.</p>
+<p><strong>Pie chart:</strong> a quick visual summary of how a categorical column is distributed — every slice is a percentage of the whole.</p>
+<p><strong>Heatmap:</strong> colour makes clusters and patterns jump out far faster than scanning a table of numbers — for example, strong positive links in green and strong negative links in blue. One caution from the course: the colours only <em>point</em> at a pattern; to understand it you still have to read the actual numbers behind them.</p>
+<h4 id="ch-4-charts-for-numerical-data">Charts for NUMERICAL data</h4>
+<p>Numerical data supports more advanced math, so its charts lean on statistics like the <strong>mean</strong> (average), <strong>median</strong> (middle value), and <strong>standard deviation</strong> (typical distance from the average).</p>
+<table>
+<thead>
+<tr>
+<th>Chart</th>
+<th>What it shows</th>
+<th>EDA method it assists</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Scatter plot</strong></td>
+<td>Each point placed by two values (an x and a y)</td>
+<td><strong>Relationship</strong></td>
+</tr>
+<tr>
+<td><strong>Histogram</strong></td>
+<td>Bars counting how many values fall in each range (bin)</td>
+<td><strong>Distribution</strong></td>
+</tr>
+<tr>
+<td><strong>Density plot</strong></td>
+<td>A smooth curve of where one feature's values concentrate — no fixed bins</td>
+<td><strong>Distribution</strong></td>
+</tr>
+<tr>
+<td><strong>Box plot</strong></td>
+<td>The median, the middle 50% as a box, whiskers to the min/max, and outliers as separate dots</td>
+<td><strong>Distribution</strong> (and comparing groups' spreads)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scatter plot, worked example:</strong> a medical dataset of tumour measurements, where each case is either malignant or benign. Plot the cases with two different markers (say triangles vs circles) and look for <strong>distinct regions</strong> — if the two classes cluster in different areas of the plot, the two measured features genuinely separate the classes, which is exactly what a model can learn from.</p>
+<p><strong>Histogram, worked example:</strong> plot incomes into ranges ($0–100K, $100–200K, ...) and the bars answer three questions at a glance: is the data <strong>normally distributed</strong> (one symmetric hump)? <strong>how many peaks</strong> are there? is there <strong>skewness</strong> (a lopsided tail)?</p>
+<p><strong>Density plot:</strong> the histogram's smooth cousin — same question (where do values concentrate?) without forcing the data into bins. A sharp peak shows exactly where values pile up.</p>
+<p><strong>Box plot — how to read one:</strong> the box's <em>position and length</em> show where the bulk of the data sits and how spread out it is (a short box = tightly clustered values). The line inside the box is the <strong>median</strong> — if it sits off-centre, the data is skewed. The <strong>whiskers</strong> span the range excluding outliers, and <strong>outliers</strong> are drawn as individual points beyond them. Box plots shine when comparing the spreads of several groups side by side.</p>
+<div class="admonition note">
+<p class="admonition-title">Key idea</p>
+<p>match the chart to the question — comparing groups (bar), proportions of a whole (pie), colour-coded patterns across two dimensions (heatmap), two amounts together (scatter), the shape of one amount (histogram or density), spread and outliers (box).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Exam trap</p>
+<p>"find hidden patterns and relationships" in a dataset points to the <strong>relationship-analysis</strong> charts — the <strong>heatmap</strong> (categorical/cross-feature patterns via colour) or the <strong>scatter plot</strong> (two numerical variables) — not a histogram or density plot, which describe the distribution of a <em>single</em> feature.</p>
+</div>
+<hr />
+<h4 id="ch-4-furnished-images-for-this-node-files-imagesm1_1c">Furnished images for this node (files: <code>images/M1_1c/</code>)</h4>
+<p>Inline  markers above pull from <code>images/M1_1c/</code> per MANIFEST.md filenames (01–09). Drop the image files there and each figure appears at its concept; missing files are silently skipped.</p>
+<h2 id="ch-4-lesson-4">AWS Storage Options (Amazon S3, EBS, EFS, FSx)</h2>
+<h3 id="ch-4-what-this-lesson-is-about-in-one-line_1">What this lesson is about, in one line</h3>
+<p>Once data is collected and analyzed, you pick <em>where it lives</em> on AWS — and the right choice depends on your use case's cost, performance, data structure, and access pattern.</p>
+<h3 id="ch-4-the-four-storage-services">The four storage services</h3>
+<p>Amazon Web Services (AWS) offers four storage services commonly used for machine learning tasks that need scalable, durable, highly available storage:
+- <strong>Amazon Simple Storage Service (Amazon S3)</strong> — object storage
+- <strong>Amazon Elastic Block Store (Amazon EBS)</strong> — block storage attached to compute
+- <strong>Amazon Elastic File System (Amazon EFS)</strong> — shared file storage that grows on its own
+- <strong>Amazon FSx</strong> — managed versions of popular specialist file systems</p>
+<p>Each excels at something different; no single one wins every use case.</p>
+<h3 id="ch-4-amazon-s3-the-flexible-object-store-and-your-data-lake">Amazon S3 — the flexible object store (and your data lake)</h3>
+<p>Amazon S3 is a flexible, scalable <strong>object storage</strong> service used for data lakes, websites, cloud apps, backups, archives, analytics, and machine learning. In ML workflows it usually plays the role of the <strong>central data lake</strong>: the one place data is ingested into, extracted from, and transformed through on its way to other AWS services.</p>
+<p><strong>Key benefits:</strong>
+- Highly scalable, available, and redundant; accessed through an <strong>API</strong> (a programmatic interface — no drive letters or mounts)
+- Data can be <strong>streamed or copied</strong> between S3 buckets and other services
+- <strong>Storage classes</strong> cut costs by matching how often data is accessed — frequent use, infrequent access, archive, or automatic tiering</p>
+<div class="admonition warning">
+<p class="admonition-title">Watch out</p>
+<p>S3's one trade-off is <strong>higher latency</strong> than local storage — it is reached over the network. For latency-sensitive workloads it may not be optimal; with caching and good architecture most applications still perform excellently, but you must account for its network-based nature.</p>
+</div>
+<p><strong>Machine learning use cases:</strong>
+- <strong>Data ingestion and storage</strong> — large training datasets land in S3 by streaming or batch, then feed training and inference.
+- <strong>Model training and evaluation</strong> — S3 stores datasets <em>and</em> trained models, and its <strong>versioning</strong> lets you keep and compare model iterations to evaluate performance.
+- <strong>Integration hub</strong> — Amazon SageMaker trains and deploys straight from S3 data, Amazon Kinesis streams data into S3 buckets, and AWS Glue connects to S3 for data processing.</p>
+<h3 id="ch-4-amazon-ebs-fast-disks-for-one-machine">Amazon EBS — fast disks for one machine</h3>
+<p>Amazon EBS provides <strong>persistent, block-level storage volumes</strong> (virtual disks) that attach to Amazon Elastic Compute Cloud (Amazon EC2) instances, so you can scale storage performance and cost as needed. Well-suited for databases, web applications, analytics, and ML; it integrates with Amazon SageMaker as a core component for model training and deployment.</p>
+<p><strong>Key benefits:</strong>
+- <strong>High-performance, low-latency</strong> block storage attached directly to an EC2 instance
+- Choice of <strong>hard disk drive (HDD)</strong> volumes for frequent low-cost storage or <strong>solid state drive (SSD)</strong> volumes for workloads needing high <strong>IOPS</strong> (input/output operations per second — how many reads/writes per second the disk sustains)
+- <strong>Point-in-time snapshots</strong> that can be restored — disaster recovery and data protection built in</p>
+<div class="admonition warning">
+<p class="admonition-title">Watch out</p>
+<p>EBS keeps storage <em>separate</em> from the EC2 instance, which adds planning: volumes must be allocated and scaled per instance. The alternative, an <strong>instance store</strong>, ties storage directly to the instance's lifecycle — simpler to manage, but it lives and dies with the machine. EBS trades a little management for flexibility and persistence.</p>
+</div>
+<p><strong>Machine learning use cases:</strong>
+- <strong>High-performance storage</strong> — high-IOPS volumes give ML applications fast reads/writes on large datasets, accelerating workflows.
+- <strong>Hosting pre-trained models</strong> — upload, store, and serve pre-trained models for real-time predictions without separate hosting infrastructure.</p>
+<h3 id="ch-4-amazon-efs-one-shared-folder-for-many-machines">Amazon EFS — one shared folder for many machines</h3>
+<p>Amazon EFS is a highly scalable, <strong>serverless file storage</strong> service: you get file systems that grow and shrink automatically as files are added or removed — up to <strong>petabytes</strong> — with no capacity to provision or manage, and performance stays high as usage changes. It speaks the standard <strong>NFSv4</strong> protocol (Network File System — the long-standing way computers share folders over a network), so existing applications built for on-premises NFS servers migrate <strong>without code changes</strong>.</p>
+<p><strong>Key benefits:</strong>
+- <strong>Scalable and performant</strong> — a high-performance file system accessed <strong>concurrently from multiple EC2 instances</strong>
+- <strong>High throughput</strong> — supports parallel access for data processing, media processing, and content management
+- <strong>Low-latency access</strong> — petabyte-scale shared file systems without performance issues</p>
+<div class="admonition warning">
+<p class="admonition-title">Watch out</p>
+<p>EFS costs more per gigabyte than EBS. The trade: EFS buys effortless <em>shared</em> scaling; EBS is cheaper but single-instance and workload-dependent. Decide whether streamlined shared file systems justify the price.</p>
+</div>
+<p><strong>Machine learning use cases:</strong>
+- <strong>Concurrent access</strong> — many EC2 instances read the same datasets simultaneously, ideal for ML workflows sharing data across compute.
+- <strong>Shared datasets</strong> — no copying large datasets to every instance; libraries, frameworks, and models are read by all instances at once without contention, speeding training and deployment.</p>
+<h3 id="ch-4-amazon-fsx-managed-specialist-file-systems">Amazon FSx — managed specialist file systems</h3>
+<p>Amazon FSx is a fully managed service providing <strong>popular specialist file systems</strong>: <strong>Lustre</strong> (high-performance computing), <strong>NetApp ONTAP</strong>, <strong>OpenZFS</strong>, and <strong>Windows File Server</strong>. It focuses on reliability, security, and scalability for ML, analytics, and high-performance computing — delivering <strong>millions of IOPS with sub-millisecond latency</strong>.</p>
+<p><strong>Key benefits:</strong>
+- <strong>Shared access</strong> — mount one file system to many compute instances
+- <strong>High performance</strong> — low latency, high throughput
+- <strong>File system variety</strong> — Lustre, NetApp ONTAP, OpenZFS, Windows File Server
+- <strong>Storage options</strong> — ephemeral (temporary, for short-lived tasks) or persistent (long-term retention)</p>
+<div class="admonition warning">
+<p class="admonition-title">Watch out</p>
+<p>specialist file systems add complexity and management overhead, and tightly coupling your ML workflow to one file system risks <strong>vendor lock-in</strong>, limiting future flexibility.</p>
+</div>
+<p><strong>Machine learning use cases:</strong>
+- <strong>Lustre for training</strong> — Lustre's <strong>distributed architecture</strong> gives highly parallel, scalable data access, ideal for large, high-throughput ML training datasets.
+- <strong>Managed operations</strong> — backups, scaling, high availability, and security are handled for you; you focus on data and applications, not infrastructure.</p>
+<h3 id="ch-4-choosing-between-them-the-decision-table">Choosing between them — the decision table</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Storage kind</th>
+<th>Shines when</th>
+<th>Watch for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amazon S3</strong></td>
+<td>Object (API access)</td>
+<td>Central data lake; huge, durable, cheap; versioned models</td>
+<td>Network latency</td>
+</tr>
+<tr>
+<td><strong>Amazon EBS</strong></td>
+<td>Block (one instance)</td>
+<td>Fast disks for a single machine; high IOPS; snapshots</td>
+<td>Per-instance planning; not shared</td>
+</tr>
+<tr>
+<td><strong>Amazon EFS</strong></td>
+<td>File (shared, NFS)</td>
+<td>Many Linux instances reading the same files, auto-scaling to petabytes</td>
+<td>Higher cost than EBS</td>
+</tr>
+<tr>
+<td><strong>Amazon FSx</strong></td>
+<td>File (specialist)</td>
+<td><strong>Windows File Server</strong> needs, or <strong>Lustre</strong> for extreme-throughput training</td>
+<td>Complexity; vendor lock-in</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Exam trap</p>
+<p>shared-access questions hinge on the <em>file system named in the scenario</em>. "Concurrent access from multiple instances <strong>to a Windows File Server</strong>" (or extreme throughput with sub-millisecond latency via Lustre) → <strong>Amazon FSx</strong>. Generic shared Linux file access over NFS → <strong>Amazon EFS</strong>. One instance needing fast disks → <strong>Amazon EBS</strong>. Cheap, durable, latency-tolerant bulk storage → <strong>Amazon S3</strong>.</p>
+</div>
+<h3 id="ch-4-concepts-explained-simply_2">Concepts explained simply</h3>
+<h4 id="ch-4-object-vs-block-vs-file-storage-what-is-actually-different">Object vs block vs file storage — what is actually different?</h4>
+<p>Think of three ways to keep your belongings. <strong>Object storage</strong> (Amazon S3) is a valet warehouse: you hand over an item with a claim ticket and get the whole item back on request — you never see shelves, and the warehouse can be effectively infinite, but every retrieval is a round trip to the warehouse. <strong>Block storage</strong> (Amazon EBS) is the hard drive bolted into your own computer: the machine can read and write any tiny piece of it instantly, which is fastest of all, but it belongs to that one machine. <strong>File storage</strong> (Amazon EFS and Amazon FSx) is the shared network drive at an office: everyone sees the same folders at once and works on the same files without making copies.
+<strong>In real life:</strong> a photo studio might archive every shoot in the valet warehouse (cheap, unlimited), edit today's shoot on the workstation's own drive (fastest), and keep fonts and templates on the shared office drive so every editor uses the same ones.
+<strong>Why it matters:</strong> most exam storage questions are really asking "which of the three kinds fits this access pattern?" — one machine (block), many machines sharing (file), or anything-at-scale over the network (object).</p>
+<hr />
+<h4 id="ch-4-furnished-images-for-this-node-files-imagesm1_1d">Furnished images for this node (files: <code>images/M1_1d/</code>)</h4>
+<p>Inline  markers above pull from <code>images/M1_1d/</code> per MANIFEST.md filenames. Drop the image files there and each figure appears at its concept; missing files are silently skipped.</p>
+<h2 id="ch-4-lesson-5">Data Formats &amp; File Types (row · column · object notation)</h2>
+<h3 id="ch-4-why-format-matters">Why format matters</h3>
+<p>Common data formats — <strong>row-based, column-based, object-notation</strong> — structure data for ML. Format <strong>impacts efficiency of analysis</strong> and should <strong>match the data structure and operations needed</strong>.</p>
+<h3 id="ch-4-1-row-based-data-format">1. Row-based data format</h3>
+<p>Each <strong>row = one record/entity</strong>; columns = that entity's features. Common in relational databases &amp; spreadsheets; shows relationships between features.
+- <strong>Good for:</strong> dense, tabular data <strong>frequently accessed by rows</strong>.
+- Example: a customer table (customerID, name, age, email, last_support, subscription_active) → analyze relationships like subscription status vs age.</p>
+<p><strong>Row-based file types:</strong>
+| Format | Notes |
+|---|---|
+| <strong>CSV</strong> (comma-separated values) | A lightweight text file where each line is one row and commas separate the values. Stores a mix of words and numbers, so it is very common. <strong>Trade-off:</strong> it is simple, but slower for heavy analysis than the column-first files described below. |
+| <strong>Avro RecordIO</strong> | Stores records one after another (row by row), which helps when a model reads through the whole dataset many times while training. It also carries a built-in description of its own layout (a <strong>schema</strong>), so programs read it faster than files with no fixed layout. |</p>
+<h3 id="ch-4-2-column-first-data-format">2. Column-first data format</h3>
+<p>Stores data with <strong>columns as the primary structure</strong>; queries extract insights from <strong>patterns within a column</strong> rather than whole records → efficient trend analysis across large datasets.
+- <strong>Good for:</strong> <strong>sparse</strong> data with aggregations done by column.
+- Example: analyze churn across many records (last_support, subscription_active) without loading full records. Column-first → <strong>compression</strong> + faster access for ML.</p>
+<p><strong>Column-first file types:</strong>
+| Format | Notes |
+|---|---|
+| <strong>Parquet</strong> | Column-first; used in analytics/data-warehouse workloads with large datasets. ML benefits from <strong>compression</strong> → better storage + performance. |
+| <strong>ORC</strong> (Optimized Row Columnar) | Column-first, similar to Parquet; used in big-data (<strong>Apache Hive, Spark</strong>). Efficient compression + performance → widely chosen for ML. |</p>
+<h3 id="ch-4-3-object-notation-data">3. Object-notation data</h3>
+<p>Fits <strong>non-tabular, hierarchical</strong> data (graphs, textual). Structured into hierarchical <strong>objects with features &amp; key-value pairs</strong> rather than rows/columns.</p>
+<p><strong>Object-notation file types:</strong>
+| Format | Notes |
+|---|---|
+| <strong>JSON</strong> | Document-based; human + machine readable. <strong>Flexible, compact, hierarchical, easy to parse.</strong> Built from <strong>objects</strong> (key-value pairs in <code>{}</code>; values = string/number/Boolean/array/object/null) and <strong>arrays</strong> (values in <code>[]</code>, comma-separated). |
+| <strong>JSONL</strong> (newline-delimited JSON) | JSON objects separated by <strong>new lines</strong>, not nested. Each object on its own line. <strong>Efficiency:</strong> process individual objects <strong>without loading a whole JSON array</strong> → better for large ML datasets. Can <strong>map to column-first formats like Parquet</strong> for those added benefits. |</p>
+<h3 id="ch-4-exam-relevant-summary">Exam-relevant summary</h3>
+<ul>
+<li><strong>Row-based</strong> (CSV, Avro RecordIO) → dense, row-access, full-dataset iteration.</li>
+<li><strong>Column-first</strong> (Parquet, ORC) → sparse, column aggregation, compression, analytics — <strong>preferred for large ML/analytics workloads</strong>.</li>
+<li><strong>Object-notation</strong> (JSON, JSONL) → hierarchical/flexible; JSONL scales better than JSON arrays and can map to Parquet.</li>
+<li>Ties to <strong>M1_1b</strong>: Parquet/ORC = structured; CSV/JSON = semi-structured. Format choice = evaluate algorithm, use case, data, analysis method.</li>
+</ul>
+<h3 id="ch-4-concepts-explained-simply_3">Concepts explained simply</h3>
+<h4 id="ch-4-what-makes-parquet-and-orc-files-so-much-faster-for-big-data">What makes Parquet and ORC files so much faster for big data?</h4>
+<p>Parquet and ORC (Optimized Row Columnar) are two ways of saving big tables of data on disk, think giant spreadsheets with rows and columns. Both are free and open (anyone can use them). The special thing is HOW they physically store the data. Most everyday files, like a CSV (Comma-Separated Values) file, which is a plain-text table where columns are separated by commas, are "row-first": they write out the whole first row, then the whole second row, and so on. Parquet and ORC are "column-first": they keep all the values from one column together, then all the values from the next column together. Why does that matter? Because most analysis and machine learning only needs a few columns out of many (for example, just "age" and "income" out of 50 columns). With a column-first layout the computer can jump straight to just those columns and skip the rest, so it reads far less data and finishes much faster. These formats also shrink smaller (called compression, which means packing a file down so it takes up less space): since all the values in one column are the same kind of thing (all dates, or all prices), they look alike and can be packed tightly, saving storage space and money.
+<strong>In real life:</strong> Imagine a school with 10,000 students, and you only want the average height. In a row-first setup, each student's full record (name, address, grades, height, and so on) is stored together, so to get heights you must flip through all 10,000 complete records and pull one number from each. In a column-first setup (Parquet or ORC), every student's height is already stored side-by-side in one place, so you grab just that single list and instantly average it, without ever touching names, addresses, or grades.
+<strong>Why it matters:</strong> Machine learning and data analysis love these formats because they usually read a few columns across millions of rows. On AWS, several tools (including one that answers questions about files using plain database-style requests, and others that prepare and train on data) read Parquet and ORC much faster and cheaper than row-first CSV files, because they pull far less data out of Amazon Simple Storage Service (S3), Amazon's file storage where you pay based on how much data is read.</p>
+<h4 id="ch-4-how-does-storing-data-one-full-row-at-a-time-reveal-patterns-like-older-customers-cancel-less">How does storing data one full row at a time reveal patterns like "older customers cancel less"?</h4>
+<p>A "row-based format" means you store your data like a table where each row is one thing (for example, one customer), and the columns are facts about that thing (like their age, how long they have been a customer, and whether they cancelled). Because everything about ONE customer sits together on ONE row, all their facts are lined up side by side. A "relationship" between two of those facts just means: when this fact changes, does that other fact tend to change too? You spot it by scanning down the table and comparing two columns row by row. For example, if you look at the age column next to the cancelled column and notice that the older-age rows almost always say "No" for cancelled, you have found a relationship: older customers cancel less. The row layout makes this easy because the age and the cancellation answer for the same person are already glued together on the same line, so you never have to hunt around to figure out which age goes with which cancellation.
+<strong>In real life:</strong> Picture a class attendance sheet where each row is one student. Columns: Age, Hours Studied, Passed?</p>
+<table>
+<thead>
+<tr>
+<th>Student</th>
+<th>Age</th>
+<th>Hours Studied</th>
+<th>Passed?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ana</td>
+<td>25</td>
+<td>10</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Ben</td>
+<td>19</td>
+<td>2</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Carla</td>
+<td>31</td>
+<td>12</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Dan</td>
+<td>18</td>
+<td>1</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>Reading down the rows, the "Passed? = Yes" people all sit next to bigger "Hours Studied" numbers, and the "No" people next to tiny ones. Because each student's hours and result share the same row, you instantly see the pattern: more study hours goes with passing. Same idea as "older customers cancel less", where each customer's age sits right beside their cancellation answer, so the pattern jumps out.
+<strong>Why it matters:</strong> Most machine learning starts with a plain table (like a spreadsheet or CSV file, a simple text table), where one row equals one example the program learns from. Keeping each thing's facts together on one row is exactly what lets both a person (while exploring the data by hand) and a learning program line up an input (age) with an outcome (cancelled) for the same customer, which is how the program learns "when age is high, cancellation is low." This row-by-row storage is also the natural fit for everyday systems that read or write one whole record at a time, such as processing a single order.</p>
+<h4 id="ch-4-why-do-training-tools-like-files-that-store-examples-in-order-with-a-built-in-description">Why do training tools like files that store examples in order with a built-in description?</h4>
+<p>Think of your training data as a long list of examples, where each example is one thing the program learns from (like one customer, one photo, or one row of numbers). Avro is simply a way of packing this data into a single file. Two ideas matter. First, the examples are written into the file one right after another, like beads on a string, so a training program can start at the front and read straight through to the end in order. That is fast and smooth, which helps because training usually reads the whole set of data over and over. (The general name for this style of file that packs many examples back-to-back is RecordIO; Avro is one specific format that does this and adds the second idea below.) Second, the file carries a tiny built-in description of what each example looks like: the field names (like "age", "price", "answer") and the kind of value each field holds (number, text, or true/false). Because that description travels inside the file itself, any program opening it instantly knows how to read the data correctly instead of guessing.
+<strong>In real life:</strong> Imagine a filing cabinet where every folder is filled in on the same pre-printed form (Name, Date, Amount), and a cover sheet up front explains exactly what those blanks mean. Anyone can grab folders one after another and read them without confusion. That is this kind of file. The opposite is a shoebox of loose sticky notes in random handwriting with no key: you would have to guess what each scribble means, and there is no clean order to read them in.
+<strong>Why it matters:</strong> A file that describes itself and packs its examples in order lets machine learning training tools move through huge amounts of data quickly and reliably. On Amazon Web Services (AWS), a closely related packed format is the recommended, efficient input for many ready-made learning programs, and it works well with a setting that feeds data straight from storage to the training program on the fly, instead of copying all of it to the machine first.</p>
+<h4 id="ch-4-how-do-hive-and-spark-handle-data-too-big-for-one-computer">How do Hive and Spark handle data too big for one computer?</h4>
+<p>Imagine you have so much data that no single computer can handle it, so you spread it across many computers working together (often called "big data"). Hive and Spark are two free, open tools that help you process this huge pile of data across all those machines. Hive lets you ask questions about giant sets of data using SQL (Structured Query Language), the simple, English-like way of asking a database questions, so you do not have to learn anything new. Spark is a fast, do-many-things worker that actually performs the heavy number-crunching, and it can also train machine learning programs (programs that learn patterns from data). The reason these come up alongside file formats like ORC (Optimized Row Columnar, a compact way of storing table data on disk so it takes less space and reads faster) is simple: these tools need to read and write the data somewhere, and ORC is one storage format they work with especially well. In short: ORC is how the data sits on disk, while Hive and Spark are the tools that read that data and do useful work with it.
+<strong>In real life:</strong> Picture a giant library with a billion books that one librarian could never sort alone. Instead, you hire a whole team and split the job: each worker takes one shelf and counts, sorts, or searches their section at the same time, then everyone combines their answers. Hive and Spark are like the manager who hands out these chunks to many computers at once. Hive is the manager you talk to in plain "please find all books published after 2000" style requests (SQL), while Spark is a faster, more versatile manager who can also teach the workers to spot patterns (machine learning). ORC is like the neatly labeled, space-saving shelving system the books sit in, so any worker can grab what they need quickly.
+<strong>Why it matters:</strong> Real machine learning starts with preparing enormous amounts of data. Hive and Spark let you clean, filter, and reshape data far too big for one computer, and Spark can even train programs at large scale. On AWS you meet them inside managed big-data services that set up and run these tools for you.</p>
+<h2 id="ch-4-lesson-6">Data Ingestion: Batch vs Streaming (+ Amazon Kinesis)</h2>
+<h3 id="ch-4-two-ways-to-ingest-into-a-centralized-location">Two ways to ingest into a centralized location</h3>
+<div class="admonition note">
+<p class="admonition-title">Key framing</p>
+<p><strong>Training</strong> is primarily done on <strong>historical data processed in BATCH</strong>; <strong>inference/predictions</strong> are primarily done with <strong>STREAMING</strong> data.</p>
+</div>
+<h3 id="ch-4-batch-data">Batch data</h3>
+<p>Data collected &amp; processed <strong>in batches, not continuously</strong>. Processed once or on a <strong>recurring schedule</strong>. Usually <strong>not time-critical</strong>; used for <strong>long-term analysis</strong>.
+- Batch processing analyzes the <strong>entire dataset at once</strong> to train ML models (vs sequential/incremental).
+- Common for <strong>traditional ML</strong> where the full dataset is available upfront.
+- <strong>Example:</strong> a data scientist has 1M images to train an image classifier — the whole dataset is processed in batches during training; the model iterates over the images many times, updating parameters to optimize performance.</p>
+<h3 id="ch-4-streaming-data">Streaming data</h3>
+<p>Data <strong>continuously generated &amp; processed in real-time / near-real-time</strong>. Can be batched, but streaming needs extra considerations: <strong>data buffering, real-time monitoring, fault tolerance, scalability</strong> to handle the constant flow.
+- Processes info <strong>as it becomes available</strong> → useful when <strong>immediate action/predictions</strong> are needed.
+- <strong>Example:</strong> a fraud-detection engine analyzes transactions <strong>as they occur</strong>. Real-time streaming apps often rely on models <strong>trained on historical batch data</strong> — combining live streaming + batch-derived insights → instant decisions as events unfold.</p>
+<h3 id="ch-4-amazon-kinesis-streaming-ingestion-family">Amazon Kinesis (streaming ingestion family)</h3>
+<ul>
+<li><strong>Kinesis Data Streams (KDS)</strong> — real-time, low-latency, pipe whose capacity you control; you build the program that reads it; <strong>replayable</strong> retention (24h default → up to 365 days). Capacity is set in units you control.</li>
+<li><strong>Amazon Data Firehose</strong> (formerly Kinesis Data Firehose) — fully managed, no capacity setup, auto-scales, <strong>near-real-time</strong>; auto-delivers to <strong>S3, Redshift, OpenSearch, Splunk, Snowflake (native), Apache Iceberg</strong>, HTTP endpoints; can transform via Lambda + convert JSON→Parquet/ORC.</li>
+<li><strong>Amazon Managed Service for Apache Flink</strong> (formerly Kinesis Data Analytics) — process streams <strong>in-flight</strong> (SQL/Java/Python/Scala).</li>
+<li><strong>Kinesis Video Streams</strong> — time-encoded video/media for playback + ML.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Exam trap (the classic)</p>
+<p><strong>Data Streams</strong> = real-time, you control capacity, replayable, sub-second → pick when <em>lowest latency</em>. <strong>Firehose</strong> = near-real-time (buffered), no capacity setup, auto-delivers to fixed destinations, no long-term replay → pick for <em>zero-admin delivery to S3/warehouse</em>.</p>
+</div>
+<h3 id="ch-4-batch-vs-streaming-summary">Batch vs streaming — summary</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Batch</th>
+<th>Streaming</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Timing</td>
+<td>Scheduled / one-time</td>
+<td>Continuous, real-time</td>
+</tr>
+<tr>
+<td>Time-critical?</td>
+<td>No (long-term analysis)</td>
+<td>Yes (immediate action)</td>
+</tr>
+<tr>
+<td>ML use</td>
+<td><strong>Training</strong> (historical)</td>
+<td><strong>Inference/predictions</strong></td>
+</tr>
+<tr>
+<td>AWS</td>
+<td>S3 + Glue/EMR</td>
+<td><strong>Kinesis</strong> family</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>1M images → image classifier</td>
+<td>Fraud detection on live transactions</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Still to come in this chapter</p>
+<p>More of this chapter is on the roadmap and will fill in as the notes are written. Planned topics:</p>
+<ul>
+<li>Data extraction (M1_1g) — awaiting course input.</li>
+<li>Data merging (M1_1h) — awaiting course input.</li>
+<li>Ingestion &amp; storage troubleshooting (M1_1i) — awaiting course input.</li>
+<li>Transform Data (M1_2): cleaning, encoding, feature engineering; Feature Store, Data Wrangler, Glue.</li>
+<li>Validate &amp; Prepare for Modeling (M1_3): bias mitigation, split/shuffle/augment; DataBrew, Data Quality.</li>
+</ul>
+</div>
+<section class="opener" id="ch-5">
+<p><span class="chapter-num">5</span></p>
+<h1 id="ch-5-domain-2-model-development">Domain 2 — Model Development</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>Choosing an approach, training and tuning, then evaluating the result — 26% of the exam.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Coming as we learn</p>
+<p>This chapter is on the roadmap. It will fill in with worked notes as the learning gets there — for now, here is what it will cover:</p>
+<ul>
+<li>Choosing a modelling approach for the problem and data.</li>
+<li>Training and hyperparameter tuning.</li>
+<li>Model evaluation and metrics.</li>
+</ul>
+</div>
+<section class="opener" id="ch-6">
+<p><span class="chapter-num">6</span></p>
+<h1 id="ch-6-domain-3-deployment-orchestration">Domain 3 — Deployment &amp; Orchestration</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>Getting a working model into dependable production — infrastructure, CI/CD and pipelines — 22% of the exam.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Coming as we learn</p>
+<p>This chapter is on the roadmap. It will fill in with worked notes as the learning gets there — for now, here is what it will cover:</p>
+<ul>
+<li>Deployment infrastructure and endpoints.</li>
+<li>CI/CD for ML.</li>
+<li>Orchestrating ML pipelines.</li>
+</ul>
+</div>
+<section class="opener" id="ch-7">
+<p><span class="chapter-num">7</span></p>
+<h1 id="ch-7-domain-4-monitoring-maintenance-security">Domain 4 — Monitoring, Maintenance &amp; Security</h1>
+<p><span class="accent-rule"></span></p>
+</section>
+<p><em>Keeping a live model healthy — drift, cost/performance and security — 24% of the exam.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Coming as we learn</p>
+<p>This chapter is on the roadmap. It will fill in with worked notes as the learning gets there — for now, here is what it will cover:</p>
+<ul>
+<li>Monitoring for data and model drift.</li>
+<li>Cost and performance optimisation.</li>
+<li>Securing ML workloads.</li>
+</ul>
+</div>
+  </article>
+</div>
+{% endblock %}
+{% block reader_js %}
+  <script defer src="{{ url_for('static', filename='js/book.js') }}"></script>
+{% endblock %}

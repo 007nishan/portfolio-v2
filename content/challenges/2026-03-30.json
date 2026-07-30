@@ -1,0 +1,17 @@
+{
+  "challenge_number": 232,
+  "concepts_text": null,
+  "date_id": "2026-03-30",
+  "fcc_description": "<p>Given a date string, return the date 9 months in the future.</p>\n<ul>\n<li>The given and return strings have the format <code>\"YYYY-MM-DD\"</code>.</li>\n<li>If the month nine months into the future doesn't contain the original day number, return the last day of that month.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getDueDate(\\\"2025-03-30\\\")</code> should return <code>\\\"2025-12-30\\\"</code>.</p>\", \"testString\": \"assert.equal(getDueDate(\\\"2025-03-30\\\"), \\\"2025-12-30\\\");\"}, {\"text\": \"<p><code>getDueDate(\\\"2025-04-27\\\")</code> should return <code>\\\"2026-01-27\\\"</code>.</p>\", \"testString\": \"assert.equal(getDueDate(\\\"2025-04-27\\\"), \\\"2026-01-27\\\");\"}, {\"text\": \"<p><code>getDueDate(\\\"2025-05-29\\\")</code> should return <code>\\\"2026-02-28\\\"</code>.</p>\", \"testString\": \"assert.equal(getDueDate(\\\"2025-05-29\\\"), \\\"2026-02-28\\\");\"}, {\"text\": \"<p><code>getDueDate(\\\"2026-06-30\\\")</code> should return <code>\\\"2027-03-30\\\"</code>.</p>\", \"testString\": \"assert.equal(getDueDate(\\\"2026-06-30\\\"), \\\"2027-03-30\\\");\"}, {\"text\": \"<p><code>getDueDate(\\\"2026-10-11\\\")</code> should return <code>\\\"2027-07-11\\\"</code>.</p>\", \"testString\": \"assert.equal(getDueDate(\\\"2026-10-11\\\"), \\\"2027-07-11\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_due_date(\\\"2025-03-30\\\")</code> should return <code>\\\"2025-12-30\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_due_date(\\\"2025-03-30\\\"), \\\"2025-12-30\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_due_date(\\\"2025-04-27\\\")</code> should return <code>\\\"2026-01-27\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_due_date(\\\"2025-04-27\\\"), \\\"2026-01-27\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_due_date(\\\"2025-05-29\\\")</code> should return <code>\\\"2026-02-28\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_due_date(\\\"2025-05-29\\\"), \\\"2026-02-28\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_due_date(\\\"2026-06-30\\\")</code> should return <code>\\\"2027-03-30\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_due_date(\\\"2026-06-30\\\"), \\\"2027-03-30\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_due_date(\\\"2026-10-11\\\")</code> should return <code>\\\"2027-07-11\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_due_date(\\\"2026-10-11\\\"), \\\"2027-07-11\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getDueDate(dateStr) {\n\n  return dateStr;\n}",
+  "fcc_starter_py": "def get_due_date(date_str):\n\n    return date_str",
+  "image_path": "20260330_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Due Date"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 266,
+  "concepts_text": null,
+  "date_id": "2026-05-03",
+  "fcc_description": "<p>Given a time string in <code>\"HH:MM\"</code> format (24-hour clock), return:</p>\n<ul>\n<li><code>\"Good morning\"</code> for times <code>05:00</code> to <code>11:59</code></li>\n<li><code>\"Good afternoon\"</code> for times <code>12:00</code> to <code>17:59</code></li>\n<li><code>\"Good evening\"</code> for times <code>18:00</code> to <code>21:59</code></li>\n<li><code>\"Good night\"</code> for times <code>22:00</code> to <code>04:59</code></li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getGreeting(\\\"06:30\\\")</code> should return <code>\\\"Good morning\\\"</code>.</p>\", \"testString\": \"assert.equal(getGreeting(\\\"06:30\\\"), \\\"Good morning\\\");\"}, {\"text\": \"<p><code>getGreeting(\\\"12:00\\\")</code> should return <code>\\\"Good afternoon\\\"</code>.</p>\", \"testString\": \"assert.equal(getGreeting(\\\"12:00\\\"), \\\"Good afternoon\\\");\"}, {\"text\": \"<p><code>getGreeting(\\\"21:59\\\")</code> should return <code>\\\"Good evening\\\"</code>.</p>\", \"testString\": \"assert.equal(getGreeting(\\\"21:59\\\"), \\\"Good evening\\\");\"}, {\"text\": \"<p><code>getGreeting(\\\"00:01\\\")</code> should return <code>\\\"Good night\\\"</code>.</p>\", \"testString\": \"assert.equal(getGreeting(\\\"00:01\\\"), \\\"Good night\\\");\"}, {\"text\": \"<p><code>getGreeting(\\\"11:30\\\")</code> should return <code>\\\"Good morning\\\"</code>.</p>\", \"testString\": \"assert.equal(getGreeting(\\\"11:30\\\"), \\\"Good morning\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_greeting(\\\"06:30\\\")</code> should return <code>\\\"Good morning\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_greeting(\\\"06:30\\\"), \\\"Good morning\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_greeting(\\\"12:00\\\")</code> should return <code>\\\"Good afternoon\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_greeting(\\\"12:00\\\"), \\\"Good afternoon\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_greeting(\\\"21:59\\\")</code> should return <code>\\\"Good evening\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_greeting(\\\"21:59\\\"), \\\"Good evening\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_greeting(\\\"00:01\\\")</code> should return <code>\\\"Good night\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_greeting(\\\"00:01\\\"), \\\"Good night\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_greeting(\\\"11:30\\\")</code> should return <code>\\\"Good morning\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_greeting(\\\"11:30\\\"), \\\"Good morning\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getGreeting(time) {\n\n  return time;\n}",
+  "fcc_starter_py": "def get_greeting(s):\n\n    return s",
+  "image_path": "20260503_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Good Day"
+}

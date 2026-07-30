@@ -1,0 +1,17 @@
+{
+  "challenge_number": 18,
+  "concepts_text": null,
+  "date_id": "2025-08-28",
+  "fcc_description": "<p>Given an array of integers representing the price of different laptops, and an integer representing your budget, return:</p>\n<ol>\n<li>The second most expensive laptop if it is within your budget, or</li>\n<li>The most expensive laptop that is within your budget, or</li>\n<li><code>0</code> if no laptops are within your budget.</li>\n</ol>\n<ul>\n<li>Duplicate prices should be ignored.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getLaptopCost([1500, 2000, 1800, 1400], 1900)</code> should return <code>1800</code></p>\", \"testString\": \"assert.equal(getLaptopCost([1500, 2000, 1800, 1400], 1900), 1800);\"}, {\"text\": \"<p><code>getLaptopCost([1500, 2000, 2000, 1800, 1400], 1900)</code> should return <code>1800</code></p>\", \"testString\": \"assert.equal(getLaptopCost([1500, 2000, 2000, 1800, 1400], 1900), 1800);\"}, {\"text\": \"<p><code>getLaptopCost([2099, 1599, 1899, 1499], 2200)</code> should return <code>1899</code></p>\", \"testString\": \"assert.equal(getLaptopCost([2099, 1599, 1899, 1499], 2200), 1899);\"}, {\"text\": \"<p><code>getLaptopCost([2099, 1599, 1899, 1499], 1000)</code> should return <code>0</code></p>\", \"testString\": \"assert.equal(getLaptopCost([2099, 1599, 1899, 1499], 1000), 0);\"}, {\"text\": \"<p><code>getLaptopCost([1200, 1500, 1600, 1800, 1400, 2000], 1450)</code> should return <code>1400</code></p>\", \"testString\": \"assert.equal(getLaptopCost([1200, 1500, 1600, 1800, 1400, 2000], 1450), 1400);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_laptop_cost([1500, 2000, 1800, 1400], 1900)</code> should return <code>1800</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_laptop_cost([1500, 2000, 1800, 1400], 1900), 1800)`)\\n}})\"}, {\"text\": \"<p><code>get_laptop_cost([1500, 2000, 2000, 1800, 1400], 1900)</code> should return <code>1800</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_laptop_cost([1500, 2000, 2000, 1800, 1400], 1900), 1800)`)\\n}})\"}, {\"text\": \"<p><code>get_laptop_cost([2099, 1599, 1899, 1499], 2200)</code> should return <code>1899</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_laptop_cost([2099, 1599, 1899, 1499], 2200), 1899)`)\\n}})\"}, {\"text\": \"<p><code>get_laptop_cost([2099, 1599, 1899, 1499], 1000)</code> should return <code>0</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_laptop_cost([2099, 1599, 1899, 1499], 1000), 0)`)\\n}})\"}, {\"text\": \"<p><code>get_laptop_cost([1200, 1500, 1600, 1800, 1400, 2000], 1450)</code> should return <code>1400</code></p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_laptop_cost([1200, 1500, 1600, 1800, 1400, 2000], 1450), 1400)`)\\n}})\"}]",
+  "fcc_starter_js": "function getLaptopCost(laptops, budget) {\n\n  return laptops;\n}",
+  "fcc_starter_py": "def get_laptop_cost(laptops, budget):\n\n    return laptops",
+  "image_path": "20250828_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Second Best"
+}

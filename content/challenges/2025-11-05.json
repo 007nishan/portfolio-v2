@@ -1,0 +1,17 @@
+{
+  "challenge_number": 87,
+  "concepts_text": null,
+  "date_id": "2025-11-05",
+  "fcc_description": "<p>Given two integers (a number of rows and a number of columns), return a matrix (an array of arrays) filled with zeros (<code>0</code>) of the given size.</p>\n<p>For example, given <code>2</code> and <code>3</code>, return:</p>\n<pre><code class=\"language-json\">[\n  [0, 0, 0],\n  [0, 0, 0]\n]\n</code></pre>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>buildMatrix(2, 3)</code> should return <code>[[0, 0, 0], [0, 0, 0]]</code>.</p>\", \"testString\": \"assert.deepEqual(buildMatrix(2, 3), [[0, 0, 0], [0, 0, 0]]);\"}, {\"text\": \"<p><code>buildMatrix(3, 2)</code> should return <code>[[0, 0], [0, 0], [0, 0]]</code>.</p>\", \"testString\": \"assert.deepEqual(buildMatrix(3, 2), [[0, 0], [0, 0], [0, 0]]);\"}, {\"text\": \"<p><code>buildMatrix(4, 3)</code> should return <code>[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]</code>.</p>\", \"testString\": \"assert.deepEqual(buildMatrix(4, 3), [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]);\"}, {\"text\": \"<p><code>buildMatrix(9, 1)</code> should return <code>[[0], [0], [0], [0], [0], [0], [0], [0], [0]]</code>.</p>\", \"testString\": \"assert.deepEqual(buildMatrix(9, 1), [[0], [0], [0], [0], [0], [0], [0], [0], [0]]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>build_matrix(2, 3)</code> should return <code>[[0, 0, 0], [0, 0, 0]]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(build_matrix(2, 3), [[0, 0, 0], [0, 0, 0]])`)\\n}})\"}, {\"text\": \"<p><code>build_matrix(3, 2)</code> should return <code>[[0, 0], [0, 0], [0, 0]]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(build_matrix(3, 2), [[0, 0], [0, 0], [0, 0]])`)\\n}})\"}, {\"text\": \"<p><code>build_matrix(4, 3)</code> should return <code>[[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(build_matrix(4, 3), [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]])`)\\n}})\"}, {\"text\": \"<p><code>build_matrix(9, 1)</code> should return <code>[[0], [0], [0], [0], [0], [0], [0], [0], [0]]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(build_matrix(9, 1), [[0], [0], [0], [0], [0], [0], [0], [0], [0]])`)\\n}})\"}]",
+  "fcc_starter_js": "function buildMatrix(rows, cols) {\n\n  return rows;\n}",
+  "fcc_starter_py": "def build_matrix(rows, cols):\n\n    return rows",
+  "image_path": "20251105_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Matrix Builder"
+}

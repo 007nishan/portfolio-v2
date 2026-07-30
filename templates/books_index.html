@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Books — Nishan{% endblock %}
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <p class="label" style="font-family: var(--font-family-sans); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--color-primary-red); font-size: .8rem;">The Library</p>
+    <h1 style="font-family: var(--font-family-serif); font-weight: 700; letter-spacing: -.02em;">Compiled Books</h1>
+    <span style="display:block;width:14.5rem;height:4px;background:var(--color-primary-red);margin:1rem 0 2rem;"></span>
+    <p class="lead" style="font-family: var(--font-family-serif); font-style: italic; color: var(--color-neutral-medium); max-width: 38rem;">
+      Long-form study material, compiled to the same golden-ratio, editorial standard as the rest of this site — readable on screen, and as a print-ready PDF.
+    </p>
+
+    {% if books %}
+    <div class="row g-4 mt-2">
+      {% for b in books %}
+      <div class="col-md-6">
+        <div class="project-card" style="height:100%;display:flex;flex-direction:column;">
+          <span class="kicker">{{ b.institution }}</span>
+          <h3 style="font-family: var(--font-family-serif);">{{ b.title }}</h3>
+          <p style="color: var(--color-neutral-dark); flex:1;">{{ b.subtitle }}</p>
+          <div style="display:flex; gap:1rem; align-items:center; margin-top:.5rem;">
+            {% if b.has_html %}
+            <a class="cta" href="{{ url_for('book_reader', slug=b.slug) }}">Read online →</a>
+            {% endif %}
+            {% if b.has_pdf %}
+            <a class="cta" href="{{ url_for('book_pdf', slug=b.slug) }}" style="color: var(--color-primary-red);">Download PDF ↓</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="mt-4" style="color: var(--color-neutral-medium);">No books have been compiled yet.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

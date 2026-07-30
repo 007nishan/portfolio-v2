@@ -1,0 +1,17 @@
+{
+  "challenge_number": 301,
+  "concepts_text": null,
+  "date_id": "2026-06-07",
+  "fcc_description": "<p>Given the number of scoops of laundry detergent you have remaining and an array of how many scoops you used in each of the previous days, return the number of full days of detergent you have remaining.</p>\n<p>Calculate your average daily usage from the usage history and assume that amount of usage each day going forward.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>lastLoadDate(10, [2, 2, 2, 2, 2, 2, 2])</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(lastLoadDate(10, [2, 2, 2, 2, 2, 2, 2]), 5);\"}, {\"text\": \"<p><code>lastLoadDate(16, [2, 3, 0, 3, 4, 2, 1])</code> should return <code>7</code>.</p>\", \"testString\": \"assert.equal(lastLoadDate(16, [2, 3, 0, 3, 4, 2, 1]), 7);\"}, {\"text\": \"<p><code>lastLoadDate(33, [5, 0, 4, 3, 3, 2])</code> should return <code>11</code>.</p>\", \"testString\": \"assert.equal(lastLoadDate(33, [5, 0, 4, 3, 3, 2]), 11);\"}, {\"text\": \"<p><code>lastLoadDate(50, [2, 0, 2, 9, 12, 0, 2])</code> should return <code>12</code>.</p>\", \"testString\": \"assert.equal(lastLoadDate(50, [2, 0, 2, 9, 12, 0, 2]), 12);\"}, {\"text\": \"<p><code>lastLoadDate(20, [13, 9, 12, 10, 8])</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(lastLoadDate(20, [13, 9, 12, 10, 8]), 1);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>last_load_date(10, [2, 2, 2, 2, 2, 2, 2])</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(last_load_date(10, [2, 2, 2, 2, 2, 2, 2]), 5)`)\\n}})\"}, {\"text\": \"<p><code>last_load_date(16, [2, 3, 0, 3, 4, 2, 1])</code> should return <code>7</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(last_load_date(16, [2, 3, 0, 3, 4, 2, 1]), 7)`)\\n}})\"}, {\"text\": \"<p><code>last_load_date(33, [5, 0, 4, 3, 3, 2])</code> should return <code>11</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(last_load_date(33, [5, 0, 4, 3, 3, 2]), 11)`)\\n}})\"}, {\"text\": \"<p><code>last_load_date(50, [2, 0, 2, 9, 12, 0, 2])</code> should return <code>12</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(last_load_date(50, [2, 0, 2, 9, 12, 0, 2]), 12)`)\\n}})\"}, {\"text\": \"<p><code>last_load_date(20, [13, 9, 12, 10, 8])</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(last_load_date(20, [13, 9, 12, 10, 8]), 1)`)\\n}})\"}]",
+  "fcc_starter_js": "function lastLoadDate(scoops, usage) {\n\n  return scoops;\n}",
+  "fcc_starter_py": "def last_load_date(scoops, usage):\n\n    return scoops",
+  "image_path": "20260607_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Last Load"
+}

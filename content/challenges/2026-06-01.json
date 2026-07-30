@@ -1,0 +1,17 @@
+{
+  "challenge_number": 295,
+  "concepts_text": null,
+  "date_id": "2026-06-01",
+  "fcc_description": "<p>Given an object (JavaScript) or dictionary (Python), determine if it matches the following schema:</p>\n<pre><code class=\"language-json\">{\n  username: string\n}\n</code></pre>\n<ul>\n<li>Extra keys are allowed</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isValidSchema({ username: \\\"bob\\\" })</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isValidSchema({ username: \\\"bob\\\" }));\"}, {\"text\": \"<p><code>isValidSchema({ username: \\\"jen\\\", posts: 30 })</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isValidSchema({ username: \\\"jen\\\", posts: 30 }));\"}, {\"text\": \"<p><code>isValidSchema({ username: \\\"\\\" })</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isValidSchema({ username: \\\"\\\" }));\"}, {\"text\": \"<p><code>isValidSchema({ username: 7 })</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isValidSchema({ username: 7 }));\"}, {\"text\": \"<p><code>isValidSchema({ posts: 25 })</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isValidSchema({ posts: 25 }));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_valid_schema({\\\"username\\\": \\\"bob\\\"})</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_schema({\\\"username\\\": \\\"bob\\\"}), True)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_schema({\\\"username\\\": \\\"jen\\\", \\\"posts\\\": 30})</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_schema({\\\"username\\\": \\\"jen\\\", \\\"posts\\\": 30}), True)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_schema({\\\"username\\\": \\\"\\\"})</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_schema({\\\"username\\\": \\\"\\\"}), True)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_schema({\\\"username\\\": 7})</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_schema({\\\"username\\\": 7}), False)`)\\n}})\"}, {\"text\": \"<p><code>is_valid_schema({\\\"posts\\\": 25})</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_valid_schema({\\\"posts\\\": 25}), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function isValidSchema(obj) {\n\n  return obj;\n}",
+  "fcc_starter_py": "def is_valid_schema(obj):\n\n    return obj",
+  "image_path": "20260601_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Schema Validator Part 1"
+}

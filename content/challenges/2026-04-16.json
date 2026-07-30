@@ -1,0 +1,17 @@
+{
+  "challenge_number": 249,
+  "concepts_text": null,
+  "date_id": "2026-04-16",
+  "fcc_description": "<p>Given a string with numbers and other characters, perform math on the numbers based on the count of non-digit characters between the numbers.</p>\n<ul>\n<li>If the count of characters separating two numbers is even, use addition.</li>\n<li>If it's odd, use subtraction.</li>\n<li>Consecutive digits form a single number.</li>\n<li>Operations are applied left to right.</li>\n<li>Ignore leading and trailing characters that aren't digits.</li>\n</ul>\n<p>For example, given <code>\"3ab10c8\"</code>, return <code>5</code>. Add 3 and 10 to get 13 because there's an even number of characters between them. Then subtract 8 from 13 because there's an odd number of characters between the result and 8.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>doMath(\\\"3ab10c8\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(doMath(\\\"3ab10c8\\\"), 5);\"}, {\"text\": \"<p><code>doMath(\\\"6MINUS4\\\")</code> should return <code>2</code>.</p>\", \"testString\": \"assert.equal(doMath(\\\"6MINUS4\\\"), 2);\"}, {\"text\": \"<p><code>doMath(\\\"9plus3\\\")</code> should return <code>12</code>.</p>\", \"testString\": \"assert.equal(doMath(\\\"9plus3\\\"), 12);\"}, {\"text\": \"<p><code>doMath(\\\"5fkwo#10i#%.&#x3C;>15P=@20!#B/25\\\")</code> should return <code>15</code>.</p>\", \"testString\": \"assert.equal(doMath(\\\"5fkwo#10i#%.<>15P=@20!#B/25\\\"), 15);\"}, {\"text\": \"<p><code>doMath(\\\"a.67,1$lk6ldf34@#LD@]2d32d2'2l3,@l3L#@2gh35s09if=df#$t9sm49t0df3$^%[vc;:0:4mt\\\")</code> should return <code>67</code>.</p>\", \"testString\": \"assert.equal(doMath(\\\"a.67,1$lk6ldf34@#LD@]2d32d2'2l3,@l3L#@2gh35s09if=df#$t9sm49t0df3$^%[vc;:0:4mt\\\"), 67);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>do_math(\\\"3ab10c8\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(do_math(\\\"3ab10c8\\\"), 5)`)\\n}})\"}, {\"text\": \"<p><code>do_math(\\\"6MINUS4\\\")</code> should return <code>2</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(do_math(\\\"6MINUS4\\\"), 2)`)\\n}})\"}, {\"text\": \"<p><code>do_math(\\\"9plus3\\\")</code> should return <code>12</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(do_math(\\\"9plus3\\\"), 12)`)\\n}})\"}, {\"text\": \"<p><code>do_math(\\\"5fkwo#10i#%.&#x3C;>15P=@20!#B/25\\\")</code> should return <code>15</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(do_math(\\\"5fkwo#10i#%.<>15P=@20!#B/25\\\"), 15)`)\\n}})\"}, {\"text\": \"<p><code>do_math(\\\"a.67,1$lk6ldf34@#LD@]2d32d2'2l3,@l3L#@2gh35s09if=df#$t9sm49t0df3$^%[vc;:0:4mt\\\")</code> should return <code>67</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(do_math(\\\"a.67,1$lk6ldf34@#LD@]2d32d2'2l3,@l3L#@2gh35s09if=df#$t9sm49t0df3$^%[vc;:0:4mt\\\"), 67)`)\\n}})\"}]",
+  "fcc_starter_js": "function doMath(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def do_math(s):\n\n    return s",
+  "image_path": "20260416_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "String Math"
+}

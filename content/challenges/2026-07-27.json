@@ -1,0 +1,17 @@
+{
+  "challenge_number": 351,
+  "concepts_text": null,
+  "date_id": "2026-07-27",
+  "fcc_description": "<p>Given a number, determine whether it is a pronic number.</p>\n<p>A pronic number is the product of two consecutive integers. For example, 6 is pronic because 2 * 3 = 6.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isPronic(6)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isPronic(6));\"}, {\"text\": \"<p><code>isPronic(15)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isPronic(15));\"}, {\"text\": \"<p><code>isPronic(12)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isPronic(12));\"}, {\"text\": \"<p><code>isPronic(132)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isPronic(132));\"}, {\"text\": \"<p><code>isPronic(80)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isPronic(80));\"}, {\"text\": \"<p><code>isPronic(0)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isPronic(0));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_pronic(6)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_pronic(6), True)`)\\n}})\"}, {\"text\": \"<p><code>is_pronic(15)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_pronic(15), False)`)\\n}})\"}, {\"text\": \"<p><code>is_pronic(12)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_pronic(12), True)`)\\n}})\"}, {\"text\": \"<p><code>is_pronic(132)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_pronic(132), True)`)\\n}})\"}, {\"text\": \"<p><code>is_pronic(80)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_pronic(80), False)`)\\n}})\"}, {\"text\": \"<p><code>is_pronic(0)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_pronic(0), True)`)\\n}})\"}]",
+  "fcc_starter_js": "function isPronic(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def is_pronic(n):\n\n    return n",
+  "image_path": "20260727_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Pronic Number"
+}

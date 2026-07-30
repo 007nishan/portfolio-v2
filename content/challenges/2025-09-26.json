@@ -1,0 +1,17 @@
+{
+  "challenge_number": 47,
+  "concepts_text": null,
+  "date_id": "2025-09-26",
+  "fcc_description": "<p>Given an array of numbers representing the speed at which vehicles were observed traveling, and a number representing the speed limit, return an array with two items, the number of vehicles that were speeding, followed by the average amount beyond the speed limit of those vehicles.</p>\n<ul>\n<li>If there were no vehicles speeding, return <code>[0, 0]</code>.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>speeding([50, 60, 55], 60)</code> should return <code>[0, 0]</code>.</p>\", \"testString\": \"assert.deepEqual(speeding([50, 60, 55], 60), [0, 0]);\"}, {\"text\": \"<p><code>speeding([58, 50, 60, 55], 55)</code> should return <code>[2, 4]</code>.</p>\", \"testString\": \"assert.deepEqual(speeding([58, 50, 60, 55], 55), [2, 4]);\"}, {\"text\": \"<p><code>speeding([61, 81, 74, 88, 65, 71, 68], 70)</code> should return <code>[4, 8.5]</code>.</p>\", \"testString\": \"assert.deepEqual(speeding([61, 81, 74, 88, 65, 71, 68], 70), [4, 8.5]);\"}, {\"text\": \"<p><code>speeding([100, 105, 95, 102], 100)</code> should return <code>[2, 3.5]</code>.</p>\", \"testString\": \"assert.deepEqual(speeding([100, 105, 95, 102], 100), [2, 3.5]);\"}, {\"text\": \"<p><code>speeding([40, 45, 44, 50, 112, 39], 55)</code> should return <code>[1, 57]</code>.</p>\", \"testString\": \"assert.deepEqual(speeding([40, 45, 44, 50, 112, 39], 55), [1, 57]);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>speeding([50, 60, 55], 60)</code> should return <code>[0, 0]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(speeding([50, 60, 55], 60), [0, 0])`)\\n}})\"}, {\"text\": \"<p><code>speeding([58, 50, 60, 55], 55)</code> should return <code>[2, 4]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(speeding([58, 50, 60, 55], 55), [2, 4])`)\\n}})\"}, {\"text\": \"<p><code>speeding([61, 81, 74, 88, 65, 71, 68], 70)</code> should return <code>[4, 8.5]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(speeding([61, 81, 74, 88, 65, 71, 68], 70), [4, 8.5])`)\\n}})\"}, {\"text\": \"<p><code>speeding([100, 105, 95, 102], 100)</code> should return <code>[2, 3.5]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(speeding([100, 105, 95, 102], 100), [2, 3.5])`)\\n}})\"}, {\"text\": \"<p><code>speeding([40, 45, 44, 50, 112, 39], 55)</code> should return <code>[1, 57]</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(speeding([40, 45, 44, 50, 112, 39], 55), [1, 57])`)\\n}})\"}]",
+  "fcc_starter_js": "function speeding(speeds, limit) {\n\n  return speeds;\n}",
+  "fcc_starter_py": "def speeding(speeds, limit):\n\n    return speeds",
+  "image_path": "20250926_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Caught Speeding"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 40,
+  "concepts_text": null,
+  "date_id": "2025-09-19",
+  "fcc_description": "<p>Given a photo size in megabytes (MB), and hard drive capacity in gigabytes (GB), return the number of photos the hard drive can store using the following constraints:</p>\n<ul>\n<li>1 gigabyte equals 1000 megabytes.</li>\n<li>Return the number of whole photos the drive can store.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>numberOfPhotos(1, 1)</code> should return <code>1000</code>.</p>\", \"testString\": \"assert.equal(numberOfPhotos(1, 1), 1000);\"}, {\"text\": \"<p><code>numberOfPhotos(2, 1)</code> should return <code>500</code>.</p>\", \"testString\": \"assert.equal(numberOfPhotos(2, 1), 500);\"}, {\"text\": \"<p><code>numberOfPhotos(4, 256)</code> should return <code>64000</code>.</p>\", \"testString\": \"assert.equal(numberOfPhotos(4, 256), 64000);\"}, {\"text\": \"<p><code>numberOfPhotos(3.5, 750)</code> should return <code>214285</code>.</p>\", \"testString\": \"assert.equal(numberOfPhotos(3.5, 750), 214285);\"}, {\"text\": \"<p><code>numberOfPhotos(3.5, 5.5)</code> should return <code>1571</code>.</p>\", \"testString\": \"assert.equal(numberOfPhotos(3.5, 5.5), 1571);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>number_of_photos(1, 1)</code> should return <code>1000</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(number_of_photos(1, 1), 1000)`)\\n}})\"}, {\"text\": \"<p><code>number_of_photos(2, 1)</code> should return <code>500</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(number_of_photos(2, 1), 500)`)\\n}})\"}, {\"text\": \"<p><code>number_of_photos(4, 256)</code> should return <code>64000</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(number_of_photos(4, 256), 64000)`)\\n}})\"}, {\"text\": \"<p><code>number_of_photos(3.5, 750)</code> should return <code>214285</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(number_of_photos(3.5, 750), 214285)`)\\n}})\"}, {\"text\": \"<p><code>number_of_photos(3.5, 5.5)</code> should return <code>1571</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(number_of_photos(3.5, 5.5), 1571)`)\\n}})\"}]",
+  "fcc_starter_js": "function numberOfPhotos(photoSizeMb, hardDriveSizeGb) {\n\n  return photoSizeMb;\n}",
+  "fcc_starter_py": "def number_of_photos(photo_size_mb, drive_size_gb):\n\n    return photo_size_mb",
+  "image_path": "20250919_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Photo Storage"
+}

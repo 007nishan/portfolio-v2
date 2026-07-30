@@ -1,0 +1,17 @@
+{
+  "challenge_number": 337,
+  "concepts_text": null,
+  "date_id": "2026-07-13",
+  "fcc_description": "<p>Given a string of tally marks, return the total count represented.</p>\n<ul>\n<li>Each pipe <code>\"|\"</code> represents one count.</li>\n<li>Every fifth mark is represented as a forward slash <code>\"/\"</code>, completing a group of five (<code>\"||||/\"</code>).</li>\n<li>Groups are separated by a space.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getTallyCount(\\\"||||\\\")</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(getTallyCount(\\\"||||\\\"), 4);\"}, {\"text\": \"<p><code>getTallyCount(\\\"||||/\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(getTallyCount(\\\"||||/\\\"), 5);\"}, {\"text\": \"<p><code>getTallyCount(\\\"||||/ |||\\\")</code> should return <code>8</code>.</p>\", \"testString\": \"assert.equal(getTallyCount(\\\"||||/ |||\\\"), 8);\"}, {\"text\": \"<p><code>getTallyCount(\\\"||||/ ||||/ ||||/ ||\\\")</code> should return <code>17</code>.</p>\", \"testString\": \"assert.equal(getTallyCount(\\\"||||/ ||||/ ||||/ ||\\\"), 17);\"}, {\"text\": \"<p><code>getTallyCount(\\\"||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |\\\")</code> should return <code>41</code>.</p>\", \"testString\": \"assert.equal(getTallyCount(\\\"||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |\\\"), 41);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_tally_count(\\\"||||\\\")</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_tally_count(\\\"||||\\\"), 4)`)\\n}})\"}, {\"text\": \"<p><code>get_tally_count(\\\"||||/\\\")</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_tally_count(\\\"||||/\\\"), 5)`)\\n}})\"}, {\"text\": \"<p><code>get_tally_count(\\\"||||/ |||\\\")</code> should return <code>8</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_tally_count(\\\"||||/ |||\\\"), 8)`)\\n}})\"}, {\"text\": \"<p><code>get_tally_count(\\\"||||/ ||||/ ||||/ ||\\\")</code> should return <code>17</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_tally_count(\\\"||||/ ||||/ ||||/ ||\\\"), 17)`)\\n}})\"}, {\"text\": \"<p><code>get_tally_count(\\\"||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |\\\")</code> should return <code>41</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_tally_count(\\\"||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ ||||/ |\\\"), 41)`)\\n}})\"}]",
+  "fcc_starter_js": "function getTallyCount(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def get_tally_count(s):\n\n    return s",
+  "image_path": "20260713_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Tally Counter"
+}

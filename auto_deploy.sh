@@ -51,9 +51,10 @@ log "New commits detected: $LOCAL -> $REMOTE. Deploying..."
 #    tracked .jpg files legitimately differ. We exclude that path from the guard
 #    and then restore the tracked images to HEAD so the merge/reset is clean.
 #    Untracked images (a brand-new day's card not yet in git) are left untouched.
-if ! git diff --quiet -- ':!static/images' || ! git diff --cached --quiet -- ':!static/images'; then
-    log "WARNING: uncommitted local changes present (outside static/images). Aborting to avoid data loss."
-    git status --short -- ':!static/images' | tee -a "$LOG_FILE"
+#    Also exclude static/books (generated QA reports + PDFs are rebuilt here).
+if ! git diff --quiet -- ':!static/images' ':!static/books' || ! git diff --cached --quiet -- ':!static/images' ':!static/books'; then
+    log "WARNING: uncommitted local changes present (outside static/images, static/books). Aborting to avoid data loss."
+    git status --short -- ':!static/images' ':!static/books' | tee -a "$LOG_FILE"
     exit 1
 fi
 # Discard regenerable card drift so ff/reset applies cleanly (safe: cards are
@@ -82,10 +83,44 @@ else
     fi
 fi
 
+# 3b. One-time: WeasyPrint native libs (Pango/Cairo/gdk-pixbuf) for PDF export.
+#     Sentinel-guarded so it runs only once. Non-fatal if apt is unavailable
+#     (PDF export just stays degraded until the libs are present).
+WEASY_SENTINEL="$PORTFOLIO_DIR/data/.weasyprint_native_ok"
+if [ ! -f "$WEASY_SENTINEL" ] && command -v apt-get >/dev/null 2>&1; then
+    log "Installing WeasyPrint native libs (one-time)..."
+    if sudo apt-get update -qq && sudo apt-get install -y -qq \
+        libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libcairo2 \
+        libgdk-pixbuf-2.0-0 libffi-dev libharfbuzz0b libfontconfig1 libglib2.0-0 \
+        fonts-liberation shared-mime-info >> "$LOG_FILE" 2>&1; then
+        touch "$WEASY_SENTINEL"; log "Native libs installed."
+    else
+        log "WARNING: apt install of WeasyPrint native libs failed (PDF export may be degraded)."
+    fi
+fi
+
 # 4. Install any new/updated Python deps into the venv
 if [ -f "$PORTFOLIO_DIR/venv/bin/pip" ] && [ -f "$PORTFOLIO_DIR/requirements.txt" ]; then
     "$PORTFOLIO_DIR/venv/bin/pip" install -q -r "$PORTFOLIO_DIR/requirements.txt" >> "$LOG_FILE" 2>&1 || \
         log "WARNING: pip install reported an issue (continuing)."
+fi
+
+# 4b. Rebuild books (HTML + PDF) if their sources changed, gated by the
+#     error-free readability lint. A failing gate aborts the deploy BEFORE the
+#     restart so a broken book is never served. Non-fatal if book tooling absent.
+if [ -f "$PORTFOLIO_DIR/venv/bin/python" ] && [ -f "$PORTFOLIO_DIR/book_generator.py" ]; then
+    for slug in python linear-algebra aws-ml; do
+        # Skip a book that has no source yet (nothing to compile).
+        if ! "$PORTFOLIO_DIR/venv/bin/python" -c "import book_content,sys; book_content.load_book('$slug')" >/dev/null 2>&1; then
+            continue
+        fi
+        if ! "$PORTFOLIO_DIR/venv/bin/python" book_lint.py --book "$slug" --strict >> "$LOG_FILE" 2>&1; then
+            log "ERROR: QA gate FAILED for '$slug' — see static/books/qa/$slug.qa.json. Aborting deploy (service NOT restarted)."
+            exit 1
+        fi
+        "$PORTFOLIO_DIR/venv/bin/python" book_generator.py "$slug" >> "$LOG_FILE" 2>&1 || log "WARNING: HTML build for '$slug' failed."
+        "$PORTFOLIO_DIR/venv/bin/python" make_book_pdf.py --book "$slug" >> "$LOG_FILE" 2>&1 || log "WARNING: PDF build for '$slug' failed (native libs?)."
+    done
 fi
 
 # 5. Restart the app so template/code changes take effect

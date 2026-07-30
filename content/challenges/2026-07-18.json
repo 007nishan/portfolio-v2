@@ -1,0 +1,17 @@
+{
+  "challenge_number": 342,
+  "concepts_text": null,
+  "date_id": "2026-07-18",
+  "fcc_description": "<p>Given a number of six-sided dice to roll and a target sum, return the odds of rolling that sum as a string in the format <code>\"1 in X\"</code>.</p>\n<ul>\n<li>The number of dice will be between 1 and 6.</li>\n<li>The target sum is always achievable with the given number of dice.</li>\n<li>Round <code>\"X\"</code> to the nearest whole number.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getOdds(1, 5)</code> should return <code>\\\"1 in 6\\\"</code>.</p>\", \"testString\": \"assert.equal(getOdds(1, 5), \\\"1 in 6\\\");\"}, {\"text\": \"<p><code>getOdds(2, 4)</code> should return <code>\\\"1 in 12\\\"</code>.</p>\", \"testString\": \"assert.equal(getOdds(2, 4), \\\"1 in 12\\\");\"}, {\"text\": \"<p><code>getOdds(3, 10)</code> should return <code>\\\"1 in 8\\\"</code>.</p>\", \"testString\": \"assert.equal(getOdds(3, 10), \\\"1 in 8\\\");\"}, {\"text\": \"<p><code>getOdds(4, 7)</code> should return <code>\\\"1 in 65\\\"</code>.</p>\", \"testString\": \"assert.equal(getOdds(4, 7), \\\"1 in 65\\\");\"}, {\"text\": \"<p><code>getOdds(5, 26)</code> should return <code>\\\"1 in 111\\\"</code>.</p>\", \"testString\": \"assert.equal(getOdds(5, 26), \\\"1 in 111\\\");\"}, {\"text\": \"<p><code>getOdds(6, 35)</code> should return <code>\\\"1 in 7776\\\"</code>.</p>\", \"testString\": \"assert.equal(getOdds(6, 35), \\\"1 in 7776\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_odds(1, 5)</code> should return <code>\\\"1 in 6\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odds(1, 5), \\\"1 in 6\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odds(2, 4)</code> should return <code>\\\"1 in 12\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odds(2, 4), \\\"1 in 12\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odds(3, 10)</code> should return <code>\\\"1 in 8\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odds(3, 10), \\\"1 in 8\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odds(4, 7)</code> should return <code>\\\"1 in 65\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odds(4, 7), \\\"1 in 65\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odds(5, 26)</code> should return <code>\\\"1 in 111\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odds(5, 26), \\\"1 in 111\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_odds(6, 35)</code> should return <code>\\\"1 in 7776\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_odds(6, 35), \\\"1 in 7776\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getOdds(dice, target) {\n\n  return dice;\n}",
+  "fcc_starter_py": "def get_odds(dice, target):\n\n    return dice",
+  "image_path": "20260718_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Dice Odds"
+}

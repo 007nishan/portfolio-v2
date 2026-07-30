@@ -1,0 +1,17 @@
+{
+  "challenge_number": 78,
+  "concepts_text": null,
+  "date_id": "2025-10-27",
+  "fcc_description": "<p>Given a positive integer, return a string with all of the integers from <code>1</code> up to, and including, the given number, in numerical order.</p>\n<p>For example, given <code>5</code>, return <code>\"12345\"</code>.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sequence(5)</code> should return <code>\\\"12345\\\"</code>.</p>\", \"testString\": \"assert.equal(sequence(5), \\\"12345\\\");\"}, {\"text\": \"<p><code>sequence(10)</code> should return <code>\\\"12345678910\\\"</code>.</p>\", \"testString\": \"assert.equal(sequence(10), \\\"12345678910\\\");\"}, {\"text\": \"<p><code>sequence(1)</code> should return <code>\\\"1\\\"</code>.</p>\", \"testString\": \"assert.strictEqual(sequence(1), \\\"1\\\");\"}, {\"text\": \"<p><code>sequence(27)</code> should return <code>\\\"123456789101112131415161718192021222324252627\\\"</code>.</p>\", \"testString\": \"assert.equal(sequence(27), \\\"123456789101112131415161718192021222324252627\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sequence(5)</code> should return <code>\\\"12345\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sequence(5), \\\"12345\\\")`)\\n}})\"}, {\"text\": \"<p><code>sequence(10)</code> should return <code>\\\"12345678910\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sequence(10), \\\"12345678910\\\")`)\\n}})\"}, {\"text\": \"<p><code>sequence(1)</code> should return <code>\\\"1\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sequence(1), \\\"1\\\")`)\\n}})\"}, {\"text\": \"<p><code>sequence(27)</code> should return <code>\\\"123456789101112131415161718192021222324252627\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sequence(27), \\\"123456789101112131415161718192021222324252627\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function sequence(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def sequence(n):\n\n    return n",
+  "image_path": "20251027_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Integer Sequence"
+}

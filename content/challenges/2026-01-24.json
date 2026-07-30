@@ -1,0 +1,17 @@
+{
+  "challenge_number": 167,
+  "concepts_text": null,
+  "date_id": "2026-01-24",
+  "fcc_description": "<p>Given a number, return the bingo letter associated with it (capitalized). Bingo numbers are grouped as follows:</p>\n<table>\n<thead>\n<tr>\n<th>Letter</th>\n<th>Number Range</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><code>\"B\"</code></td>\n<td>1-15</td>\n</tr>\n<tr>\n<td><code>\"I\"</code></td>\n<td>16-30</td>\n</tr>\n<tr>\n<td><code>\"N\"</code></td>\n<td>31-45</td>\n</tr>\n<tr>\n<td><code>\"G\"</code></td>\n<td>46-60</td>\n</tr>\n<tr>\n<td><code>\"O\"</code></td>\n<td>61-75</td>\n</tr>\n</tbody>\n</table>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getBingoLetter(75)</code> should return <code>\\\"O\\\"</code>.</p>\", \"testString\": \"assert.equal(getBingoLetter(75), \\\"O\\\");\"}, {\"text\": \"<p><code>getBingoLetter(54)</code> should return <code>\\\"G\\\"</code>.</p>\", \"testString\": \"assert.equal(getBingoLetter(54), \\\"G\\\");\"}, {\"text\": \"<p><code>getBingoLetter(25)</code> should return <code>\\\"I\\\"</code>.</p>\", \"testString\": \"assert.equal(getBingoLetter(25), \\\"I\\\");\"}, {\"text\": \"<p><code>getBingoLetter(38)</code> should return <code>\\\"N\\\"</code>.</p>\", \"testString\": \"assert.equal(getBingoLetter(38), \\\"N\\\");\"}, {\"text\": \"<p><code>getBingoLetter(11)</code> should return <code>\\\"B\\\"</code>.</p>\", \"testString\": \"assert.equal(getBingoLetter(11), \\\"B\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_bingo_letter(75)</code> should return <code>\\\"O\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_bingo_letter(75), \\\"O\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_bingo_letter(54)</code> should return <code>\\\"G\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_bingo_letter(54), \\\"G\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_bingo_letter(25)</code> should return <code>\\\"I\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_bingo_letter(25), \\\"I\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_bingo_letter(38)</code> should return <code>\\\"N\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_bingo_letter(38), \\\"N\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_bingo_letter(11)</code> should return <code>\\\"B\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_bingo_letter(11), \\\"B\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getBingoLetter(n) {\n\n  return n;\n}",
+  "fcc_starter_py": "def get_bingo_letter(n):\n\n    return n",
+  "image_path": "20260124_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Bingo! Letter"
+}

@@ -5,6 +5,174 @@ import markdown
 db = SQLAlchemy()
 
 # ==============================================================================
+# BOOK MARKDOWN RENDERER (BCS v1.1 §A) — the ONE place book Markdown -> HTML.
+# ------------------------------------------------------------------------------
+# Frozen extension set: editing it is a Book-Compilation-Standard revision.
+# Math is protected by pymdownx.arithmatex (generic mode) here and baked to
+# KaTeX HTML in the build step (katex_prerender.render), never at request time.
+# ==============================================================================
+
+
+def _book_output_fence(source, language, css_class, options, md, **kwargs):
+    esc = source.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return '<pre class="book-output"><samp>' + esc + "</samp></pre>"
+
+
+def _book_repl_fence(source, language, css_class, options, md, **kwargs):
+    esc = source.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+    return '<pre class="book-output book-output--repl"><samp>' + esc + "</samp></pre>"
+
+
+def _inline_md(text):
+    """Convert inline markdown WITHOUT re-entering the live parser (fresh
+    instance — python-markdown parsers are stateful/non-reentrant)."""
+    return markdown.Markdown(extensions=["attr_list"]).convert(text.strip())
+
+
+def _book_figure_fence(source, language, css_class, options, md, **kwargs):
+    """Figure fence. First line = image path under static/ (a `url_for` is applied
+    at compile time via {{ }} is not used — path is written relative to static/);
+    remaining lines = caption (Markdown). An optional first line prefixed with
+    'alt:' supplies explicit alt text; otherwise the caption's plain text is used
+    as alt (never empty — satisfies the R040 accessibility gate)."""
+    import re as _re
+    raw = source.strip().split("\n")
+    alt = ""
+    if raw and raw[0].lower().startswith("alt:"):
+        alt = raw[0][4:].strip()
+        raw = raw[1:]
+    src_path = raw[0].strip() if raw else ""
+    caption_md = "\n".join(raw[1:]).strip()
+    caption = _inline_md(caption_md) if caption_md else ""
+    if not alt:
+        # derive alt from caption plain text (strip tags), fall back to filename
+        alt = _re.sub(r"<[^>]+>", "", caption).strip() or src_path.rsplit("/", 1)[-1]
+    # escape double-quotes in alt for the attribute
+    alt_attr = alt.replace('"', "&quot;")
+    src_url = "/static/" + src_path.lstrip("/")
+    return (
+        f'<figure class="book-figure">'
+        f'<img src="{src_url}" alt="{alt_attr}">'
+        f'<figcaption class="book-figure__caption">{caption}</figcaption></figure>'
+    )
+
+
+def _rule_banner_fence(source, language, css_class, options, md, **kwargs):
+    return '<aside class="rule-banner" role="note">' + _inline_md(source) + "</aside>"
+
+
+BOOK_MD_EXTENSIONS = [
+    "pymdownx.superfences",   # code + custom output/repl/figure/rule fences
+    "pymdownx.highlight",     # class-only Pygments token spans
+    "pymdownx.arithmatex",    # math source protection (generic mode)
+    "tables",
+    "attr_list",              # {: #q-3 .question } + figure fence opts
+    "md_in_html",             # <details markdown> inner parse
+    "admonition",             # STOCK python-markdown ext (NOT pymdownx.admonition)
+    "toc",
+    "sane_lists",
+]
+BOOK_MD_CONFIGS = {
+    "pymdownx.highlight": {
+        "use_pygments": True,
+        "guess_lang": False,
+        "css_class": "bcs-hl",
+        "pygments_lang_class": True,  # add "language-<lang>" to the wrapper div
+    },
+    "pymdownx.superfences": {
+        "css_class": "book-code",
+        "disable_indented_code_blocks": True,
+        "custom_fences": [
+            {"name": "output", "class": "book-output", "format": _book_output_fence},
+            {"name": "repl", "class": "book-output", "format": _book_repl_fence},
+            {"name": "figure", "class": "book-figure", "format": _book_figure_fence},
+            {"name": "rule", "class": "rule-banner", "format": _rule_banner_fence},
+        ],
+    },
+    "pymdownx.arithmatex": {
+        "generic": True,
+        "smart_dollar": True,
+        "block_tag": "div",
+        "tex_inline_wrap": ["\\(", "\\)"],
+        "tex_block_wrap": ["\\[", "\\]"],
+        "preview": False,
+    },
+    "toc": {"permalink": False},
+    "admonition": {},
+}
+
+
+def _slugify_factory(prefix):
+    """toc slugify that namespaces auto-generated heading ids with a per-section
+    prefix, so generic sub-headings ('Introduction', 'Mutability') that recur
+    across chapters do not collide when sections are concatenated. Explicit
+    {: #id } anchors bypass slugify and are untouched."""
+    from markdown.extensions.toc import slugify as _base
+
+    def _slug(value, sep):
+        base = _base(value, sep)
+        return "%s-%s" % (prefix, base) if prefix else base
+
+    return _slug
+
+
+import re as _re
+
+# Container blocks whose INNER Markdown must be parsed (headings, prose, math).
+# md_in_html only descends into a raw-HTML block when it carries a `markdown`
+# attribute, so we inject one on the opener/project-card wrappers automatically
+# (keeps the authored source clean — authors don't write markdown="1").
+_MD_BLOCK_OPEN = _re.compile(
+    r'<(section|div)\s+class="(opener|project-card)"([^>]*?)>'
+)
+
+
+def _enable_md_in_blocks(text):
+    def _add_attr(m):
+        tag, cls, rest = m.group(1), m.group(2), m.group(3)
+        if "markdown=" in rest:
+            return m.group(0)
+        return f'<{tag} class="{cls}"{rest} markdown="1">'
+
+    return _MD_BLOCK_OPEN.sub(_add_attr, text)
+
+
+def render_book_md(text, id_prefix=""):
+    """The ONE place book Markdown becomes HTML (BCS v1.1). Fresh, non-reentrant
+    Markdown instance per call. Math placeholders (.arithmatex) are baked to
+    KaTeX in the build step (katex_prerender.render), NOT here. `id_prefix`
+    namespaces auto-generated heading ids to avoid cross-section collisions."""
+    if not text:
+        return ""
+    text = _enable_md_in_blocks(text)
+    configs = dict(BOOK_MD_CONFIGS)
+    if id_prefix:
+        configs = {**BOOK_MD_CONFIGS, "toc": {**BOOK_MD_CONFIGS.get("toc", {}),
+                                              "slugify": _slugify_factory(id_prefix)}}
+    md = markdown.Markdown(extensions=BOOK_MD_EXTENSIONS, extension_configs=configs)
+    return md.convert(text)
+
+
+try:
+    import nh3
+
+    _ALLOWED_TAGS = {
+        "p", "br", "pre", "code", "em", "strong", "ul", "ol", "li", "a", "h1", "h2",
+        "h3", "h4", "blockquote", "table", "thead", "tbody", "tr", "th", "td", "span",
+        "div", "details", "summary", "figure", "figcaption", "img", "aside", "samp",
+        "sup", "sub",
+    }
+
+    def _sanitize_fcc(html):
+        """Sanitize the raw FCC HTML passthrough path (defense in depth; the
+        authored-Markdown path is trusted and never re-sanitized)."""
+        return nh3.clean(html, tags=_ALLOWED_TAGS, link_rel="noopener noreferrer")
+
+except ImportError:  # nh3 optional at import time; falls back to raw passthrough
+    def _sanitize_fcc(html):
+        return html
+
+# ==============================================================================
 # HARD RULE: APPEND-ONLY, FORWARD-COMPATIBLE DATABASE DESIGN
 # ------------------------------------------------------------------------------
 # As per project requirements, the database schema must NEVER be destructively

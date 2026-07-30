@@ -1,0 +1,17 @@
+{
+  "challenge_number": 5,
+  "concepts_text": null,
+  "date_id": "2025-08-15",
+  "fcc_description": "<p>Given a string, return a jumbled version of that string where each word is transformed using the following constraints:</p>\n<ul>\n<li>The first and last letters of the words remain in place</li>\n<li>All letters between the first and last letter are sorted alphabetically.</li>\n<li>The input strings will contain no punctuation, and will be entirely lowercase.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>jbelmu(\\\"hello world\\\")</code> should return <code>\\\"hello wlord\\\"</code>.</p>\", \"testString\": \"assert.equal(jbelmu(\\\"hello world\\\"), \\\"hello wlord\\\");\"}, {\"text\": \"<p><code>jbelmu(\\\"i love jumbled text\\\")</code> should return <code>\\\"i love jbelmud text\\\"</code>.</p>\", \"testString\": \"assert.equal(jbelmu(\\\"i love jumbled text\\\"), \\\"i love jbelmud text\\\");\"}, {\"text\": \"<p><code>jbelmu(\\\"freecodecamp is my favorite place to learn to code\\\")</code> should return <code>\\\"faccdeeemorp is my faiortve pacle to laern to cdoe\\\"</code>.</p>\", \"testString\": \"assert.equal(jbelmu(\\\"freecodecamp is my favorite place to learn to code\\\"), \\\"faccdeeemorp is my faiortve pacle to laern to cdoe\\\");\"}, {\"text\": \"<p><code>jbelmu(\\\"the quick brown fox jumps over the lazy dog\\\")</code> should return <code>\\\"the qciuk borwn fox jmpus oevr the lazy dog\\\"</code>.</p>\", \"testString\": \"assert.equal(jbelmu(\\\"the quick brown fox jumps over the lazy dog\\\"), \\\"the qciuk borwn fox jmpus oevr the lazy dog\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>jbelmu(\\\"hello world\\\")</code> should return <code>\\\"hello wlord\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(jbelmu(\\\"hello world\\\"), \\\"hello wlord\\\")`)\\n}})\"}, {\"text\": \"<p><code>jbelmu(\\\"i love jumbled text\\\")</code> should return <code>\\\"i love jbelmud text\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(jbelmu(\\\"i love jumbled text\\\"), \\\"i love jbelmud text\\\")`)\\n}})\"}, {\"text\": \"<p><code>jbelmu(\\\"freecodecamp is my favorite place to learn to code\\\")</code> should return <code>\\\"faccdeeemorp is my faiortve pacle to laern to cdoe\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(jbelmu(\\\"freecodecamp is my favorite place to learn to code\\\"), \\\"faccdeeemorp is my faiortve pacle to laern to cdoe\\\")`)\\n}})\"}, {\"text\": \"<p><code>jbelmu(\\\"the quick brown fox jumps over the lazy dog\\\")</code> should return <code>\\\"the qciuk borwn fox jmpus oevr the lazy dog\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(jbelmu(\\\"the quick brown fox jumps over the lazy dog\\\"), \\\"the qciuk borwn fox jmpus oevr the lazy dog\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function jbelmu(text) {\n\n  return text;\n}",
+  "fcc_starter_py": "def jbelmu(text):\n\n    return text",
+  "image_path": "20250815_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Jbelmud Text"
+}

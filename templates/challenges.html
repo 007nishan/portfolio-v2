@@ -198,8 +198,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        /* center vertically so a card that fits the viewport isn't stranded at
+           the top with a large empty area below it */
         min-height: 100%;
-        padding: 50px 20px 20px 20px;
+        padding: clamp(16px, 4vh, 40px) 20px 20px 20px;
         width: 100%;
     }
 
@@ -233,22 +236,29 @@
         cursor: pointer;
     }
 
-    /* The wrapper around the image that acts as the router */
+    /* The wrapper around the image that acts as the router.
+       Fit the (portrait) card to the viewport by BOTH width and height so a tall
+       card fills the available space instead of floating small with big empty
+       margins. The high-res image (3000px wide) means it stays crisp when scaled
+       UP to fill a large screen. Width caps at 95vw on narrow screens; height caps
+       just under the viewport so the whole card is visible without scrolling. */
     #modalLink {
         display: block;
         max-width: 95vw;
-        /* Remove max height so it's "Actual Size" horizontally */
         cursor: pointer;
         position: relative;
         transition: transform 0.15s ease-out;
         /* Smooth zoom transition */
-        transform-origin: top center;
+        transform-origin: center center;
     }
 
     #modalImage {
-        width: 100%;
-        height: auto;
         display: block;
+        width: auto;
+        height: auto;
+        /* fill the viewport: bounded by height (portrait card) and width alike */
+        max-width: 95vw;
+        max-height: 92vh;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         border-radius: var(--radius-md);
     }

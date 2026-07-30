@@ -1,0 +1,17 @@
+{
+  "challenge_number": 50,
+  "concepts_text": null,
+  "date_id": "2025-09-29",
+  "fcc_description": "<p>Given a sentence, return the longest word in the sentence.</p>\n<ul>\n<li>Ignore periods (<code>.</code>) when determining word length.</li>\n<li>If multiple words are ties for the longest, return the first one that occurs.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>getLongestWord(\\\"coding is fun\\\")</code> should return <code>\\\"coding\\\"</code>.</p>\", \"testString\": \"assert.equal(getLongestWord(\\\"coding is fun\\\"), \\\"coding\\\");\"}, {\"text\": \"<p><code>getLongestWord(\\\"Coding challenges are fun and educational.\\\")</code> should return <code>\\\"educational\\\"</code>.</p>\", \"testString\": \"assert.equal(getLongestWord(\\\"Coding challenges are fun and educational.\\\"), \\\"educational\\\");\"}, {\"text\": \"<p><code>getLongestWord(\\\"This sentence has multiple long words.\\\")</code> should return <code>\\\"sentence\\\"</code>.</p>\", \"testString\": \"assert.equal(getLongestWord(\\\"This sentence has multiple long words.\\\"), \\\"sentence\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>get_longest_word(\\\"coding is fun\\\")</code> should return <code>\\\"coding\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_longest_word(\\\"coding is fun\\\"), \\\"coding\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_longest_word(\\\"Coding challenges are fun and educational.\\\")</code> should return <code>\\\"educational\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_longest_word(\\\"Coding challenges are fun and educational.\\\"), \\\"educational\\\")`)\\n}})\"}, {\"text\": \"<p><code>get_longest_word(\\\"This sentence has multiple long words.\\\")</code> should return <code>\\\"sentence\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(get_longest_word(\\\"This sentence has multiple long words.\\\"), \\\"sentence\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function getLongestWord(sentence) {\n\n  return sentence;\n}",
+  "fcc_starter_py": "def get_longest_word(sentence):\n\n    return sentence",
+  "image_path": "20250929_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Longest Word"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 159,
+  "concepts_text": null,
+  "date_id": "2026-01-16",
+  "fcc_description": "<p>Given two positive integers representing the lengths for the two legs (the two short sides) of a right triangle, determine whether the hypotenuse is an integer.</p>\n<p>The length of the hypotenuse is calculated by adding the squares of the two leg lengths together and then taking the square root of that total (a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup>).</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isIntegerHypotenuse(3, 4)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isIntegerHypotenuse(3, 4));\"}, {\"text\": \"<p><code>isIntegerHypotenuse(2, 3)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isIntegerHypotenuse(2, 3));\"}, {\"text\": \"<p><code>isIntegerHypotenuse(5, 12)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isIntegerHypotenuse(5, 12));\"}, {\"text\": \"<p><code>isIntegerHypotenuse(10, 10)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isIntegerHypotenuse(10, 10));\"}, {\"text\": \"<p><code>isIntegerHypotenuse(780, 1040)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isIntegerHypotenuse(780, 1040));\"}, {\"text\": \"<p><code>isIntegerHypotenuse(250, 333)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isIntegerHypotenuse(250, 333));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_integer_hypotenuse(3, 4)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_integer_hypotenuse(3, 4), True)`)\\n}})\"}, {\"text\": \"<p><code>is_integer_hypotenuse(2, 3)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_integer_hypotenuse(2, 3), False)`)\\n}})\"}, {\"text\": \"<p><code>is_integer_hypotenuse(5, 12)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_integer_hypotenuse(5, 12), True)`)\\n}})\"}, {\"text\": \"<p><code>is_integer_hypotenuse(10, 10)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_integer_hypotenuse(10, 10), False)`)\\n}})\"}, {\"text\": \"<p><code>is_integer_hypotenuse(780, 1040)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_integer_hypotenuse(780, 1040), True)`)\\n}})\"}, {\"text\": \"<p><code>is_integer_hypotenuse(250, 333)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_integer_hypotenuse(250, 333), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function isIntegerHypotenuse(a, b) {\n\n  return a;\n}",
+  "fcc_starter_py": "def is_integer_hypotenuse(a, b):\n\n    return a",
+  "image_path": "20260116_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Integer Hypotenuse"
+}

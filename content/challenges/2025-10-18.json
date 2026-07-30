@@ -1,0 +1,17 @@
+{
+  "challenge_number": 69,
+  "concepts_text": null,
+  "date_id": "2025-10-18",
+  "fcc_description": "<p>Given an integer representing the number of pairs of socks you started with, and another integer representing how many wash cycles you have gone through, return the number of complete pairs of socks you currently have using the following constraints:</p>\n<ul>\n<li>Every 2 wash cycles, you lose a single sock.</li>\n<li>Every 3 wash cycles, you find a single missing sock.</li>\n<li>Every 5 wash cycles, a single sock is worn out and must be thrown away.</li>\n<li>Every 10 wash cycles, you buy a pair of socks.</li>\n<li>You can never have less than zero total socks.</li>\n<li>Rules can overlap. For example, on wash cycle 10, you will lose a single sock, throw away a single sock, and buy a new pair of socks.</li>\n<li>Return the number of complete pairs of socks.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>sockPairs(2, 5)</code> should return <code>1</code>.</p>\", \"testString\": \"assert.equal(sockPairs(2, 5), 1);\"}, {\"text\": \"<p><code>sockPairs(1, 2)</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(sockPairs(1, 2), 0);\"}, {\"text\": \"<p><code>sockPairs(5, 11)</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(sockPairs(5, 11), 4);\"}, {\"text\": \"<p><code>sockPairs(6, 25)</code> should return <code>3</code>.</p>\", \"testString\": \"assert.equal(sockPairs(6, 25), 3);\"}, {\"text\": \"<p><code>sockPairs(1, 8)</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(sockPairs(1, 8), 0);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>sock_pairs(2, 5)</code> should return <code>1</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sock_pairs(2, 5), 1)`)\\n}})\"}, {\"text\": \"<p><code>sock_pairs(1, 2)</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sock_pairs(1, 2), 0)`)\\n}})\"}, {\"text\": \"<p><code>sock_pairs(5, 11)</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sock_pairs(5, 11), 4)`)\\n}})\"}, {\"text\": \"<p><code>sock_pairs(6, 25)</code> should return <code>3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sock_pairs(6, 25), 3)`)\\n}})\"}, {\"text\": \"<p><code>sock_pairs(1, 8)</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(sock_pairs(1, 8), 0)`)\\n}})\"}]",
+  "fcc_starter_js": "function sockPairs(pairs, cycles) {\n\n  return pairs;\n}",
+  "fcc_starter_py": "def sock_pairs(pairs, cycles):\n\n    return pairs",
+  "image_path": "20251018_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Missing Socks"
+}

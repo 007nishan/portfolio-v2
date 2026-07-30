@@ -1,0 +1,17 @@
+{
+  "challenge_number": 218,
+  "concepts_text": null,
+  "date_id": "2026-03-16",
+  "fcc_description": "<p>Given two integers, determine if you can evenly divide the first one by the second one.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>isEvenlyDivisible(4, 2)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isEvenlyDivisible(4, 2));\"}, {\"text\": \"<p><code>isEvenlyDivisible(7, 3)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isEvenlyDivisible(7, 3));\"}, {\"text\": \"<p><code>isEvenlyDivisible(5, 10)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isEvenlyDivisible(5, 10));\"}, {\"text\": \"<p><code>isEvenlyDivisible(48, 6)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isEvenlyDivisible(48, 6));\"}, {\"text\": \"<p><code>isEvenlyDivisible(3186, 9)</code> should return <code>true</code>.</p>\", \"testString\": \"assert.isTrue(isEvenlyDivisible(3186, 9));\"}, {\"text\": \"<p><code>isEvenlyDivisible(4192, 11)</code> should return <code>false</code>.</p>\", \"testString\": \"assert.isFalse(isEvenlyDivisible(4192, 11));\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>is_evenly_divisible(4, 2)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_evenly_divisible(4, 2), True)`)\\n}})\"}, {\"text\": \"<p><code>is_evenly_divisible(7, 3)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_evenly_divisible(7, 3), False)`)\\n}})\"}, {\"text\": \"<p><code>is_evenly_divisible(5, 10)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_evenly_divisible(5, 10), False)`)\\n}})\"}, {\"text\": \"<p><code>is_evenly_divisible(48, 6)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_evenly_divisible(48, 6), True)`)\\n}})\"}, {\"text\": \"<p><code>is_evenly_divisible(3186, 9)</code> should return <code>True</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_evenly_divisible(3186, 9), True)`)\\n}})\"}, {\"text\": \"<p><code>is_evenly_divisible(4192, 11)</code> should return <code>False</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertIs(is_evenly_divisible(4192, 11), False)`)\\n}})\"}]",
+  "fcc_starter_js": "function isEvenlyDivisible(a, b) {\n\n  return a;\n}",
+  "fcc_starter_py": "def is_evenly_divisible(a, b):\n\n    return a",
+  "image_path": "20260316_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Evenly Divisible"
+}

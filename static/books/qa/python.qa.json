@@ -1,0 +1,9 @@
+{
+  "slug": "python",
+  "gate": "PASS",
+  "counts": {
+    "error": 0,
+    "warn": 0
+  },
+  "findings": []
+}

@@ -1,0 +1,17 @@
+{
+  "challenge_number": 38,
+  "concepts_text": null,
+  "date_id": "2025-09-17",
+  "fcc_description": "<p>Given a string, return a URL-friendly version of the string using the following constraints:</p>\n<ul>\n<li>All letters should be lowercase.</li>\n<li>All characters that are not letters, numbers, or spaces should be removed.</li>\n<li>All spaces should be replaced with the URL-encoded space code <code>%20</code>.</li>\n<li>Consecutive spaces should be replaced with a single <code>%20</code>.</li>\n<li>The returned string should not have leading or trailing <code>%20</code>.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>generateSlug(\\\"helloWorld\\\")</code> should return <code>\\\"helloworld\\\"</code>.</p>\", \"testString\": \"assert.equal(generateSlug(\\\"helloWorld\\\"), \\\"helloworld\\\");\"}, {\"text\": \"<p><code>generateSlug(\\\"hello world!\\\")</code> should return <code>\\\"hello%20world\\\"</code>.</p>\", \"testString\": \"assert.equal(generateSlug(\\\"hello world!\\\"), \\\"hello%20world\\\");\"}, {\"text\": \"<p><code>generateSlug(\\\" hello-world \\\")</code> should return <code>\\\"helloworld\\\"</code>.</p>\", \"testString\": \"assert.equal(generateSlug(\\\" hello-world \\\"), \\\"helloworld\\\");\"}, {\"text\": \"<p><code>generateSlug(\\\"hello  world\\\")</code> should return <code>\\\"hello%20world\\\"</code>.</p>\", \"testString\": \"assert.equal(generateSlug(\\\"hello  world\\\"), \\\"hello%20world\\\");\"}, {\"text\": \"<p><code>generateSlug(\\\"  ?H^3-1*1]0! W[0%R#1]D  \\\")</code> should return <code>\\\"h3110%20w0r1d\\\"</code>.</p>\", \"testString\": \"assert.equal(generateSlug(\\\"  ?H^3-1*1]0! W[0%R#1]D  \\\"), \\\"h3110%20w0r1d\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>generate_slug(\\\"helloWorld\\\")</code> should return <code>\\\"helloworld\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(generate_slug(\\\"helloWorld\\\"), \\\"helloworld\\\")`)\\n}})\"}, {\"text\": \"<p><code>generate_slug(\\\"hello world!\\\")</code> should return <code>\\\"hello%20world\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(generate_slug(\\\"hello world!\\\"), \\\"hello%20world\\\")`)\\n}})\"}, {\"text\": \"<p><code>generate_slug(\\\" hello-world \\\")</code> should return <code>\\\"helloworld\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(generate_slug(\\\" hello-world \\\"), \\\"helloworld\\\")`)\\n}})\"}, {\"text\": \"<p><code>generate_slug(\\\"hello  world\\\")</code> should return <code>\\\"hello%20world\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(generate_slug(\\\"hello  world\\\"), \\\"hello%20world\\\")`)\\n}})\"}, {\"text\": \"<p><code>generate_slug(\\\"  ?H^3-1*1]0! W[0%R#1]D  \\\")</code> should return <code>\\\"h3110%20w0r1d\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(generate_slug(\\\"  ?H^3-1*1]0! W[0%R#1]D  \\\"), \\\"h3110%20w0r1d\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function generateSlug(str) {\n\n  return str;\n}",
+  "fcc_starter_py": "def generate_slug(str):\n\n    return str",
+  "image_path": "20250917_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Slug Generator"
+}
