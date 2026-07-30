@@ -242,7 +242,26 @@ class Golden:
         return length / PHI
 
 
-# ── Font loading (brand fonts → Windows/Linux system fonts → default) ─────────
+# ── Font loading ──────────────────────────────────────────────────────────────
+# Priority: VENDORED brand fonts (static/fonts/, committed to the repo) → local
+# system fonts → PIL default. Vendoring the exact site typefaces (Crimson Text,
+# Libre Franklin, JetBrains Mono — all OFL) means cards render IDENTICALLY on
+# every host (this laptop, the server, the GitHub Action runner) AND match the
+# website's own type. Without this, each host substitutes whatever it has
+# (Georgia on Windows, DejaVu on the Ubuntu runner), so bot-generated cards drift
+# from locally-generated ones.
+FONT_DIR = os.path.join(basedir, "static", "fonts")
+
+# Vendored files + the variable-font weight to select (None = static file).
+# (fname, variation_name_or_None)
+_VENDORED = {
+    "serif":      ("CrimsonText-Regular.ttf", None),
+    "serif_bold": ("CrimsonText-Bold.ttf", None),
+    "sans":       ("LibreFranklin-Regular.ttf", "Regular"),   # variable → pick Regular
+    "sans_bold":  ("LibreFranklin-Regular.ttf", "Bold"),      # variable → pick Bold
+    "mono":       ("JetBrainsMono-Regular.ttf", "Regular"),   # variable → pick Regular
+}
+
 _FONT_DIRS = [
     os.path.join(os.environ.get("WINDIR", r"C:\Windows"), "Fonts"),
     "/usr/share/fonts", "/usr/share/fonts/truetype",
@@ -262,6 +281,26 @@ def load_font(kind, size):
     key = (kind, size)
     if key in _font_cache:
         return _font_cache[key]
+
+    # 1. Prefer the vendored brand font (identical on every host).
+    vend = _VENDORED.get(kind)
+    if vend:
+        fname, variation = vend
+        path = os.path.join(FONT_DIR, fname)
+        if os.path.exists(path):
+            try:
+                f = ImageFont.truetype(path, size)
+                if variation:
+                    try:
+                        f.set_variation_by_name(variation)
+                    except Exception:  # not a variable font / no such instance
+                        pass
+                _font_cache[key] = f
+                return f
+            except OSError:
+                pass
+
+    # 2. Fall back to a local system font.
     for fname in _FONT_CANDIDATES.get(kind, []):
         for d in _FONT_DIRS:
             path = os.path.join(d, fname)
@@ -272,6 +311,8 @@ def load_font(kind, size):
                     return f
                 except OSError:
                     pass
+
+    # 3. Last resort: PIL's built-in bitmap font.
     f = ImageFont.load_default()
     _font_cache[key] = f
     return f
