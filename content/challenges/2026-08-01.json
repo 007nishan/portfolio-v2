@@ -1,0 +1,17 @@
+{
+  "challenge_number": 356,
+  "concepts_text": null,
+  "date_id": "2026-08-01",
+  "fcc_description": "<p>Given a 3x3 grid with one missing number (represented as <code>0</code>), return the missing number that completes the magic square, or <code>\"impossible\"</code> if no valid number exists.</p>\n<p>A magic square is a grid where every row, column, and diagonal adds up to the same number.</p>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>solveMagicSquare([[2, 7, 6], [9, 0, 1], [4, 3, 8]])</code> should return <code>5</code>.</p>\", \"testString\": \"assert.equal(solveMagicSquare([[2, 7, 6], [9, 0, 1], [4, 3, 8]]), 5);\"}, {\"text\": \"<p><code>solveMagicSquare([[0, 14, 12], [18, 10, 2], [8, 6, 16]])</code> should return <code>4</code>.</p>\", \"testString\": \"assert.equal(solveMagicSquare([[0, 14, 12], [18, 10, 2], [8, 6, 16]]), 4);\"}, {\"text\": \"<p><code>solveMagicSquare([[12, 17, 16], [19, 0, 10], [14, 13, 18]])</code> should return <code>\\\"impossible\\\"</code>.</p>\", \"testString\": \"assert.equal(solveMagicSquare([[12, 17, 16], [19, 0, 10], [14, 13, 18]]), \\\"impossible\\\");\"}, {\"text\": \"<p><code>solveMagicSquare([[15, 35, 31], [43, 27, 11], [23, 19, 0]])</code> should return <code>39</code>.</p>\", \"testString\": \"assert.equal(solveMagicSquare([[15, 35, 31], [43, 27, 11], [23, 19, 0]]), 39);\"}, {\"text\": \"<p><code>solveMagicSquare([[26, 41, 14], [47, 35, 0], [32, 29, 44]])</code> should return <code>\\\"impossible\\\"</code>.</p>\", \"testString\": \"assert.equal(solveMagicSquare([[26, 41, 14], [47, 35, 0], [32, 29, 44]]), \\\"impossible\\\");\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>solve_magic_square([[2, 7, 6], [9, 0, 1], [4, 3, 8]])</code> should return <code>5</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(solve_magic_square([[2, 7, 6], [9, 0, 1], [4, 3, 8]]), 5)`)\\n}})\"}, {\"text\": \"<p><code>solve_magic_square([[0, 14, 12], [18, 10, 2], [8, 6, 16]])</code> should return <code>4</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(solve_magic_square([[0, 14, 12], [18, 10, 2], [8, 6, 16]]), 4)`)\\n}})\"}, {\"text\": \"<p><code>solve_magic_square([[12, 17, 16], [19, 0, 10], [14, 13, 18]])</code> should return <code>\\\"impossible\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(solve_magic_square([[12, 17, 16], [19, 0, 10], [14, 13, 18]]), \\\"impossible\\\")`)\\n}})\"}, {\"text\": \"<p><code>solve_magic_square([[15, 35, 31], [43, 27, 11], [23, 19, 0]])</code> should return <code>39</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(solve_magic_square([[15, 35, 31], [43, 27, 11], [23, 19, 0]]), 39)`)\\n}})\"}, {\"text\": \"<p><code>solve_magic_square([[26, 41, 14], [47, 35, 0], [32, 29, 44]])</code> should return <code>\\\"impossible\\\"</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(solve_magic_square([[26, 41, 14], [47, 35, 0], [32, 29, 44]]), \\\"impossible\\\")`)\\n}})\"}]",
+  "fcc_starter_js": "function solveMagicSquare(grid) {\n\n  return grid;\n}",
+  "fcc_starter_py": "def solve_magic_square(grid):\n\n    return grid",
+  "image_path": "20260801_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Magic Square Solver"
+}
