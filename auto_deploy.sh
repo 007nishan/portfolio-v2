@@ -24,6 +24,11 @@ PORTFOLIO_DIR="${PORTFOLIO_DIR:-/home/nishan/portfolio}"
 BRANCH="${DEPLOY_BRANCH:-main}"
 SERVICE="${PORTFOLIO_SERVICE:-portfolio}"
 LOG_FILE="$PORTFOLIO_DIR/data/deploy.log"
+# Read-only deploy key for PRIVATE-repo pulls. If this file exists, git uses it
+# over SSH so `git fetch/pull` works after the repo is made private. Public repos
+# don't need it (this stays unset and plain HTTPS/anonymous pull works). See
+# GO_LIVE.md for how to generate the key and add it to the repo as a deploy key.
+DEPLOY_KEY="${DEPLOY_KEY:-$PORTFOLIO_DIR/deploy_key}"
 
 log() {
     mkdir -p "$(dirname "$LOG_FILE")"
@@ -31,6 +36,21 @@ log() {
 }
 
 cd "$PORTFOLIO_DIR"
+
+# 0a. PRIVATE-REPO AUTH: if a deploy key is present, tell git to use it for all
+#     remote ops this run (fetch/pull). Harmless when the repo is public.
+if [ -f "$DEPLOY_KEY" ]; then
+    export GIT_SSH_COMMAND="ssh -i '$DEPLOY_KEY' -o IdentitiesOnly=yes -o StrictHostKeyChecking=accept-new"
+    # Ensure the remote is the SSH form (deploy keys don't work over HTTPS).
+    CUR_REMOTE="$(git remote get-url origin 2>/dev/null || echo '')"
+    case "$CUR_REMOTE" in
+        https://github.com/*)
+            SSH_REMOTE="git@github.com:${CUR_REMOTE#https://github.com/}"
+            git remote set-url origin "$SSH_REMOTE" \
+                && log "Private-repo: switched origin to SSH ($SSH_REMOTE) for deploy-key auth."
+            ;;
+    esac
+fi
 
 # 0. SINGLE-WRITER SELF-HEAL (runs EVERY tick, before the up-to-date short-circuit).
 #    The daily GitHub Action is now the SOLE writer of challenge content. Any

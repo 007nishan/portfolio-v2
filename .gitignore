@@ -164,6 +164,9 @@ id_rsa.pub
 *.pem
 *.key
 .env
+# read-only deploy key placed on the server for private-repo pulls (auto_deploy.sh)
+deploy_key
+deploy_key.pub
 
 # Server-only runtime state (created on the host, must not block auto-deploy)
 admin_id.txt
