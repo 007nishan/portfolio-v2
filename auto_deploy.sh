@@ -171,7 +171,7 @@ fi
 
 # 5. Restart the app so template/code changes take effect
 #    (Flask/Jinja caches templates; a restart is required.)
-if command -v systemctl >/dev/null 2>&1 && systemctl list-unit-files 2>/dev/null | grep -q "^${SERVICE}.service"; then
+if command -v systemctl >/dev/null 2>&1 && systemctl cat "${SERVICE}.service" >/dev/null 2>&1; then
     sudo systemctl restart "$SERVICE" && log "Restarted systemd service '$SERVICE'."
 else
     # Fallback: restart a bare `python app.py` process
