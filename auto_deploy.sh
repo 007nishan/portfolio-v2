@@ -151,9 +151,15 @@ if [ -f "$PORTFOLIO_DIR/venv/bin/python" ] && [ -f "$PORTFOLIO_DIR/import_challe
         || log "WARNING: challenge content import reported an issue (continuing)."
 fi
 
-# 4b. Rebuild books (HTML + PDF) if their sources changed, gated by the
-#     error-free readability lint. A failing gate aborts the deploy BEFORE the
-#     restart so a broken book is never served. Non-fatal if book tooling absent.
+# 4b. OPTIONALLY rebuild books (HTML + PDF) on the server if their sources
+#     changed. This is BEST-EFFORT and must NEVER abort the deploy: the compiled
+#     book HTML is COMMITTED to the repo (templates/books/*.html), so the server
+#     already serves the correct, current book straight from the pull — rebuilding
+#     here is a nice-to-have, not a requirement. A lint failure (e.g. the KaTeX
+#     math renderer needs Node, which may be absent on the server) or a build
+#     error therefore WARNS and skips that book; the site (challenges + the
+#     already-committed books) still goes live. Book QA is enforced where books
+#     are authored/committed, not on the serving host.
 if [ -f "$PORTFOLIO_DIR/venv/bin/python" ] && [ -f "$PORTFOLIO_DIR/book_generator.py" ]; then
     for slug in python linear-algebra aws-ml; do
         # Skip a book that has no source yet (nothing to compile).
@@ -161,8 +167,8 @@ if [ -f "$PORTFOLIO_DIR/venv/bin/python" ] && [ -f "$PORTFOLIO_DIR/book_generato
             continue
         fi
         if ! "$PORTFOLIO_DIR/venv/bin/python" book_lint.py --book "$slug" --strict >> "$LOG_FILE" 2>&1; then
-            log "ERROR: QA gate FAILED for '$slug' — see static/books/qa/$slug.qa.json. Aborting deploy (service NOT restarted)."
-            exit 1
+            log "WARNING: book QA lint for '$slug' did not pass on this host (serving the committed HTML as-is). Skipping rebuild."
+            continue
         fi
         "$PORTFOLIO_DIR/venv/bin/python" book_generator.py "$slug" >> "$LOG_FILE" 2>&1 || log "WARNING: HTML build for '$slug' failed."
         "$PORTFOLIO_DIR/venv/bin/python" make_book_pdf.py --book "$slug" >> "$LOG_FILE" 2>&1 || log "WARNING: PDF build for '$slug' failed (native libs?)."
