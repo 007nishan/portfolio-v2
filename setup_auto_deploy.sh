@@ -115,7 +115,11 @@ echo "  ✓ Timer active."
 # ──────────────────────────────────────────────────────────────────────────────
 echo "[4/4] Restarting the app so the new code is live now..."
 chmod +x "$PORTFOLIO_DIR/auto_deploy.sh" 2>/dev/null || true
-if command -v systemctl >/dev/null 2>&1 && systemctl list-unit-files 2>/dev/null | grep -q "^portfolio.service"; then
+# Use `systemctl cat` (canonical existence check) rather than grepping
+# list-unit-files output — the latter can miss the unit and wrongly fall through
+# to nohup, spawning a SECOND app instance that competes with the real gunicorn
+# service nginx talks to. Restarting the actual service is always correct here.
+if command -v systemctl >/dev/null 2>&1 && systemctl cat portfolio.service >/dev/null 2>&1; then
     sudo systemctl restart portfolio && echo "  ✓ Restarted systemd service 'portfolio'."
 else
     pkill -f "python app.py" 2>/dev/null || true
