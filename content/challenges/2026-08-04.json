@@ -1,0 +1,17 @@
+{
+  "challenge_number": 359,
+  "concepts_text": null,
+  "date_id": "2026-08-04",
+  "fcc_description": "<p>Given an array of golf scores and a corresponding array of course par values, return the golfer's handicap index using the following method:</p>\n<ul>\n<li>Calculate the differential for each round by subtracting the par from the score, then return the average of all differentials rounded to one decimal place.</li>\n</ul>",
+  "fcc_js_tests": "[{\"text\": \"<p><code>calculateHandicap([72, 72, 72], [72, 72, 72])</code> should return <code>0</code>.</p>\", \"testString\": \"assert.equal(calculateHandicap([72, 72, 72], [72, 72, 72]), 0);\"}, {\"text\": \"<p><code>calculateHandicap([80, 76, 78, 78], [72, 72, 72, 72])</code> should return <code>6</code>.</p>\", \"testString\": \"assert.equal(calculateHandicap([80, 76, 78, 78], [72, 72, 72, 72]), 6);\"}, {\"text\": \"<p><code>calculateHandicap([42, 45, 46, 44], [36, 36, 36, 36])</code> should return <code>8.3</code>.</p>\", \"testString\": \"assert.equal(calculateHandicap([42, 45, 46, 44], [36, 36, 36, 36]), 8.3);\"}, {\"text\": \"<p><code>calculateHandicap([85, 80, 76, 79, 82], [72, 72, 72, 71, 71])</code> should return <code>8.8</code>.</p>\", \"testString\": \"assert.equal(calculateHandicap([85, 80, 76, 79, 82], [72, 72, 72, 71, 71]), 8.8);\"}, {\"text\": \"<p><code>calculateHandicap([41, 50, 48, 52, 46, 49], [35, 37, 35, 37, 35, 37])</code> should return <code>11.7</code>.</p>\", \"testString\": \"assert.equal(calculateHandicap([41, 50, 48, 52, 46, 49], [35, 37, 35, 37, 35, 37]), 11.7);\"}]",
+  "fcc_py_tests": "[{\"text\": \"<p><code>calculate_handicap([72, 72, 72], [72, 72, 72])</code> should return <code>0</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_handicap([72, 72, 72], [72, 72, 72]), 0)`)\\n}})\"}, {\"text\": \"<p><code>calculate_handicap([80, 76, 78, 78], [72, 72, 72, 72])</code> should return <code>6</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_handicap([80, 76, 78, 78], [72, 72, 72, 72]), 6)`)\\n}})\"}, {\"text\": \"<p><code>calculate_handicap([42, 45, 46, 44], [36, 36, 36, 36])</code> should return <code>8.3</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_handicap([42, 45, 46, 44], [36, 36, 36, 36]), 8.3)`)\\n}})\"}, {\"text\": \"<p><code>calculate_handicap([85, 80, 76, 79, 82], [72, 72, 72, 71, 71])</code> should return <code>8.8</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_handicap([85, 80, 76, 79, 82], [72, 72, 72, 71, 71]), 8.8)`)\\n}})\"}, {\"text\": \"<p><code>calculate_handicap([41, 50, 48, 52, 46, 49], [35, 37, 35, 37, 35, 37])</code> should return <code>11.7</code>.</p>\", \"testString\": \"({test: () => { runPython(`\\nfrom unittest import TestCase\\nTestCase().assertEqual(calculate_handicap([41, 50, 48, 52, 46, 49], [35, 37, 35, 37, 35, 37]), 11.7)`)\\n}})\"}]",
+  "fcc_starter_js": "function calculateHandicap(scores, pars) {\n\n  return scores;\n}",
+  "fcc_starter_py": "def calculate_handicap(scores, pars):\n\n    return scores",
+  "image_path": "20260804_card.jpg",
+  "problem_text": null,
+  "qa_text": null,
+  "quote_text": null,
+  "solution_code": null,
+  "source": "fcc_api",
+  "title": "Golf Handicap Calculator"
+}
