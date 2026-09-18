@@ -1,0 +1,2552 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1789654290.1347814,
+    "seen": 1789655018.989891,
+    "ast_hash": "b01057a819551946f0023f0279f3b6e1",
+    "semantic_hash": "b01057a819551946f0023f0279f3b6e1"
+  },
+  "_weasy_env.py": {
+    "mtime": 1785078810.3354454,
+    "seen": 1789655018.9899023,
+    "ast_hash": "1d724ec0989759fddc7f47dccf08ca61",
+    "semantic_hash": "1d724ec0989759fddc7f47dccf08ca61"
+  },
+  "add_learning.py": {
+    "mtime": 1783854369.464836,
+    "seen": 1789655018.989907,
+    "ast_hash": "03832e659c0330084b1f63be38dbb33a",
+    "semantic_hash": "03832e659c0330084b1f63be38dbb33a"
+  },
+  "app.py": {
+    "mtime": 1789404319.3687959,
+    "seen": 1789655018.9899101,
+    "ast_hash": "260b265cb34f59132adc3dacc7cf2b73",
+    "semantic_hash": "260b265cb34f59132adc3dacc7cf2b73"
+  },
+  "auto_deploy.sh": {
+    "mtime": 1785647380.7400258,
+    "seen": 1789655018.9899125,
+    "ast_hash": "ea1c9efd23034f28ba72c4d97bb1ca96",
+    "semantic_hash": "ea1c9efd23034f28ba72c4d97bb1ca96"
+  },
+  "aws_sync.py": {
+    "mtime": 1785355000.96394,
+    "seen": 1789655018.9899151,
+    "ast_hash": "113a688afe736beadb9be0af032bfed1",
+    "semantic_hash": "113a688afe736beadb9be0af032bfed1"
+  },
+  "book_content.py": {
+    "mtime": 1789406254.765383,
+    "seen": 1789655018.9899178,
+    "ast_hash": "638fb036500db46a3dda13935672b75b",
+    "semantic_hash": "638fb036500db46a3dda13935672b75b"
+  },
+  "book_cover.py": {
+    "mtime": 1785353824.0805676,
+    "seen": 1789655018.9899194,
+    "ast_hash": "af93058cded7a9bf0aa24347780f32f9",
+    "semantic_hash": "af93058cded7a9bf0aa24347780f32f9"
+  },
+  "book_generator.py": {
+    "mtime": 1789406265.0117223,
+    "seen": 1789655018.9899213,
+    "ast_hash": "8655bafacbc8d8577aa78e16a318959e",
+    "semantic_hash": "8655bafacbc8d8577aa78e16a318959e"
+  },
+  "book_lint.py": {
+    "mtime": 1785082074.002797,
+    "seen": 1789655018.9899232,
+    "ast_hash": "ae11c7c7fb2c22504ee5c224c119a914",
+    "semantic_hash": "ae11c7c7fb2c22504ee5c224c119a914"
+  },
+  "challenge_card.py": {
+    "mtime": 1785442112.667786,
+    "seen": 1789655018.989925,
+    "ast_hash": "bc328bc846fad3ad6c8e15431f5b63c2",
+    "semantic_hash": "bc328bc846fad3ad6c8e15431f5b63c2"
+  },
+  "check_db_server.py": {
+    "mtime": 1783854369.4732559,
+    "seen": 1789655018.989927,
+    "ast_hash": "54933496847ac883cfb25d6add60cd62",
+    "semantic_hash": "54933496847ac883cfb25d6add60cd62"
+  },
+  "check_fcc_text.py": {
+    "mtime": 1783854369.475418,
+    "seen": 1789655018.9899292,
+    "ast_hash": "8f2a7c4c600c69d4b89dee9c3cbd16b1",
+    "semantic_hash": "8f2a7c4c600c69d4b89dee9c3cbd16b1"
+  },
+  "content/challenges/2025-08-11.json": {
+    "mtime": 1785431999.988779,
+    "seen": 1789655018.9899304,
+    "ast_hash": "7111455eacfab1a05da9e26ce846fa58",
+    "semantic_hash": "7111455eacfab1a05da9e26ce846fa58"
+  },
+  "content/challenges/2025-08-12.json": {
+    "mtime": 1785432000.0061169,
+    "seen": 1789655018.989932,
+    "ast_hash": "e0b2f256757edeae6cdc8f6ca0b37a4b",
+    "semantic_hash": "e0b2f256757edeae6cdc8f6ca0b37a4b"
+  },
+  "content/challenges/2025-08-13.json": {
+    "mtime": 1785432000.017796,
+    "seen": 1789655018.9899335,
+    "ast_hash": "ef5749f04131f1ed429487b437f03ffb",
+    "semantic_hash": "ef5749f04131f1ed429487b437f03ffb"
+  },
+  "content/challenges/2025-08-14.json": {
+    "mtime": 1785432000.023929,
+    "seen": 1789655018.9899352,
+    "ast_hash": "5847fafe7d904099013256a37484b522",
+    "semantic_hash": "5847fafe7d904099013256a37484b522"
+  },
+  "content/challenges/2025-08-15.json": {
+    "mtime": 1785432000.0306811,
+    "seen": 1789655018.9899368,
+    "ast_hash": "e555f02e75d8ebc1bc27941df2710e55",
+    "semantic_hash": "e555f02e75d8ebc1bc27941df2710e55"
+  },
+  "content/challenges/2025-08-16.json": {
+    "mtime": 1785432000.0346527,
+    "seen": 1789655018.9899383,
+    "ast_hash": "e6f07476bdad640958cba08869a6f2a0",
+    "semantic_hash": "e6f07476bdad640958cba08869a6f2a0"
+  },
+  "content/challenges/2025-08-17.json": {
+    "mtime": 1785432000.038685,
+    "seen": 1789655018.9899397,
+    "ast_hash": "376c50dad7ff0567470a84393c3c2e1f",
+    "semantic_hash": "376c50dad7ff0567470a84393c3c2e1f"
+  },
+  "content/challenges/2025-08-18.json": {
+    "mtime": 1785432000.0458367,
+    "seen": 1789655018.9899416,
+    "ast_hash": "489a46fc788e6d6d3544ee7e83ec6b1d",
+    "semantic_hash": "489a46fc788e6d6d3544ee7e83ec6b1d"
+  },
+  "content/challenges/2025-08-19.json": {
+    "mtime": 1785432000.0554454,
+    "seen": 1789655018.9899428,
+    "ast_hash": "c220ba1cde760d9e0a0b0016adeb4e4c",
+    "semantic_hash": "c220ba1cde760d9e0a0b0016adeb4e4c"
+  },
+  "content/challenges/2025-08-20.json": {
+    "mtime": 1785432000.0679545,
+    "seen": 1789655018.9899457,
+    "ast_hash": "fe02f2fb655a0627d38106ca776cb559",
+    "semantic_hash": "fe02f2fb655a0627d38106ca776cb559"
+  },
+  "content/challenges/2025-08-21.json": {
+    "mtime": 1785432000.0749242,
+    "seen": 1789655018.9899473,
+    "ast_hash": "aecd2fae7a755d971191ffc4f8655ab4",
+    "semantic_hash": "aecd2fae7a755d971191ffc4f8655ab4"
+  },
+  "content/challenges/2025-08-22.json": {
+    "mtime": 1785432000.082824,
+    "seen": 1789655018.989949,
+    "ast_hash": "8b1a60646eef3a5d72909f684e8083e7",
+    "semantic_hash": "8b1a60646eef3a5d72909f684e8083e7"
+  },
+  "content/challenges/2025-08-23.json": {
+    "mtime": 1785432000.0864635,
+    "seen": 1789655018.9899504,
+    "ast_hash": "bcfb4e5e7598976cfd08f5e3eb4e9ccf",
+    "semantic_hash": "bcfb4e5e7598976cfd08f5e3eb4e9ccf"
+  },
+  "content/challenges/2025-08-24.json": {
+    "mtime": 1785432000.091666,
+    "seen": 1789655018.9899523,
+    "ast_hash": "ead42cf0a8d648bb852c2842cc701ad2",
+    "semantic_hash": "ead42cf0a8d648bb852c2842cc701ad2"
+  },
+  "content/challenges/2025-08-25.json": {
+    "mtime": 1785432000.1022718,
+    "seen": 1789655018.9899538,
+    "ast_hash": "2df903ae16166dfe144da69169f9f05a",
+    "semantic_hash": "2df903ae16166dfe144da69169f9f05a"
+  },
+  "content/challenges/2025-08-26.json": {
+    "mtime": 1785432000.1132736,
+    "seen": 1789655018.9899554,
+    "ast_hash": "157e937ce7646889f2fbf3f49117477d",
+    "semantic_hash": "157e937ce7646889f2fbf3f49117477d"
+  },
+  "content/challenges/2025-08-27.json": {
+    "mtime": 1785432000.1214185,
+    "seen": 1789655018.9899569,
+    "ast_hash": "62da41184b0b0a6ebb7cad9c6ad1768f",
+    "semantic_hash": "62da41184b0b0a6ebb7cad9c6ad1768f"
+  },
+  "content/challenges/2025-08-28.json": {
+    "mtime": 1785432000.130637,
+    "seen": 1789655018.9899583,
+    "ast_hash": "be7143c5fef6c361f9bdd692fc99ecb8",
+    "semantic_hash": "be7143c5fef6c361f9bdd692fc99ecb8"
+  },
+  "content/challenges/2025-08-29.json": {
+    "mtime": 1785432000.136038,
+    "seen": 1789655018.9899602,
+    "ast_hash": "a4ee065ffd1c1c0642d960198d37f6c4",
+    "semantic_hash": "a4ee065ffd1c1c0642d960198d37f6c4"
+  },
+  "content/challenges/2025-08-30.json": {
+    "mtime": 1785432000.1452887,
+    "seen": 1789655018.9899616,
+    "ast_hash": "e23bb3e33a42fca3a02981cc86741896",
+    "semantic_hash": "e23bb3e33a42fca3a02981cc86741896"
+  },
+  "content/challenges/2025-08-31.json": {
+    "mtime": 1785432000.154961,
+    "seen": 1789655018.989963,
+    "ast_hash": "967f0a6b50d14b039a7f2d3a556b7294",
+    "semantic_hash": "967f0a6b50d14b039a7f2d3a556b7294"
+  },
+  "content/challenges/2025-09-01.json": {
+    "mtime": 1785432000.1629577,
+    "seen": 1789655018.989965,
+    "ast_hash": "044863399686e92fb52525b69856f0fd",
+    "semantic_hash": "044863399686e92fb52525b69856f0fd"
+  },
+  "content/challenges/2025-09-02.json": {
+    "mtime": 1785432000.1689575,
+    "seen": 1789655018.9899666,
+    "ast_hash": "ee5775d31461685731e4ccc748337a04",
+    "semantic_hash": "ee5775d31461685731e4ccc748337a04"
+  },
+  "content/challenges/2025-09-03.json": {
+    "mtime": 1785432000.1740224,
+    "seen": 1789655018.9899683,
+    "ast_hash": "3ab7448f8381b5fb54d997078ec1b9ac",
+    "semantic_hash": "3ab7448f8381b5fb54d997078ec1b9ac"
+  },
+  "content/challenges/2025-09-04.json": {
+    "mtime": 1785432000.1854985,
+    "seen": 1789655018.98997,
+    "ast_hash": "97de1cf4f0733b6f20a066a4e92a1f88",
+    "semantic_hash": "97de1cf4f0733b6f20a066a4e92a1f88"
+  },
+  "content/challenges/2025-09-05.json": {
+    "mtime": 1785432000.189488,
+    "seen": 1789655018.9899712,
+    "ast_hash": "eaeb440e32a74bb0087e72a7bb50c806",
+    "semantic_hash": "eaeb440e32a74bb0087e72a7bb50c806"
+  },
+  "content/challenges/2025-09-06.json": {
+    "mtime": 1785432000.1972044,
+    "seen": 1789655018.9899728,
+    "ast_hash": "9fc8b62b562116f86bdadb74d97a92ce",
+    "semantic_hash": "9fc8b62b562116f86bdadb74d97a92ce"
+  },
+  "content/challenges/2025-09-07.json": {
+    "mtime": 1785432000.2014894,
+    "seen": 1789655018.9899743,
+    "ast_hash": "2bcf559849b66fb715291d121bd3b9eb",
+    "semantic_hash": "2bcf559849b66fb715291d121bd3b9eb"
+  },
+  "content/challenges/2025-09-08.json": {
+    "mtime": 1785432000.2061763,
+    "seen": 1789655018.9899757,
+    "ast_hash": "709cd05627a3bd122168ce40c239c12f",
+    "semantic_hash": "709cd05627a3bd122168ce40c239c12f"
+  },
+  "content/challenges/2025-09-09.json": {
+    "mtime": 1785432000.214552,
+    "seen": 1789655018.9899774,
+    "ast_hash": "a5c12b2e7c4413b2888fda744180b875",
+    "semantic_hash": "a5c12b2e7c4413b2888fda744180b875"
+  },
+  "content/challenges/2025-09-10.json": {
+    "mtime": 1785432000.223264,
+    "seen": 1789655018.9899805,
+    "ast_hash": "fe3102640f4312b651243b759b9cb744",
+    "semantic_hash": "fe3102640f4312b651243b759b9cb744"
+  },
+  "content/challenges/2025-09-11.json": {
+    "mtime": 1785432000.22991,
+    "seen": 1789655018.989982,
+    "ast_hash": "44dbbab5e7ba832634419fe81566d390",
+    "semantic_hash": "44dbbab5e7ba832634419fe81566d390"
+  },
+  "content/challenges/2025-09-12.json": {
+    "mtime": 1785432000.2339106,
+    "seen": 1789655018.9899836,
+    "ast_hash": "d2d6781eeaa83324cdd3b578c2e95a0a",
+    "semantic_hash": "d2d6781eeaa83324cdd3b578c2e95a0a"
+  },
+  "content/challenges/2025-09-13.json": {
+    "mtime": 1785432000.2409315,
+    "seen": 1789655018.989985,
+    "ast_hash": "ec865b9bc81f78be7de2eaa8a299590f",
+    "semantic_hash": "ec865b9bc81f78be7de2eaa8a299590f"
+  },
+  "content/challenges/2025-09-14.json": {
+    "mtime": 1785432000.2469277,
+    "seen": 1789655018.9899864,
+    "ast_hash": "d6b7e08a391807e244c3c577b2c621d5",
+    "semantic_hash": "d6b7e08a391807e244c3c577b2c621d5"
+  },
+  "content/challenges/2025-09-15.json": {
+    "mtime": 1785432000.2529256,
+    "seen": 1789655018.9899879,
+    "ast_hash": "6c689c668b5776ef878a0e0102b950c4",
+    "semantic_hash": "6c689c668b5776ef878a0e0102b950c4"
+  },
+  "content/challenges/2025-09-16.json": {
+    "mtime": 1785432000.2657,
+    "seen": 1789655018.9899893,
+    "ast_hash": "2d54ce9fcebc40caaec89230b55c5d23",
+    "semantic_hash": "2d54ce9fcebc40caaec89230b55c5d23"
+  },
+  "content/challenges/2025-09-17.json": {
+    "mtime": 1785432000.2717037,
+    "seen": 1789655018.989991,
+    "ast_hash": "be015a74cf941a7ec1adaeff60110154",
+    "semantic_hash": "be015a74cf941a7ec1adaeff60110154"
+  },
+  "content/challenges/2025-09-18.json": {
+    "mtime": 1785432000.2794108,
+    "seen": 1789655018.9899921,
+    "ast_hash": "8f4967ba42a61d74127cfb412dd3825f",
+    "semantic_hash": "8f4967ba42a61d74127cfb412dd3825f"
+  },
+  "content/challenges/2025-09-19.json": {
+    "mtime": 1785432000.2844079,
+    "seen": 1789655018.989994,
+    "ast_hash": "6865355b8e2c6b099d30f7f2df53ab8d",
+    "semantic_hash": "6865355b8e2c6b099d30f7f2df53ab8d"
+  },
+  "content/challenges/2025-09-20.json": {
+    "mtime": 1785432000.2909355,
+    "seen": 1789655018.9899955,
+    "ast_hash": "7ae37f060512a68640c6da14819dd70b",
+    "semantic_hash": "7ae37f060512a68640c6da14819dd70b"
+  },
+  "content/challenges/2025-09-21.json": {
+    "mtime": 1785432000.2980154,
+    "seen": 1789655018.989997,
+    "ast_hash": "2bc50fa37b4edd73af77179b25ef03e3",
+    "semantic_hash": "2bc50fa37b4edd73af77179b25ef03e3"
+  },
+  "content/challenges/2025-09-22.json": {
+    "mtime": 1785432000.3030176,
+    "seen": 1789655018.9899983,
+    "ast_hash": "79086e57353dd41ce2093b2517e2f8c6",
+    "semantic_hash": "79086e57353dd41ce2093b2517e2f8c6"
+  },
+  "content/challenges/2025-09-23.json": {
+    "mtime": 1785432000.3106306,
+    "seen": 1789655018.9899998,
+    "ast_hash": "5075e6ac1b00273553f149a9622ababb",
+    "semantic_hash": "5075e6ac1b00273553f149a9622ababb"
+  },
+  "content/challenges/2025-09-24.json": {
+    "mtime": 1785432000.3153763,
+    "seen": 1789655018.9900014,
+    "ast_hash": "556fc9e4637fe978ae245f49604333c8",
+    "semantic_hash": "556fc9e4637fe978ae245f49604333c8"
+  },
+  "content/challenges/2025-09-25.json": {
+    "mtime": 1785432000.3210735,
+    "seen": 1789655018.9900029,
+    "ast_hash": "eb83e5778d1a72f65f3d33db4746be4a",
+    "semantic_hash": "eb83e5778d1a72f65f3d33db4746be4a"
+  },
+  "content/challenges/2025-09-26.json": {
+    "mtime": 1785432000.3299131,
+    "seen": 1789655018.9900045,
+    "ast_hash": "6d7b2776b3380ee3b6c296146febc308",
+    "semantic_hash": "6d7b2776b3380ee3b6c296146febc308"
+  },
+  "content/challenges/2025-09-27.json": {
+    "mtime": 1785432000.3373725,
+    "seen": 1789655018.990006,
+    "ast_hash": "cd6cd16a0f4ce190af8be56a68b52afb",
+    "semantic_hash": "cd6cd16a0f4ce190af8be56a68b52afb"
+  },
+  "content/challenges/2025-09-28.json": {
+    "mtime": 1785432000.3501506,
+    "seen": 1789655018.9900079,
+    "ast_hash": "24a36b1f2148d3b5ce1321240c40b19f",
+    "semantic_hash": "24a36b1f2148d3b5ce1321240c40b19f"
+  },
+  "content/challenges/2025-09-29.json": {
+    "mtime": 1785432000.355657,
+    "seen": 1789655018.9900093,
+    "ast_hash": "3614c7305a9d92759eeed4b12c84846e",
+    "semantic_hash": "3614c7305a9d92759eeed4b12c84846e"
+  },
+  "content/challenges/2025-09-30.json": {
+    "mtime": 1785432000.3644185,
+    "seen": 1789655018.990011,
+    "ast_hash": "2c6a0bb5b873238a91bef024a062164b",
+    "semantic_hash": "2c6a0bb5b873238a91bef024a062164b"
+  },
+  "content/challenges/2025-10-01.json": {
+    "mtime": 1785432000.3682733,
+    "seen": 1789655018.9900124,
+    "ast_hash": "993edf1d43815a57fddab8a3b629b8e5",
+    "semantic_hash": "993edf1d43815a57fddab8a3b629b8e5"
+  },
+  "content/challenges/2025-10-02.json": {
+    "mtime": 1785432000.376333,
+    "seen": 1789655018.9900136,
+    "ast_hash": "7ba8550e3f69df4d8d4224c7c4fdf471",
+    "semantic_hash": "7ba8550e3f69df4d8d4224c7c4fdf471"
+  },
+  "content/challenges/2025-10-03.json": {
+    "mtime": 1785432000.3836472,
+    "seen": 1789655018.9900153,
+    "ast_hash": "6790e1846c4a7c0372192b3b10c58aab",
+    "semantic_hash": "6790e1846c4a7c0372192b3b10c58aab"
+  },
+  "content/challenges/2025-10-04.json": {
+    "mtime": 1785432000.3954306,
+    "seen": 1789655018.9900167,
+    "ast_hash": "b7b0883cd58615097097d0bd547ae462",
+    "semantic_hash": "b7b0883cd58615097097d0bd547ae462"
+  },
+  "content/challenges/2025-10-05.json": {
+    "mtime": 1785432000.4127877,
+    "seen": 1789655018.9900184,
+    "ast_hash": "e8a1d888af6aa595a710e8988700128f",
+    "semantic_hash": "e8a1d888af6aa595a710e8988700128f"
+  },
+  "content/challenges/2025-10-06.json": {
+    "mtime": 1785432000.4265153,
+    "seen": 1789655018.9900198,
+    "ast_hash": "66fe356209a63b48e22c0dcc60db5c4b",
+    "semantic_hash": "66fe356209a63b48e22c0dcc60db5c4b"
+  },
+  "content/challenges/2025-10-07.json": {
+    "mtime": 1785432000.431748,
+    "seen": 1789655018.9900215,
+    "ast_hash": "2a589224031c432d89c3992039ed239d",
+    "semantic_hash": "2a589224031c432d89c3992039ed239d"
+  },
+  "content/challenges/2025-10-08.json": {
+    "mtime": 1785432000.4377866,
+    "seen": 1789655018.990023,
+    "ast_hash": "3fa6b41c53cf7bbda88204bbf99a54f3",
+    "semantic_hash": "3fa6b41c53cf7bbda88204bbf99a54f3"
+  },
+  "content/challenges/2025-10-09.json": {
+    "mtime": 1785432000.44753,
+    "seen": 1789655018.9900246,
+    "ast_hash": "cc1e918f6703879d730bcd0322fc97ee",
+    "semantic_hash": "cc1e918f6703879d730bcd0322fc97ee"
+  },
+  "content/challenges/2025-10-10.json": {
+    "mtime": 1785432000.4495435,
+    "seen": 1789655018.990026,
+    "ast_hash": "3e4e612134fe9d4f408b72d94ecdcfee",
+    "semantic_hash": "3e4e612134fe9d4f408b72d94ecdcfee"
+  },
+  "content/challenges/2025-10-11.json": {
+    "mtime": 1785432000.46217,
+    "seen": 1789655018.9900277,
+    "ast_hash": "59f2b64e63a4692679a01a1513cccdf5",
+    "semantic_hash": "59f2b64e63a4692679a01a1513cccdf5"
+  },
+  "content/challenges/2025-10-12.json": {
+    "mtime": 1785432000.4681716,
+    "seen": 1789655018.9900293,
+    "ast_hash": "e5b0458ba56b13c8106065286e4d2018",
+    "semantic_hash": "e5b0458ba56b13c8106065286e4d2018"
+  },
+  "content/challenges/2025-10-13.json": {
+    "mtime": 1785432000.4711707,
+    "seen": 1789655018.990031,
+    "ast_hash": "a0e6ce28909e257d80ced4999c5e1105",
+    "semantic_hash": "a0e6ce28909e257d80ced4999c5e1105"
+  },
+  "content/challenges/2025-10-14.json": {
+    "mtime": 1785432000.5325472,
+    "seen": 1789655018.9900327,
+    "ast_hash": "f3c5b0dd81325dad78f46e4da75d3a4c",
+    "semantic_hash": "f3c5b0dd81325dad78f46e4da75d3a4c"
+  },
+  "content/challenges/2025-10-15.json": {
+    "mtime": 1785432000.5397062,
+    "seen": 1789655018.9900343,
+    "ast_hash": "73a172a26ac67f8513c74c7a6d47e1d6",
+    "semantic_hash": "73a172a26ac67f8513c74c7a6d47e1d6"
+  },
+  "content/challenges/2025-10-16.json": {
+    "mtime": 1785432000.5468163,
+    "seen": 1789655018.9900362,
+    "ast_hash": "84522387d3f4f1937ed104436e99862d",
+    "semantic_hash": "84522387d3f4f1937ed104436e99862d"
+  },
+  "content/challenges/2025-10-17.json": {
+    "mtime": 1785432000.5508292,
+    "seen": 1789655018.990038,
+    "ast_hash": "ba17108a686b478cbc8b9f88345a304e",
+    "semantic_hash": "ba17108a686b478cbc8b9f88345a304e"
+  },
+  "content/challenges/2025-10-18.json": {
+    "mtime": 1785432000.5548255,
+    "seen": 1789655018.9900396,
+    "ast_hash": "37d6e18209270e744753527832f10843",
+    "semantic_hash": "37d6e18209270e744753527832f10843"
+  },
+  "content/challenges/2025-10-19.json": {
+    "mtime": 1785432000.558922,
+    "seen": 1789655018.990041,
+    "ast_hash": "d83cd553c0610a106eb8b9895125272a",
+    "semantic_hash": "d83cd553c0610a106eb8b9895125272a"
+  },
+  "content/challenges/2025-10-20.json": {
+    "mtime": 1785432000.5639508,
+    "seen": 1789655018.9900427,
+    "ast_hash": "f37ddd8a1bc09a4d593f7eba57c5d11f",
+    "semantic_hash": "f37ddd8a1bc09a4d593f7eba57c5d11f"
+  },
+  "content/challenges/2025-10-21.json": {
+    "mtime": 1785432000.568955,
+    "seen": 1789655018.9900444,
+    "ast_hash": "fbcb1cfac876a17ea2023625d2538c78",
+    "semantic_hash": "fbcb1cfac876a17ea2023625d2538c78"
+  },
+  "content/challenges/2025-10-22.json": {
+    "mtime": 1785432000.5756204,
+    "seen": 1789655018.9900463,
+    "ast_hash": "97a3fdf754f9f0921145bc431b221e0b",
+    "semantic_hash": "97a3fdf754f9f0921145bc431b221e0b"
+  },
+  "content/challenges/2025-10-23.json": {
+    "mtime": 1785432000.5787196,
+    "seen": 1789655018.9900498,
+    "ast_hash": "c321a25bdd636feeb64b92f05b57b4fb",
+    "semantic_hash": "c321a25bdd636feeb64b92f05b57b4fb"
+  },
+  "content/challenges/2025-10-24.json": {
+    "mtime": 1785432000.5838604,
+    "seen": 1789655018.9900513,
+    "ast_hash": "21d395d383feffed4a88781be2e36e63",
+    "semantic_hash": "21d395d383feffed4a88781be2e36e63"
+  },
+  "content/challenges/2025-10-25.json": {
+    "mtime": 1785432000.5859327,
+    "seen": 1789655018.9900532,
+    "ast_hash": "8163e4392c8242ef3446c8639dcacf6b",
+    "semantic_hash": "8163e4392c8242ef3446c8639dcacf6b"
+  },
+  "content/challenges/2025-10-26.json": {
+    "mtime": 1785432000.59097,
+    "seen": 1789655018.9900546,
+    "ast_hash": "7212f675fe4ddbd32d6edcc3a66e858c",
+    "semantic_hash": "7212f675fe4ddbd32d6edcc3a66e858c"
+  },
+  "content/challenges/2025-10-27.json": {
+    "mtime": 1785432000.5974307,
+    "seen": 1789655018.9900563,
+    "ast_hash": "996d1eb1cfefc7bb9a4b1f389f0079b9",
+    "semantic_hash": "996d1eb1cfefc7bb9a4b1f389f0079b9"
+  },
+  "content/challenges/2025-10-28.json": {
+    "mtime": 1785432000.6034677,
+    "seen": 1789655018.9900577,
+    "ast_hash": "f14f7f9ab35ab8db6f8fd04dd74cc34f",
+    "semantic_hash": "f14f7f9ab35ab8db6f8fd04dd74cc34f"
+  },
+  "content/challenges/2025-10-29.json": {
+    "mtime": 1785432000.6082985,
+    "seen": 1789655018.9900596,
+    "ast_hash": "392f571f13a1069867987191beafc9a3",
+    "semantic_hash": "392f571f13a1069867987191beafc9a3"
+  },
+  "content/challenges/2025-10-30.json": {
+    "mtime": 1785432000.631061,
+    "seen": 1789655018.990061,
+    "ast_hash": "507f7ac5a218283ccd6cff7d013c5756",
+    "semantic_hash": "507f7ac5a218283ccd6cff7d013c5756"
+  },
+  "content/challenges/2025-10-31.json": {
+    "mtime": 1785432000.6409154,
+    "seen": 1789655018.990063,
+    "ast_hash": "a6ca6f751113c2085b2a4611439f7c09",
+    "semantic_hash": "a6ca6f751113c2085b2a4611439f7c09"
+  },
+  "content/challenges/2025-11-01.json": {
+    "mtime": 1785432000.6605966,
+    "seen": 1789655018.9900644,
+    "ast_hash": "eda4e629b2f86f3eb13cca56619bca0b",
+    "semantic_hash": "eda4e629b2f86f3eb13cca56619bca0b"
+  },
+  "content/challenges/2025-11-02.json": {
+    "mtime": 1785432000.6929896,
+    "seen": 1789655018.9900663,
+    "ast_hash": "7eb4fcf6cde37cfc559790d1dabf93e7",
+    "semantic_hash": "7eb4fcf6cde37cfc559790d1dabf93e7"
+  },
+  "content/challenges/2025-11-03.json": {
+    "mtime": 1785432000.7034388,
+    "seen": 1789655018.9900677,
+    "ast_hash": "c83d5ac1d4b39282baa1b1ee4d845b05",
+    "semantic_hash": "c83d5ac1d4b39282baa1b1ee4d845b05"
+  },
+  "content/challenges/2025-11-04.json": {
+    "mtime": 1785432000.7100296,
+    "seen": 1789655018.9900694,
+    "ast_hash": "83f884df315804b9996fa2def0eb4d55",
+    "semantic_hash": "83f884df315804b9996fa2def0eb4d55"
+  },
+  "content/challenges/2025-11-05.json": {
+    "mtime": 1785432000.7140522,
+    "seen": 1789655018.990071,
+    "ast_hash": "5681082f3d4171c40f399c488a6173f8",
+    "semantic_hash": "5681082f3d4171c40f399c488a6173f8"
+  },
+  "content/challenges/2025-11-06.json": {
+    "mtime": 1785432000.7168388,
+    "seen": 1789655018.9900727,
+    "ast_hash": "9e97b91d30054c2fae634fcce1e51fef",
+    "semantic_hash": "9e97b91d30054c2fae634fcce1e51fef"
+  },
+  "content/challenges/2025-11-07.json": {
+    "mtime": 1785432000.723861,
+    "seen": 1789655018.9900746,
+    "ast_hash": "7dfa22a85356f01eb4324b818b6cd7c1",
+    "semantic_hash": "7dfa22a85356f01eb4324b818b6cd7c1"
+  },
+  "content/challenges/2025-11-08.json": {
+    "mtime": 1785432000.7272804,
+    "seen": 1789655018.990076,
+    "ast_hash": "0394587b5fe7dca0a4244b29caa09414",
+    "semantic_hash": "0394587b5fe7dca0a4244b29caa09414"
+  },
+  "content/challenges/2025-11-09.json": {
+    "mtime": 1785432000.7317903,
+    "seen": 1789655018.9900777,
+    "ast_hash": "7a6ffac633aca02b722a5a1c22da97ae",
+    "semantic_hash": "7a6ffac633aca02b722a5a1c22da97ae"
+  },
+  "content/challenges/2025-11-10.json": {
+    "mtime": 1785432000.7357032,
+    "seen": 1789655018.9900792,
+    "ast_hash": "9b6e816c8889931253ec8a0ebe0f8cce",
+    "semantic_hash": "9b6e816c8889931253ec8a0ebe0f8cce"
+  },
+  "content/challenges/2025-11-11.json": {
+    "mtime": 1785432000.738191,
+    "seen": 1789655018.990081,
+    "ast_hash": "91ca33e2e9f8eec2d475f8ad94f64122",
+    "semantic_hash": "91ca33e2e9f8eec2d475f8ad94f64122"
+  },
+  "content/challenges/2025-11-12.json": {
+    "mtime": 1785432000.7424853,
+    "seen": 1789655018.9900823,
+    "ast_hash": "5a0313599e25082031b9ad4ce288af01",
+    "semantic_hash": "5a0313599e25082031b9ad4ce288af01"
+  },
+  "content/challenges/2025-11-13.json": {
+    "mtime": 1785432000.7444963,
+    "seen": 1789655018.9900842,
+    "ast_hash": "af48e04ad897a342944c08823b8541ea",
+    "semantic_hash": "af48e04ad897a342944c08823b8541ea"
+  },
+  "content/challenges/2025-11-14.json": {
+    "mtime": 1785432000.7479987,
+    "seen": 1789655018.9900856,
+    "ast_hash": "7f9bbb3782fe3f97c1ee78ab1646955d",
+    "semantic_hash": "7f9bbb3782fe3f97c1ee78ab1646955d"
+  },
+  "content/challenges/2025-11-15.json": {
+    "mtime": 1785432000.7500083,
+    "seen": 1789655018.9900873,
+    "ast_hash": "76e38b715aeb6d8508c7053b11582df9",
+    "semantic_hash": "76e38b715aeb6d8508c7053b11582df9"
+  },
+  "content/challenges/2025-11-16.json": {
+    "mtime": 1785432000.7611945,
+    "seen": 1789655018.9900887,
+    "ast_hash": "c5a4191d9fb82ae903aa767538004a0d",
+    "semantic_hash": "c5a4191d9fb82ae903aa767538004a0d"
+  },
+  "content/challenges/2025-11-17.json": {
+    "mtime": 1785432000.7672393,
+    "seen": 1789655018.9900901,
+    "ast_hash": "ab05f795d3a495c88778cdff391d8d9d",
+    "semantic_hash": "ab05f795d3a495c88778cdff391d8d9d"
+  },
+  "content/challenges/2025-11-18.json": {
+    "mtime": 1785432000.769253,
+    "seen": 1789655018.990092,
+    "ast_hash": "28a8957685bf8cc1364b0e19d16c9bba",
+    "semantic_hash": "28a8957685bf8cc1364b0e19d16c9bba"
+  },
+  "content/challenges/2025-11-19.json": {
+    "mtime": 1785432000.7778916,
+    "seen": 1789655018.9900935,
+    "ast_hash": "a17b810b5feac7509bc6009aeac2f4a9",
+    "semantic_hash": "a17b810b5feac7509bc6009aeac2f4a9"
+  },
+  "content/challenges/2025-11-20.json": {
+    "mtime": 1785432000.781921,
+    "seen": 1789655018.9900951,
+    "ast_hash": "ca0de91b121fc3a1ee00c04d54496ccf",
+    "semantic_hash": "ca0de91b121fc3a1ee00c04d54496ccf"
+  },
+  "content/challenges/2025-11-21.json": {
+    "mtime": 1785432000.785947,
+    "seen": 1789655018.9900968,
+    "ast_hash": "b5c5837150b94fbf35876c256c00f991",
+    "semantic_hash": "b5c5837150b94fbf35876c256c00f991"
+  },
+  "content/challenges/2025-11-22.json": {
+    "mtime": 1785432000.7878525,
+    "seen": 1789655018.9900985,
+    "ast_hash": "a827673f222942e9c7e5c5be20657148",
+    "semantic_hash": "a827673f222942e9c7e5c5be20657148"
+  },
+  "content/challenges/2025-11-23.json": {
+    "mtime": 1785432000.7945464,
+    "seen": 1789655018.9901,
+    "ast_hash": "5fda63221e4a523ca67dfd97c77057cd",
+    "semantic_hash": "5fda63221e4a523ca67dfd97c77057cd"
+  },
+  "content/challenges/2025-11-24.json": {
+    "mtime": 1785432000.7981873,
+    "seen": 1789655018.9901016,
+    "ast_hash": "38b5d073c6e19f187ad2d9a5af4d3b39",
+    "semantic_hash": "38b5d073c6e19f187ad2d9a5af4d3b39"
+  },
+  "content/challenges/2025-11-25.json": {
+    "mtime": 1785432000.801583,
+    "seen": 1789655018.990103,
+    "ast_hash": "5aff8437a9b6687d637123a921841175",
+    "semantic_hash": "5aff8437a9b6687d637123a921841175"
+  },
+  "content/challenges/2025-11-26.json": {
+    "mtime": 1785432000.8078878,
+    "seen": 1789655018.9901047,
+    "ast_hash": "b369c7b1988113b91019b655c9a1a12c",
+    "semantic_hash": "b369c7b1988113b91019b655c9a1a12c"
+  },
+  "content/challenges/2025-11-27.json": {
+    "mtime": 1785432000.811391,
+    "seen": 1789655018.9901063,
+    "ast_hash": "775b85a2afe9fe6b4fbed5dd86693409",
+    "semantic_hash": "775b85a2afe9fe6b4fbed5dd86693409"
+  },
+  "content/challenges/2025-11-28.json": {
+    "mtime": 1785432000.8154197,
+    "seen": 1789655018.9901083,
+    "ast_hash": "5b67d8778a7a7809a69e2b4f9be1fb4f",
+    "semantic_hash": "5b67d8778a7a7809a69e2b4f9be1fb4f"
+  },
+  "content/challenges/2025-11-29.json": {
+    "mtime": 1785432000.8190596,
+    "seen": 1789655018.9901097,
+    "ast_hash": "47704dd0791398b634d6ae58e2aefc61",
+    "semantic_hash": "47704dd0791398b634d6ae58e2aefc61"
+  },
+  "content/challenges/2025-11-30.json": {
+    "mtime": 1785432000.8258562,
+    "seen": 1789655018.9901114,
+    "ast_hash": "5fc3befa69eb676e921cc6c78c6d7d95",
+    "semantic_hash": "5fc3befa69eb676e921cc6c78c6d7d95"
+  },
+  "content/challenges/2025-12-01.json": {
+    "mtime": 1785432000.8316426,
+    "seen": 1789655018.990113,
+    "ast_hash": "823a97aaf3b54067d091ea593986e350",
+    "semantic_hash": "823a97aaf3b54067d091ea593986e350"
+  },
+  "content/challenges/2025-12-02.json": {
+    "mtime": 1785432000.834755,
+    "seen": 1789655018.9901145,
+    "ast_hash": "c9a981e8fe8f470081687ef0fce55eab",
+    "semantic_hash": "c9a981e8fe8f470081687ef0fce55eab"
+  },
+  "content/challenges/2025-12-03.json": {
+    "mtime": 1785432000.8382466,
+    "seen": 1789655018.9901161,
+    "ast_hash": "74d66a6e401ba91b418dd3a97a1888d1",
+    "semantic_hash": "74d66a6e401ba91b418dd3a97a1888d1"
+  },
+  "content/challenges/2025-12-04.json": {
+    "mtime": 1785432000.844675,
+    "seen": 1789655018.9901173,
+    "ast_hash": "f9e299f4682530576671de262c850aa6",
+    "semantic_hash": "f9e299f4682530576671de262c850aa6"
+  },
+  "content/challenges/2025-12-05.json": {
+    "mtime": 1785432000.8545904,
+    "seen": 1789655018.990119,
+    "ast_hash": "3066f4242fc5dd95f274e0ea026004cf",
+    "semantic_hash": "3066f4242fc5dd95f274e0ea026004cf"
+  },
+  "content/challenges/2025-12-06.json": {
+    "mtime": 1785432000.8585114,
+    "seen": 1789655018.9901204,
+    "ast_hash": "3092b15879a95c86c34d063ecb38ccc1",
+    "semantic_hash": "3092b15879a95c86c34d063ecb38ccc1"
+  },
+  "content/challenges/2025-12-07.json": {
+    "mtime": 1785432000.862679,
+    "seen": 1789655018.990122,
+    "ast_hash": "ec3afd52b56dd36c2a3cca90eaf36f7f",
+    "semantic_hash": "ec3afd52b56dd36c2a3cca90eaf36f7f"
+  },
+  "content/challenges/2025-12-08.json": {
+    "mtime": 1785432000.868132,
+    "seen": 1789655018.9901237,
+    "ast_hash": "d2b71bb0e7b293858d862207eb401edb",
+    "semantic_hash": "d2b71bb0e7b293858d862207eb401edb"
+  },
+  "content/challenges/2025-12-09.json": {
+    "mtime": 1785432000.8718708,
+    "seen": 1789655018.9901257,
+    "ast_hash": "5a9d86d7c9ad353704c7f85ac16cd48e",
+    "semantic_hash": "5a9d86d7c9ad353704c7f85ac16cd48e"
+  },
+  "content/challenges/2025-12-10.json": {
+    "mtime": 1785432000.8792067,
+    "seen": 1789655018.990127,
+    "ast_hash": "12cefa3766a35ea45541b11feedd2e11",
+    "semantic_hash": "12cefa3766a35ea45541b11feedd2e11"
+  },
+  "content/challenges/2025-12-11.json": {
+    "mtime": 1785432000.8821447,
+    "seen": 1789655018.9901288,
+    "ast_hash": "88cd4d3b13290feb17144a69d544a40b",
+    "semantic_hash": "88cd4d3b13290feb17144a69d544a40b"
+  },
+  "content/challenges/2025-12-12.json": {
+    "mtime": 1785432000.8848827,
+    "seen": 1789655018.9901302,
+    "ast_hash": "48f3d18c7a422cc93daac488dc7b254a",
+    "semantic_hash": "48f3d18c7a422cc93daac488dc7b254a"
+  },
+  "content/challenges/2025-12-13.json": {
+    "mtime": 1785432000.8920796,
+    "seen": 1789655018.9901316,
+    "ast_hash": "f85f72832ad9cb9e728d0322b14614e0",
+    "semantic_hash": "f85f72832ad9cb9e728d0322b14614e0"
+  },
+  "content/challenges/2025-12-14.json": {
+    "mtime": 1785432000.9048543,
+    "seen": 1789655018.9901333,
+    "ast_hash": "da8e37a818f2e6997697374a0f88625e",
+    "semantic_hash": "da8e37a818f2e6997697374a0f88625e"
+  },
+  "content/challenges/2025-12-15.json": {
+    "mtime": 1785432000.9110317,
+    "seen": 1789655018.9901345,
+    "ast_hash": "ad77f67a2ca73608c69b7015fcfe79c5",
+    "semantic_hash": "ad77f67a2ca73608c69b7015fcfe79c5"
+  },
+  "content/challenges/2025-12-16.json": {
+    "mtime": 1785432000.9149568,
+    "seen": 1789655018.9901364,
+    "ast_hash": "36a282d49098e6f4d1edb925bb988185",
+    "semantic_hash": "36a282d49098e6f4d1edb925bb988185"
+  },
+  "content/challenges/2025-12-17.json": {
+    "mtime": 1785432000.9197514,
+    "seen": 1789655018.9901376,
+    "ast_hash": "f68eddc1a12d1e280e3bb195977f23ae",
+    "semantic_hash": "f68eddc1a12d1e280e3bb195977f23ae"
+  },
+  "content/challenges/2025-12-18.json": {
+    "mtime": 1785432000.9284432,
+    "seen": 1789655018.9901392,
+    "ast_hash": "631f62797dc7718a20b03777d7fcd28c",
+    "semantic_hash": "631f62797dc7718a20b03777d7fcd28c"
+  },
+  "content/challenges/2025-12-19.json": {
+    "mtime": 1785432000.933031,
+    "seen": 1789655018.990141,
+    "ast_hash": "43ac21cb920d9516a1ff7e18328ca814",
+    "semantic_hash": "43ac21cb920d9516a1ff7e18328ca814"
+  },
+  "content/challenges/2025-12-20.json": {
+    "mtime": 1785432000.9492233,
+    "seen": 1789655018.990142,
+    "ast_hash": "cf7e08c23d12fc3c39a0263f491493ca",
+    "semantic_hash": "cf7e08c23d12fc3c39a0263f491493ca"
+  },
+  "content/challenges/2025-12-21.json": {
+    "mtime": 1785432000.9725394,
+    "seen": 1789655018.9901438,
+    "ast_hash": "22a1c22a12936b12928d172e25cd59f8",
+    "semantic_hash": "22a1c22a12936b12928d172e25cd59f8"
+  },
+  "content/challenges/2025-12-22.json": {
+    "mtime": 1785432000.9778547,
+    "seen": 1789655018.9901452,
+    "ast_hash": "9236b1e48d0ec66643148596b83acf61",
+    "semantic_hash": "9236b1e48d0ec66643148596b83acf61"
+  },
+  "content/challenges/2025-12-23.json": {
+    "mtime": 1785432000.9778547,
+    "seen": 1789655018.9901469,
+    "ast_hash": "65bf999eb7a87df66aba6c701acab1dc",
+    "semantic_hash": "65bf999eb7a87df66aba6c701acab1dc"
+  },
+  "content/challenges/2025-12-24.json": {
+    "mtime": 1785432000.9830503,
+    "seen": 1789655018.9901485,
+    "ast_hash": "e75f1c726ed529ca66d09e0868e2a52d",
+    "semantic_hash": "e75f1c726ed529ca66d09e0868e2a52d"
+  },
+  "content/challenges/2025-12-25.json": {
+    "mtime": 1785432000.9876964,
+    "seen": 1789655018.9901502,
+    "ast_hash": "064bdef43e87c2d73787c53b0bc53330",
+    "semantic_hash": "064bdef43e87c2d73787c53b0bc53330"
+  },
+  "content/challenges/2025-12-26.json": {
+    "mtime": 1785432000.990688,
+    "seen": 1789655018.9901516,
+    "ast_hash": "6b655f506a9489f5174345b84c2b3162",
+    "semantic_hash": "6b655f506a9489f5174345b84c2b3162"
+  },
+  "content/challenges/2025-12-27.json": {
+    "mtime": 1785432000.9977336,
+    "seen": 1789655018.9901533,
+    "ast_hash": "7cd5b61ee218d40f5c4fb236db324e20",
+    "semantic_hash": "7cd5b61ee218d40f5c4fb236db324e20"
+  },
+  "content/challenges/2025-12-28.json": {
+    "mtime": 1785432000.9994102,
+    "seen": 1789655018.990155,
+    "ast_hash": "9dcc1f05c749d8eb28c6b0baa669789d",
+    "semantic_hash": "9dcc1f05c749d8eb28c6b0baa669789d"
+  },
+  "content/challenges/2025-12-29.json": {
+    "mtime": 1785432001.0054274,
+    "seen": 1789655018.9901567,
+    "ast_hash": "782aef889f5c7ab8f96441296d120962",
+    "semantic_hash": "782aef889f5c7ab8f96441296d120962"
+  },
+  "content/challenges/2025-12-30.json": {
+    "mtime": 1785432001.011126,
+    "seen": 1789655018.990158,
+    "ast_hash": "bbae0215d2a976e5c915f356fcf08631",
+    "semantic_hash": "bbae0215d2a976e5c915f356fcf08631"
+  },
+  "content/challenges/2025-12-31.json": {
+    "mtime": 1785432001.0146194,
+    "seen": 1789655018.9901595,
+    "ast_hash": "e1ec394baeb2ba9620096570d6e0ae93",
+    "semantic_hash": "e1ec394baeb2ba9620096570d6e0ae93"
+  },
+  "content/challenges/2026-01-01.json": {
+    "mtime": 1785432001.0146194,
+    "seen": 1789655018.9901612,
+    "ast_hash": "2bc44682d984fea89bb7a3e499886e04",
+    "semantic_hash": "2bc44682d984fea89bb7a3e499886e04"
+  },
+  "content/challenges/2026-01-02.json": {
+    "mtime": 1785432001.0258126,
+    "seen": 1789655018.9901626,
+    "ast_hash": "94342e8aa7e1676d53fe2a6a71097cbc",
+    "semantic_hash": "94342e8aa7e1676d53fe2a6a71097cbc"
+  },
+  "content/challenges/2026-01-03.json": {
+    "mtime": 1785432001.03104,
+    "seen": 1789655018.9901643,
+    "ast_hash": "9596c74bb32cb11fb9b99414f7481f23",
+    "semantic_hash": "9596c74bb32cb11fb9b99414f7481f23"
+  },
+  "content/challenges/2026-01-04.json": {
+    "mtime": 1785432001.0374966,
+    "seen": 1789655018.990166,
+    "ast_hash": "4dd3a1e998150b80d641415c3cb9e5ca",
+    "semantic_hash": "4dd3a1e998150b80d641415c3cb9e5ca"
+  },
+  "content/challenges/2026-01-05.json": {
+    "mtime": 1785432001.0445344,
+    "seen": 1789655018.9901674,
+    "ast_hash": "55f57197b3c5c47038ce130f5aeb51db",
+    "semantic_hash": "55f57197b3c5c47038ce130f5aeb51db"
+  },
+  "content/challenges/2026-01-06.json": {
+    "mtime": 1785432001.0474257,
+    "seen": 1789655018.9901688,
+    "ast_hash": "4c341c0a1527a35b3e99267272ebc857",
+    "semantic_hash": "4c341c0a1527a35b3e99267272ebc857"
+  },
+  "content/challenges/2026-01-07.json": {
+    "mtime": 1785432001.0513322,
+    "seen": 1789655018.9901705,
+    "ast_hash": "9aa677791114fad90a069239141aebd9",
+    "semantic_hash": "9aa677791114fad90a069239141aebd9"
+  },
+  "content/challenges/2026-01-08.json": {
+    "mtime": 1785432001.054585,
+    "seen": 1789655018.990172,
+    "ast_hash": "ec1363f7cebc729c4619843c2f15a224",
+    "semantic_hash": "ec1363f7cebc729c4619843c2f15a224"
+  },
+  "content/challenges/2026-01-09.json": {
+    "mtime": 1785432001.0571735,
+    "seen": 1789655018.9901733,
+    "ast_hash": "a9da39fe20e1b55a5d206465e19fd9b5",
+    "semantic_hash": "a9da39fe20e1b55a5d206465e19fd9b5"
+  },
+  "content/challenges/2026-01-10.json": {
+    "mtime": 1785432001.0624812,
+    "seen": 1789655018.9901752,
+    "ast_hash": "74c480a3402a8e14cbd63317e7b195c7",
+    "semantic_hash": "74c480a3402a8e14cbd63317e7b195c7"
+  },
+  "content/challenges/2026-01-11.json": {
+    "mtime": 1785432001.0667448,
+    "seen": 1789655018.9901767,
+    "ast_hash": "3e4f95fc6014911c82437f7a479ca6e3",
+    "semantic_hash": "3e4f95fc6014911c82437f7a479ca6e3"
+  },
+  "content/challenges/2026-01-12.json": {
+    "mtime": 1785432001.070247,
+    "seen": 1789655018.9901783,
+    "ast_hash": "7d8e245471afb170d0ddf49b87955fb5",
+    "semantic_hash": "7d8e245471afb170d0ddf49b87955fb5"
+  },
+  "content/challenges/2026-01-13.json": {
+    "mtime": 1785432001.0802186,
+    "seen": 1789655018.9901795,
+    "ast_hash": "d8696c62d468a391c2eb751b4b12b115",
+    "semantic_hash": "d8696c62d468a391c2eb751b4b12b115"
+  },
+  "content/challenges/2026-01-14.json": {
+    "mtime": 1785432001.0833242,
+    "seen": 1789655018.9901812,
+    "ast_hash": "006f7cfc6cea22ac4efab6fe9a9c5b25",
+    "semantic_hash": "006f7cfc6cea22ac4efab6fe9a9c5b25"
+  },
+  "content/challenges/2026-01-15.json": {
+    "mtime": 1785432001.0868504,
+    "seen": 1789655018.9901826,
+    "ast_hash": "e158d5e5f9234e3da472c7a11620c53a",
+    "semantic_hash": "e158d5e5f9234e3da472c7a11620c53a"
+  },
+  "content/challenges/2026-01-16.json": {
+    "mtime": 1785432001.089864,
+    "seen": 1789655018.990188,
+    "ast_hash": "b0d95b1277b0bbd5bdc672b1fbd19198",
+    "semantic_hash": "b0d95b1277b0bbd5bdc672b1fbd19198"
+  },
+  "content/challenges/2026-01-17.json": {
+    "mtime": 1785432001.0943322,
+    "seen": 1789655018.9901896,
+    "ast_hash": "76280b243081e5995c77ec7039c36ee7",
+    "semantic_hash": "76280b243081e5995c77ec7039c36ee7"
+  },
+  "content/challenges/2026-01-18.json": {
+    "mtime": 1785432001.0996046,
+    "seen": 1789655018.9901912,
+    "ast_hash": "8246b52ddc01dce99102727523a64e92",
+    "semantic_hash": "8246b52ddc01dce99102727523a64e92"
+  },
+  "content/challenges/2026-01-19.json": {
+    "mtime": 1785432001.1037927,
+    "seen": 1789655018.9901927,
+    "ast_hash": "4aad2c77ae97aec27f96ff5dd64b7a6c",
+    "semantic_hash": "4aad2c77ae97aec27f96ff5dd64b7a6c"
+  },
+  "content/challenges/2026-01-20.json": {
+    "mtime": 1785432001.1085653,
+    "seen": 1789655018.990194,
+    "ast_hash": "b6fbc1fddf04aba606b31ad9772830b4",
+    "semantic_hash": "b6fbc1fddf04aba606b31ad9772830b4"
+  },
+  "content/challenges/2026-01-21.json": {
+    "mtime": 1785432001.1118805,
+    "seen": 1789655018.9901958,
+    "ast_hash": "abfa8905cf8770adb2b53b1b546dfc04",
+    "semantic_hash": "abfa8905cf8770adb2b53b1b546dfc04"
+  },
+  "content/challenges/2026-01-22.json": {
+    "mtime": 1785432001.1225061,
+    "seen": 1789655018.9901972,
+    "ast_hash": "b1fe019a8082f4be79b4a4ba52ac970d",
+    "semantic_hash": "b1fe019a8082f4be79b4a4ba52ac970d"
+  },
+  "content/challenges/2026-01-23.json": {
+    "mtime": 1785432001.128184,
+    "seen": 1789655018.9901989,
+    "ast_hash": "c1aac5019e54bc7e6114704bce17e65d",
+    "semantic_hash": "c1aac5019e54bc7e6114704bce17e65d"
+  },
+  "content/challenges/2026-01-24.json": {
+    "mtime": 1785432001.135184,
+    "seen": 1789655018.9902003,
+    "ast_hash": "dffce4007f68c1631a858e499ac657ca",
+    "semantic_hash": "dffce4007f68c1631a858e499ac657ca"
+  },
+  "content/challenges/2026-01-25.json": {
+    "mtime": 1785432001.1417086,
+    "seen": 1789655018.9902022,
+    "ast_hash": "18e657d288ef05b23bd83c29a3eca0ef",
+    "semantic_hash": "18e657d288ef05b23bd83c29a3eca0ef"
+  },
+  "content/challenges/2026-01-26.json": {
+    "mtime": 1785432001.1509576,
+    "seen": 1789655018.9902036,
+    "ast_hash": "313845cf8eb1ab63ebd7c237f86b695e",
+    "semantic_hash": "313845cf8eb1ab63ebd7c237f86b695e"
+  },
+  "content/challenges/2026-01-27.json": {
+    "mtime": 1785432001.1633935,
+    "seen": 1789655018.9902053,
+    "ast_hash": "a78ded733ef2caa2d1f6a54fbd8bd952",
+    "semantic_hash": "a78ded733ef2caa2d1f6a54fbd8bd952"
+  },
+  "content/challenges/2026-01-28.json": {
+    "mtime": 1785432001.1661348,
+    "seen": 1789655018.9902067,
+    "ast_hash": "254f39f17c9ba0dc4a99d7e8d2fe70d5",
+    "semantic_hash": "254f39f17c9ba0dc4a99d7e8d2fe70d5"
+  },
+  "content/challenges/2026-01-29.json": {
+    "mtime": 1785432001.1703951,
+    "seen": 1789655018.990208,
+    "ast_hash": "2b4da3ac40578ae019cb8c086e9d4a96",
+    "semantic_hash": "2b4da3ac40578ae019cb8c086e9d4a96"
+  },
+  "content/challenges/2026-01-30.json": {
+    "mtime": 1785432001.1758623,
+    "seen": 1789655018.9902098,
+    "ast_hash": "75775e69b524cda3e64b6cf934227dee",
+    "semantic_hash": "75775e69b524cda3e64b6cf934227dee"
+  },
+  "content/challenges/2026-01-31.json": {
+    "mtime": 1785432001.1778748,
+    "seen": 1789655018.990211,
+    "ast_hash": "011ec0844ab62de2bce6ce4ed31d8621",
+    "semantic_hash": "011ec0844ab62de2bce6ce4ed31d8621"
+  },
+  "content/challenges/2026-02-01.json": {
+    "mtime": 1785432001.1832054,
+    "seen": 1789655018.990213,
+    "ast_hash": "3679828ec4785c21e3a2a55c07f68805",
+    "semantic_hash": "3679828ec4785c21e3a2a55c07f68805"
+  },
+  "content/challenges/2026-02-02.json": {
+    "mtime": 1785432001.1877656,
+    "seen": 1789655018.9902146,
+    "ast_hash": "f8f9f23b6a4f270fbb7591792ee45c6b",
+    "semantic_hash": "f8f9f23b6a4f270fbb7591792ee45c6b"
+  },
+  "content/challenges/2026-02-03.json": {
+    "mtime": 1785432001.191179,
+    "seen": 1789655018.9902163,
+    "ast_hash": "60f148bfc7e6847f0f023336e523111b",
+    "semantic_hash": "60f148bfc7e6847f0f023336e523111b"
+  },
+  "content/challenges/2026-02-04.json": {
+    "mtime": 1785432001.194127,
+    "seen": 1789655018.9902177,
+    "ast_hash": "6c706c8ef63a5a6e2027d9c24f84f62d",
+    "semantic_hash": "6c706c8ef63a5a6e2027d9c24f84f62d"
+  },
+  "content/challenges/2026-02-05.json": {
+    "mtime": 1785432001.1973982,
+    "seen": 1789655018.9902196,
+    "ast_hash": "76e34051c6f710cfcaf3feceb5b2dec7",
+    "semantic_hash": "76e34051c6f710cfcaf3feceb5b2dec7"
+  },
+  "content/challenges/2026-02-06.json": {
+    "mtime": 1785432001.201759,
+    "seen": 1789655018.990221,
+    "ast_hash": "092c29ca9c42a1d0f221dac8083bda3e",
+    "semantic_hash": "092c29ca9c42a1d0f221dac8083bda3e"
+  },
+  "content/challenges/2026-02-07.json": {
+    "mtime": 1785432001.2055552,
+    "seen": 1789655018.9902227,
+    "ast_hash": "a8c7c3cc5858c64c03544f582a987682",
+    "semantic_hash": "a8c7c3cc5858c64c03544f582a987682"
+  },
+  "content/challenges/2026-02-08.json": {
+    "mtime": 1785432001.209692,
+    "seen": 1789655018.9902244,
+    "ast_hash": "72e74f3b71d6e309b684fce921954af3",
+    "semantic_hash": "72e74f3b71d6e309b684fce921954af3"
+  },
+  "content/challenges/2026-02-09.json": {
+    "mtime": 1785432001.212806,
+    "seen": 1789655018.990226,
+    "ast_hash": "71f6fd2b84a0bcc3dacee711aee7f756",
+    "semantic_hash": "71f6fd2b84a0bcc3dacee711aee7f756"
+  },
+  "content/challenges/2026-02-10.json": {
+    "mtime": 1785432001.2175174,
+    "seen": 1789655018.9902277,
+    "ast_hash": "9d0c21d4f3cab65245ecb91794a3fdd8",
+    "semantic_hash": "9d0c21d4f3cab65245ecb91794a3fdd8"
+  },
+  "content/challenges/2026-02-11.json": {
+    "mtime": 1785432001.2221828,
+    "seen": 1789655018.9902291,
+    "ast_hash": "68f021b0f5e68629ca31bce6a8eaefb1",
+    "semantic_hash": "68f021b0f5e68629ca31bce6a8eaefb1"
+  },
+  "content/challenges/2026-02-12.json": {
+    "mtime": 1785432001.2249308,
+    "seen": 1789655018.9902308,
+    "ast_hash": "fbc594ca4f11fa8acc5c0c86fbf31a9d",
+    "semantic_hash": "fbc594ca4f11fa8acc5c0c86fbf31a9d"
+  },
+  "content/challenges/2026-02-13.json": {
+    "mtime": 1785432001.2286108,
+    "seen": 1789655018.9902322,
+    "ast_hash": "cbdc6680672e9dd18225fbc741c7ed8d",
+    "semantic_hash": "cbdc6680672e9dd18225fbc741c7ed8d"
+  },
+  "content/challenges/2026-02-14.json": {
+    "mtime": 1785432001.2342522,
+    "seen": 1789655018.9902341,
+    "ast_hash": "9fd1bd64f04294fa50fa5c66fc222c2c",
+    "semantic_hash": "9fd1bd64f04294fa50fa5c66fc222c2c"
+  },
+  "content/challenges/2026-02-15.json": {
+    "mtime": 1785432001.23748,
+    "seen": 1789655018.9902358,
+    "ast_hash": "8138e82f387bc627f44fe3a318d652f0",
+    "semantic_hash": "8138e82f387bc627f44fe3a318d652f0"
+  },
+  "content/challenges/2026-02-16.json": {
+    "mtime": 1785432001.2395422,
+    "seen": 1789655018.9902372,
+    "ast_hash": "f431c5f09268598584e54669eb14fd21",
+    "semantic_hash": "f431c5f09268598584e54669eb14fd21"
+  },
+  "content/challenges/2026-02-17.json": {
+    "mtime": 1785432001.245752,
+    "seen": 1789655018.990239,
+    "ast_hash": "40e6519dd2de6fb6b32ab21af4fc171f",
+    "semantic_hash": "40e6519dd2de6fb6b32ab21af4fc171f"
+  },
+  "content/challenges/2026-02-18.json": {
+    "mtime": 1785432001.2502546,
+    "seen": 1789655018.9902406,
+    "ast_hash": "11c8e06f0c5af1f74f21170c6b512307",
+    "semantic_hash": "11c8e06f0c5af1f74f21170c6b512307"
+  },
+  "content/challenges/2026-02-19.json": {
+    "mtime": 1785432001.2552006,
+    "seen": 1789655018.9902422,
+    "ast_hash": "8cda3fbd3f4c08ec3646bc06a9eb1c8c",
+    "semantic_hash": "8cda3fbd3f4c08ec3646bc06a9eb1c8c"
+  },
+  "content/challenges/2026-02-20.json": {
+    "mtime": 1785432001.2596638,
+    "seen": 1789655018.990244,
+    "ast_hash": "120073c7627747f282585a38dc8ad718",
+    "semantic_hash": "120073c7627747f282585a38dc8ad718"
+  },
+  "content/challenges/2026-02-21.json": {
+    "mtime": 1785432001.26354,
+    "seen": 1789655018.9902453,
+    "ast_hash": "77a6e638ebe97bf1d30cef87f8e27a2c",
+    "semantic_hash": "77a6e638ebe97bf1d30cef87f8e27a2c"
+  },
+  "content/challenges/2026-02-22.json": {
+    "mtime": 1785432001.2685122,
+    "seen": 1789655018.9902472,
+    "ast_hash": "8e5e3c852714af33d9163caf94596a96",
+    "semantic_hash": "8e5e3c852714af33d9163caf94596a96"
+  },
+  "content/challenges/2026-02-23.json": {
+    "mtime": 1785432001.2731662,
+    "seen": 1789655018.9902487,
+    "ast_hash": "a36328d4447e11c6b0580e345274d16d",
+    "semantic_hash": "a36328d4447e11c6b0580e345274d16d"
+  },
+  "content/challenges/2026-02-24.json": {
+    "mtime": 1785432001.2779965,
+    "seen": 1789655018.9902506,
+    "ast_hash": "51b1531f9af73a2e65cf9fb3fb40166a",
+    "semantic_hash": "51b1531f9af73a2e65cf9fb3fb40166a"
+  },
+  "content/challenges/2026-02-25.json": {
+    "mtime": 1785432001.2812843,
+    "seen": 1789655018.990252,
+    "ast_hash": "2796cc900f330b3836bfa2799a5e5449",
+    "semantic_hash": "2796cc900f330b3836bfa2799a5e5449"
+  },
+  "content/challenges/2026-02-26.json": {
+    "mtime": 1785432001.2857802,
+    "seen": 1789655018.9902537,
+    "ast_hash": "8f2e94310702c48b5fb0129c39017e91",
+    "semantic_hash": "8f2e94310702c48b5fb0129c39017e91"
+  },
+  "content/challenges/2026-02-27.json": {
+    "mtime": 1785432001.2886033,
+    "seen": 1789655018.990255,
+    "ast_hash": "139d1430aa89a4e63ef62f003b73c143",
+    "semantic_hash": "139d1430aa89a4e63ef62f003b73c143"
+  },
+  "content/challenges/2026-02-28.json": {
+    "mtime": 1785432001.2942817,
+    "seen": 1789655018.9902565,
+    "ast_hash": "092fc8ce9abfff19fad6149240c14f6d",
+    "semantic_hash": "092fc8ce9abfff19fad6149240c14f6d"
+  },
+  "content/challenges/2026-03-01.json": {
+    "mtime": 1785432001.2968233,
+    "seen": 1789655018.9902582,
+    "ast_hash": "2aa732061a87635fc7cbb39ff6f4c964",
+    "semantic_hash": "2aa732061a87635fc7cbb39ff6f4c964"
+  },
+  "content/challenges/2026-03-02.json": {
+    "mtime": 1785432001.2988336,
+    "seen": 1789655018.99026,
+    "ast_hash": "cdc24c65f05b2cc4fc729c93afcd3ad3",
+    "semantic_hash": "cdc24c65f05b2cc4fc729c93afcd3ad3"
+  },
+  "content/challenges/2026-03-03.json": {
+    "mtime": 1785432001.2988336,
+    "seen": 1789655018.9902616,
+    "ast_hash": "4283ae1b6e1e783fb433ad4fa09062d2",
+    "semantic_hash": "4283ae1b6e1e783fb433ad4fa09062d2"
+  },
+  "content/challenges/2026-03-04.json": {
+    "mtime": 1785432001.309329,
+    "seen": 1789655018.990263,
+    "ast_hash": "3de9144e34da2cff87b91be3aff5b013",
+    "semantic_hash": "3de9144e34da2cff87b91be3aff5b013"
+  },
+  "content/challenges/2026-03-05.json": {
+    "mtime": 1785432001.3155217,
+    "seen": 1789655018.9902647,
+    "ast_hash": "f0b66d49ad9d7b344d45bfb979d51ba4",
+    "semantic_hash": "f0b66d49ad9d7b344d45bfb979d51ba4"
+  },
+  "content/challenges/2026-03-06.json": {
+    "mtime": 1785432001.3206072,
+    "seen": 1789655018.990266,
+    "ast_hash": "c22041824ed2996b45a51256fa870c23",
+    "semantic_hash": "c22041824ed2996b45a51256fa870c23"
+  },
+  "content/challenges/2026-03-07.json": {
+    "mtime": 1785432001.32725,
+    "seen": 1789655018.9902678,
+    "ast_hash": "3421d72d0e94a950b61c93a41efcc6fb",
+    "semantic_hash": "3421d72d0e94a950b61c93a41efcc6fb"
+  },
+  "content/challenges/2026-03-08.json": {
+    "mtime": 1785432001.332273,
+    "seen": 1789655018.9902692,
+    "ast_hash": "076349b0b3e64b462328d0af3dd9824f",
+    "semantic_hash": "076349b0b3e64b462328d0af3dd9824f"
+  },
+  "content/challenges/2026-03-09.json": {
+    "mtime": 1785432001.3366623,
+    "seen": 1789655018.9902706,
+    "ast_hash": "dd9dcc666ab8c50a6d4dc31508bbeb31",
+    "semantic_hash": "dd9dcc666ab8c50a6d4dc31508bbeb31"
+  },
+  "content/challenges/2026-03-10.json": {
+    "mtime": 1785432001.3388302,
+    "seen": 1789655018.9902725,
+    "ast_hash": "096511647e6454c3030b377e67db992d",
+    "semantic_hash": "096511647e6454c3030b377e67db992d"
+  },
+  "content/challenges/2026-03-11.json": {
+    "mtime": 1785432001.3426013,
+    "seen": 1789655018.990274,
+    "ast_hash": "0abe8b300383f2c88466ec11cb5e44f4",
+    "semantic_hash": "0abe8b300383f2c88466ec11cb5e44f4"
+  },
+  "content/challenges/2026-03-12.json": {
+    "mtime": 1785432001.3466282,
+    "seen": 1789655018.9902756,
+    "ast_hash": "92eddfcd5f6ae1ea69b7127aa4bea799",
+    "semantic_hash": "92eddfcd5f6ae1ea69b7127aa4bea799"
+  },
+  "content/challenges/2026-03-13.json": {
+    "mtime": 1785432001.3485959,
+    "seen": 1789655018.9902773,
+    "ast_hash": "4107aef29ef1f22f3e013bd3fef99ea9",
+    "semantic_hash": "4107aef29ef1f22f3e013bd3fef99ea9"
+  },
+  "content/challenges/2026-03-14.json": {
+    "mtime": 1785432001.3517194,
+    "seen": 1789655018.990279,
+    "ast_hash": "4bbe2328b1e46837d1b07524f5eaee8d",
+    "semantic_hash": "4bbe2328b1e46837d1b07524f5eaee8d"
+  },
+  "content/challenges/2026-03-15.json": {
+    "mtime": 1785432001.3550923,
+    "seen": 1789655018.9902806,
+    "ast_hash": "ac3dbb346e8a4b94ae5efa0e21746697",
+    "semantic_hash": "ac3dbb346e8a4b94ae5efa0e21746697"
+  },
+  "content/challenges/2026-03-16.json": {
+    "mtime": 1785432001.359105,
+    "seen": 1789655018.990282,
+    "ast_hash": "d05ce1e44ea57fac68619f546cfcc02c",
+    "semantic_hash": "d05ce1e44ea57fac68619f546cfcc02c"
+  },
+  "content/challenges/2026-03-17.json": {
+    "mtime": 1785432001.3626125,
+    "seen": 1789655018.9902835,
+    "ast_hash": "e938d1a4682d3b805f40f333c4b7fee7",
+    "semantic_hash": "e938d1a4682d3b805f40f333c4b7fee7"
+  },
+  "content/challenges/2026-03-18.json": {
+    "mtime": 1785432001.3651145,
+    "seen": 1789655018.9902854,
+    "ast_hash": "60ff51b39df2b0a3e214bbc04e4e1be4",
+    "semantic_hash": "60ff51b39df2b0a3e214bbc04e4e1be4"
+  },
+  "content/challenges/2026-03-19.json": {
+    "mtime": 1785432001.3677804,
+    "seen": 1789655018.9902868,
+    "ast_hash": "04cb8c177c111d659d58611f0ed2813d",
+    "semantic_hash": "04cb8c177c111d659d58611f0ed2813d"
+  },
+  "content/challenges/2026-03-20.json": {
+    "mtime": 1785432001.370255,
+    "seen": 1789655018.9902885,
+    "ast_hash": "9eb7e1eeb16803d77d9cc0f93aa90001",
+    "semantic_hash": "9eb7e1eeb16803d77d9cc0f93aa90001"
+  },
+  "content/challenges/2026-03-21.json": {
+    "mtime": 1785432001.3730035,
+    "seen": 1789655018.99029,
+    "ast_hash": "efbc853a31348158b3fb119aabd8cf8d",
+    "semantic_hash": "efbc853a31348158b3fb119aabd8cf8d"
+  },
+  "content/challenges/2026-03-22.json": {
+    "mtime": 1785432001.3757832,
+    "seen": 1789655018.990291,
+    "ast_hash": "567153d55820f3298b140646474c9665",
+    "semantic_hash": "567153d55820f3298b140646474c9665"
+  },
+  "content/challenges/2026-03-23.json": {
+    "mtime": 1785432001.3801866,
+    "seen": 1789655018.9902928,
+    "ast_hash": "c6335c60dc40c8ff94315cd6d555933c",
+    "semantic_hash": "c6335c60dc40c8ff94315cd6d555933c"
+  },
+  "content/challenges/2026-03-24.json": {
+    "mtime": 1785432001.3828902,
+    "seen": 1789655018.9902942,
+    "ast_hash": "a769d6201082c9baeb8dca02e1744abe",
+    "semantic_hash": "a769d6201082c9baeb8dca02e1744abe"
+  },
+  "content/challenges/2026-03-25.json": {
+    "mtime": 1785432001.38511,
+    "seen": 1789655018.990296,
+    "ast_hash": "e99f329618a3acb151736c38d3cf6383",
+    "semantic_hash": "e99f329618a3acb151736c38d3cf6383"
+  },
+  "content/challenges/2026-03-26.json": {
+    "mtime": 1785432001.3878703,
+    "seen": 1789655018.9902973,
+    "ast_hash": "62f71b130da4145af06d83d1b3eb9149",
+    "semantic_hash": "62f71b130da4145af06d83d1b3eb9149"
+  },
+  "content/challenges/2026-03-27.json": {
+    "mtime": 1785432001.3924468,
+    "seen": 1789655018.990299,
+    "ast_hash": "c4e4e5e5a7706344d1084d05b622ddf5",
+    "semantic_hash": "c4e4e5e5a7706344d1084d05b622ddf5"
+  },
+  "content/challenges/2026-03-28.json": {
+    "mtime": 1785432001.3970828,
+    "seen": 1789655018.9903004,
+    "ast_hash": "49d0d8ef4a60ebd51712ffd21229d682",
+    "semantic_hash": "49d0d8ef4a60ebd51712ffd21229d682"
+  },
+  "content/challenges/2026-03-29.json": {
+    "mtime": 1785432001.4010837,
+    "seen": 1789655018.9903018,
+    "ast_hash": "9c1f42b7b7b175513d9aaefc9741affb",
+    "semantic_hash": "9c1f42b7b7b175513d9aaefc9741affb"
+  },
+  "content/challenges/2026-03-30.json": {
+    "mtime": 1785432001.4070976,
+    "seen": 1789655018.9903035,
+    "ast_hash": "50c257c85ccd05fbaa619570f61a66cc",
+    "semantic_hash": "50c257c85ccd05fbaa619570f61a66cc"
+  },
+  "content/challenges/2026-03-31.json": {
+    "mtime": 1785432001.4117057,
+    "seen": 1789655018.990305,
+    "ast_hash": "91c42d87905eb3744acf8055cf59c974",
+    "semantic_hash": "91c42d87905eb3744acf8055cf59c974"
+  },
+  "content/challenges/2026-04-01.json": {
+    "mtime": 1785432001.416706,
+    "seen": 1789655018.9903066,
+    "ast_hash": "fa1a12253a7b007cce12dcfe977a9e0d",
+    "semantic_hash": "fa1a12253a7b007cce12dcfe977a9e0d"
+  },
+  "content/challenges/2026-04-02.json": {
+    "mtime": 1785432001.4212167,
+    "seen": 1789655018.990308,
+    "ast_hash": "42018d47ff34995d11ab47229b25283c",
+    "semantic_hash": "42018d47ff34995d11ab47229b25283c"
+  },
+  "content/challenges/2026-04-03.json": {
+    "mtime": 1785432001.4275348,
+    "seen": 1789655018.99031,
+    "ast_hash": "a0a17bab577a8e02e746cdb847584d31",
+    "semantic_hash": "a0a17bab577a8e02e746cdb847584d31"
+  },
+  "content/challenges/2026-04-04.json": {
+    "mtime": 1785432001.430535,
+    "seen": 1789655018.9903114,
+    "ast_hash": "2cace6dd7360262e1204b8b3b945bd2c",
+    "semantic_hash": "2cace6dd7360262e1204b8b3b945bd2c"
+  },
+  "content/challenges/2026-04-05.json": {
+    "mtime": 1785432001.435802,
+    "seen": 1789655018.990313,
+    "ast_hash": "73f18b36512d2d1f693fec20309b1a3b",
+    "semantic_hash": "73f18b36512d2d1f693fec20309b1a3b"
+  },
+  "content/challenges/2026-04-06.json": {
+    "mtime": 1785432001.438808,
+    "seen": 1789655018.9903145,
+    "ast_hash": "1e4fde4f640fae512d751f11ba81d93d",
+    "semantic_hash": "1e4fde4f640fae512d751f11ba81d93d"
+  },
+  "content/challenges/2026-04-07.json": {
+    "mtime": 1785432001.4439125,
+    "seen": 1789655018.990316,
+    "ast_hash": "f38d29389df99e053f0d739ae18bc854",
+    "semantic_hash": "f38d29389df99e053f0d739ae18bc854"
+  },
+  "content/challenges/2026-04-08.json": {
+    "mtime": 1785432001.4488578,
+    "seen": 1789655018.9903371,
+    "ast_hash": "bbae480b2675607f4ec5099fdc8eb913",
+    "semantic_hash": "bbae480b2675607f4ec5099fdc8eb913"
+  },
+  "content/challenges/2026-04-09.json": {
+    "mtime": 1785432001.4488578,
+    "seen": 1789655018.990339,
+    "ast_hash": "0bdde6bad586c2a0e22caad38345280e",
+    "semantic_hash": "0bdde6bad586c2a0e22caad38345280e"
+  },
+  "content/challenges/2026-04-10.json": {
+    "mtime": 1785432001.4609435,
+    "seen": 1789655018.9903412,
+    "ast_hash": "79987e9bea7cb91afc21d41c129c8598",
+    "semantic_hash": "79987e9bea7cb91afc21d41c129c8598"
+  },
+  "content/challenges/2026-04-11.json": {
+    "mtime": 1785432001.4669428,
+    "seen": 1789655018.9903426,
+    "ast_hash": "c54b30349003140857cba7128fe95350",
+    "semantic_hash": "c54b30349003140857cba7128fe95350"
+  },
+  "content/challenges/2026-04-12.json": {
+    "mtime": 1785432001.4719398,
+    "seen": 1789655018.9903445,
+    "ast_hash": "daaaa9fade718ec79c5d24b4e905b0ad",
+    "semantic_hash": "daaaa9fade718ec79c5d24b4e905b0ad"
+  },
+  "content/challenges/2026-04-13.json": {
+    "mtime": 1785432001.4776547,
+    "seen": 1789655018.990346,
+    "ast_hash": "645b8eeb42253fe4264f328a39ddfe6f",
+    "semantic_hash": "645b8eeb42253fe4264f328a39ddfe6f"
+  },
+  "content/challenges/2026-04-14.json": {
+    "mtime": 1785432001.4779863,
+    "seen": 1789655018.9903479,
+    "ast_hash": "8624d92efabe35d3dcd2589cefb52823",
+    "semantic_hash": "8624d92efabe35d3dcd2589cefb52823"
+  },
+  "content/challenges/2026-04-15.json": {
+    "mtime": 1785432001.4779863,
+    "seen": 1789655018.9903495,
+    "ast_hash": "7253af42675c99da71667136aa757144",
+    "semantic_hash": "7253af42675c99da71667136aa757144"
+  },
+  "content/challenges/2026-04-16.json": {
+    "mtime": 1785432001.4928527,
+    "seen": 1789655018.9903514,
+    "ast_hash": "f05bab5d30f668beae34c96e1739759c",
+    "semantic_hash": "f05bab5d30f668beae34c96e1739759c"
+  },
+  "content/challenges/2026-04-17.json": {
+    "mtime": 1785432001.499109,
+    "seen": 1789655018.9903529,
+    "ast_hash": "b7da2de88d9cae8759873a04810dfde2",
+    "semantic_hash": "b7da2de88d9cae8759873a04810dfde2"
+  },
+  "content/challenges/2026-04-18.json": {
+    "mtime": 1785432001.5040033,
+    "seen": 1789655018.9903545,
+    "ast_hash": "ac984f52d10d340a213b2fdf5b32d5dc",
+    "semantic_hash": "ac984f52d10d340a213b2fdf5b32d5dc"
+  },
+  "content/challenges/2026-04-19.json": {
+    "mtime": 1785432001.5045617,
+    "seen": 1789655018.9903562,
+    "ast_hash": "44a46cda47b81bc8df4954bffd353311",
+    "semantic_hash": "44a46cda47b81bc8df4954bffd353311"
+  },
+  "content/challenges/2026-04-20.json": {
+    "mtime": 1785432001.5126257,
+    "seen": 1789655018.9903579,
+    "ast_hash": "3e9d927016bc18eaaddf75bfdbeb5bdf",
+    "semantic_hash": "3e9d927016bc18eaaddf75bfdbeb5bdf"
+  },
+  "content/challenges/2026-04-21.json": {
+    "mtime": 1785432001.5176234,
+    "seen": 1789655018.9903595,
+    "ast_hash": "7c02ba5366d5bbf59cec536a98800836",
+    "semantic_hash": "7c02ba5366d5bbf59cec536a98800836"
+  },
+  "content/challenges/2026-04-22.json": {
+    "mtime": 1785432001.5216234,
+    "seen": 1789655018.990361,
+    "ast_hash": "eb4ebd9fcc2ee4dd30d5cf0147a07c61",
+    "semantic_hash": "eb4ebd9fcc2ee4dd30d5cf0147a07c61"
+  },
+  "content/challenges/2026-04-23.json": {
+    "mtime": 1785432001.526324,
+    "seen": 1789655018.9903626,
+    "ast_hash": "8203777d116f009a0055318dfcb29dac",
+    "semantic_hash": "8203777d116f009a0055318dfcb29dac"
+  },
+  "content/challenges/2026-04-24.json": {
+    "mtime": 1785432001.5306506,
+    "seen": 1789655018.990364,
+    "ast_hash": "2f193abfcbed7dbe4c07ac30e585cad4",
+    "semantic_hash": "2f193abfcbed7dbe4c07ac30e585cad4"
+  },
+  "content/challenges/2026-04-25.json": {
+    "mtime": 1785432001.533644,
+    "seen": 1789655018.9903657,
+    "ast_hash": "a8ec91e21ceef93054ce3c0046e416b7",
+    "semantic_hash": "a8ec91e21ceef93054ce3c0046e416b7"
+  },
+  "content/challenges/2026-04-26.json": {
+    "mtime": 1785432001.5376441,
+    "seen": 1789655018.9903674,
+    "ast_hash": "40640247c6718956c9dfec52c01ca81c",
+    "semantic_hash": "40640247c6718956c9dfec52c01ca81c"
+  },
+  "content/challenges/2026-04-27.json": {
+    "mtime": 1785432001.540645,
+    "seen": 1789655018.9903693,
+    "ast_hash": "c49b36ea94d4e75e2b905583b6ea526a",
+    "semantic_hash": "c49b36ea94d4e75e2b905583b6ea526a"
+  },
+  "content/challenges/2026-04-28.json": {
+    "mtime": 1785432001.5464528,
+    "seen": 1789655018.9903708,
+    "ast_hash": "a2294d761a93563be534e78cc37e2b19",
+    "semantic_hash": "a2294d761a93563be534e78cc37e2b19"
+  },
+  "content/challenges/2026-04-29.json": {
+    "mtime": 1785432001.5500736,
+    "seen": 1789655018.9903727,
+    "ast_hash": "075ba63d5d8a98cd4a9de7d78080e0e8",
+    "semantic_hash": "075ba63d5d8a98cd4a9de7d78080e0e8"
+  },
+  "content/challenges/2026-04-30.json": {
+    "mtime": 1785432001.5500736,
+    "seen": 1789655018.9903738,
+    "ast_hash": "23d32037273d66e8f28354f56497ff26",
+    "semantic_hash": "23d32037273d66e8f28354f56497ff26"
+  },
+  "content/challenges/2026-05-01.json": {
+    "mtime": 1785432001.5636764,
+    "seen": 1789655018.9903758,
+    "ast_hash": "594d341dc8a34ce19920a8cfc2ae7652",
+    "semantic_hash": "594d341dc8a34ce19920a8cfc2ae7652"
+  },
+  "content/challenges/2026-05-02.json": {
+    "mtime": 1785432001.5686755,
+    "seen": 1789655018.9903772,
+    "ast_hash": "c4a369233ebf9a4616a98a86cb401b56",
+    "semantic_hash": "c4a369233ebf9a4616a98a86cb401b56"
+  },
+  "content/challenges/2026-05-03.json": {
+    "mtime": 1785432001.5716765,
+    "seen": 1789655018.9903789,
+    "ast_hash": "5b1b88ec5a3e11dc3e321dc391d6e342",
+    "semantic_hash": "5b1b88ec5a3e11dc3e321dc391d6e342"
+  },
+  "content/challenges/2026-05-04.json": {
+    "mtime": 1785432001.5756767,
+    "seen": 1789655018.9903803,
+    "ast_hash": "5af3b5f258b003b972ec9b1591b23238",
+    "semantic_hash": "5af3b5f258b003b972ec9b1591b23238"
+  },
+  "content/challenges/2026-05-05.json": {
+    "mtime": 1785432001.5806868,
+    "seen": 1789655018.9903822,
+    "ast_hash": "15e7ac9b15ea08dd2ef82190ed9095d1",
+    "semantic_hash": "15e7ac9b15ea08dd2ef82190ed9095d1"
+  },
+  "content/challenges/2026-05-06.json": {
+    "mtime": 1785432001.5857067,
+    "seen": 1789655018.9903836,
+    "ast_hash": "b7c4a702499ee9544a846a2234978c71",
+    "semantic_hash": "b7c4a702499ee9544a846a2234978c71"
+  },
+  "content/challenges/2026-05-07.json": {
+    "mtime": 1785432001.5906992,
+    "seen": 1789655018.9903848,
+    "ast_hash": "a93287b063a8c4eb9b0179ad4e8f77a7",
+    "semantic_hash": "a93287b063a8c4eb9b0179ad4e8f77a7"
+  },
+  "content/challenges/2026-05-08.json": {
+    "mtime": 1785432001.5956974,
+    "seen": 1789655018.9903865,
+    "ast_hash": "8ada098b7a23c2a19fecf3f7315e11a2",
+    "semantic_hash": "8ada098b7a23c2a19fecf3f7315e11a2"
+  },
+  "content/challenges/2026-05-09.json": {
+    "mtime": 1785432001.599987,
+    "seen": 1789655018.990388,
+    "ast_hash": "7038228b51ce33603e7531e26dabe03f",
+    "semantic_hash": "7038228b51ce33603e7531e26dabe03f"
+  },
+  "content/challenges/2026-05-10.json": {
+    "mtime": 1785432001.599987,
+    "seen": 1789655018.9903898,
+    "ast_hash": "00abf3e82daf8126f189b99f71ccb17f",
+    "semantic_hash": "00abf3e82daf8126f189b99f71ccb17f"
+  },
+  "content/challenges/2026-05-11.json": {
+    "mtime": 1785432001.609255,
+    "seen": 1789655018.9903913,
+    "ast_hash": "314b7fa541bdd882a5d8894c53f5cc52",
+    "semantic_hash": "314b7fa541bdd882a5d8894c53f5cc52"
+  },
+  "content/challenges/2026-05-12.json": {
+    "mtime": 1785432001.6114888,
+    "seen": 1789655018.990393,
+    "ast_hash": "d612b54f9fd98a859395b58428b0a6a1",
+    "semantic_hash": "d612b54f9fd98a859395b58428b0a6a1"
+  },
+  "content/challenges/2026-05-13.json": {
+    "mtime": 1785432001.6114888,
+    "seen": 1789655018.9903944,
+    "ast_hash": "c08cfc818861c3bb9859571a54e8986e",
+    "semantic_hash": "c08cfc818861c3bb9859571a54e8986e"
+  },
+  "content/challenges/2026-05-14.json": {
+    "mtime": 1785432001.6114888,
+    "seen": 1789655018.990396,
+    "ast_hash": "ba2557fb382c277c5e7f4cb30d3bf441",
+    "semantic_hash": "ba2557fb382c277c5e7f4cb30d3bf441"
+  },
+  "content/challenges/2026-05-15.json": {
+    "mtime": 1785432001.626309,
+    "seen": 1789655018.9903977,
+    "ast_hash": "17e862362fee847c6c3828087465f098",
+    "semantic_hash": "17e862362fee847c6c3828087465f098"
+  },
+  "content/challenges/2026-05-16.json": {
+    "mtime": 1785432001.6303463,
+    "seen": 1789655018.9903991,
+    "ast_hash": "dcbaa1c5d8c88996fd52fdee99399878",
+    "semantic_hash": "dcbaa1c5d8c88996fd52fdee99399878"
+  },
+  "content/challenges/2026-05-17.json": {
+    "mtime": 1785432001.6343489,
+    "seen": 1789655018.990401,
+    "ast_hash": "30db66a0d84967b4d446a0e653c1f9ca",
+    "semantic_hash": "30db66a0d84967b4d446a0e653c1f9ca"
+  },
+  "content/challenges/2026-05-18.json": {
+    "mtime": 1785432001.6393452,
+    "seen": 1789655018.9904025,
+    "ast_hash": "44f655ecb02d2d0eb76d18bf54352e66",
+    "semantic_hash": "44f655ecb02d2d0eb76d18bf54352e66"
+  },
+  "content/challenges/2026-05-19.json": {
+    "mtime": 1785432001.645028,
+    "seen": 1789655018.9904041,
+    "ast_hash": "52afa0ff571e723e525ba2ae670d0745",
+    "semantic_hash": "52afa0ff571e723e525ba2ae670d0745"
+  },
+  "content/challenges/2026-05-20.json": {
+    "mtime": 1785432001.6676424,
+    "seen": 1789655018.9904056,
+    "ast_hash": "6466ffae1613a2214530187ff708a32b",
+    "semantic_hash": "6466ffae1613a2214530187ff708a32b"
+  },
+  "content/challenges/2026-05-21.json": {
+    "mtime": 1785432001.6823556,
+    "seen": 1789655018.9904072,
+    "ast_hash": "6b535e27311d0cb3e8269b507a703f25",
+    "semantic_hash": "6b535e27311d0cb3e8269b507a703f25"
+  },
+  "content/challenges/2026-05-22.json": {
+    "mtime": 1785432001.6973133,
+    "seen": 1789655018.9904087,
+    "ast_hash": "b98c43c783d9332f7ea31372a9545f3b",
+    "semantic_hash": "b98c43c783d9332f7ea31372a9545f3b"
+  },
+  "content/challenges/2026-05-23.json": {
+    "mtime": 1785432001.7012768,
+    "seen": 1789655018.9904106,
+    "ast_hash": "d876acaa3c1c2b29ad9d043bfeaabcc2",
+    "semantic_hash": "d876acaa3c1c2b29ad9d043bfeaabcc2"
+  },
+  "content/challenges/2026-05-24.json": {
+    "mtime": 1785432001.7044532,
+    "seen": 1789655018.9904118,
+    "ast_hash": "d0e78d9cbd1726590e59881e4933ad18",
+    "semantic_hash": "d0e78d9cbd1726590e59881e4933ad18"
+  },
+  "content/challenges/2026-05-25.json": {
+    "mtime": 1785432001.7121217,
+    "seen": 1789655018.9904137,
+    "ast_hash": "17b5b9c53f75305c01abc42c9bf1aeb3",
+    "semantic_hash": "17b5b9c53f75305c01abc42c9bf1aeb3"
+  },
+  "content/challenges/2026-05-26.json": {
+    "mtime": 1785432001.7167864,
+    "seen": 1789655018.990415,
+    "ast_hash": "e22a131949ce5734617f3a10cd8bdafa",
+    "semantic_hash": "e22a131949ce5734617f3a10cd8bdafa"
+  },
+  "content/challenges/2026-05-27.json": {
+    "mtime": 1785432001.719787,
+    "seen": 1789655018.9904165,
+    "ast_hash": "10d2ae09028ceea8b3050b9fe61d74db",
+    "semantic_hash": "10d2ae09028ceea8b3050b9fe61d74db"
+  },
+  "content/challenges/2026-05-28.json": {
+    "mtime": 1785432001.7247849,
+    "seen": 1789655018.9904182,
+    "ast_hash": "4dc13560f78f52e65848224e74192cc3",
+    "semantic_hash": "4dc13560f78f52e65848224e74192cc3"
+  },
+  "content/challenges/2026-05-29.json": {
+    "mtime": 1785432001.7282746,
+    "seen": 1789655018.9904196,
+    "ast_hash": "7fb7ce5d76f3c34aae7e1730282c7684",
+    "semantic_hash": "7fb7ce5d76f3c34aae7e1730282c7684"
+  },
+  "content/challenges/2026-05-30.json": {
+    "mtime": 1785432001.7322707,
+    "seen": 1789655018.9904215,
+    "ast_hash": "4552b6a77fb9110f56613f34db111cc3",
+    "semantic_hash": "4552b6a77fb9110f56613f34db111cc3"
+  },
+  "content/challenges/2026-05-31.json": {
+    "mtime": 1785432001.7352734,
+    "seen": 1789655018.990423,
+    "ast_hash": "a2f5dd50761857eb194e24b1d637a411",
+    "semantic_hash": "a2f5dd50761857eb194e24b1d637a411"
+  },
+  "content/challenges/2026-06-01.json": {
+    "mtime": 1785432001.7372723,
+    "seen": 1789655018.9904249,
+    "ast_hash": "16ecb9cbe5ba13d30dcbb9e830cb0a67",
+    "semantic_hash": "16ecb9cbe5ba13d30dcbb9e830cb0a67"
+  },
+  "content/challenges/2026-06-02.json": {
+    "mtime": 1785432001.7402697,
+    "seen": 1789655018.9904263,
+    "ast_hash": "d814d97ac8407463db7165ec9d445451",
+    "semantic_hash": "d814d97ac8407463db7165ec9d445451"
+  },
+  "content/challenges/2026-06-03.json": {
+    "mtime": 1785432001.7448633,
+    "seen": 1789655018.990428,
+    "ast_hash": "a2f09cbaa370760e21389b67a523d0d6",
+    "semantic_hash": "a2f09cbaa370760e21389b67a523d0d6"
+  },
+  "content/challenges/2026-06-04.json": {
+    "mtime": 1785432001.7477176,
+    "seen": 1789655018.9904294,
+    "ast_hash": "07862e92989576d6df8e75e6ed4528cf",
+    "semantic_hash": "07862e92989576d6df8e75e6ed4528cf"
+  },
+  "content/challenges/2026-06-05.json": {
+    "mtime": 1785432001.7477176,
+    "seen": 1789655018.9904313,
+    "ast_hash": "ffd959b3d814335a09f7bd1bd3f446a2",
+    "semantic_hash": "ffd959b3d814335a09f7bd1bd3f446a2"
+  },
+  "content/challenges/2026-06-06.json": {
+    "mtime": 1785432001.756137,
+    "seen": 1789655018.9904327,
+    "ast_hash": "a91c3acacc0ae91ac58f69424d8cdfda",
+    "semantic_hash": "a91c3acacc0ae91ac58f69424d8cdfda"
+  },
+  "content/challenges/2026-06-07.json": {
+    "mtime": 1785432001.7614086,
+    "seen": 1789655018.9904346,
+    "ast_hash": "22547ab24af07aab74124eca0c37a82d",
+    "semantic_hash": "22547ab24af07aab74124eca0c37a82d"
+  },
+  "content/challenges/2026-06-08.json": {
+    "mtime": 1785432001.7644112,
+    "seen": 1789655018.990436,
+    "ast_hash": "8c164d82b5d2287cdeb93c93fa0471dc",
+    "semantic_hash": "8c164d82b5d2287cdeb93c93fa0471dc"
+  },
+  "content/challenges/2026-06-09.json": {
+    "mtime": 1785432001.7674103,
+    "seen": 1789655018.9904377,
+    "ast_hash": "324c595e9af733d1bf160cb15a609fc6",
+    "semantic_hash": "324c595e9af733d1bf160cb15a609fc6"
+  },
+  "content/challenges/2026-06-10.json": {
+    "mtime": 1785432001.7704108,
+    "seen": 1789655018.9904394,
+    "ast_hash": "5dc6044b171596271e40ddb821b4cb38",
+    "semantic_hash": "5dc6044b171596271e40ddb821b4cb38"
+  },
+  "content/challenges/2026-06-11.json": {
+    "mtime": 1785432001.7734094,
+    "seen": 1789655018.9904408,
+    "ast_hash": "7b733e3b2c13366e88ecef236c6e5087",
+    "semantic_hash": "7b733e3b2c13366e88ecef236c6e5087"
+  },
+  "content/challenges/2026-06-12.json": {
+    "mtime": 1785432001.7793424,
+    "seen": 1789655018.9904425,
+    "ast_hash": "1e23155be334f8d84c1f0b815af1b27b",
+    "semantic_hash": "1e23155be334f8d84c1f0b815af1b27b"
+  },
+  "content/challenges/2026-06-13.json": {
+    "mtime": 1785432001.7823384,
+    "seen": 1789655018.990444,
+    "ast_hash": "db27f8936752035d056a0d76f104005b",
+    "semantic_hash": "db27f8936752035d056a0d76f104005b"
+  },
+  "content/challenges/2026-06-14.json": {
+    "mtime": 1785432001.7853408,
+    "seen": 1789655018.9904456,
+    "ast_hash": "d6c5b6212a4445aec93a4ca7339f8179",
+    "semantic_hash": "d6c5b6212a4445aec93a4ca7339f8179"
+  },
+  "content/challenges/2026-06-15.json": {
+    "mtime": 1785432001.7873402,
+    "seen": 1789655018.990447,
+    "ast_hash": "0fc722110f55488bc102e2b36c67f4e4",
+    "semantic_hash": "0fc722110f55488bc102e2b36c67f4e4"
+  },
+  "content/challenges/2026-06-16.json": {
+    "mtime": 1785432001.790341,
+    "seen": 1789655018.9904487,
+    "ast_hash": "19b6ace8d7707b96df5b67f80d0c444c",
+    "semantic_hash": "19b6ace8d7707b96df5b67f80d0c444c"
+  },
+  "content/challenges/2026-06-17.json": {
+    "mtime": 1785432001.7940288,
+    "seen": 1789655018.9904501,
+    "ast_hash": "fee14573516e01e2c1fadb09d7e31306",
+    "semantic_hash": "fee14573516e01e2c1fadb09d7e31306"
+  },
+  "content/challenges/2026-06-18.json": {
+    "mtime": 1785432001.797457,
+    "seen": 1789655018.9904518,
+    "ast_hash": "a5ca6bb650202549e4a16698fc3b663c",
+    "semantic_hash": "a5ca6bb650202549e4a16698fc3b663c"
+  },
+  "content/challenges/2026-06-19.json": {
+    "mtime": 1785432001.7980206,
+    "seen": 1789655018.9904532,
+    "ast_hash": "90be9f2c0f4a68d6fab76701ef4a2a3e",
+    "semantic_hash": "90be9f2c0f4a68d6fab76701ef4a2a3e"
+  },
+  "content/challenges/2026-06-20.json": {
+    "mtime": 1785432001.7980206,
+    "seen": 1789655018.9904552,
+    "ast_hash": "419fb6e7106d1361057c846b641c270c",
+    "semantic_hash": "419fb6e7106d1361057c846b641c270c"
+  },
+  "content/challenges/2026-06-21.json": {
+    "mtime": 1785432001.8057096,
+    "seen": 1789655018.9904566,
+    "ast_hash": "157232a25c0d35350855a27e769cb0fb",
+    "semantic_hash": "157232a25c0d35350855a27e769cb0fb"
+  },
+  "content/challenges/2026-06-22.json": {
+    "mtime": 1785432001.8106713,
+    "seen": 1789655018.990458,
+    "ast_hash": "a8dabd082e6ad763c9e8389f3709c27b",
+    "semantic_hash": "a8dabd082e6ad763c9e8389f3709c27b"
+  },
+  "content/challenges/2026-06-23.json": {
+    "mtime": 1785432001.8146236,
+    "seen": 1789655018.99046,
+    "ast_hash": "8d71250a2ca27ea8d2203c08619d596f",
+    "semantic_hash": "8d71250a2ca27ea8d2203c08619d596f"
+  },
+  "content/challenges/2026-06-24.json": {
+    "mtime": 1785432001.8166225,
+    "seen": 1789655018.9904613,
+    "ast_hash": "8057bddc92792478c322d383ec53f2d6",
+    "semantic_hash": "8057bddc92792478c322d383ec53f2d6"
+  },
+  "content/challenges/2026-06-25.json": {
+    "mtime": 1785432001.8206217,
+    "seen": 1789655018.990463,
+    "ast_hash": "f7093e8afb553e459f7c7b0d1dbe0221",
+    "semantic_hash": "f7093e8afb553e459f7c7b0d1dbe0221"
+  },
+  "content/challenges/2026-06-26.json": {
+    "mtime": 1785432001.8236248,
+    "seen": 1789655018.9904647,
+    "ast_hash": "bb2d2c3bd009d5f78e97dd77253ae19d",
+    "semantic_hash": "bb2d2c3bd009d5f78e97dd77253ae19d"
+  },
+  "content/challenges/2026-06-27.json": {
+    "mtime": 1785432001.8272617,
+    "seen": 1789655018.9904664,
+    "ast_hash": "80b0e430138acb4bee7d0ba28cbb55b6",
+    "semantic_hash": "80b0e430138acb4bee7d0ba28cbb55b6"
+  },
+  "content/challenges/2026-06-28.json": {
+    "mtime": 1785432001.831751,
+    "seen": 1789655018.990468,
+    "ast_hash": "2c70e30f42743e3440bf6157e7d27bcf",
+    "semantic_hash": "2c70e30f42743e3440bf6157e7d27bcf"
+  },
+  "content/challenges/2026-06-29.json": {
+    "mtime": 1785432001.837208,
+    "seen": 1789655018.9904697,
+    "ast_hash": "b84ab2aed64d661af43eed69d68e5e77",
+    "semantic_hash": "b84ab2aed64d661af43eed69d68e5e77"
+  },
+  "content/challenges/2026-06-30.json": {
+    "mtime": 1785432001.8407009,
+    "seen": 1789655018.9904711,
+    "ast_hash": "02ca7cd52a0d5e317a9dd17ac00c0b8e",
+    "semantic_hash": "02ca7cd52a0d5e317a9dd17ac00c0b8e"
+  },
+  "content/challenges/2026-07-01.json": {
+    "mtime": 1785432001.8465943,
+    "seen": 1789655018.9904728,
+    "ast_hash": "01df2a21a91e0c319a5a3329b8b3d6e4",
+    "semantic_hash": "01df2a21a91e0c319a5a3329b8b3d6e4"
+  },
+  "content/challenges/2026-07-02.json": {
+    "mtime": 1785432001.8514984,
+    "seen": 1789655018.9904745,
+    "ast_hash": "b24325ed184749a16415d5345d974e51",
+    "semantic_hash": "b24325ed184749a16415d5345d974e51"
+  },
+  "content/challenges/2026-07-03.json": {
+    "mtime": 1785432001.8542852,
+    "seen": 1789655018.990476,
+    "ast_hash": "edd94b829adef09a670d8f267eff8842",
+    "semantic_hash": "edd94b829adef09a670d8f267eff8842"
+  },
+  "content/challenges/2026-07-04.json": {
+    "mtime": 1785432001.857655,
+    "seen": 1789655018.9904776,
+    "ast_hash": "73b3909c014c13c2de7a164452c6dbc1",
+    "semantic_hash": "73b3909c014c13c2de7a164452c6dbc1"
+  },
+  "content/challenges/2026-07-05.json": {
+    "mtime": 1785432001.86288,
+    "seen": 1789655018.9904788,
+    "ast_hash": "3392284ec8a9ef68d9bed5f8906924ca",
+    "semantic_hash": "3392284ec8a9ef68d9bed5f8906924ca"
+  },
+  "content/challenges/2026-07-06.json": {
+    "mtime": 1785432001.8667967,
+    "seen": 1789655018.9904866,
+    "ast_hash": "d4ca7ff6ff6d22ca199f28cfb8143691",
+    "semantic_hash": "d4ca7ff6ff6d22ca199f28cfb8143691"
+  },
+  "content/challenges/2026-07-07.json": {
+    "mtime": 1785432001.8701482,
+    "seen": 1789655018.990488,
+    "ast_hash": "f81de38ddae595af5cfceba522feb7ed",
+    "semantic_hash": "f81de38ddae595af5cfceba522feb7ed"
+  },
+  "content/challenges/2026-07-08.json": {
+    "mtime": 1785432001.873282,
+    "seen": 1789655018.9904895,
+    "ast_hash": "3fb69d88125111234e38877adb2e6f21",
+    "semantic_hash": "3fb69d88125111234e38877adb2e6f21"
+  },
+  "content/challenges/2026-07-09.json": {
+    "mtime": 1785432001.8783283,
+    "seen": 1789655018.9904912,
+    "ast_hash": "7128a309bd0177c9647d130ec843bfde",
+    "semantic_hash": "7128a309bd0177c9647d130ec843bfde"
+  },
+  "content/challenges/2026-07-10.json": {
+    "mtime": 1785432001.8818393,
+    "seen": 1789655018.9904928,
+    "ast_hash": "e239d4316b7031e916a5e9f7854ba27e",
+    "semantic_hash": "e239d4316b7031e916a5e9f7854ba27e"
+  },
+  "content/challenges/2026-07-11.json": {
+    "mtime": 1785432001.8860078,
+    "seen": 1789655018.9904945,
+    "ast_hash": "b968a7b37abec718f37db2bc9e7e13b4",
+    "semantic_hash": "b968a7b37abec718f37db2bc9e7e13b4"
+  },
+  "content/challenges/2026-07-12.json": {
+    "mtime": 1785432001.8910108,
+    "seen": 1789655018.990496,
+    "ast_hash": "aad15c5373a670742e4b75b6e307dd94",
+    "semantic_hash": "aad15c5373a670742e4b75b6e307dd94"
+  },
+  "content/challenges/2026-07-13.json": {
+    "mtime": 1785432001.8960245,
+    "seen": 1789655018.9904976,
+    "ast_hash": "a866e38c8e5823ccbf4d795e59d4681d",
+    "semantic_hash": "a866e38c8e5823ccbf4d795e59d4681d"
+  },
+  "content/challenges/2026-07-14.json": {
+    "mtime": 1785432001.8996894,
+    "seen": 1789655018.9904993,
+    "ast_hash": "fd0fe2a019bcb357df13f6362e28be19",
+    "semantic_hash": "fd0fe2a019bcb357df13f6362e28be19"
+  },
+  "content/challenges/2026-07-15.json": {
+    "mtime": 1785432001.9008148,
+    "seen": 1789655018.990501,
+    "ast_hash": "6363c4f8f53c4c4bc238ce6197c1049b",
+    "semantic_hash": "6363c4f8f53c4c4bc238ce6197c1049b"
+  },
+  "content/challenges/2026-07-16.json": {
+    "mtime": 1785432001.9063878,
+    "seen": 1789655018.9905024,
+    "ast_hash": "ff5c20762c9606c8294ce6fbe387aa5a",
+    "semantic_hash": "ff5c20762c9606c8294ce6fbe387aa5a"
+  },
+  "content/challenges/2026-07-17.json": {
+    "mtime": 1785432001.9124303,
+    "seen": 1789655018.9905038,
+    "ast_hash": "1a290a03b840aa78212fbb004199adc1",
+    "semantic_hash": "1a290a03b840aa78212fbb004199adc1"
+  },
+  "content/challenges/2026-07-18.json": {
+    "mtime": 1785432001.9175086,
+    "seen": 1789655018.9905055,
+    "ast_hash": "cdf8f7f6d650d20e5733e4b4c16939f1",
+    "semantic_hash": "cdf8f7f6d650d20e5733e4b4c16939f1"
+  },
+  "content/challenges/2026-07-19.json": {
+    "mtime": 1785432001.9243543,
+    "seen": 1789655018.9905071,
+    "ast_hash": "ddeeebc480961e8e1c4e43c2cc066a69",
+    "semantic_hash": "ddeeebc480961e8e1c4e43c2cc066a69"
+  },
+  "content/challenges/2026-07-20.json": {
+    "mtime": 1785432001.931816,
+    "seen": 1789655018.9905086,
+    "ast_hash": "585eec6ff30b5c2239d14477030480a8",
+    "semantic_hash": "585eec6ff30b5c2239d14477030480a8"
+  },
+  "content/challenges/2026-07-21.json": {
+    "mtime": 1785432001.936486,
+    "seen": 1789655018.9905102,
+    "ast_hash": "93b9f81783cb1f5e05bb7c1a31a029a6",
+    "semantic_hash": "93b9f81783cb1f5e05bb7c1a31a029a6"
+  },
+  "content/challenges/2026-07-22.json": {
+    "mtime": 1785432001.9384983,
+    "seen": 1789655018.990512,
+    "ast_hash": "992afc1fa97df4e95e8c86515c503f2e",
+    "semantic_hash": "992afc1fa97df4e95e8c86515c503f2e"
+  },
+  "content/challenges/2026-07-23.json": {
+    "mtime": 1785432001.9463634,
+    "seen": 1789655018.9905133,
+    "ast_hash": "5f4ff9aa5e5d496b56db4cf3433d9b59",
+    "semantic_hash": "5f4ff9aa5e5d496b56db4cf3433d9b59"
+  },
+  "content/challenges/2026-07-24.json": {
+    "mtime": 1785432001.9516666,
+    "seen": 1789655018.990515,
+    "ast_hash": "9f3a0dea742896d579b52300f6dfe0e1",
+    "semantic_hash": "9f3a0dea742896d579b52300f6dfe0e1"
+  },
+  "content/challenges/2026-07-25.json": {
+    "mtime": 1785432001.956732,
+    "seen": 1789655018.9905164,
+    "ast_hash": "8579b318da6ce7f8d506ffadae5ff55e",
+    "semantic_hash": "8579b318da6ce7f8d506ffadae5ff55e"
+  },
+  "content/challenges/2026-07-26.json": {
+    "mtime": 1785432001.960962,
+    "seen": 1789655018.9905183,
+    "ast_hash": "39b88273ad4d0791cee56b1e4fb367f3",
+    "semantic_hash": "39b88273ad4d0791cee56b1e4fb367f3"
+  },
+  "content/challenges/2026-07-27.json": {
+    "mtime": 1785432001.9659595,
+    "seen": 1789655018.9905472,
+    "ast_hash": "e6093a0e855353114c669944dd9e5fa2",
+    "semantic_hash": "e6093a0e855353114c669944dd9e5fa2"
+  },
+  "content/challenges/2026-07-28.json": {
+    "mtime": 1785432001.9709606,
+    "seen": 1789655018.990555,
+    "ast_hash": "7cd9946716fe92563ad3d4da5a649fa9",
+    "semantic_hash": "7cd9946716fe92563ad3d4da5a649fa9"
+  },
+  "content/challenges/2026-07-29.json": {
+    "mtime": 1785432001.9762964,
+    "seen": 1789655018.9905567,
+    "ast_hash": "cdd25fa08488acdb690869305ea3371f",
+    "semantic_hash": "cdd25fa08488acdb690869305ea3371f"
+  },
+  "content/challenges/2026-07-30.json": {
+    "mtime": 1785432001.9805129,
+    "seen": 1789655018.990558,
+    "ast_hash": "dda401d5e647b3071823f5ee635aa375",
+    "semantic_hash": "dda401d5e647b3071823f5ee635aa375"
+  },
+  "content/challenges/2026-07-31.json": {
+    "mtime": 1785643923.4800913,
+    "seen": 1789655018.9905589,
+    "ast_hash": "ae10a068f63a3b7ad0664c49d7b96def",
+    "semantic_hash": "ae10a068f63a3b7ad0664c49d7b96def"
+  },
+  "content/challenges/2026-08-01.json": {
+    "mtime": 1785643923.4847832,
+    "seen": 1789655018.99056,
+    "ast_hash": "ea1f5fb1fd72cf687a9eddde526391f3",
+    "semantic_hash": "ea1f5fb1fd72cf687a9eddde526391f3"
+  },
+  "content/challenges/2026-08-02.json": {
+    "mtime": 1787233457.993662,
+    "seen": 1789655018.990561,
+    "ast_hash": "6826976b22f18adcc6cedf30960bf372",
+    "semantic_hash": "6826976b22f18adcc6cedf30960bf372"
+  },
+  "content/challenges/2026-08-03.json": {
+    "mtime": 1787233457.9957042,
+    "seen": 1789655018.9905622,
+    "ast_hash": "33d91cfcd50dc296e3ad71c45eaf00dd",
+    "semantic_hash": "33d91cfcd50dc296e3ad71c45eaf00dd"
+  },
+  "content/challenges/2026-08-04.json": {
+    "mtime": 1787233457.9997404,
+    "seen": 1789655018.9905634,
+    "ast_hash": "318cbbaaecddc12ab8e3d60d9001f6c9",
+    "semantic_hash": "318cbbaaecddc12ab8e3d60d9001f6c9"
+  },
+  "content/challenges/2026-08-05.json": {
+    "mtime": 1787233458.0028238,
+    "seen": 1789655018.990564,
+    "ast_hash": "fd9aa76b81772e89b7a5002353950b59",
+    "semantic_hash": "fd9aa76b81772e89b7a5002353950b59"
+  },
+  "content/challenges/2026-08-06.json": {
+    "mtime": 1787233458.0058322,
+    "seen": 1789655018.990565,
+    "ast_hash": "70bc3d7fcb86e2e5ffdb9a5bf9e65b57",
+    "semantic_hash": "70bc3d7fcb86e2e5ffdb9a5bf9e65b57"
+  },
+  "content/challenges/2026-08-07.json": {
+    "mtime": 1787233458.0088453,
+    "seen": 1789655018.9905665,
+    "ast_hash": "5fe481004518e3c389a139d2eb395e9c",
+    "semantic_hash": "5fe481004518e3c389a139d2eb395e9c"
+  },
+  "content/challenges/2026-08-08.json": {
+    "mtime": 1787233458.012893,
+    "seen": 1789655018.9905677,
+    "ast_hash": "1cc23599281c650a5b7064247e822ce5",
+    "semantic_hash": "1cc23599281c650a5b7064247e822ce5"
+  },
+  "content/challenges/2026-08-09.json": {
+    "mtime": 1787233458.0299754,
+    "seen": 1789655018.9905686,
+    "ast_hash": "1f4dd6a82e62a57c8093a50908549204",
+    "semantic_hash": "1f4dd6a82e62a57c8093a50908549204"
+  },
+  "content/challenges/2026-08-10.json": {
+    "mtime": 1787233458.0381858,
+    "seen": 1789655018.9905694,
+    "ast_hash": "d3d056b600d042425557cb933e9b4e2e",
+    "semantic_hash": "d3d056b600d042425557cb933e9b4e2e"
+  },
+  "continuous_notes.py": {
+    "mtime": 1783854369.4781132,
+    "seen": 1789655018.9905705,
+    "ast_hash": "f3e5c701f3822442de8bad5b0d8acc13",
+    "semantic_hash": "f3e5c701f3822442de8bad5b0d8acc13"
+  },
+  "create_missing_tables.py": {
+    "mtime": 1783854369.4808943,
+    "seen": 1789655018.9905713,
+    "ast_hash": "d1208cffd4bf09c690dc0bf46600e4b8",
+    "semantic_hash": "d1208cffd4bf09c690dc0bf46600e4b8"
+  },
+  "create_user_tables.py": {
+    "mtime": 1783854369.4836183,
+    "seen": 1789655018.9905722,
+    "ast_hash": "3862a1df6f7312d39a8618132ab4a78d",
+    "semantic_hash": "3862a1df6f7312d39a8618132ab4a78d"
+  },
+  "deploy_bridge.py": {
+    "mtime": 1783854369.4859645,
+    "seen": 1789655018.9905734,
+    "ast_hash": "c854d09c0426a56fa0d4ef7d999b2116",
+    "semantic_hash": "c854d09c0426a56fa0d4ef7d999b2116"
+  },
+  "deploy_tunnel.py": {
+    "mtime": 1783854369.4886928,
+    "seen": 1789655018.9905741,
+    "ast_hash": "46e3e1e5f81ff90664b61c25ce836d9c",
+    "semantic_hash": "46e3e1e5f81ff90664b61c25ce836d9c"
+  },
+  "dev_sync.sh": {
+    "mtime": 1785353875.880621,
+    "seen": 1789655018.990575,
+    "ast_hash": "185df1922bd008918a96b9fa21b42917",
+    "semantic_hash": "185df1922bd008918a96b9fa21b42917"
+  },
+  "export_challenges.py": {
+    "mtime": 1785431934.650344,
+    "seen": 1789655018.990576,
+    "ast_hash": "f43cb874916955502c959507dd30fd8b",
+    "semantic_hash": "f43cb874916955502c959507dd30fd8b"
+  },
+  "fcc_sync.py": {
+    "mtime": 1785434964.8968873,
+    "seen": 1789655018.990577,
+    "ast_hash": "ebce7e76c8059045f3907246c309c590",
+    "semantic_hash": "ebce7e76c8059045f3907246c309c590"
+  },
+  "fix_db.py": {
+    "mtime": 1783854369.4955606,
+    "seen": 1789655018.9905777,
+    "ast_hash": "f73310ce864061e6678f59cdb2b081b9",
+    "semantic_hash": "f73310ce864061e6678f59cdb2b081b9"
+  },
+  "fix_sudo.py": {
+    "mtime": 1783854369.497646,
+    "seen": 1789655018.9905784,
+    "ast_hash": "302f0470e134201ae922b6a7ab9e370f",
+    "semantic_hash": "302f0470e134201ae922b6a7ab9e370f"
+  },
+  "get_public_url.sh": {
+    "mtime": 1783854369.499677,
+    "seen": 1789655018.9905794,
+    "ast_hash": "5fe3a2ac9272e92b3f7c2584bb2b12d4",
+    "semantic_hash": "5fe3a2ac9272e92b3f7c2584bb2b12d4"
+  },
+  "image_processor.py": {
+    "mtime": 1783854369.5030348,
+    "seen": 1789655018.9905806,
+    "ast_hash": "c6cc7c1a68ae96d1d7072e9bb4eb5954",
+    "semantic_hash": "c6cc7c1a68ae96d1d7072e9bb4eb5954"
+  },
+  "import_challenges.py": {
+    "mtime": 1785431011.5602155,
+    "seen": 1789655018.9905815,
+    "ast_hash": "24696023089d8b684cb96ea2a766ab1d",
+    "semantic_hash": "24696023089d8b684cb96ea2a766ab1d"
+  },
+  "inspect_db.py": {
+    "mtime": 1783854369.5051856,
+    "seen": 1789655018.9905825,
+    "ast_hash": "277a88a31ed0b368132057744c8690ac",
+    "semantic_hash": "277a88a31ed0b368132057744c8690ac"
+  },
+  "inspect_db_detailed.py": {
+    "mtime": 1783854369.5090475,
+    "seen": 1789655018.9905832,
+    "ast_hash": "0e40a9c4cfb04eae478d4cdf53807e65",
+    "semantic_hash": "0e40a9c4cfb04eae478d4cdf53807e65"
+  },
+  "katex_prerender.py": {
+    "mtime": 1785079287.9064937,
+    "seen": 1789655018.9905844,
+    "ast_hash": "88c00b58bb44f4da0ee980c9aa7b7d07",
+    "semantic_hash": "88c00b58bb44f4da0ee980c9aa7b7d07"
+  },
+  "katex_render.js": {
+    "mtime": 1785078116.127743,
+    "seen": 1789655018.9905853,
+    "ast_hash": "9e622bde9c502783a1d7bfc082d56651",
+    "semantic_hash": "9e622bde9c502783a1d7bfc082d56651"
+  },
+  "knowledge-graph/graph.json": {
+    "mtime": 1783855363.102315,
+    "seen": 1789655018.9905863,
+    "ast_hash": "854f6c0d08e3829bd52c51df1403f0f5",
+    "semantic_hash": "854f6c0d08e3829bd52c51df1403f0f5"
+  },
+  "knowledge-graph/standardization-audit.json": {
+    "mtime": 1783860131.5200987,
+    "seen": 1789655018.9905875,
+    "ast_hash": "90920a1dc224a882ac31bfe15d810d28",
+    "semantic_hash": "90920a1dc224a882ac31bfe15d810d28"
+  },
+  "make_book_pdf.py": {
+    "mtime": 1785353836.9755628,
+    "seen": 1789655018.9905884,
+    "ast_hash": "2eeaf6d0397e02a6bf9e17d82dbf264c",
+    "semantic_hash": "2eeaf6d0397e02a6bf9e17d82dbf264c"
+  },
+  "migrations/env.py": {
+    "mtime": 1783854369.516907,
+    "seen": 1789655018.9905891,
+    "ast_hash": "70eae21b5e828be08b4b1161e3415988",
+    "semantic_hash": "70eae21b5e828be08b4b1161e3415988"
+  },
+  "migrations/versions/49b711d2aba8_add_qa_text_field.py": {
+    "mtime": 1783854369.524069,
+    "seen": 1789655018.99059,
+    "ast_hash": "4775e3c31cb1eeae6ab82a215d5a3330",
+    "semantic_hash": "4775e3c31cb1eeae6ab82a215d5a3330"
+  },
+  "migrations/versions/704755926c31_initial_schema.py": {
+    "mtime": 1783854369.5262744,
+    "seen": 1789655018.9905913,
+    "ast_hash": "e4a1fbf07a68c95fb793ce01d3246e16",
+    "semantic_hash": "e4a1fbf07a68c95fb793ce01d3246e16"
+  },
+  "migrations/versions/f8faeae5ecde_add_quote_text.py": {
+    "mtime": 1783854369.530107,
+    "seen": 1789655018.990592,
+    "ast_hash": "6a7803331b856aaf58fa67cbc68ab7cc",
+    "semantic_hash": "6a7803331b856aaf58fa67cbc68ab7cc"
+  },
+  "models.py": {
+    "mtime": 1785087052.234352,
+    "seen": 1789655018.990593,
+    "ast_hash": "7ecafa0073b8a8554b6125796ed9ef2f",
+    "semantic_hash": "7ecafa0073b8a8554b6125796ed9ef2f"
+  },
+  "network_watchdog.sh": {
+    "mtime": 1785439154.8922567,
+    "seen": 1789655018.9905941,
+    "ast_hash": "7ca9a64f5eff65fd844149403f1cbc2e",
+    "semantic_hash": "7ca9a64f5eff65fd844149403f1cbc2e"
+  },
+  "ocr_helper.py": {
+    "mtime": 1783854369.5374873,
+    "seen": 1789655018.9905949,
+    "ast_hash": "51f40469dc72a3e689c732a8f865fc8b",
+    "semantic_hash": "51f40469dc72a3e689c732a8f865fc8b"
+  },
+  "push_templates.py": {
+    "mtime": 1783854369.5402095,
+    "seen": 1789655018.990596,
+    "ast_hash": "9b1d4fe218bc6d71800001458ffdb670",
+    "semantic_hash": "9b1d4fe218bc6d71800001458ffdb670"
+  },
+  "remote_backfill.py": {
+    "mtime": 1783854369.5423849,
+    "seen": 1789655018.9905968,
+    "ast_hash": "12ccb291a7def7e740c65581f75c6376",
+    "semantic_hash": "12ccb291a7def7e740c65581f75c6376"
+  },
+  "run_scraper.sh": {
+    "mtime": 1783854369.5465784,
+    "seen": 1789655018.990598,
+    "ast_hash": "229cce79d4e14ad1db54e707dc17be2e",
+    "semantic_hash": "229cce79d4e14ad1db54e707dc17be2e"
+  },
+  "scrape_book.py": {
+    "mtime": 1783854369.5485077,
+    "seen": 1789655018.9905987,
+    "ast_hash": "63e998563d67ed1594001ed8c74e0442",
+    "semantic_hash": "63e998563d67ed1594001ed8c74e0442"
+  },
+  "scrub_db.py": {
+    "mtime": 1783854369.5506916,
+    "seen": 1789655018.9905996,
+    "ast_hash": "a2a96227c2bdabd4056cabbff47f4958",
+    "semantic_hash": "a2a96227c2bdabd4056cabbff47f4958"
+  },
+  "security_harden.py": {
+    "mtime": 1783854369.5537038,
+    "seen": 1789655018.9906003,
+    "ast_hash": "368779a8965f85ef2604a9f330f9276f",
+    "semantic_hash": "368779a8965f85ef2604a9f330f9276f"
+  },
+  "server_maintenance.py": {
+    "mtime": 1783854369.5574052,
+    "seen": 1789655018.9906013,
+    "ast_hash": "45066988a16c3d8f8a27a13c04c877ee",
+    "semantic_hash": "45066988a16c3d8f8a27a13c04c877ee"
+  },
+  "setup.sh": {
+    "mtime": 1783854369.5602536,
+    "seen": 1789655018.9906023,
+    "ast_hash": "7e8d6bc83d13133571727c3c5fe73994",
+    "semantic_hash": "7e8d6bc83d13133571727c3c5fe73994"
+  },
+  "setup_auto_deploy.sh": {
+    "mtime": 1785646790.4768603,
+    "seen": 1789655018.9906032,
+    "ast_hash": "0dffec3b75d21e22552b27ebbd6df9a9",
+    "semantic_hash": "0dffec3b75d21e22552b27ebbd6df9a9"
+  },
+  "setup_named_tunnel.sh": {
+    "mtime": 1785643923.6690748,
+    "seen": 1789655018.9906044,
+    "ast_hash": "7cfd14bb967e46746a1679efcf030e31",
+    "semantic_hash": "7cfd14bb967e46746a1679efcf030e31"
+  },
+  "setup_server.sh": {
+    "mtime": 1785439217.7573564,
+    "seen": 1789655018.990605,
+    "ast_hash": "a16beeba97b9e34e48df5ff1d0bf551a",
+    "semantic_hash": "a16beeba97b9e34e48df5ff1d0bf551a"
+  },
+  "static/books/qa/aws-ml.qa.json": {
+    "mtime": 1785355083.2070775,
+    "seen": 1789655018.990606,
+    "ast_hash": "1b0027ffc1e5c57f98d0fac4037316dd",
+    "semantic_hash": "1b0027ffc1e5c57f98d0fac4037316dd"
+  },
+  "static/books/qa/blank_solutions.json": {
+    "mtime": 1785081771.843955,
+    "seen": 1789655018.9906068,
+    "ast_hash": "96d0b7a5ef8000cca2b5671d1e81e34d",
+    "semantic_hash": "96d0b7a5ef8000cca2b5671d1e81e34d"
+  },
+  "static/books/qa/linear-algebra.qa.json": {
+    "mtime": 1785355453.9455073,
+    "seen": 1789655018.990608,
+    "ast_hash": "b45e2581be4646364334a47b117b68a0",
+    "semantic_hash": "b45e2581be4646364334a47b117b68a0"
+  },
+  "static/books/qa/python.qa.json": {
+    "mtime": 1785355446.7922826,
+    "seen": 1789655018.9906087,
+    "ast_hash": "2740db1b1c7d64f2d8278a7a7e8ba847",
+    "semantic_hash": "2740db1b1c7d64f2d8278a7a7e8ba847"
+  },
+  "static/js/book.js": {
+    "mtime": 1785079629.9857285,
+    "seen": 1789655018.9906094,
+    "ast_hash": "8d7ff973692a112fe05a7620caedc3db",
+    "semantic_hash": "8d7ff973692a112fe05a7620caedc3db"
+  },
+  "telegram_bridge.py": {
+    "mtime": 1783854370.033626,
+    "seen": 1789655018.9906101,
+    "ast_hash": "6b28eab04dfdbbe59591b27190fb7a1b",
+    "semantic_hash": "6b28eab04dfdbbe59591b27190fb7a1b"
+  },
+  "test_extract.py": {
+    "mtime": 1783854370.0501342,
+    "seen": 1789655018.9906116,
+    "ast_hash": "ec8bd4596cadb6192d7dfc8aa107c33b",
+    "semantic_hash": "ec8bd4596cadb6192d7dfc8aa107c33b"
+  },
+  "test_sync.py": {
+    "mtime": 1783854370.0511334,
+    "seen": 1789655018.9906123,
+    "ast_hash": "73d41e9e5d2bc802d2ad63731dd05eb7",
+    "semantic_hash": "73d41e9e5d2bc802d2ad63731dd05eb7"
+  },
+  "verify_tables.py": {
+    "mtime": 1783854370.053138,
+    "seen": 1789655018.9906132,
+    "ast_hash": "0a6ec67203012355973df3e554eb8f9f",
+    "semantic_hash": "0a6ec67203012355973df3e554eb8f9f"
+  }
+}
